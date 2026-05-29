@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowLeft,
   CheckCircle2,
   XCircle,
   Heart,
@@ -12,11 +11,10 @@ import {
   RotateCcw,
   Trophy,
   Sparkles,
-  Layers,
+  Network,
 } from "lucide-react";
 import type { Algorithm, Option, DecisionNode } from "@/data/algorithms";
 import { CATEGORY_META } from "@/data/algorithms";
-import FlowchartReview from "@/components/FlowchartReview";
 
 type Phase = "playing" | "feedback" | "won" | "lost";
 
@@ -29,7 +27,15 @@ const shuffle = <T,>(arr: T[]): T[] => {
   return a;
 };
 
-export default function GameEngine({ algo }: { algo: Algorithm }) {
+export default function GameEngine({
+  algo,
+  onSwitchToFlowchart,
+  onPathChange,
+}: {
+  algo: Algorithm;
+  onSwitchToFlowchart?: (path: string[]) => void;
+  onPathChange?: (state: { path: string[]; hp: number; score: number; streak: number }) => void;
+}) {
   const meta = CATEGORY_META[algo.category];
 
   const [currentId, setCurrentId] = useState<string>(algo.start);
@@ -40,7 +46,6 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
   const [bestStreak, setBestStreak] = useState(0);
   const [phase, setPhase] = useState<Phase>("playing");
   const [feedback, setFeedback] = useState<{ correct: boolean; option: Option } | null>(null);
-  const [showReview, setShowReview] = useState(false);
   const [tried, setTried] = useState<Set<string>>(new Set());
 
   const node = algo.nodes[currentId];
@@ -65,6 +70,10 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
   useEffect(() => {
     if (hp <= 0) setPhase("lost");
   }, [hp]);
+
+  useEffect(() => {
+    onPathChange?.({ path, hp, score, streak });
+  }, [path, hp, score, streak, onPathChange]);
 
   function handleOption(opt: Option) {
     if (phase !== "playing") return;
@@ -103,7 +112,6 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
     setBestStreak(0);
     setPhase("playing");
     setFeedback(null);
-    setShowReview(false);
     setTried(new Set());
   }
 
@@ -111,23 +119,12 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
   const progress = Math.min(1, (path.length - 1) / Math.max(1, totalDecisions));
 
   return (
-    <div className="relative min-h-[100dvh] flex flex-col">
-      {/* Top bar */}
-      <div className="sticky top-0 z-30 backdrop-blur-md bg-black/40 border-b border-white/5">
-        <div className="mx-auto max-w-5xl px-6 py-4 flex items-center gap-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-white/65 hover:text-white transition"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Library
-          </Link>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/45">
-              <span className={`h-1.5 w-1.5 rounded-full bg-gradient-to-br ${meta.color}`} />
-              {algo.category}
-            </div>
-            <div className="truncate text-sm font-semibold tracking-tight">{algo.title}</div>
+    <div className="relative flex flex-col min-h-full">
+      {/* Sub-bar with HUD and progress */}
+      <div className="border-b border-white/5 bg-black/30 backdrop-blur-sm">
+        <div className="mx-auto max-w-5xl px-6 py-3 flex items-center justify-between gap-4">
+          <div className="text-[10px] uppercase tracking-[0.22em] text-white/45">
+            Step {path.length} of ~{totalDecisions}
           </div>
           <HUD hp={hp} score={score} streak={streak} />
         </div>
@@ -152,7 +149,13 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
               transition={{ duration: 0.25 }}
               className="space-y-8"
             >
-              <PlayBody node={node} options={shuffledOptions} tried={tried} step={path.length} onPick={handleOption} />
+              <PlayBody
+                node={node}
+                options={shuffledOptions}
+                tried={tried}
+                step={path.length}
+                onPick={handleOption}
+              />
             </motion.div>
           )}
 
@@ -193,12 +196,14 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
                 <Tile label="HP left" value={`${hp}/3`} />
               </div>
               <div className="flex flex-wrap gap-3 justify-center">
-                <button
-                  onClick={() => setShowReview(true)}
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black"
-                >
-                  <Layers className="h-4 w-4" /> Review full algorithm
-                </button>
+                {onSwitchToFlowchart && (
+                  <button
+                    onClick={() => onSwitchToFlowchart(path)}
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black"
+                  >
+                    <Network className="h-4 w-4" /> Review on flowchart
+                  </button>
+                )}
                 <button
                   onClick={reset}
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white/85 hover:bg-white/[0.08] transition"
@@ -227,18 +232,22 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
                   <Heart className="h-8 w-8 text-rose-300" />
                 </div>
                 <div className="text-xs uppercase tracking-[0.22em] text-rose-300 mb-2">Out of lives</div>
-                <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">That&apos;s how recall builds.</h1>
+                <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
+                  That&apos;s how recall builds.
+                </h1>
                 <p className="text-sm text-white/65 max-w-md mx-auto">
-                  Review the full algorithm and run it again.
+                  Review the full flowchart and run it again.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 justify-center">
-                <button
-                  onClick={() => setShowReview(true)}
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black"
-                >
-                  <Layers className="h-4 w-4" /> See the algorithm
-                </button>
+                {onSwitchToFlowchart && (
+                  <button
+                    onClick={() => onSwitchToFlowchart(path)}
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black"
+                  >
+                    <Network className="h-4 w-4" /> See the flowchart
+                  </button>
+                )}
                 <button
                   onClick={reset}
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white/85 hover:bg-white/[0.08] transition"
@@ -250,12 +259,6 @@ export default function GameEngine({ algo }: { algo: Algorithm }) {
           )}
         </AnimatePresence>
       </div>
-
-      <AnimatePresence>
-        {showReview && (
-          <FlowchartReview algo={algo} onClose={() => setShowReview(false)} highlight={path} />
-        )}
-      </AnimatePresence>
     </div>
   );
 }
@@ -382,7 +385,9 @@ function WinCard({
 }) {
   return (
     <div className="glass-strong rounded-3xl p-10 text-center border-2 border-emerald-400/30 relative overflow-hidden">
-      <div className={`absolute -top-32 -left-32 h-72 w-72 rounded-full bg-gradient-to-br ${meta.color} opacity-30 blur-3xl`} />
+      <div
+        className={`absolute -top-32 -left-32 h-72 w-72 rounded-full bg-gradient-to-br ${meta.color} opacity-30 blur-3xl`}
+      />
       <div className="relative">
         <motion.div
           initial={{ scale: 0, rotate: -30 }}
@@ -415,6 +420,15 @@ function WinCard({
   );
 }
 
+function Tile({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="glass rounded-2xl px-3 py-4 text-center">
+      <div className="text-xl font-semibold tabular-nums">{value}</div>
+      <div className="text-[10px] uppercase tracking-[0.2em] text-white/45 mt-1">{label}</div>
+    </div>
+  );
+}
+
 function HUD({ hp, score, streak }: { hp: number; score: number; streak: number }) {
   return (
     <div className="flex items-center gap-3">
@@ -435,15 +449,6 @@ function HUD({ hp, score, streak }: { hp: number; score: number; streak: number 
       <div className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs font-mono tabular-nums">
         {score.toString().padStart(4, "0")}
       </div>
-    </div>
-  );
-}
-
-function Tile({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="glass rounded-2xl px-3 py-4 text-center">
-      <div className="text-xl font-semibold tabular-nums">{value}</div>
-      <div className="text-[10px] uppercase tracking-[0.2em] text-white/45 mt-1">{label}</div>
     </div>
   );
 }

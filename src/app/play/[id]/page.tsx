@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import GameEngine from "@/components/GameEngine";
+import AlgorithmView from "@/components/AlgorithmView";
 import { ALGORITHMS } from "@/data/algorithms";
 
 export function generateStaticParams() {
@@ -14,5 +14,5 @@ export default async function PlayPage({
   const { id } = await params;
   const algo = ALGORITHMS.find((a) => a.id === id);
   if (!algo) notFound();
-  return <GameEngine algo={algo} />;
+  return <AlgorithmView algo={algo} />;
 }
