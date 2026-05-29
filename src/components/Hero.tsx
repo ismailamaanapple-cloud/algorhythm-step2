@@ -55,10 +55,11 @@ export default function Hero() {
             <motion.a
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
-              href="#how"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white/85 hover:bg-white/[0.06] hover:border-white/25 transition"
+              href="/cases"
+              className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-7 py-3.5 text-sm font-semibold text-amber-100 hover:bg-amber-300/20 transition"
             >
-              How it works
+              Play case quiz
+              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </motion.a>
           </div>
 
