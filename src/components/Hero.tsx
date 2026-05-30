@@ -49,7 +49,7 @@ export default function Hero() {
               href="#library"
               className="group relative inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black shadow-[0_0_40px_rgba(255,255,255,0.18)] hover:shadow-[0_0_60px_rgba(124,92,255,0.3)] transition"
             >
-              Choose an algorithm
+              Algorithms
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </motion.a>
             <motion.a
@@ -58,7 +58,16 @@ export default function Hero() {
               href="/cases"
               className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-7 py-3.5 text-sm font-semibold text-amber-100 hover:bg-amber-300/20 transition"
             >
-              Play case quiz
+              Case quiz
+              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+            </motion.a>
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              href="/notes"
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-7 py-3.5 text-sm font-semibold text-cyan-100 hover:bg-cyan-300/20 transition"
+            >
+              Study notes
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </motion.a>
           </div>

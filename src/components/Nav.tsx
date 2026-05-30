@@ -28,7 +28,7 @@ export default function Nav() {
           <div className="hidden md:flex items-center gap-1 text-sm">
             <Link href="/" className="px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition">Algorithms</Link>
             <Link href="/cases" className="px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition">Cases</Link>
-            <Link href="/#how" className="px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition">How it works</Link>
+            <Link href="/notes" className="px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition">Notes</Link>
           </div>
           <div className="flex items-center gap-2">
             <span className="hidden sm:flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-white/70">
