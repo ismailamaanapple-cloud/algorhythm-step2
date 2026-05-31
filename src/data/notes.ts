@@ -2745,4 +2745,1819 @@ export const NOTES: Note[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // EXPANDED NOTES — Immunodeficiencies, Peds, STDs, Vector, Fungi,
+  // Vasculitides, Renal, Adrenal
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "primary-immunodeficiencies",
+    session: 1,
+    category: "Immunology",
+    title: "Primary Immunodeficiencies",
+    summary: "B-cell, T-cell, combined, phagocyte, and complement defects — recognize by pattern of infection.",
+    sections: [
+      {
+        heading: "B-cell defects (encapsulated bacteria + giardia + enterovirus)",
+        bullets: [
+          "Bruton X-linked agammaglobulinemia: boys >6 mo (after maternal IgG wanes); recurrent sinopulmonary infections; absent B cells + all immunoglobulins low; absent lymphoid tissue (no tonsils); BTK mutation. Tx: IVIG monthly",
+          "Selective IgA deficiency: MOST COMMON primary immunodeficiency; often asymptomatic; sinopulmonary + GI (Giardia); anaphylaxis with IgA-containing blood products (use washed PRBCs)",
+          "Common variable immunodeficiency (CVID): adult onset (15–35); ↓ IgG ± IgA/IgM; recurrent infections, autoimmune disease, lymphoma; replace IgG",
+          "Hyper-IgM syndrome (CD40L deficiency, X-linked): ↑IgM + ↓ other isotypes; PJP, Cryptosporidium (intractable diarrhea)",
+        ],
+      },
+      {
+        heading: "T-cell / combined (viruses, fungi, opportunistic)",
+        bullets: [
+          "DiGeorge (22q11.2 deletion): CATCH-22 — Cardiac (truncus arteriosus, TOF), Abnormal facies, Thymic aplasia (T-cell deficiency), Cleft palate, Hypocalcemia (parathyroid agenesis)",
+          "SCID: 'bubble boy'; absent T cells (± B cells); recurrent severe infections in first months; thrush, chronic diarrhea, FTT; bone marrow transplant curative",
+          "Wiskott-Aldrich (WATER / WAITER): X-linked; Wiskott = thrombocytopenia + Eczema + Recurrent infections; ↑IgE/IgA, ↓IgM; risk of lymphoma; WAS gene",
+          "Ataxia-telangiectasia: cerebellar ataxia + spider angiomas + ↑AFP + IgA deficiency; ATM gene (DNA repair); ↑lymphoma risk",
+          "Hyper-IgE (Job syndrome): coarse facies + cold abscesses + retained primary teeth + eczema + ↑↑IgE + eosinophilia; STAT3 mutation",
+          "Chronic mucocutaneous candidiasis: T-cell dysfunction → recurrent Candida of skin/mucosa",
+        ],
+      },
+      {
+        heading: "Phagocyte defects (catalase+ organisms, skin/abscess infections)",
+        bullets: [
+          "Chronic granulomatous disease (CGD): X-linked NADPH oxidase deficiency; recurrent infections with CATALASE+ organisms (Staph, Burkholderia, Serratia, Nocardia, Aspergillus); abnormal dihydrorhodamine flow test (replaces nitroblue tetrazolium)",
+          "Chediak-Higashi: AR; giant granules in neutrophils + albinism + peripheral neuropathy + recurrent pyogenic infections (Staph, Strep); LYST gene",
+          "Leukocyte adhesion deficiency (LAD-1): delayed umbilical cord separation (>30 days) + recurrent skin/mucosal infections WITHOUT pus + ↑↑neutrophils; CD18/integrin deficient",
+        ],
+      },
+      {
+        heading: "Complement deficiencies",
+        bullets: [
+          "C5–C9 (terminal/MAC): recurrent Neisseria (gonorrhea, meningococcus)",
+          "C1 esterase inhibitor deficiency: hereditary angioedema → face/airway swelling; AVOID ACE inhibitors; treat with C1 inhibitor concentrate, ecallantide, or icatibant. Do NOT use epinephrine/antihistamines/steroids (bradykinin-mediated, not histamine)",
+          "C3: severe pyogenic infections (encapsulated)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Infection pattern clues",
+        headers: ["Defect type", "Classic infections"],
+        rows: [
+          ["B-cell / antibody", "Encapsulated bacteria (S. pneumo, H. flu, N. meningitidis), Giardia, enteroviruses"],
+          ["T-cell", "Viruses (CMV, HSV, VZV, EBV), fungi (Candida, PJP), intracellular (Mycobacteria, Salmonella)"],
+          ["Combined (SCID)", "All of the above + FTT in infancy"],
+          ["Phagocyte (CGD)", "Catalase+ organisms (Staph, Burkholderia, Serratia, Nocardia, Aspergillus)"],
+          ["Complement (C5–9)", "Recurrent Neisseria meningitis/gonococcemia"],
+        ],
+      },
+    ],
+    pearls: [
+      "Maternal IgG protects infants until ~6 months — Bruton presents AFTER that",
+      "Live vaccines (MMR, varicella, BCG, oral polio) CONTRAINDICATED in T-cell deficiencies and SCID",
+      "Delayed umbilical cord separation = think LAD-1",
+      "Anaphylaxis after transfusion in IgA-deficient patient → give washed/IgA-deficient blood products",
+      "Mnemonic for Wiskott-Aldrich: WATER (Wiskott Aldrich = Thrombocytopenia + Eczema + Recurrent infections)",
+    ],
+  },
+
+  {
+    id: "hiv-aids",
+    session: 1,
+    category: "Immunology",
+    title: "HIV & AIDS — Opportunistic Infections",
+    summary: "CD4-based prophylaxis + opportunistic infection patterns + ART basics.",
+    sections: [
+      {
+        heading: "Diagnosis & monitoring",
+        bullets: [
+          "Screening: 4th-gen Ag/Ab combo (detects p24 + HIV Ab) — window ~3 weeks",
+          "Confirm with HIV-1/2 differentiation immunoassay; HIV RNA viral load if acute",
+          "Acute HIV (mono-like illness): screen Ag/Ab negative but HIV RNA positive",
+          "Monitor: CD4 count + viral load",
+        ],
+      },
+      {
+        heading: "Prophylaxis by CD4 count",
+        bullets: [
+          "CD4 <200: TMP-SMX for PJP (also covers toxoplasmosis at CD4<100)",
+          "CD4 <150 (Ohio/Mississippi valley): itraconazole for histoplasmosis",
+          "CD4 <100: TMP-SMX double dose for toxoplasmosis (PJP also covered)",
+          "CD4 <50: azithromycin weekly for MAC",
+        ],
+      },
+      {
+        heading: "Opportunistic infections by CD4",
+        bullets: [
+          "<500: Kaposi sarcoma, candida (oral thrush), TB, HSV/zoster, lymphoma",
+          "<200: PJP (bilateral interstitial + hypoxia + ↑LDH); HIV-associated dementia",
+          "<100: toxoplasmosis (multiple ring-enhancing basal ganglia), cryptococcal meningitis, esophageal Candida",
+          "<50: CMV retinitis ('pizza pie' hemorrhages), CMV esophagitis (large linear ulcers), MAC (fever + ↓wt + diarrhea + ↑alk phos), CNS lymphoma (solitary periventricular + EBV in CSF), PML (JC virus)",
+        ],
+      },
+      {
+        heading: "ART basics",
+        bullets: [
+          "Start ART in everyone regardless of CD4",
+          "Typical regimen: 2 NRTIs + (INSTI or NNRTI or boosted PI)",
+          "Common: tenofovir + emtricitabine + dolutegravir (Biktarvy is bictegravir + emtricitabine + tenofovir alafenamide)",
+          "Immune reconstitution inflammatory syndrome (IRIS): worsening with paradoxical inflammation after starting ART; treat both ART + offending infection",
+        ],
+      },
+      {
+        heading: "Special situations",
+        bullets: [
+          "Post-exposure prophylaxis (PEP): 3-drug ART within 72 hr × 28 days (tenofovir/emtricitabine + dolutegravir/raltegravir)",
+          "Pre-exposure prophylaxis (PrEP): tenofovir/emtricitabine (Truvada or Descovy) or long-acting cabotegravir",
+          "Pregnancy: HIV+ mother → ART throughout + IV zidovudine in labor + ART for infant 6 weeks; avoid breastfeeding in high-resource settings",
+        ],
+      },
+    ],
+    pearls: [
+      "Acute HIV: mono-like + negative Ab + positive RNA — high transmission risk",
+      "Don't forget PEP for occupational AND sexual assault exposure",
+      "Cryptococcal meningitis: ↑opening pressure → serial LPs; treat amphotericin B + flucytosine then fluconazole",
+      "Pneumocystis prophylaxis dose < treatment dose",
+    ],
+  },
+
+  {
+    id: "peds-rashes",
+    session: 1,
+    category: "Pediatrics",
+    title: "Pediatric Rashes & Exanthems",
+    summary: "Classic childhood exanthems by viral pattern — measles, rubella, roseola, fifth disease, hand-foot-mouth, varicella.",
+    tables: [
+      {
+        caption: "Childhood viral exanthems",
+        headers: ["Disease", "Agent", "Classic features", "Management"],
+        rows: [
+          ["Measles (rubeola)", "Paramyxovirus", "3 C's (cough, coryza, conjunctivitis) + KOPLIK spots (white lesions on buccal mucosa) → cephalocaudal maculopapular rash. Highly contagious", "Supportive + vitamin A; airborne isolation. Complications: pneumonia (#1 cause of death), encephalitis, SSPE years later"],
+          ["Rubella (German measles)", "Togavirus", "Mild fever + posterior auricular/occipital LAD + face-down rash. Congenital rubella: cataracts, deafness, PDA", "Supportive; avoid in pregnancy"],
+          ["Roseola (sixth disease)", "HHV-6", "Infant 6 mo–2 yr; high fever 3–5 days → fever defervesces THEN rash appears on trunk", "Supportive. Most common cause of febrile seizures"],
+          ["Erythema infectiosum (fifth disease)", "Parvovirus B19", "'Slapped cheek' rash → lacy reticular on extremities. Aplastic crisis in sickle cell; hydrops fetalis", "Supportive; avoid pregnant women"],
+          ["Hand-foot-mouth", "Coxsackie A", "Vesicles on palms, soles, oral mucosa; fever", "Supportive"],
+          ["Varicella (chickenpox)", "VZV", "Crops of vesicles in DIFFERENT stages (macule → papule → vesicle → crust)", "Acyclovir for adolescents/adults/immunocompromised; airborne + contact isolation"],
+          ["Scarlet fever", "Group A Strep", "Sandpaper rash + strawberry tongue + circumoral pallor + Pastia lines (axillary). After strep pharyngitis", "Penicillin/amoxicillin × 10 days"],
+          ["Kawasaki", "Vasculitis (not viral)", "≥5 days fever + ≥4 of: conjunctivitis, mucositis (strawberry tongue), rash, extremity changes (palmar erythema/desquamation), cervical LAD", "IVIG + high-dose aspirin within 10 d; echo to monitor coronary aneurysms"],
+        ],
+      },
+    ],
+    pearls: [
+      "Measles is the MOST CONTAGIOUS exanthem; airborne precautions",
+      "Roseola: rash AFTER fever breaks; child looks well",
+      "Parvovirus B19 + sickle cell → aplastic crisis (transient red cell aplasia)",
+      "Hand-foot-mouth ≠ herpangina: herpangina = ulcers on soft palate only (no skin lesions)",
+      "Kawasaki: untreated = 25% develop coronary aneurysms",
+    ],
+    relatedCaseIds: ["kawasaki-coronary"],
+  },
+
+  {
+    id: "peds-other",
+    session: 1,
+    category: "Pediatrics",
+    title: "Other Common Pediatric Conditions",
+    summary: "Wheezing infant DDx, common rashes, congenital heart disease patterns, FTT.",
+    sections: [
+      {
+        heading: "Congenital heart disease patterns",
+        bullets: [
+          "Cyanotic (5 T's): Truncus arteriosus, Transposition, Tricuspid atresia, Tetralogy of Fallot, TAPVR",
+          "TOF: VAR-PHS — VSD, Overriding aorta, RV hypertrophy, Pulmonary stenosis; 'tet spells' (squat to ↑SVR); boot-shaped heart",
+          "Transposition: cyanosis at birth; egg-on-a-string CXR; need PGE1 + balloon atrial septostomy then arterial switch",
+          "PDA: continuous machine-like murmur, wide pulse pressure; close with INDOMETHACIN (term infant) or wait if cyanotic CHD (then keep open with PGE1)",
+          "VSD: most common CHD; holosystolic at LLSB",
+          "ASD: fixed split S2",
+          "Coarctation: arm > leg BP; HTN in upper, ↓ in lower; rib notching; Turner syndrome association",
+          "Ebstein anomaly: lithium teratogen; apical displacement of tricuspid valve",
+        ],
+      },
+      {
+        heading: "Failure to thrive (FTT)",
+        bullets: [
+          "Weight <5th %ile or crossing 2 major %iles down",
+          "Non-organic (most common): poor feeding/social",
+          "Organic: CF, celiac, cow milk protein allergy, congenital heart disease, hypothyroid, immunodeficiency",
+          "Workup: feeding history, growth chart, CBC, BMP, UA, sweat chloride if recurrent infections",
+        ],
+      },
+      {
+        heading: "Common peds infections",
+        bullets: [
+          "Roseola: fever then rash (HHV-6)",
+          "Erythema toxicum: normal newborn rash (eosinophilic, harmless)",
+          "Mongolian spot: dermal melanocytes, blue-gray lower back; not bruising",
+          "Caput succedaneum: crosses suture lines (vs cephalohematoma which doesn't)",
+          "Pyloric stenosis: 3–6 weeks, projectile non-bilious vomiting (covered in S3 GI)",
+          "Strabismus: requires evaluation if persists >4 months",
+          "Leukocoria: think retinoblastoma",
+        ],
+      },
+      {
+        heading: "Childhood cancers",
+        bullets: [
+          "ALL: most common childhood cancer; bone pain, fever, bleeding, blasts on smear; Philadelphia chromosome worse; treat with multi-agent chemo",
+          "Wilms tumor (nephroblastoma): abdominal mass (don't palpate excessively → rupture risk); WAGR/Denys-Drash syndromes",
+          "Neuroblastoma: <2 yr; abdominal mass crossing midline + opsoclonus-myoclonus (dancing eyes); ↑urine VMA/HVA; N-MYC amplification poor prognosis",
+          "Retinoblastoma: leukocoria + absent red reflex; RB1 mutation; ↑osteosarcoma risk",
+          "Medulloblastoma: cerebellar; most common malignant brain tumor in kids",
+          "Osteosarcoma: distal femur/proximal tibia in adolescent; Codman triangle, sunburst",
+          "Ewing sarcoma: diaphysis of long bones; 'onion skin'; t(11;22)",
+        ],
+      },
+      {
+        heading: "Bone & joint pediatric",
+        bullets: [
+          "Legg-Calve-Perthes: AVN of femoral head in 4–10 yr; painless limp + ↓ROM",
+          "SCFE: obese adolescent; gradual hip/knee pain + ↓internal rotation; surgical pinning",
+          "Septic arthritis vs transient synovitis: Kocher criteria (fever >38.5, WNB, ESR>40, WBC>12K)",
+          "Nursemaid's elbow (radial head subluxation): toddler arm pulled; refuses to use arm; reduce by supinate + flex",
+          "DDH: Ortolani/Barlow exam; US <6 months, X-ray after",
+        ],
+      },
+    ],
+    pearls: [
+      "FTT mnemonic for organic causes: GI (CF, celiac), endocrine, cardiac, renal, immune, mental",
+      "Caput succedaneum CROSSES sutures (soft tissue swelling); cephalohematoma does NOT cross (subperiosteal blood)",
+      "Wilms vs neuroblastoma: Wilms = doesn't cross midline; neuroblastoma = crosses midline + opsoclonus-myoclonus",
+      "Don't push fluids in a child with tet spell — squat them and give O₂ + morphine + beta-blocker",
+    ],
+  },
+
+  {
+    id: "stds",
+    session: 2,
+    category: "Infectious Disease",
+    title: "STDs — Comprehensive",
+    summary: "Syphilis, gonorrhea, chlamydia, HSV, HPV, trichomoniasis, chancroid, LGV, granuloma inguinale.",
+    tables: [
+      {
+        caption: "Genital ulcers — contrasting features",
+        headers: ["Cause", "Lesion", "Lymph nodes", "Diagnostic", "Treatment"],
+        rows: [
+          ["Syphilis (T. pallidum)", "PAINLESS firm clean chancre", "Painless rubbery LAD", "Dark-field, VDRL/RPR (screen), FTA-ABS (confirm)", "Benzathine penicillin G"],
+          ["HSV-2", "PAINFUL grouped vesicles → ulcers", "Tender bilateral LAD", "PCR / Tzanck (multinucleated giants)", "Acyclovir, valacyclovir, famciclovir"],
+          ["Chancroid (H. ducreyi)", "PAINFUL deep ulcer with ragged border", "Tender suppurative LAD", "Clinical / culture (gram neg coccobacilli)", "Azithromycin or ceftriaxone"],
+          ["LGV (C. trachomatis L1–3)", "Small painless ulcer → resolves; THEN painful inguinal LAD", "Tender 'groove sign' bubo", "NAAT / serology", "Doxycycline 21 days"],
+          ["Granuloma inguinale (Klebsiella granulomatis)", "Painless beefy red ulcer", "No LAD typically", "Donovan bodies on biopsy", "Doxycycline 3+ weeks"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Syphilis stages",
+        bullets: [
+          "Primary: painless chancre (3–6 weeks after exposure)",
+          "Secondary: maculopapular rash including palms/soles + condylomata lata + mucous patches + generalized LAD; 6 weeks to 6 months",
+          "Latent: asymptomatic; early <1 yr, late >1 yr",
+          "Tertiary: gummas, cardiovascular (aortic aneurysm, AR), neurosyphilis (tabes dorsalis, general paresis, Argyll Robertson pupils)",
+          "Treatment: benzathine penicillin G IM (single dose primary/secondary/early latent; weekly × 3 for late latent/tertiary). Neuro: IV penicillin G × 10–14 days",
+          "Jarisch-Herxheimer reaction: fever/chills/myalgias hours after treatment (endotoxin release)",
+          "Allergic: doxycycline (NOT in pregnancy → desensitize and give penicillin)",
+        ],
+      },
+      {
+        heading: "Gonorrhea & Chlamydia",
+        bullets: [
+          "Gonorrhea (N. gonorrhoeae): purulent urethritis/cervicitis; disseminated (DGI) → triad of polyarthralgia + tenosynovitis + pustular rash",
+          "Chlamydia (C. trachomatis): often asymptomatic; cervicitis, urethritis, PID",
+          "Both: NAAT of urine or swab",
+          "Treat empirically for both due to coinfection: ceftriaxone 500 mg IM + doxycycline 100 mg BID × 7 days (or azithromycin 1 g if pregnant)",
+          "PID: fever + lower abd pain + cervical motion tenderness; outpatient ceftriaxone + doxycycline ± metronidazole; admit if pregnant, severe, abscess",
+          "Fitz-Hugh-Curtis: PID + perihepatitis (RUQ pain + 'violin string' adhesions)",
+        ],
+      },
+      {
+        heading: "HSV",
+        bullets: [
+          "HSV-1 usually oral, HSV-2 usually genital but overlap common",
+          "Painful grouped vesicles on erythematous base; recurrences",
+          "Diagnose: PCR (most sensitive); Tzanck shows multinucleated giant cells",
+          "Treat: acyclovir, valacyclovir, famciclovir",
+          "Pregnancy with active lesions at delivery → C-section (prevent neonatal HSV — devastating)",
+          "Antiviral suppression from 36 weeks if recurrent",
+        ],
+      },
+      {
+        heading: "HPV",
+        bullets: [
+          "Low-risk (6, 11): condyloma acuminata (genital warts) → imiquimod, podofilox, cryotherapy",
+          "High-risk (16, 18): cervical, anal, oropharyngeal cancer",
+          "Cervical cancer screening: Pap at 21, q3 yr until 30; then Pap + HPV q5 yr or Pap q3 yr until 65",
+          "HPV vaccine (Gardasil 9): all 11–12 yr (can start at 9); up to 26 (or 45 with shared decision-making)",
+        ],
+      },
+      {
+        heading: "Trichomoniasis",
+        bullets: [
+          "T. vaginalis: frothy yellow-green discharge + strawberry cervix + motile trichomonads on wet mount",
+          "Treat: metronidazole single dose 2 g (treat partner)",
+          "Avoid alcohol with metronidazole (disulfiram-like reaction)",
+        ],
+      },
+      {
+        heading: "Vaginal discharge differential",
+        bullets: [
+          "Bacterial vaginosis: gray, thin, fishy (KOH 'whiff' test +); clue cells; pH >4.5; metronidazole or clindamycin",
+          "Candida (yeast): thick white 'cottage cheese', itching; pseudohyphae on KOH; fluconazole or topical azole",
+          "Trichomonas: frothy yellow-green, strawberry cervix; metronidazole + treat partner",
+        ],
+      },
+    ],
+    pearls: [
+      "Painless ulcer + painless LAD = syphilis; PAINFUL ulcer = HSV or chancroid",
+      "DGI triad: dermatitis + arthritis + tenosynovitis (think gonorrhea)",
+      "Argyll Robertson pupils accommodate but don't react to light = neurosyphilis ('prostitute's pupil')",
+      "Pregnancy + syphilis allergy → penicillin desensitization (only option to prevent congenital syphilis)",
+      "Always treat sexual partners",
+    ],
+    relatedCaseIds: ["tabes-dorsalis", "hsv-pregnancy"],
+  },
+
+  {
+    id: "vector-borne",
+    session: 1,
+    category: "Infectious Disease",
+    title: "Vector-Borne & Zoonotic Diseases",
+    summary: "Tick, mosquito, flea, animal — geographic + exposure clues.",
+    tables: [
+      {
+        caption: "Tick-borne diseases",
+        headers: ["Disease", "Vector / region", "Features", "Diagnosis", "Treatment"],
+        rows: [
+          ["Lyme (Borrelia burgdorferi)", "Ixodes; Northeast/Midwest US", "Stage 1: erythema migrans (target). Stage 2: bilateral facial nerve palsy, carditis (AV block), aseptic meningitis. Stage 3: arthritis (knee), neuro", "Clinical + serology (ELISA → Western blot)", "Doxycycline (or amoxicillin/cefuroxime in pregnancy/peds <8); CNS/heart → IV ceftriaxone"],
+          ["RMSF (Rickettsia rickettsii)", "Dermacentor; SE US (NC, OK)", "Fever + headache + rash STARTING ON WRISTS/ANKLES → centripetal spread (palms/soles too); thrombocytopenia + hyponatremia", "Clinical (don't wait for serology)", "Doxycycline (even in pregnancy and kids)"],
+          ["Ehrlichiosis (Ehrlichia)", "Lone Star tick; SE/SC US", "Fever + headache + myalgia; LEUKOPENIA + thrombocytopenia + ↑LFTs. Morulae in monocytes", "Smear + PCR", "Doxycycline"],
+          ["Anaplasmosis", "Ixodes; Upper Midwest/NE", "Similar to ehrlichiosis but morulae in granulocytes (neutrophils)", "Smear + PCR", "Doxycycline"],
+          ["Babesiosis (Babesia)", "Ixodes; New England, Midwest", "Fever + hemolytic anemia + jaundice + asplenic patients severe; Maltese cross on smear", "Smear or PCR", "Atovaquone + azithromycin (severe: clindamycin + quinine)"],
+          ["Tularemia (Francisella)", "Dermacentor / rabbit handling", "Ulcer at bite site + regional LAD + fever (ulceroglandular)", "Serology", "Streptomycin or gentamicin"],
+        ],
+      },
+      {
+        caption: "Mosquito-borne diseases",
+        headers: ["Disease", "Vector / region", "Features", "Treatment"],
+        rows: [
+          ["Malaria", "Anopheles; tropics", "Fever cycles, hemolytic anemia, splenomegaly. P. falciparum (severe, no relapse); vivax/ovale (hypnozoites → relapse)", "Chloroquine if sensitive; artemisinin-based for resistant. Primaquine to clear hypnozoites in vivax/ovale (check G6PD first)"],
+          ["Dengue", "Aedes; tropics", "Saddleback fever + retro-orbital pain + thrombocytopenia + 'breakbone' myalgia; hemorrhagic/shock on second infection", "Supportive (AVOID aspirin/NSAIDs — bleeding); IV fluids"],
+          ["Zika", "Aedes; Latin America", "Mild rash + conjunctivitis + arthralgias; Guillain-Barré association; congenital microcephaly", "Supportive; avoid pregnancy ≥2 months after exposure"],
+          ["Chikungunya", "Aedes", "Severe arthralgia + fever + rash; arthritis persists months", "Supportive (acetaminophen, NOT NSAIDs early to rule out dengue)"],
+          ["West Nile", "Culex", "Fever + headache; rare meningoencephalitis + flaccid paralysis", "Supportive"],
+        ],
+      },
+      {
+        caption: "Other zoonotic",
+        headers: ["Disease", "Source", "Features", "Treatment"],
+        rows: [
+          ["Cat scratch (Bartonella henselae)", "Cat scratch/bite", "Tender regional LAD + low-grade fever; HIV → bacillary angiomatosis", "Azithromycin"],
+          ["Brucellosis", "Unpasteurized dairy / livestock", "Undulating fever + arthralgia + sweats", "Doxycycline + rifampin"],
+          ["Leptospirosis", "Animal urine / water exposure", "Fever + conjunctival suffusion + myalgia; Weil disease = jaundice + AKI + hemorrhage", "Doxycycline or penicillin"],
+          ["Q fever (Coxiella)", "Livestock / aerosols", "Atypical pneumonia + hepatitis", "Doxycycline"],
+          ["Plague (Yersinia pestis)", "Flea (prairie dogs SW US)", "Bubonic: tender bubo + fever; pneumonic = bioterror form", "Streptomycin or gentamicin"],
+          ["Hantavirus", "Rodent excrement (SW US)", "Pulmonary syndrome: fever → ARDS", "Supportive ICU"],
+          ["Rabies", "Bat/dog/raccoon bite", "Hydrophobia, paresthesia at bite, encephalitis", "Wound care + RIG + vaccine series; PEP per algorithm"],
+          ["Toxoplasmosis", "Cat litter / undercooked meat", "Pregnant → fetal hydrocephalus + intracranial calcifications; AIDS → ring-enhancing lesions", "Pyrimethamine + sulfadiazine + leucovorin"],
+          ["Echinococcus (hydatid cyst)", "Dog / sheep", "Liver cysts with daughter cysts ('eggshell' calcifications)", "Albendazole ± surgery"],
+        ],
+      },
+    ],
+    pearls: [
+      "Lyme rash crosses palms/soles? NO — that's RMSF. Lyme = target lesion, RMSF = wrists/ankles then central",
+      "Doxycycline is OK in kids for tick-borne illness (RMSF, ehrlichia) — outweighs tooth concerns",
+      "Ehrlichia: monocytes morulae. Anaplasma: granulocyte morulae",
+      "Babesia + asplenic = severe disease",
+      "Dengue + aspirin = hemorrhage (Reye-like)",
+      "P. vivax/ovale → primaquine for hypnozoites (check G6PD)",
+    ],
+  },
+
+  {
+    id: "endemic-mycoses",
+    session: 2,
+    category: "Infectious Disease",
+    title: "Endemic Mycoses & Other Fungal Infections",
+    summary: "Histoplasma, Coccidioides, Blastomyces, Cryptococcus, Aspergillus, Candida, Sporothrix.",
+    tables: [
+      {
+        caption: "Endemic dimorphic fungi",
+        headers: ["Fungus", "Region", "Reservoir", "Features", "Diagnosis", "Treatment"],
+        rows: [
+          ["Histoplasma capsulatum", "Ohio + Mississippi River valleys", "Bird/bat droppings (caves)", "Flu-like + pulmonary nodules; immunocompromised: disseminated (hepatosplenomegaly, pancytopenia, oral ulcers); intracellular yeast in macrophages", "Urine antigen, serology, biopsy", "Itraconazole; amphotericin if severe/disseminated"],
+          ["Coccidioides immitis", "SW US (Arizona, S. California), Mexico", "Soil after rain/dust storms", "'Valley fever' = pulm + erythema nodosum + arthralgias; can disseminate to skin/bone/meninges (esp. AA/Filipino, pregnant)", "Serology, spherules on biopsy", "Fluconazole or itraconazole; ampho for severe/meningitis"],
+          ["Blastomyces dermatitidis", "Mississippi + Ohio Valleys + Great Lakes", "Decaying wood, soil", "Pulmonary + skin (verrucous ulcers), bone, GU; broad-based budding yeast", "Biopsy/culture", "Itraconazole; ampho for severe"],
+          ["Paracoccidioides", "Latin America", "Soil", "Pulm + mucocutaneous oral ulcers; 'captain's wheel' yeast", "Biopsy", "Itraconazole; ampho if severe"],
+          ["Sporothrix schenckii", "Worldwide (rose gardener)", "Soil/thorny plants", "Linear ulcers along lymphatics from scratch ('rose gardener')", "Culture", "Itraconazole"],
+        ],
+      },
+      {
+        caption: "Opportunistic & yeast infections",
+        headers: ["Fungus", "Patient", "Features", "Treatment"],
+        rows: [
+          ["Cryptococcus neoformans", "HIV (CD4<100), immunocompromised", "Meningitis (headache + AMS + ↑opening pressure); India ink shows encapsulated yeast; serum/CSF cryptococcal antigen", "Amphotericin B + flucytosine 2 weeks → fluconazole consolidation/maintenance"],
+          ["Aspergillus fumigatus", "Neutropenic / transplant", "Invasive: pulm with halo/air crescent sign; angioinvasion. Aspergilloma (fungal ball in old cavity). ABPA (asthma + brown sputum)", "Voriconazole (invasive); aspergilloma observe; ABPA steroids ± itraconazole"],
+          ["Mucormycosis (Rhizopus)", "DKA + ferric overload (deferoxamine)", "Black necrotic eschar in nose/sinus → invades orbit/brain; non-septate hyphae", "Emergent surgical debridement + amphotericin B"],
+          ["Pneumocystis jirovecii", "HIV CD4<200, steroids", "Bilateral interstitial infiltrates + hypoxia + ↑LDH", "TMP-SMX + steroids if PaO₂<70 or A-a>35"],
+          ["Candida albicans", "Diabetes, abx, immunocompromised, IV lines", "Oral thrush, esophagitis (white plaques on EGD), vulvovaginitis, candidemia", "Fluconazole (uncomplicated); echinocandin (severe/candidemia)"],
+        ],
+      },
+    ],
+    pearls: [
+      "Histoplasmosis: bird/bat poop + Mississippi/Ohio — pancytopenia in HIV",
+      "Coccidioides: 'cocci in California' + erythema nodosum",
+      "Blastomyces: BROAD-based budding; verrucous skin lesions",
+      "Sporothrix: 'rose gardener's disease' — linear lymphangitic spread",
+      "Cryptococcus + HIV: India ink + cryptococcal antigen; treat serial LPs for ↑OP",
+      "Mucor in DKA: emergent surgery + ampho; deferoxamine + iron overload also risk",
+      "Aspergillus halo sign / air crescent / fungal ball in old cavity",
+    ],
+  },
+
+  {
+    id: "parasites",
+    session: 3,
+    category: "Infectious Disease",
+    title: "Parasites & Protozoa",
+    summary: "GI (Giardia, Crypto, Entamoeba) + tissue (Toxo, Trypanosoma, Trichinella) + helminths.",
+    sections: [
+      {
+        heading: "GI protozoa & parasites",
+        bullets: [
+          "Giardia lamblia: hiker/camper + fatty foul diarrhea + bloating; stool ELISA antigen; tinidazole or metronidazole",
+          "Cryptosporidium: HIV CD4<100 + chronic watery diarrhea; oocysts on acid-fast smear; nitazoxanide + ART",
+          "Entamoeba histolytica: bloody diarrhea (amebic colitis) + flask-shaped ulcers; LIVER ABSCESS (anchovy paste); metronidazole + paromomycin",
+          "Ascaris: most common helminth worldwide; pulmonary symptoms (Loeffler) → migratory eosinophilic infiltrates → GI; albendazole",
+          "Enterobius (pinworm): perianal itching at night; Scotch tape test; albendazole or pyrantel pamoate (whole household)",
+          "Strongyloides: chronic eosinophilia in immigrants; ivermectin; CAUTION pre-steroids — hyperinfection",
+          "Schistosoma: freshwater swimming abroad; eggs in stool/urine (haematobium = bladder cancer); praziquantel",
+          "Taenia (tapeworm) solium: pork → cysticercosis (CNS calcified cysts → seizures in Latin American immigrants); praziquantel + steroids",
+          "Diphyllobothrium latum: fish → B12 deficiency (megaloblastic anemia); praziquantel",
+        ],
+      },
+      {
+        heading: "Tissue protozoa",
+        bullets: [
+          "Toxoplasma gondii: cat litter / undercooked meat. Congenital: chorioretinitis + hydrocephalus + intracranial calcifications. AIDS: multiple ring-enhancing basal ganglia. Pyrimethamine + sulfadiazine + leucovorin",
+          "Trypanosoma cruzi (Chagas): kissing bug, S/Central America; acute Romaña sign; chronic megacolon/megaesophagus + cardiomyopathy; benznidazole",
+          "T. brucei (African sleeping sickness): tsetse fly; encephalopathy; suramin/eflornithine",
+          "Leishmania: sandfly. Cutaneous: ulcer that heals slowly. Visceral (kala-azar): hepatosplenomegaly + pancytopenia. Liposomal amphotericin",
+          "Trichinella spiralis: undercooked pork/wild boar → periorbital edema + myositis + eosinophilia; albendazole",
+          "Babesia: see Tick-borne notes",
+          "Plasmodium: see Malaria",
+        ],
+      },
+    ],
+    pearls: [
+      "Giardia + IgA deficient = chronic infection",
+      "Liver abscess + anchovy paste = Entamoeba (not Echinococcus which is hydatid cyst)",
+      "Schistosoma haematobium → squamous cell bladder cancer in endemic areas",
+      "Diphyllobothrium → B12 deficiency",
+      "Strongyloides hyperinfection if given steroids — treat with ivermectin FIRST",
+      "Toxo seroconversion in pregnancy → spiramycin (1st trim) or pyrimethamine + sulfadiazine (later)",
+    ],
+  },
+
+  {
+    id: "vasculitides",
+    session: 1,
+    category: "Rheumatology",
+    title: "Vasculitides",
+    summary: "Large, medium, small vessel — by size, presentation, and ANCA status.",
+    tables: [
+      {
+        caption: "Large vessel vasculitis",
+        headers: ["Disease", "Demographics", "Features", "Diagnosis", "Treatment"],
+        rows: [
+          ["Giant cell (temporal) arteritis", "Women >50; polymyalgia rheumatica association", "New headache + jaw claudication + scalp tenderness + visual loss (AION)", "ESR >50, CRP↑; temporal artery biopsy (segmental — get long sample)", "HIGH-DOSE prednisone IMMEDIATELY before biopsy (prevent blindness); add tocilizumab"],
+          ["Takayasu arteritis", "Young Asian women <40", "'Pulseless disease': diminished arm pulses + arm claudication + BP difference; aortic arch + branches", "MRA/CTA", "Glucocorticoids"],
+        ],
+      },
+      {
+        caption: "Medium vessel",
+        headers: ["Disease", "Features", "Associations", "Treatment"],
+        rows: [
+          ["Polyarteritis nodosa (PAN)", "Constitutional + skin (livedo, ulcers, nodules) + peripheral neuropathy (mononeuritis multiplex) + GI + renal (HTN) + cardiac. SPARES lungs", "Hepatitis B (30%); ANCA NEGATIVE; rosary bead aneurysms on angiogram", "Steroids ± cyclophosphamide; treat HBV"],
+          ["Kawasaki", "Child + fever ≥5 days + 4 of 5 (conjunctivitis, mucositis/strawberry tongue, rash, extremity changes, cervical LAD)", "Coronary aneurysms if untreated", "IVIG + high-dose aspirin within 10 days; echo monitoring"],
+          ["Buerger (thromboangiitis obliterans)", "Heavy male smoker <45; distal extremity ischemia, ulcers, gangrene; superficial thrombophlebitis", "SMOKING — strongly tied", "STRICT smoking cessation (only treatment)"],
+        ],
+      },
+      {
+        caption: "Small vessel — ANCA-associated",
+        headers: ["Disease", "ANCA", "Features", "Treatment"],
+        rows: [
+          ["GPA (Granulomatosis with polyangiitis / Wegener)", "c-ANCA (anti-PR3)", "Upper airway (sinusitis, saddle nose) + lower airway (cavitary nodules) + glomerulonephritis", "Steroids + rituximab (or cyclophosphamide)"],
+          ["MPA (Microscopic polyangiitis)", "p-ANCA (anti-MPO)", "Pulmonary-renal syndrome WITHOUT upper airway; no granulomas", "Steroids + rituximab/cyclophosphamide"],
+          ["EGPA (Eosinophilic granulomatosis / Churg-Strauss)", "p-ANCA (anti-MPO) in 50%", "Asthma + eosinophilia + sinusitis + neuropathy + skin", "Steroids ± rituximab/mepolizumab"],
+        ],
+      },
+      {
+        caption: "Small vessel — immune complex",
+        headers: ["Disease", "Features", "Treatment"],
+        rows: [
+          ["IgA vasculitis (Henoch-Schönlein purpura)", "Child after URI; palpable purpura on buttocks/legs + arthralgias + abdominal pain (intussusception) + IgA nephritis", "Supportive; steroids for severe abdominal pain or renal involvement"],
+          ["Cryoglobulinemic vasculitis", "Hepatitis C; palpable purpura + arthralgia + neuropathy + glomerulonephritis", "Treat HCV (DAAs); rituximab if severe"],
+          ["Behçet disease", "Recurrent oral + genital ulcers + uveitis + erythema nodosum + pathergy (papule at needle stick site)", "Steroids; immunosuppression"],
+        ],
+      },
+    ],
+    pearls: [
+      "ANCA mnemonic: c-ANCA → Wegener (GPA); p-ANCA → MPA, EGPA, also UC/PSC",
+      "PAN spares lungs; GPA loves them",
+      "Buerger: smoking is the disease — quit or lose the limb",
+      "HSP triad: palpable purpura on buttocks + abdominal pain + arthritis",
+      "GCA: don't wait for biopsy — give steroids first to save the eye",
+      "Polymyalgia rheumatica: bilateral shoulder/hip aching + ↑ESR; low-dose prednisone is dramatic relief",
+    ],
+  },
+
+  {
+    id: "glomerular-disease",
+    session: 1,
+    category: "Renal",
+    title: "Glomerular Diseases — Nephritic vs Nephrotic",
+    summary: "Nephritic: hematuria + HTN + low GFR. Nephrotic: proteinuria + edema + hyperlipidemia.",
+    tables: [
+      {
+        caption: "Nephritic syndromes",
+        headers: ["Disease", "Features", "Complement", "Light micro / IF / EM", "Treatment"],
+        rows: [
+          ["Post-streptococcal GN", "1–4 weeks after pharyngitis/impetigo (kids); cola urine + edema + HTN", "↓ C3", "Hypercellular glomeruli; 'lumpy bumpy' IgG/C3; subepithelial 'humps'", "Supportive; usually self-resolves"],
+          ["IgA nephropathy (Berger)", "Synpharyngitic hematuria (within DAYS of URI, not weeks)", "Normal", "Mesangial IgA + C3", "ACEi; steroids if severe"],
+          ["Anti-GBM (Goodpasture)", "Hemoptysis + glomerulonephritis (pulmonary-renal)", "Normal", "Linear IgG on IF", "Plasmapheresis + steroids + cyclophosphamide"],
+          ["Rapidly progressive GN (crescentic)", "Renal failure in days–weeks; crescents on biopsy", "Variable", "Crescents = subdivisions: type I anti-GBM, II immune complex (lupus, PSGN, IgA), III pauci-immune (ANCA — GPA, MPA, EGPA)", "Aggressive immunosuppression"],
+          ["Lupus nephritis", "Lupus + hematuria/proteinuria", "↓ C3, ↓ C4", "Class IV diffuse proliferative most common/severe; full-house IF (IgG, IgM, IgA, C3, C1q)", "Steroids + cyclophosphamide or MMF"],
+          ["MPGN", "Mixed nephritic/nephrotic; HCV + cryoglobulinemia association", "↓ C3, ↓ C4", "Tram-track BM splitting; subendothelial deposits", "Treat underlying"],
+          ["Alport syndrome", "Hereditary; sensorineural hearing loss + lens dislocation + hematuria", "Normal", "Type IV collagen mutation; basket-weave EM", "ACEi; eventual transplant"],
+        ],
+      },
+      {
+        caption: "Nephrotic syndromes (proteinuria >3.5 g/day, edema, hypoalbumin, hyperlipidemia)",
+        headers: ["Disease", "Demographics", "Features", "Biopsy", "Treatment"],
+        rows: [
+          ["Minimal change disease", "Most common in CHILDREN; after URI/vaccine/Hodgkin", "Selective albuminuria", "Light micro normal; EM podocyte foot process effacement", "Steroids (highly responsive)"],
+          ["FSGS", "Most common in ADULTS (Black, HIV, heroin, obesity, sickle cell)", "Non-selective proteinuria", "Segmental sclerosis", "Steroids ± immunosuppression; poor response often"],
+          ["Membranous nephropathy", "Adults — primary (anti-PLA2R antibody) or secondary (hepatitis B, SLE, malignancy, drugs — gold, penicillamine, NSAIDs)", "Hypercoagulable (renal vein thrombosis)", "Spike and dome subepithelial deposits; granular IF", "ACEi + immunosuppression"],
+          ["Diabetic nephropathy", "Long-standing DM; hyperglycemia → mesangial expansion → Kimmelstiel-Wilson nodules", "Microalbuminuria earliest", "GBM thickening, mesangial expansion", "ACEi/ARB + SGLT2; tight glycemic control"],
+          ["Amyloidosis", "Multiple myeloma (AL), chronic inflammation (AA)", "Restrictive cardiomyopathy + nephrotic + macroglossia", "Apple-green birefringence under polarized light with Congo red", "Treat underlying"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Diagnostic clues / contrasts",
+        bullets: [
+          "Cola-colored urine + RBC casts + dysmorphic RBCs = NEPHRITIC",
+          "Frothy urine + edema + hyperlipidemia + lipiduria (Maltese cross) = NEPHROTIC",
+          "Synpharyngitic (DAYS after URI) = IgA. Post-pharyngitic (1–4 WEEKS after) = PSGN",
+          "Low C3 + C4 = lupus, MPGN. Low C3 only = PSGN, endocarditis-associated GN",
+          "Hemoptysis + GN: Goodpasture (linear IgG) or GPA (c-ANCA)",
+          "Nephrotic + hepatitis B = membranous; nephrotic + HIV/Black = FSGS; nephrotic + child = minimal change",
+        ],
+      },
+      {
+        heading: "Nephrotic complications",
+        bullets: [
+          "Hypercoagulability (loss of antithrombin III) → renal vein thrombosis (esp. membranous); flank pain + sudden ↓ renal function",
+          "Infection (loss of IgG) → encapsulated organisms",
+          "Hyperlipidemia → atherosclerosis",
+          "Hypocalcemia (vit D binding protein loss)",
+        ],
+      },
+    ],
+    pearls: [
+      "Mnemonic for nephritic: hematuria + HTN + Oliguria + RBC casts (cola urine)",
+      "Mnemonic for nephrotic: massive Proteinuria + edema + hypoalbumin + hyperlipidemia",
+      "Acute interstitial nephritis (AIN): triad of fever + rash + eosinophilia after drug (PPI, NSAID, β-lactam, sulfa); WBC casts + eos in urine — stop drug",
+      "ATN: muddy brown casts (covered in S2 renal note)",
+    ],
+  },
+
+  {
+    id: "tubular-interstitial",
+    session: 1,
+    category: "Renal",
+    title: "Tubular & Interstitial Renal Disease + RTAs",
+    summary: "ATN, AIN, PKD, RTA types, contrast nephropathy.",
+    sections: [
+      {
+        heading: "Acute tubular necrosis (ATN)",
+        bullets: [
+          "Most common intrinsic AKI",
+          "Causes: ischemia (sepsis, surgery, shock), nephrotoxins (aminoglycosides, vancomycin, IV contrast, cisplatin, amphotericin B), pigment (rhabdomyolysis, hemolysis)",
+          "Phases: initiation → maintenance (oliguric) → recovery (polyuric — watch for hypoK)",
+          "Urine: muddy brown granular casts; FENa >2%; urine osm ~300",
+          "Supportive; dialysis if AEIOU criteria",
+        ],
+      },
+      {
+        heading: "Acute interstitial nephritis (AIN)",
+        bullets: [
+          "Drug-induced hypersensitivity: PPI, NSAIDs, β-lactams, sulfa, allopurinol",
+          "Triad (often incomplete): fever + rash + eosinophilia",
+          "Urine: WBC casts + sterile pyuria + eosinophiluria (Hansel stain)",
+          "Stop offending drug; steroids if persistent",
+        ],
+      },
+      {
+        heading: "Polycystic kidney disease",
+        bullets: [
+          "ADPKD: most common; PKD1/PKD2; presents adulthood; bilateral cysts + flank pain + hematuria + HTN; berry aneurysms + mitral valve prolapse + hepatic cysts; ESRD often by 60s",
+          "ARPKD: infantile; oligohydramnios → Potter sequence + hepatic fibrosis",
+        ],
+      },
+      {
+        heading: "Contrast-induced nephropathy",
+        bullets: [
+          "Risk: CKD, diabetes, HF, dehydration, age",
+          "Prevent: IV isotonic saline pre/post; minimize contrast volume; hold metformin (avoid lactic acidosis)",
+          "N-acetylcysteine evidence weak",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Renal tubular acidosis types",
+        headers: ["Type", "Defect", "Urine pH", "K+", "Associations"],
+        rows: [
+          ["1 (distal)", "Cannot secrete H+ in distal tubule", ">5.5", "LOW", "Calcium phosphate stones, Sjogren, amphotericin, lithium"],
+          ["2 (proximal)", "Cannot reabsorb bicarb in proximal tubule", "<5.5 (variable)", "LOW", "Fanconi syndrome (multiple myeloma, Wilson, lead), acetazolamide"],
+          ["4 (hypoaldo)", "Aldosterone resistance/deficiency", "<5.5", "HIGH (hyperK)", "Diabetes (most common), ACEi/ARB, heparin, NSAIDs"],
+        ],
+      },
+    ],
+    pearls: [
+      "Type 1 RTA + nephrolithiasis = calcium PHOSPHATE stones (alkaline urine)",
+      "Type 2 RTA = Fanconi syndrome (also glucosuria, phosphaturia, aminoaciduria)",
+      "Type 4 RTA = diabetic kidney; hyperK + non-anion gap acidosis + low aldosterone",
+      "AKI from rhabdomyolysis: ↑CK + heme positive UA without RBCs + brown urine; aggressive fluids",
+      "Hepatorenal syndrome: cirrhosis + AKI + no other cause; albumin + terlipressin; definitive = liver transplant",
+    ],
+  },
+
+  {
+    id: "electrolyte-acidbase",
+    session: 1,
+    category: "Renal",
+    title: "Electrolytes & Acid-Base Disturbances",
+    summary: "Sodium, potassium, calcium, magnesium + anion gap acidosis MUDPILES.",
+    sections: [
+      {
+        heading: "Hyponatremia (Na <135)",
+        bullets: [
+          "Check serum osm first (rule out pseudo or hypertonic)",
+          "Hypotonic + euvolemic: SIADH (CNS, lung CA, drugs — SSRIs, carbamazepine), hypothyroid, glucocorticoid deficiency",
+          "Hypotonic + hypovolemic: GI/skin loss, diuretics (urine Na >20 if diuretic; <20 if extrarenal)",
+          "Hypotonic + hypervolemic: CHF, cirrhosis, nephrotic",
+          "Correct slowly — <8–10 mEq/L per 24 hr to avoid osmotic demyelination (central pontine myelinolysis)",
+          "Severe symptomatic (seizure, AMS): 3% hypertonic saline",
+        ],
+      },
+      {
+        heading: "Hypernatremia (Na >145)",
+        bullets: [
+          "Always reflects water deficit (or excess Na)",
+          "Diabetes insipidus (central or nephrogenic) → polyuria + polydipsia + dilute urine despite ↑serum osm",
+          "Correct slowly to avoid cerebral edema",
+        ],
+      },
+      {
+        heading: "Hyperkalemia",
+        bullets: [
+          "ECG: peaked T → wide QRS → sine wave",
+          "Step 1: IV calcium gluconate (membrane stabilization)",
+          "Step 2: insulin + glucose, albuterol, bicarb (shift)",
+          "Step 3: kayexalate, patiromer, loop diuretic, dialysis (remove)",
+          "Stop offenders (spironolactone, ACEi/ARB, NSAIDs, K-sparing)",
+        ],
+      },
+      {
+        heading: "Hypokalemia",
+        bullets: [
+          "Causes: diuretics, vomiting, diarrhea, hyperaldosteronism",
+          "ECG: flat T, U waves",
+          "Replete K + Mg (low Mg perpetuates low K)",
+        ],
+      },
+      {
+        heading: "Hypercalcemia (stones, bones, abd groans, psychic moans)",
+        bullets: [
+          "Causes: primary HPT (most common outpatient), malignancy (most common inpatient), vitamin D toxicity, sarcoid, milk-alkali, thiazides, immobilization, MEN syndromes",
+          "Treatment: IV NS + calcitonin (rapid) + bisphosphonate (durable, e.g., zoledronic acid); steroids for vitamin D-mediated",
+        ],
+      },
+      {
+        heading: "Hypocalcemia",
+        bullets: [
+          "Chvostek (facial twitch with tap) and Trousseau (carpal spasm with BP cuff) signs",
+          "Prolonged QT on ECG → tetany, seizure",
+          "Causes: hypoparathyroidism (post-thyroidectomy), CKD, vitamin D deficiency, hypomagnesemia, pancreatitis, tumor lysis",
+          "IV calcium gluconate for symptomatic; replace Mg first if low",
+        ],
+      },
+      {
+        heading: "Anion gap metabolic acidosis (MUDPILES)",
+        bullets: [
+          "Methanol (formic acid), Uremia, DKA, Propylene glycol, Iron/INH, Lactic acidosis, Ethylene glycol (oxalate crystals), Salicylates",
+          "Methanol → visual changes (retinal damage)",
+          "Ethylene glycol → calcium oxalate crystals in urine + ATN",
+          "Both treated with fomepizole (alcohol dehydrogenase inhibitor) ± dialysis",
+        ],
+      },
+      {
+        heading: "Non-anion gap metabolic acidosis (HARDASS)",
+        bullets: [
+          "Hyperalimentation, Addison disease, RTA, Diarrhea, Acetazolamide, Spironolactone, Saline",
+        ],
+      },
+      {
+        heading: "Respiratory acid-base",
+        bullets: [
+          "Respiratory acidosis: hypoventilation (COPD, opioids, NMD)",
+          "Respiratory alkalosis: hyperventilation (anxiety, PE, salicylates, sepsis)",
+          "Salicylates: mixed primary respiratory alkalosis + anion gap acidosis",
+        ],
+      },
+    ],
+    pearls: [
+      "Correct hyponatremia too fast → ODS (central pontine myelinolysis); too slow → cerebral edema",
+      "Always replete Mg before K (low Mg blunts K replacement)",
+      "Hypocalcemia → check Mg first",
+      "Methanol vs ethylene glycol: methanol → vision (formic acid attacks retina); ethylene glycol → crystals + AKI",
+    ],
+  },
+
+  {
+    id: "adrenal",
+    session: 1,
+    category: "Endocrine",
+    title: "Adrenal Disorders",
+    summary: "Insufficiency (Addison, secondary), CAH, Cushing, pheochromocytoma, hyperaldosteronism.",
+    sections: [
+      {
+        heading: "Primary adrenal insufficiency (Addison)",
+        bullets: [
+          "Autoimmune (most common in developed), TB (developing), adrenal hemorrhage (Waterhouse-Friderichsen with meningococcemia), metastases, drugs (ketoconazole)",
+          "Both cortisol AND aldosterone deficient → hypotension + hyperpigmentation (↑ACTH/MSH) + hyperK + hyponatremia + hypoglycemia + eosinophilia",
+          "Cosyntropin (ACTH) stimulation test: cortisol fails to rise",
+          "Treat: hydrocortisone (glucocorticoid) + fludrocortisone (mineralocorticoid)",
+        ],
+      },
+      {
+        heading: "Secondary adrenal insufficiency",
+        bullets: [
+          "Pituitary failure → low ACTH → low cortisol; aldosterone INTACT (RAAS independent)",
+          "NO hyperpigmentation, NO hyperK",
+          "Causes: pituitary tumor, Sheehan, sudden steroid withdrawal",
+          "Treat: hydrocortisone only (no need for fludrocortisone)",
+        ],
+      },
+      {
+        heading: "Adrenal crisis",
+        bullets: [
+          "Acute decompensation: severe hypotension + AMS + abdominal pain + hyperK + hypoglycemia",
+          "Trigger: infection, surgery, trauma, sudden steroid withdrawal",
+          "Treat: IV hydrocortisone 100 mg + IV fluids + dextrose; don't wait for labs",
+          "Always 'stress dose' steroids before surgery in chronic steroid users",
+        ],
+      },
+      {
+        heading: "Congenital adrenal hyperplasia (CAH)",
+        bullets: [
+          "21-hydroxylase deficiency (most common, 95%): low cortisol + low aldosterone + HIGH androgens → salt wasting + virilization in girls (ambiguous genitalia); ↑ 17-OHP",
+          "11-β-hydroxylase: low cortisol + HIGH 11-deoxycorticosterone (acts as mineralocorticoid) → HTN + low K + virilization",
+          "17-α-hydroxylase: low cortisol + LOW androgens → HTN + low K + lack of secondary sex characteristics",
+          "Treat: glucocorticoid replacement (hydrocortisone) ± mineralocorticoid (fludrocortisone) for 21-OH",
+        ],
+      },
+      {
+        heading: "Cushing syndrome",
+        bullets: [
+          "Causes: exogenous steroids (most common); endogenous: pituitary adenoma (Cushing DISEASE — 70%), ectopic ACTH (small cell lung CA), adrenal adenoma",
+          "Features: central obesity, moon face, buffalo hump, purple striae, easy bruising, HTN, hyperglycemia, osteoporosis, proximal weakness, depression",
+          "Screening: 24-hr urine free cortisol, late-night salivary cortisol, low-dose dex suppression",
+          "Localize: ACTH level. Low → adrenal source. High → ACTH-dependent (pituitary vs ectopic); high-dose dex suppression: suppresses pituitary (DISEASE), doesn't suppress ectopic",
+          "Treat: surgical resection of source; ketoconazole/metyrapone for medical management",
+        ],
+      },
+      {
+        heading: "Pheochromocytoma",
+        bullets: [
+          "Catecholamine-secreting adrenal medulla tumor",
+          "Classic '5 P's': Paroxysmal HTN + Palpitations + Perspiration + Pain (headache) + Pallor",
+          "10% rule: 10% bilateral, 10% malignant, 10% extra-adrenal, 10% familial",
+          "Associations: MEN 2A/2B, NF1, VHL",
+          "Diagnose: 24-hr urine metanephrines (or plasma free metanephrines)",
+          "Localize: CT/MRI; MIBG scan if not seen",
+          "Treat: alpha-blockade FIRST (phenoxybenzamine) for 10–14 days → THEN beta-blockade → THEN surgical resection. NEVER β-block first (unopposed alpha → hypertensive crisis)",
+        ],
+      },
+      {
+        heading: "Primary hyperaldosteronism (Conn)",
+        bullets: [
+          "Adrenal adenoma or bilateral hyperplasia → ↑ aldosterone → HTN + HYPOKALEMIA + metabolic alkalosis",
+          "Aldosterone:renin ratio elevated (>20)",
+          "Adrenal vein sampling to distinguish unilateral (adenoma → adrenalectomy) vs bilateral (hyperplasia → spironolactone)",
+          "Suspect in HTN + spontaneous hypokalemia OR resistant HTN",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Adrenal insufficiency: primary vs secondary",
+        headers: ["Feature", "Primary (Addison)", "Secondary (pituitary)"],
+        rows: [
+          ["Site", "Adrenal", "Pituitary"],
+          ["Cortisol", "Low", "Low"],
+          ["Aldosterone", "LOW (hyperK, hypoNa)", "Normal (RAAS intact)"],
+          ["ACTH", "HIGH", "LOW"],
+          ["Hyperpigmentation", "YES (↑ MSH from POMC)", "NO"],
+          ["Hyperkalemia", "YES", "NO"],
+          ["Treatment", "Hydrocortisone + fludrocortisone", "Hydrocortisone only"],
+        ],
+      },
+      {
+        caption: "Congenital adrenal hyperplasia",
+        headers: ["Enzyme defect", "Cortisol", "Mineralocorticoid effect", "Androgens", "BP / K"],
+        rows: [
+          ["21-hydroxylase (most common)", "Low", "Low (salt wasting)", "HIGH (virilization)", "Low BP, ↑K"],
+          ["11-β-hydroxylase", "Low", "HIGH (DOC builds up)", "HIGH", "HIGH BP, ↓K"],
+          ["17-α-hydroxylase", "Low", "HIGH", "LOW (no secondary sex chars)", "HIGH BP, ↓K"],
+        ],
+      },
+    ],
+    pearls: [
+      "Hyperpigmentation in adrenal insufficiency = PRIMARY (high ACTH/MSH from POMC)",
+      "Always α-block BEFORE β-block in pheochromocytoma",
+      "Cushing test ladder: screen (UFC, salivary cortisol, low-dose dex) → measure ACTH → high-dose dex / MRI",
+      "Stress-dose steroids: anyone on >5 mg/day prednisone for >3 weeks in past year",
+      "Sheehan syndrome: postpartum hemorrhage → pituitary infarction → no lactation (low prolactin) + amenorrhea + adrenal insufficiency",
+    ],
+    relatedCaseIds: ["hypertensive-emerg"],
+  },
+
+  {
+    id: "thyroid-extended",
+    session: 1,
+    category: "Endocrine",
+    title: "Thyroid Disorders — Comprehensive",
+    summary: "Hyper/hypothyroidism, thyroiditis, thyroid storm, thyroid nodule.",
+    sections: [
+      {
+        heading: "Hyperthyroidism causes",
+        bullets: [
+          "Graves disease: TSI antibodies + diffuse goiter + exophthalmos + pretibial myxedema; high RAIU diffuse",
+          "Toxic multinodular goiter (Plummer): elderly; nodular uptake on scan",
+          "Toxic adenoma: single 'hot' nodule",
+          "Painful subacute (de Quervain) thyroiditis: post-viral; tender goiter; transient hyper → hypo → euthyroid; LOW RAIU (released stored hormone)",
+          "Painless (silent/postpartum) thyroiditis: similar but no pain; postpartum common",
+          "Factitious (exogenous): LOW thyroglobulin (vs all others which are high or normal)",
+        ],
+      },
+      {
+        heading: "Hyperthyroidism management",
+        bullets: [
+          "Methimazole first-line (except first trimester pregnancy — use PTU)",
+          "PTU also used in thyroid storm (blocks T4→T3 conversion)",
+          "Radioactive iodine ablation: definitive; avoid in pregnancy/breastfeeding/severe ophthalmopathy",
+          "Thyroidectomy: large goiter, ophthalmopathy, pregnancy",
+          "β-blocker for symptoms (propranolol)",
+        ],
+      },
+      {
+        heading: "Thyroid storm",
+        bullets: [
+          "Severe hyperthyroidism + fever + tachycardia + agitation/coma + GI symptoms",
+          "Triggers: surgery, infection, iodine load, parturition",
+          "Burch-Wartofsky score for diagnosis",
+          "Treatment ORDER matters:",
+          "1. β-blocker (propranolol) — symptoms",
+          "2. PTU or methimazole — blocks new hormone synthesis",
+          "3. Iodine (Lugol) ≥1 hr AFTER PTU (Wolff-Chaikoff)",
+          "4. Glucocorticoid (hydrocortisone) — blocks T4→T3 conversion + treats possible adrenal insufficiency",
+          "Cooling, IV fluids, treat precipitant",
+        ],
+      },
+      {
+        heading: "Hypothyroidism",
+        bullets: [
+          "Hashimoto thyroiditis: most common cause; anti-TPO + anti-thyroglobulin antibodies; ↑ TSH + ↓ free T4; goiter",
+          "Other: post-RAI/surgery, iodine deficiency, lithium, amiodarone, congenital",
+          "Subclinical: ↑TSH + normal T4 — treat if TSH >10, symptomatic, or trying to conceive",
+          "Treatment: levothyroxine; pregnancy increases dose ~30%",
+        ],
+      },
+      {
+        heading: "Myxedema coma",
+        bullets: [
+          "Severe hypothyroidism + AMS + hypothermia + hypoventilation + bradycardia",
+          "IV levothyroxine + IV hydrocortisone (until adrenal insufficiency excluded) + supportive",
+        ],
+      },
+      {
+        heading: "Thyroid cancer",
+        bullets: [
+          "Papillary (#1, best prognosis): psammoma bodies + 'Orphan Annie' nuclei; spreads via lymph; thyroidectomy",
+          "Follicular: hematogenous spread (bone, lung)",
+          "Medullary: from parafollicular C cells; ↑calcitonin; MEN 2A/2B",
+          "Anaplastic: elderly; rapidly progressive; poor prognosis",
+        ],
+      },
+    ],
+    pearls: [
+      "PTU = Pregnancy (first trimester) + Thyroid storm (blocks T4→T3); methimazole otherwise",
+      "Iodine in thyroid storm must come AFTER thionamide to avoid Jod-Basedow + Wolff-Chaikoff",
+      "Low RAIU + hyperthyroid = thyroiditis, exogenous hormone, iodine load",
+      "Pregnancy + Graves → PTU (1st trimester) → methimazole (2nd/3rd)",
+      "Amiodarone = iodine-rich → can cause hyper or hypothyroid; monitor TFTs",
+      "Hashimoto: 80x risk of thyroid lymphoma",
+    ],
+    relatedCaseIds: ["thyroid-storm"],
+  },
+
+  {
+    id: "pituitary",
+    session: 1,
+    category: "Endocrine",
+    title: "Pituitary Disorders",
+    summary: "Prolactinoma, acromegaly, SIADH, DI, Sheehan, hypopituitarism.",
+    sections: [
+      {
+        heading: "Prolactinoma",
+        bullets: [
+          "Most common functioning pituitary adenoma",
+          "Women: amenorrhea + galactorrhea + infertility",
+          "Men: ↓libido + ED + infertility; often present later when large (bitemporal hemianopsia)",
+          "Rule out causes of secondary hyperprolactinemia: pregnancy, hypothyroidism (TRH stimulates prolactin), drugs (antipsychotics, metoclopramide, methyldopa, opioids), chronic kidney disease",
+          "Treat: dopamine agonist (cabergoline or bromocriptine) shrinks tumor and ↓prolactin; surgery if refractory",
+        ],
+      },
+      {
+        heading: "Acromegaly / Gigantism",
+        bullets: [
+          "Excess GH from somatotroph adenoma",
+          "Adults (closed growth plates): acromegaly — large hands/feet/jaw, frontal bossing, deepening voice, OSA, HTN, cardiomyopathy, DM, colon polyps",
+          "Children (before closure): gigantism",
+          "Screen: IGF-1 (single sample); confirm: GH not suppressed after oral glucose",
+          "MRI pituitary",
+          "Treat: transsphenoidal surgery; octreotide/lanreotide if persistent; cabergoline; pegvisomant",
+        ],
+      },
+      {
+        heading: "SIADH",
+        bullets: [
+          "Euvolemic hyponatremia + concentrated urine (osm >100, ofen >300) + ↑urine Na (>30) + normal/low BUN/Cr/uric acid",
+          "Causes: CNS (stroke, tumor, infection), lung (small cell CA, pneumonia), drugs (SSRIs, carbamazepine, cyclophosphamide), surgery",
+          "Treat: fluid restriction first; salt tabs; demeclocycline or vaptans (tolvaptan, conivaptan) for refractory",
+          "Severe symptomatic (seizure): 3% hypertonic saline — correct <8–10 mEq/L per 24 hr",
+        ],
+      },
+      {
+        heading: "Diabetes insipidus",
+        bullets: [
+          "Polyuria + polydipsia + dilute urine despite hypernatremia",
+          "Central DI: ↓ ADH (head trauma, pituitary surgery, tumor, autoimmune)",
+          "Nephrogenic DI: ADH-resistant kidney (lithium, hypercalcemia, hypokalemia, CKD)",
+          "Water deprivation test: urine osm stays low; desmopressin challenge: central DI → urine osm rises >50%; nephrogenic → little response",
+          "Treat: central → desmopressin; nephrogenic → low salt + thiazide (paradoxical) + amiloride; stop offending drugs",
+        ],
+      },
+      {
+        heading: "Sheehan syndrome",
+        bullets: [
+          "Postpartum hemorrhage → pituitary infarction (hypertrophied during pregnancy)",
+          "First sign: failure to lactate (prolactin)",
+          "Other: amenorrhea, fatigue (TSH/cortisol deficiency), cold intolerance",
+          "Treat: replace all deficient hormones (hydrocortisone FIRST, then levothyroxine)",
+        ],
+      },
+    ],
+    pearls: [
+      "Bitemporal hemianopsia + pituitary mass = compression of optic chiasm",
+      "Always treat cortisol deficiency BEFORE thyroid (giving thyroxine first can precipitate adrenal crisis)",
+      "Empty sella syndrome: enlarged sella with thin rim of pituitary; often asymptomatic",
+      "Acromegaly → screen for colonoscopy + sleep apnea",
+    ],
+  },
+
+  {
+    id: "diabetes-comprehensive",
+    session: 1,
+    category: "Endocrine",
+    title: "Diabetes Mellitus — Complete",
+    summary: "Types, diagnosis, complications (DKA, HHS, neuropathy, nephropathy, retinopathy).",
+    sections: [
+      {
+        heading: "Diagnosis",
+        bullets: [
+          "HbA1c ≥6.5% (diabetes); 5.7–6.4% (prediabetes)",
+          "Fasting glucose ≥126 mg/dL",
+          "OGTT 2-hr ≥200",
+          "Random ≥200 + symptoms",
+          "Confirm with repeat test unless symptomatic + clearly elevated",
+        ],
+      },
+      {
+        heading: "Type 1 vs Type 2",
+        bullets: [
+          "Type 1: autoimmune β-cell destruction (anti-GAD, anti-islet); juvenile/lean; insulin-dependent; DKA-prone",
+          "Type 2: insulin resistance + relative insulin deficiency; older/obese; HHS-prone; metabolic syndrome",
+          "MODY: monogenic; family history with AD inheritance",
+          "LADA: latent autoimmune of adulthood; T1DM in T2DM presentation",
+        ],
+      },
+      {
+        heading: "Type 2 treatment ladder",
+        bullets: [
+          "Metformin first-line (UNLESS GFR <30, decompensated HF, acidosis); GI side effects; B12 deficiency long-term",
+          "Add SGLT2 (-flozins) if HFrEF, CKD, ASCVD: cardiorenal protection; risk of euglycemic DKA, UTI, mycotic infections, amputation (canagliflozin)",
+          "Add GLP-1 (-tides) if ASCVD or obesity: weight loss; ↑ pancreatitis risk; ↑ medullary thyroid CA risk in animals (avoid MEN 2/MTC history)",
+          "Other: sulfonylureas (hypoglycemia, weight gain), DPP-4 inhibitors (neutral), TZDs (weight gain, HF, fractures), insulin",
+        ],
+      },
+      {
+        heading: "DKA",
+        bullets: [
+          "Glucose >250 + anion gap acidosis + ketones + pH <7.3 + HCO3 <18",
+          "Trigger: infection, MI, missed insulin, new T1DM",
+          "Fluids FIRST: NS 1–1.5 L bolus then maintenance",
+          "Potassium: <3.3 hold insulin + replete K; 3.3–5.3 start insulin + replete K; >5.3 start insulin no K",
+          "Insulin: regular IV infusion; continue until anion gap CLOSES (not when glucose normalizes)",
+          "Add D5 to fluids when glucose ~200",
+          "Bicarb only if pH <6.9",
+          "Cerebral edema is dreaded peds complication (don't drop glucose/Na too fast)",
+        ],
+      },
+      {
+        heading: "HHS (hyperosmolar hyperglycemic state)",
+        bullets: [
+          "Glucose often >600 + osm >320 + minimal/no ketones + AMS",
+          "Type 2 elderly; trigger infection",
+          "Aggressive IV fluids + insulin + K monitoring",
+          "Mortality higher than DKA (older + comorbidities)",
+        ],
+      },
+      {
+        heading: "Chronic complications",
+        bullets: [
+          "Retinopathy: annual dilated exam; nonproliferative (microaneurysms, hard exudates, cotton-wool) → proliferative (neovascularization) → panretinal photocoagulation",
+          "Nephropathy: microalbuminuria earliest; ACEi/ARB + SGLT2 protect; eventual ESRD",
+          "Peripheral neuropathy: stocking-glove sensory; gabapentin/duloxetine/TCAs for pain; foot care",
+          "Autonomic neuropathy: gastroparesis, postural hypotension, ED, neurogenic bladder",
+          "Macrovascular: MI, stroke, PVD",
+          "Foot ulcers: offloading + debridement; osteomyelitis if probes to bone",
+          "Diabetic mononeuropathies: CN III palsy (pupil-SPARING in DM ischemic; pupil-INVOLVING = aneurysm)",
+        ],
+      },
+      {
+        heading: "Hypoglycemia in DM",
+        bullets: [
+          "Triad: Whipple triad (low glucose + symptoms + relief with sugar)",
+          "Treat: oral glucose if alert; IV dextrose or IM glucagon if AMS",
+          "Sulfonylurea hypoglycemia is prolonged — admit",
+        ],
+      },
+    ],
+    pearls: [
+      "Don't stop insulin in DKA until anion gap CLOSES (glucose normalization alone is not enough)",
+      "Pregnant + DM: insulin only (oral agents not first-line); tight control reduces fetal anomalies",
+      "Steroids cause hyperglycemia — basal-bolus regimen + sliding scale",
+      "Somogyi vs dawn: dawn phenomenon = morning hyperglycemia from cortisol surge; Somogyi (controversial) = early AM hypoglycemia → rebound hyperglycemia",
+      "Newer GLP-1/GIP agonists (semaglutide, tirzepatide) — weight loss + cardiometabolic benefit",
+    ],
+    relatedCaseIds: ["dka", "diabetic-gastroparesis"],
+  },
+
+  {
+    id: "men-syndromes",
+    session: 1,
+    category: "Endocrine",
+    title: "MEN Syndromes & Endocrine Tumors",
+    summary: "MEN 1, 2A, 2B + carcinoid + insulinoma + gastrinoma.",
+    tables: [
+      {
+        caption: "Multiple endocrine neoplasia syndromes (all AD)",
+        headers: ["Syndrome", "Gene", "Tumors"],
+        rows: [
+          ["MEN 1 (3 P's)", "MEN1 (menin)", "Pituitary adenoma + Parathyroid hyperplasia + Pancreatic NETs (gastrinoma, insulinoma, glucagonoma, VIPoma)"],
+          ["MEN 2A (2 P's + 1 M)", "RET", "Medullary thyroid CA + Pheochromocytoma + Parathyroid hyperplasia"],
+          ["MEN 2B (1 P + 2 M)", "RET", "Medullary thyroid CA + Pheochromocytoma + Mucosal neuromas + marfanoid habitus"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Functional pancreatic NETs",
+        bullets: [
+          "Insulinoma: hypoglycemia (Whipple triad) + ↑insulin + ↑C-peptide (vs exogenous → low C-peptide); 72-hr fast",
+          "Gastrinoma (ZES): multiple recurrent ulcers + diarrhea + weight loss; ↑gastrin off PPI + secretin stim",
+          "VIPoma: WDHA syndrome (Watery Diarrhea + Hypokalemia + Achlorhydria)",
+          "Glucagonoma: necrolytic migratory erythema + diabetes + diarrhea + DVT",
+          "Somatostatinoma: diabetes + steatorrhea + gallstones",
+        ],
+      },
+      {
+        heading: "Carcinoid syndrome",
+        bullets: [
+          "Serotonin-secreting NET — usually metastatic to liver to bypass hepatic clearance",
+          "Flushing + diarrhea + bronchospasm + right-sided valvular disease (TR, PS)",
+          "↑ 24-hr urine 5-HIAA",
+          "Localize: CT, octreotide scan",
+          "Treat: octreotide + surgical resection",
+        ],
+      },
+    ],
+    pearls: [
+      "Medullary thyroid cancer → screen for pheochromocytoma BEFORE surgery (must α-block first)",
+      "Prophylactic thyroidectomy for kids with RET mutation (especially MEN 2B)",
+      "Whipple triad for insulinoma: hypoglycemia + symptoms + relief with sugar",
+    ],
+  },
+
+  {
+    id: "anemia-comprehensive",
+    session: 1,
+    category: "Hematology",
+    title: "Anemia — Full Workup",
+    summary: "MCV + reticulocyte + smear → microcytic, normocytic, macrocytic differentials.",
+    tables: [
+      {
+        caption: "Microcytic anemia (MCV <80)",
+        headers: ["Cause", "Iron studies / clues", "Smear"],
+        rows: [
+          ["Iron deficiency", "↓ferritin (best), ↑TIBC, ↓transferrin sat, ↑RDW", "Hypochromic microcytic; pencil cells"],
+          ["Anemia of chronic disease", "↑ferritin, ↓TIBC, normal/↓ sat", "Mild; can become microcytic over time"],
+          ["Thalassemia", "Normal iron studies; ↑RBC; target cells; basophilic stippling; hemoglobin electrophoresis", "α: silent (1 deletion), trait (2), HbH (3 — anemia, splenomegaly), Bart hydrops (4 — fatal). β: minor (heterozygous), major (Cooley — transfusion-dependent, ↑HbF/HbA2)"],
+          ["Sideroblastic", "↑iron, ↑ferritin, normal/↓TIBC; ringed sideroblasts on Prussian blue", "Lead, isoniazid, alcohol, X-linked"],
+          ["Lead poisoning", "Microcytic + basophilic stippling + abdominal pain + neuro; lead level", "Children with paint exposure; adults occupational"],
+        ],
+      },
+      {
+        caption: "Macrocytic anemia (MCV >100)",
+        headers: ["Type", "Cause", "Clues"],
+        rows: [
+          ["Megaloblastic", "B12 deficiency", "Pernicious anemia (anti-IF, anti-parietal cell), terminal ileum disease (Crohn), pure vegans, Diphyllobothrium; SUBACUTE COMBINED DEGENERATION (dorsal columns + corticospinal); hypersegmented neutrophils; ↑MMA + ↑homocysteine"],
+          ["Megaloblastic", "Folate deficiency", "Alcoholism, pregnancy, methotrexate, phenytoin, trimethoprim, sulfasalazine; NO neuro symptoms; ↑homocysteine only; folate IM (B12 first!)"],
+          ["Non-megaloblastic", "Alcohol, liver disease, hypothyroidism, MDS, drugs (zidovudine)", "Round macrocytes; no hypersegmented neutrophils"],
+        ],
+      },
+      {
+        caption: "Normocytic anemia (MCV 80–100)",
+        headers: ["Reticulocyte", "Differential"],
+        rows: [
+          ["Low (hypoproliferative)", "Anemia of chronic disease, CKD (↓EPO), aplastic anemia, marrow infiltration (leukemia, mets, fibrosis), early IDA"],
+          ["High (hemolytic or hemorrhage)", "See hemolytic anemia table"],
+        ],
+      },
+      {
+        caption: "Hemolytic anemia",
+        headers: ["Disease", "Features", "Diagnostic"],
+        rows: [
+          ["G6PD deficiency", "X-linked; episodic hemolysis after oxidative stress (sulfa, primaquine, fava beans, infection); Heinz bodies + BITE cells", "G6PD activity AFTER episode (false normal during acute)"],
+          ["Hereditary spherocytosis", "AR; spherocytes; ↑MCHC; splenomegaly; pigment gallstones; splenectomy curative", "Eosin-5-maleimide flow cytometry; osmotic fragility"],
+          ["Sickle cell", "HbS; vaso-occlusive crises, acute chest syndrome, dactylitis, autosplenectomy, osteomyelitis (Salmonella)", "Hb electrophoresis; treat hydroxyurea"],
+          ["Autoimmune hemolytic (AIHA)", "Warm (IgG; SLE, CLL, drugs); Cold (IgM; Mycoplasma, mono); Coombs+", "Direct antiglobulin (Coombs) test"],
+          ["Microangiopathic (MAHA)", "TTP, HUS, DIC, malignant HTN, HELLP; SCHISTOCYTES on smear; ↓platelets, ↑LDH, ↑indirect bili", "Smear + clinical context"],
+          ["Paroxysmal nocturnal hemoglobinuria", "PIGA mutation; loss of CD55/59; intravascular hemolysis; venous thrombosis", "Flow cytometry CD55/59; treat eculizumab"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Iron deficiency anemia workup in adults",
+        bullets: [
+          "Men or postmenopausal women with new IDA → GI workup (colonoscopy + EGD) to rule out malignancy",
+          "Premenopausal women: heavy menses most common; still consider GI source",
+        ],
+      },
+      {
+        heading: "Sickle cell complications",
+        bullets: [
+          "Vaso-occlusive (pain) crisis: hydration + opioids + O₂",
+          "Acute chest syndrome: fever + chest pain + new infiltrate + hypoxia → exchange transfusion + abx",
+          "Splenic sequestration: sudden splenomegaly + hypovolemic shock",
+          "Aplastic crisis: parvovirus B19",
+          "Stroke: chronic transfusions if TCD shows high risk",
+          "Salmonella osteomyelitis (asplenic)",
+          "Hydroxyurea: ↑HbF → fewer crises",
+        ],
+      },
+    ],
+    pearls: [
+      "Always give B12 BEFORE folate (folate alone in B12 deficiency = worsens neuro)",
+      "Sickle cell prophylaxis: penicillin until age 5, vaccinate against encapsulated organisms",
+      "TTP pentad: FAT-RN — Fever + Anemia (MAHA) + Thrombocytopenia + Renal failure + Neuro changes; ADAMTS13 deficiency; plasma exchange (NO platelets)",
+      "HUS: kids + bloody diarrhea (EHEC O157:H7) + MAHA + thrombocytopenia + AKI; AVOID antibiotics in EHEC (↑ Shiga release)",
+      "Lead poisoning: BAL/EDTA/succimer; check children for FEP and Pb level",
+    ],
+  },
+
+  {
+    id: "bleeding-coagulation",
+    session: 1,
+    category: "Hematology",
+    title: "Bleeding & Coagulation Disorders",
+    summary: "Platelet vs clotting factor disorders; ITP, TTP, hemophilia, VWD, DIC.",
+    sections: [
+      {
+        heading: "Pattern of bleeding",
+        bullets: [
+          "Mucocutaneous (epistaxis, petechiae, menorrhagia, easy bruising) → platelet or vWF disorder",
+          "Deep tissue (hemarthrosis, muscle hematoma) → clotting factor disorder (hemophilia)",
+        ],
+      },
+      {
+        heading: "Platelet disorders",
+        bullets: [
+          "ITP: isolated thrombocytopenia; anti-platelet IgG; kids self-limit after viral; adults often chronic — steroids/IVIG/rituximab/splenectomy",
+          "TTP: ADAMTS13 deficiency → unprocessed vWF multimers → MAHA + thrombocytopenia + neuro + renal + fever; plasma exchange (DO NOT give platelets — thrombus)",
+          "HUS: see anemia note",
+          "HIT: heparin-induced thrombocytopenia; PF4-heparin antibodies; thrombosis paradoxically; stop heparin + use direct thrombin inhibitor (argatroban) or fondaparinux",
+          "DIC: consumption of platelets + clotting factors; ↑PT/PTT + ↓platelets + ↑D-dimer + ↓fibrinogen + schistocytes; treat underlying (sepsis, OB, malignancy, trauma)",
+        ],
+      },
+      {
+        heading: "Clotting factor disorders",
+        bullets: [
+          "Hemophilia A: factor 8 deficiency; X-linked; ↑PTT; deep tissue/joint bleeds; factor 8 concentrate or desmopressin (releases vWF/factor 8)",
+          "Hemophilia B: factor 9; same presentation; factor 9 concentrate",
+          "vWD: most common inherited bleeding disorder; mucocutaneous bleeding + epistaxis + menorrhagia; ↑PTT (factor 8 also low); desmopressin (most types)",
+          "Vitamin K deficiency: ↑PT then ↑PTT; factors 2, 7, 9, 10 + C, S; vitamin K + FFP",
+          "Liver disease: all factors low except factor 8",
+          "Warfarin: targets vitamin K pathway",
+        ],
+      },
+      {
+        heading: "Hypercoagulability (thrombophilias)",
+        bullets: [
+          "Factor V Leiden: most common inherited; APC resistance",
+          "Prothrombin G20210A mutation",
+          "Antithrombin III deficiency (warfarin-resistant; heparin doesn't work well)",
+          "Protein C or S deficiency: skin necrosis with warfarin start",
+          "Antiphospholipid syndrome: arterial AND venous thromboses + recurrent miscarriage + ↑PTT (paradoxically — lupus anticoagulant). Anti-cardiolipin, anti-β2-GP1. Treat warfarin INR 2–3",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Lab patterns",
+        headers: ["Disorder", "PT", "PTT", "Platelets", "BT"],
+        rows: [
+          ["Hemophilia A/B", "Normal", "↑↑", "Normal", "Normal"],
+          ["vWD", "Normal", "↑ (factor 8 carrier)", "Normal", "↑↑"],
+          ["ITP", "Normal", "Normal", "↓↓↓", "↑"],
+          ["DIC", "↑", "↑", "↓", "↑; ↓fibrinogen, ↑D-dimer"],
+          ["Liver disease", "↑↑ (early)", "↑", "↓ (late)", "↑"],
+          ["Vitamin K deficiency", "↑↑ (early)", "↑ (later)", "Normal", "Normal"],
+        ],
+      },
+    ],
+    pearls: [
+      "Never give platelets in TTP/HIT (worsens thrombosis)",
+      "Warfarin → starts with PROTHROMBOTIC state (depletes protein C/S first) — bridge with heparin",
+      "Plavix mechanism: blocks ADP P2Y12; reversed by transfusing platelets",
+      "Aspirin: irreversible COX inhibitor → DDAVP can help bleeding (releases vWF)",
+      "Tranexamic acid: antifibrinolytic for bleeding (trauma, postpartum hemorrhage, surgery)",
+    ],
+  },
+
+  {
+    id: "heme-malignancies",
+    session: 1,
+    category: "Oncology",
+    title: "Hematologic Malignancies",
+    summary: "Leukemias, lymphomas, multiple myeloma — key distinguishers.",
+    tables: [
+      {
+        caption: "Leukemias",
+        headers: ["Type", "Demographics", "Features", "Treatment"],
+        rows: [
+          ["ALL", "Kids (peak 2–5); also elderly", "Bone pain + fevers + lymphadenopathy + blasts; CNS spread; tdT+, Philadelphia chromosome worst", "Multi-agent chemo with CNS prophylaxis; CR rates >90% in kids"],
+          ["AML", "Adults; t(15;17) APL: Auer rods + DIC", "Anemia, thrombocytopenia, blasts >20% with Auer rods", "Cytarabine + anthracycline; APL → ATRA + arsenic"],
+          ["CLL", "Elderly", "Smudge cells; lymphocytosis; warm AIHA; hypogammaglobulinemia", "Observe early; ibrutinib or chemoimmunotherapy for symptoms"],
+          ["CML", "Adults 40–60", "Philadelphia chromosome (BCR-ABL t(9;22)); leukocytosis with left shift; basophilia + splenomegaly", "Imatinib (tyrosine kinase inhibitor) — dramatic response"],
+          ["Hairy cell leukemia", "Middle-aged men", "Pancytopenia + splenomegaly; TRAP+ cells with hair-like projections", "Cladribine (single course)"],
+        ],
+      },
+      {
+        caption: "Lymphomas",
+        headers: ["Type", "Features", "Treatment"],
+        rows: [
+          ["Hodgkin", "Painless cervical LAD + B symptoms (fever, night sweats, weight loss) + Reed-Sternberg cells (owl eyes); EBV association; bimodal age", "ABVD chemo ± RT; usually curable"],
+          ["Non-Hodgkin (NHL)", "Many subtypes; nodal or extranodal; B-cell most; t(14;18) follicular = BCL-2; Burkitt = starry sky + t(8;14) c-MYC", "R-CHOP for DLBCL; rituximab if CD20+"],
+          ["Mycosis fungoides", "Cutaneous T-cell lymphoma; patches/plaques/tumors; Sezary syndrome = leukemic phase", "Topical, phototherapy, systemic"],
+        ],
+      },
+      {
+        caption: "Plasma cell dyscrasias",
+        headers: ["Disease", "Features", "Treatment"],
+        rows: [
+          ["Multiple myeloma", "CRAB: hyperCalcemia + Renal failure + Anemia + Bone lesions (lytic, 'punched out'); M-spike on SPEP; Bence Jones proteins (light chains in urine); rouleaux", "Bortezomib + dexamethasone ± lenalidomide; auto stem cell transplant"],
+          ["MGUS", "Asymptomatic M-spike <3 g/dL; 1%/yr → MM", "Observation"],
+          ["Waldenström", "IgM hyperviscosity (blurry vision, headache, mucosal bleeding); lymphoplasmacytic lymphoma", "Plasmapheresis acute; rituximab"],
+        ],
+      },
+    ],
+    pearls: [
+      "Auer rods = AML (especially M3 APL — risk of DIC)",
+      "Philadelphia chromosome: GOOD in CML (imatinib responds), BAD in ALL",
+      "Reed-Sternberg cells = Hodgkin",
+      "Burkitt 'starry sky' + t(8;14) c-MYC; tumor lysis risk → IV fluids + allopurinol + rasburicase",
+      "Tumor lysis syndrome: hyperK + hyperphosphatemia + hyperuricemia + hypocalcemia + AKI",
+      "Smudge cells + lymphocytosis in elderly = CLL",
+    ],
+  },
+
+  {
+    id: "rheumatology",
+    session: 1,
+    category: "Rheumatology",
+    title: "Rheumatologic Diseases",
+    summary: "RA, SLE, scleroderma, Sjögren, polymyositis/dermatomyositis, spondyloarthropathies, gout.",
+    sections: [
+      {
+        heading: "Rheumatoid arthritis",
+        bullets: [
+          "Symmetric small joint polyarthritis (MCP, PIP, wrists) + morning stiffness >1 hr + spares DIP",
+          "Anti-CCP (specific) + RF (sensitive)",
+          "Extra-articular: rheumatoid nodules, pulmonary fibrosis, pleuritis, anemia of chronic disease, Felty (RA + splenomegaly + neutropenia), atlantoaxial subluxation",
+          "Treat: methotrexate first-line; biologics (TNF-α inhibitors, rituximab, tocilizumab); steroids for flares",
+          "Pre-DMARD workup: TB screen, hepatitis B/C",
+        ],
+      },
+      {
+        heading: "Systemic lupus erythematosus (SLE)",
+        bullets: [
+          "Young Black women; multi-system; ACR criteria (4 of 11)",
+          "Malar rash + discoid rash + photosensitivity + oral ulcers + arthritis + serositis + renal + neuro + heme + ANA + immunologic (anti-dsDNA, anti-Smith)",
+          "Anti-dsDNA = specific + correlates with disease activity (esp. nephritis)",
+          "Anti-Smith = most specific",
+          "Anti-histone = drug-induced (hydralazine, procainamide, isoniazid, minocycline)",
+          "Antiphospholipid syndrome (lupus anticoagulant, anti-cardiolipin, anti-β2-GP1): thromboses + recurrent miscarriage",
+          "Treat: hydroxychloroquine (baseline + retinal exams); steroids for flares; cyclophosphamide/MMF for nephritis",
+          "Neonatal lupus: anti-Ro (SSA) + heart block",
+        ],
+      },
+      {
+        heading: "Scleroderma (systemic sclerosis)",
+        bullets: [
+          "Diffuse: anti-Scl-70 (anti-topoisomerase); rapid progression; renal crisis (ACEi)",
+          "Limited (CREST): anti-centromere; Calcinosis + Raynaud + Esophageal dysmotility + Sclerodactyly + Telangiectasias; pulmonary HTN",
+          "Treat: organ-specific (PPI, CCB for Raynaud, ACEi for renal crisis, etc.)",
+        ],
+      },
+      {
+        heading: "Sjögren syndrome",
+        bullets: [
+          "Dry eyes + dry mouth (sicca) + parotid enlargement",
+          "Anti-Ro (SSA) + anti-La (SSB)",
+          "Schirmer test; lip biopsy gold standard",
+          "↑Risk MALT lymphoma",
+          "Treat: artificial tears/saliva; pilocarpine; immunosuppression for systemic",
+        ],
+      },
+      {
+        heading: "Polymyositis / Dermatomyositis",
+        bullets: [
+          "Symmetric proximal muscle weakness + ↑CK + ↑aldolase",
+          "Dermatomyositis: + heliotrope rash (eyelids) + Gottron papules (knuckles) + shawl sign + ↑malignancy risk (screen for occult cancer)",
+          "Anti-Jo-1 (most specific) → interstitial lung disease",
+          "Muscle biopsy: polymyositis = endomysial; dermatomyositis = perimysial inflammation",
+          "Treat: high-dose steroids + methotrexate/azathioprine",
+        ],
+      },
+      {
+        heading: "Spondyloarthropathies (seronegative)",
+        bullets: [
+          "HLA-B27 association; absence of RF",
+          "Ankylosing spondylitis: young men; back pain improves with activity; bamboo spine; ↓chest expansion; uveitis",
+          "Psoriatic arthritis: 'sausage digits' (dactylitis) + nail pitting; treat methotrexate, anti-TNF",
+          "Reactive arthritis (Reiter): 'can't see, can't pee, can't climb a tree' (uveitis + urethritis + arthritis) after Chlamydia or GI infection",
+          "IBD-associated arthritis",
+        ],
+      },
+      {
+        heading: "Gout vs pseudogout",
+        bullets: [
+          "Gout: monosodium urate crystals — NEEDLE-shaped, negatively birefringent; podagra (1st MTP); risks include red meat, alcohol, diuretics, CKD, obesity",
+          "Acute: NSAIDs > colchicine > steroids; do NOT start allopurinol acutely",
+          "Chronic: allopurinol (xanthine oxidase inhibitor); febuxostat alternative; probenecid (uricosuric)",
+          "Pseudogout (CPPD): calcium pyrophosphate; RHOMBOID, positively birefringent; chondrocalcinosis on X-ray; treat NSAIDs/steroids; check Mg, Ca, ferritin, PTH (associations)",
+        ],
+      },
+      {
+        heading: "Osteoarthritis",
+        bullets: [
+          "Mechanical wear; DIP (Heberden) + PIP (Bouchard); morning stiffness <30 min; pain worse with activity",
+          "Treat: weight loss + PT + acetaminophen → NSAIDs → intra-articular steroids → joint replacement",
+        ],
+      },
+      {
+        heading: "Fibromyalgia",
+        bullets: [
+          "Widespread musculoskeletal pain + fatigue + tender points + sleep disturbance + no inflammation",
+          "Diagnosis of exclusion",
+          "Treat: exercise + CBT + duloxetine/milnacipran/pregabalin",
+        ],
+      },
+    ],
+    pearls: [
+      "Drug-induced lupus: anti-HISTONE antibodies (HIPP — Hydralazine, INH, Procainamide, Phenytoin/sulfasalazine)",
+      "Antiphospholipid: paradoxical ↑PTT due to lupus anticoagulant; treat with warfarin (INR 2–3)",
+      "Felty triad: RA + splenomegaly + neutropenia",
+      "Dermatomyositis + anti-Jo-1 = ILD risk; screen for malignancy at diagnosis",
+      "Allopurinol HLA-B*5801 (Asian) → SJS risk; start low + slow",
+      "Scleroderma renal crisis: ACEi (only time you give ACEi in AKI without holding)",
+    ],
+  },
+
+  {
+    id: "dermatology-step2",
+    session: 2,
+    category: "Dermatology",
+    title: "Dermatology — High-yield Conditions",
+    summary: "Skin cancers, infections, autoimmune skin diseases, life-threatening eruptions.",
+    sections: [
+      {
+        heading: "Skin cancer",
+        bullets: [
+          "Basal cell: pearly papule + telangiectasias; sun-exposed; rarely metastasizes; Mohs surgery for face",
+          "Squamous cell: scaly/ulcerative on sun-exposed; arises from actinic keratosis or Bowen disease (in situ); metastasis more than BCC; excision",
+          "Melanoma: ABCDE; Breslow depth predicts prognosis; sentinel lymph node biopsy if >1 mm; targeted (BRAF V600E → vemurafenib) + immunotherapy (nivolumab/ipilimumab) for advanced",
+          "Mycosis fungoides: CTCL; patches → plaques → tumors; Sezary syndrome = leukemic phase",
+          "Kaposi sarcoma: HHV-8; AIDS or transplant; purple plaques",
+        ],
+      },
+      {
+        heading: "Life-threatening skin reactions",
+        bullets: [
+          "Stevens-Johnson syndrome / TEN: mucocutaneous + epidermal detachment; SJS <10% BSA, TEN >30%, overlap 10–30%; Nikolsky sign +; causes: sulfa, allopurinol, NSAIDs, lamotrigine, anticonvulsants; STOP drug + burn unit care",
+          "DRESS syndrome: drug rash + eosinophilia + systemic (fever, LAD, hepatitis); 2–8 weeks after drug; stop drug + steroids",
+          "Erythema multiforme: target lesions; HSV most common trigger",
+          "Staphylococcal scalded skin syndrome (SSSS): infants; exfoliative toxin from S. aureus; Nikolsky +; spares mucous membranes; nafcillin",
+          "Necrotizing fasciitis: rapid + pain out of proportion + crepitus + 'dishwater pus'; Group A Strep or polymicrobial; emergent surgical debridement + IV broad-spectrum abx",
+        ],
+      },
+      {
+        heading: "Autoimmune blistering",
+        bullets: [
+          "Pemphigus vulgaris: intra-epidermal (suprabasal); Nikolsky +; flaccid bullae + mucosal involvement; anti-desmoglein 1 + 3; net-like IgG on IF; steroids + rituximab",
+          "Bullous pemphigoid: subepidermal; Nikolsky NEGATIVE; tense bullae; elderly; anti-BPAg1/2; linear IgG/C3 along BM; topical/systemic steroids",
+          "Dermatitis herpetiformis: celiac association; intensely pruritic vesicles on extensor surfaces; granular IgA in dermal papillae; gluten-free diet + dapsone",
+        ],
+      },
+      {
+        heading: "Common infections / inflammatory",
+        bullets: [
+          "Cellulitis: warm, red, tender; β-hemolytic Strep or Staph; cephalexin/dicloxacillin (or clinda); MRSA → TMP-SMX or doxycycline",
+          "Erysipelas: well-demarcated, raised; usually Group A Strep",
+          "Impetigo: honey-crusted; topical mupirocin",
+          "Tinea (corporis, pedis, capitis, cruris): topical antifungal; oral terbinafine/griseofulvin for capitis",
+          "Pityriasis rosea: 'herald patch' → Christmas tree on trunk; self-limiting",
+          "Psoriasis: salmon plaques with silvery scale; nail pitting + onycholysis; Auspitz sign (bleeding when scale removed); topical steroids/vit D analog; biologics for severe",
+          "Atopic dermatitis (eczema): flexural in kids; emollients + topical steroids",
+          "Seborrheic dermatitis: greasy scale on scalp/face; Malassezia; topical antifungal + steroid",
+          "Acne: comedones + papules + pustules; topical retinoids + benzoyl peroxide + abx; isotretinoin for severe (teratogenic — iPLEDGE)",
+          "Rosacea: facial flushing + papules + telangiectasias; topical metronidazole/ivermectin",
+        ],
+      },
+      {
+        heading: "Other key conditions",
+        bullets: [
+          "Erythema nodosum: tender red nodules on shins; sarcoid, IBD, strep, OCPs, coccidioides, TB",
+          "Pyoderma gangrenosum: rapidly enlarging painful ulcer with violaceous border; IBD, RA association",
+          "Acanthosis nigricans: dark velvety skin on neck/axilla; insulin resistance OR underlying malignancy (gastric)",
+          "Lichen planus: 6 P's — Purple, Polygonal, Pruritic, Planar, Papules, Plaques; Wickham striae; HCV association",
+        ],
+      },
+    ],
+    pearls: [
+      "Nikolsky + : SJS/TEN, pemphigus, SSSS. Nikolsky - : bullous pemphigoid",
+      "DRESS: think Drug Rash + Eosinophilia + Systemic + Sustained (weeks after start)",
+      "Isotretinoin: 2 forms of contraception + monthly pregnancy tests (iPLEDGE)",
+      "Acanthosis nigricans new onset in older patient → look for visceral malignancy (gastric)",
+      "Erythema nodosum + bilateral hilar LAD = Löfgren syndrome (sarcoidosis)",
+    ],
+  },
+
+  {
+    id: "obgyn-extended",
+    session: 3,
+    category: "OB/GYN",
+    title: "Obstetric Emergencies & Common Issues",
+    summary: "Preeclampsia, eclampsia, gestational diabetes, ectopic, placental abruption vs previa.",
+    sections: [
+      {
+        heading: "Hypertensive disorders of pregnancy",
+        bullets: [
+          "Gestational HTN: >140/90 after 20 weeks, no proteinuria, no end-organ damage",
+          "Preeclampsia: HTN + proteinuria OR end-organ damage (renal, liver, neuro, hemato, pulm edema)",
+          "Severe features: BP ≥160/110, ↑Cr, ↑LFTs 2×, ↓plt <100K, pulm edema, neuro symptoms, RUQ pain",
+          "HELLP: Hemolysis + Elevated Liver + Low Platelets — variant of severe preeclampsia",
+          "Eclampsia: seizures",
+          "Treatment: magnesium for seizure prophylaxis; labetalol/hydralazine/nifedipine for severe BP; deliver if severe features or ≥37 weeks",
+          "Magnesium toxicity: loss of DTRs → respiratory depression; reverse with IV calcium",
+        ],
+      },
+      {
+        heading: "Antepartum bleeding (3rd trimester)",
+        bullets: [
+          "Placenta previa: painless bright red bleeding; placenta over cervical os; transvaginal US safe; CESAREAN delivery; NO digital exam",
+          "Placental abruption: painful bleeding + tetanic uterus + DIC; risk: cocaine, HTN, trauma; emergent delivery",
+          "Vasa previa: fetal bleeding (Apt test +); fetal demise quickly without C-section",
+          "Uterine rupture: prior C-section + sudden severe pain + loss of fetal station; emergency",
+        ],
+      },
+      {
+        heading: "Routine prenatal care",
+        bullets: [
+          "First visit (8–10 wk): labs (CBC, blood type/Rh, antibody screen, HIV, syphilis, HBsAg, rubella, varicella, UA/culture); Pap if due",
+          "10–13 wk: nuchal translucency + PAPP-A + β-hCG (first trimester screen)",
+          "15–20 wk: quad screen (AFP, β-hCG, estriol, inhibin A) OR cell-free DNA",
+          "18–20 wk: anatomy scan",
+          "24–28 wk: 1-hr glucose challenge (GDM screen); repeat antibody screen if Rh-",
+          "28 wk: RhoGAM if Rh-",
+          "36 wk: GBS culture",
+          "Tdap each pregnancy 27–36 wk; flu vaccine any trimester",
+        ],
+      },
+      {
+        heading: "Prenatal screening abnormalities",
+        bullets: [
+          "↑ AFP: NTDs (anencephaly, spina bifida), abdominal wall defects, multiple gestation, wrong dates",
+          "↓ AFP: trisomy 21, 18 (with ↑β-hCG/inhibin in T21; ↓ all in T18)",
+          "Cell-free DNA: highly sensitive for trisomy 13/18/21 from 10 weeks",
+          "If anomaly: amniocentesis (after 15 wk) or CVS (10–13 wk) — diagnostic",
+        ],
+      },
+      {
+        heading: "Postpartum hemorrhage",
+        bullets: [
+          "4 T's: Tone (atony — most common) + Trauma + Tissue (retained placenta) + Thrombin (coagulopathy)",
+          "Atony: massage + oxytocin → tranexamic acid → methylergonovine (NOT in HTN) → carboprost (NOT in asthma) → misoprostol → tamponade (Bakri) → surgery",
+          "Risk factors: prolonged labor, multiparity, large baby, multiples, polyhydramnios",
+        ],
+      },
+      {
+        heading: "Endometritis (postpartum infection)",
+        bullets: [
+          "Fever, foul lochia, uterine tenderness (usually 2–10 days postpartum)",
+          "Polymicrobial; treat clindamycin + gentamicin until afebrile 24–48 hr",
+        ],
+      },
+    ],
+    pearls: [
+      "Always RhoGAM at 28 weeks AND postpartum for Rh- mom with Rh+ baby (or any sensitizing event: bleeding, trauma, amniocentesis)",
+      "Mg toxicity → IV calcium gluconate",
+      "Don't do digital cervical exam in suspected placenta previa",
+      "Tdap each pregnancy (passive immunity to newborn)",
+      "Pregnant + UTI → always treat (asymptomatic bacteriuria → pyelo + preterm labor)",
+    ],
+    relatedCaseIds: ["pph-atony", "hsv-pregnancy"],
+  },
+
+  {
+    id: "geriatrics-elder",
+    session: 1,
+    category: "Geriatrics",
+    title: "Geriatrics — Common Issues",
+    summary: "Falls, delirium, dementia, polypharmacy, pressure ulcers.",
+    sections: [
+      {
+        heading: "Falls",
+        bullets: [
+          "Comprehensive evaluation: medications (anticholinergics, benzos, antihypertensives), vision, gait/balance, vit D, home safety",
+          "Get up and go test: <12 seconds normal",
+          "Best intervention: multifactorial — PT (strength + balance) + vit D + medication review + home modifications",
+        ],
+      },
+      {
+        heading: "Delirium",
+        bullets: [
+          "Acute fluctuating attention/consciousness + cognitive disturbance",
+          "Causes: infection (UTI, pneumonia), metabolic, medications, hypoxia, withdrawal",
+          "First-line non-pharmacologic: reorientation, sleep hygiene, mobilization, family presence, sensory aids",
+          "AVOID benzodiazepines (worsen) except for alcohol/benzo withdrawal",
+          "Low-dose antipsychotic (haloperidol or quetiapine) for severe agitation",
+        ],
+      },
+      {
+        heading: "Polypharmacy",
+        bullets: [
+          "Beers criteria: drugs to avoid in elderly",
+          "Anticholinergics (diphenhydramine, oxybutynin, TCAs) → falls, AMS, urinary retention",
+          "Long-acting benzos → falls",
+          "First-gen antihistamines → confusion",
+          "Antipsychotics in dementia → ↑mortality (FDA boxed warning)",
+        ],
+      },
+      {
+        heading: "Pressure ulcers",
+        bullets: [
+          "Stage 1: non-blanchable erythema; Stage 2: partial-thickness skin loss; Stage 3: full-thickness skin loss (subQ visible); Stage 4: muscle/bone exposed",
+          "Prevention: turn q2h, off-loading mattress, nutrition (protein, vitamins), moisture management",
+          "Treat: debride necrotic tissue; appropriate dressings; antibiotics only if cellulitis or osteomyelitis",
+        ],
+      },
+      {
+        heading: "Advance directives",
+        bullets: [
+          "Living will: written wishes for end-of-life",
+          "Durable power of attorney: surrogate decision-maker",
+          "POLST: portable medical orders for serious illness",
+          "If no directive: surrogate hierarchy (spouse → adult children → parents → siblings, etc.) varies by state",
+        ],
+      },
+    ],
+    pearls: [
+      "Acute change in mental status in elderly → think UTI or pneumonia FIRST",
+      "Don't use diphenhydramine in elderly (anticholinergic)",
+      "Cholinesterase inhibitors can cause syncope (bradycardia) — caution in elderly with falls",
+      "Mini-Cog for cognitive screening; MoCA more sensitive for MCI",
+    ],
+  },
+
+  {
+    id: "preventive-vaccines",
+    session: 2,
+    category: "Preventive Medicine",
+    title: "Preventive Medicine & Vaccines",
+    summary: "Adult immunizations + cancer screening + lifestyle counseling.",
+    sections: [
+      {
+        heading: "Adult vaccines",
+        bullets: [
+          "Influenza: annual, age ≥6 months",
+          "Tdap once + Td booster q10 years; Tdap each pregnancy",
+          "MMR: born after 1957 if no immunity; 2 doses for HCW",
+          "Varicella: no immunity; live — avoid in pregnancy and immunocompromised",
+          "Zoster (Shingrix): age ≥50, even if prior shingles or Zostavax; 2 doses",
+          "Pneumococcal: PCV20 (single dose) OR PCV15 followed by PPSV23 — age ≥65 OR younger with high risk (DM, asplenia, chronic disease)",
+          "HPV: all 11–12 (catch-up to 26; shared decision 27–45)",
+          "Meningococcal: age 11–12 with booster at 16; high-risk (asplenia, complement deficiency, college dorms, military)",
+          "Hep A, Hep B per risk factors; universal HepB now recommended for adults 19–59",
+          "RSV (Arexvy, Abrysvo): age ≥60 shared decision; pregnant 32–36 wk",
+        ],
+      },
+      {
+        heading: "Cancer screening",
+        bullets: [
+          "Breast: mammogram q2 yr age 50–74 (USPSTF); now lowered to 40 in 2024 update",
+          "Cervical: Pap age 21 q3y; 30–65 Pap + HPV q5y or Pap q3y",
+          "Colorectal: age 45+ colonoscopy q10y or alternatives",
+          "Lung: LDCT age 50–80, ≥20 pack-years, current or quit <15 years",
+          "Prostate: shared decision PSA age 55–69",
+          "Skin: clinical exam; no specific routine",
+          "AAA: one-time US in men 65–75 who ever smoked",
+          "Osteoporosis: DEXA at age 65 women (younger if risk factors); men 70+",
+        ],
+      },
+      {
+        heading: "Lifestyle counseling",
+        bullets: [
+          "Smoking cessation: ask, advise, assess, assist (varenicline, NRT, bupropion), arrange",
+          "Alcohol: USPSTF screens age ≥18",
+          "Diet/exercise: 150 min moderate aerobic + 2 days strength training/week",
+          "Aspirin for primary prevention: NO longer routinely recommended in adults ≥60 (USPSTF 2022)",
+        ],
+      },
+    ],
+    pearls: [
+      "Live vaccines (MMR, varicella, zoster — Zostavax, yellow fever, oral polio, BCG, nasal flu) — avoid in pregnancy + immunocompromised",
+      "Shingrix is recombinant (not live) — safe in immunocompromised",
+      "Avoid live vaccines for 4 weeks before pregnancy",
+      "Anaphylactic egg allergy: avoid yellow fever; flu vaccine is now considered safe even with egg allergy",
+    ],
+  },
+
+  {
+    id: "biostatistics",
+    session: 2,
+    category: "Biostatistics",
+    title: "Biostats & Evidence-Based Medicine",
+    summary: "Sensitivity, specificity, PPV, NPV, study types, biases.",
+    sections: [
+      {
+        heading: "Diagnostic test statistics",
+        bullets: [
+          "Sensitivity = TP/(TP+FN) — rules OUT disease when negative (SnNOUT)",
+          "Specificity = TN/(TN+FP) — rules IN disease when positive (SpPIN)",
+          "PPV = TP/(TP+FP) — depends on prevalence",
+          "NPV = TN/(TN+FN) — depends on prevalence",
+          "LR+ = sens/(1-spec); LR- = (1-sens)/spec",
+          "Pre-test probability × LR = post-test odds",
+        ],
+      },
+      {
+        heading: "Study designs (strongest to weakest)",
+        bullets: [
+          "Meta-analysis > systematic review > RCT > cohort > case-control > cross-sectional > case series/report",
+          "RCT: gold standard for causation; randomization eliminates confounding",
+          "Cohort: prospective; can calculate INCIDENCE + RELATIVE RISK",
+          "Case-control: retrospective; calculates ODDS RATIO; good for rare diseases",
+          "Cross-sectional: prevalence; snapshot in time",
+        ],
+      },
+      {
+        heading: "Biases",
+        bullets: [
+          "Selection bias: non-random selection (Berkson, healthy worker)",
+          "Recall bias: case-control studies (cases remember exposure better)",
+          "Lead-time bias: screening makes disease appear longer just because diagnosed earlier",
+          "Length bias: slowly progressing disease over-represented in screening",
+          "Confounding: third variable associated with both exposure and outcome",
+          "Effect modification: relationship varies across subgroups (NOT a bias)",
+          "Hawthorne effect: subjects change behavior because being observed",
+          "Pygmalion effect: researcher's expectations affect outcome",
+        ],
+      },
+      {
+        heading: "Hypothesis testing",
+        bullets: [
+          "Type I error (α): false positive — reject true null",
+          "Type II error (β): false negative — fail to reject false null; Power = 1-β",
+          "Increasing sample size ↑ power",
+          "p-value <0.05 = statistically significant by convention",
+          "Confidence interval: if it includes 1 (for ratios) or 0 (for differences), result is not significant",
+        ],
+      },
+    ],
+    pearls: [
+      "Use sensitive test for SCREENING (rule out); specific test for CONFIRMATION (rule in)",
+      "Number needed to treat (NNT) = 1/absolute risk reduction (ARR)",
+      "Number needed to harm (NNH) = 1/absolute risk increase",
+      "Odds ratio approximates relative risk when disease is rare",
+    ],
+  },
+
+  {
+    id: "ethics-step2",
+    session: 2,
+    category: "Ethics & Professionalism",
+    title: "Medical Ethics & Communication",
+    summary: "Capacity, consent, confidentiality, end-of-life.",
+    sections: [
+      {
+        heading: "Core principles",
+        bullets: [
+          "Autonomy: patient's right to decide",
+          "Beneficence: act in patient's best interest",
+          "Non-maleficence: do no harm",
+          "Justice: fair distribution of resources",
+        ],
+      },
+      {
+        heading: "Capacity vs competence",
+        bullets: [
+          "Capacity: clinical decision (any physician); decision-specific; can fluctuate",
+          "Competence: legal determination",
+          "Capacity requires: understanding, appreciation, reasoning, expression of choice",
+        ],
+      },
+      {
+        heading: "Informed consent",
+        bullets: [
+          "Required elements: diagnosis, treatment options, risks/benefits, alternatives, prognosis without treatment",
+          "Exceptions: emergencies, waiver, therapeutic privilege (rarely), incompetent patient",
+          "Adolescents: parental consent generally required; EXCEPTIONS: emancipated minors (married, military, financially independent, pregnant); STIs, contraception, prenatal care, substance abuse, mental health (varies by state)",
+        ],
+      },
+      {
+        heading: "Confidentiality exceptions (must report)",
+        bullets: [
+          "Reportable infectious diseases (TB, STIs, HIV varies)",
+          "Suspected child or elder abuse",
+          "Tarasoff: duty to warn identifiable third party of imminent harm",
+          "Gunshot wounds, certain injuries",
+          "Imminent suicidal/homicidal risk",
+        ],
+      },
+      {
+        heading: "End-of-life",
+        bullets: [
+          "Living will: document wishes",
+          "Healthcare proxy/DPOA: surrogate decision-maker",
+          "DNR/DNI: do not resuscitate/intubate",
+          "Palliative care: symptom-focused; can be alongside curative",
+          "Hospice: life expectancy <6 months; focus on comfort",
+          "Physician-assisted death: legal in some states (Oregon, Washington, etc.); patient must be terminal, competent, request multiple times",
+          "Euthanasia: not legal in US",
+          "Withholding vs withdrawing treatment: ethically equivalent",
+          "Surrogate hierarchy: spouse → adult children → parents → siblings (varies)",
+        ],
+      },
+      {
+        heading: "Common scenarios",
+        bullets: [
+          "Pregnant adolescent: don't need parental consent for prenatal care",
+          "STI in adolescent: don't need parental consent; don't disclose to parents",
+          "Jehovah's Witness refusing blood: respect for competent adult; in pregnant woman, may compel for viable fetus depending on jurisdiction; in minors, court orders may override",
+          "Doctor-patient sexual relationship: never appropriate (even after termination of care for some specialties)",
+          "Gifts from patients: small acceptable; large or coercive should be declined",
+          "Errors: disclose to patient; apologize without admitting liability outside protected discussion",
+        ],
+      },
+    ],
+    pearls: [
+      "Capacity ≠ Competence (capacity = clinical, competence = legal)",
+      "Tarasoff: duty to warn AND protect (e.g., notify police, hospitalize)",
+      "Always rule out reversible causes (delirium, depression) before accepting refusal of care",
+      "Pregnant minor: most states allow medical decisions for self and child",
+      "Death by neurologic criteria = legal death (covered in seizures note)",
+    ],
+  },
 ];
