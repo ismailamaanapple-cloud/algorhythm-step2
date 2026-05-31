@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Sparkles, ChevronRight, Play } from "lucide-react";
+import { ArrowLeft, Sparkles, ChevronRight, Play, Check, Circle } from "lucide-react";
 import type { Note } from "@/data/notes";
 import { NOTES } from "@/data/notes";
 import { CASES } from "@/data/cases";
+import { useNoteProgress } from "@/hooks/useNoteProgress";
 
 const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   1: "from-violet-500 to-purple-700",
@@ -14,13 +15,17 @@ const SESSION_COLORS: Record<1 | 2 | 3, string> = {
 };
 
 export default function NoteDetail({ note }: { note: Note }) {
+  const { completed, toggle, hydrated } = useNoteProgress();
+  const isDone = completed.has(note.id);
+
   const relatedCases = (note.relatedCaseIds ?? [])
     .map((id) => CASES.find((c) => c.id === id))
     .filter((c): c is NonNullable<typeof c> => !!c);
 
+  // Group "more in category" by same specialty (not session) for better browsing
   const moreInCategory = NOTES.filter(
-    (n) => n.category === note.category && n.session === note.session && n.id !== note.id,
-  ).slice(0, 5);
+    (n) => n.category === note.category && n.id !== note.id,
+  ).slice(0, 6);
 
   return (
     <div className="min-h-[100dvh] flex flex-col">
@@ -34,10 +39,33 @@ export default function NoteDetail({ note }: { note: Note }) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/45">
               <span className={`h-1.5 w-1.5 rounded-full bg-gradient-to-br ${SESSION_COLORS[note.session]}`} />
-              Session {note.session} · {note.category}
+              <span className="truncate">{note.category}</span>
+              <span className="text-white/25">·</span>
+              <span>Session {note.session}</span>
             </div>
             <div className="truncate text-sm font-semibold tracking-tight">{note.title}</div>
           </div>
+          <button
+            onClick={() => toggle(note.id)}
+            disabled={!hydrated}
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition shrink-0 ${
+              isDone
+                ? "bg-emerald-400/20 border border-emerald-400/40 text-emerald-200 hover:bg-emerald-400/30"
+                : "bg-white text-black hover:bg-white/90"
+            }`}
+          >
+            {isDone ? (
+              <>
+                <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                <span className="hidden sm:inline">Completed</span>
+              </>
+            ) : (
+              <>
+                <Circle className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">Mark complete</span>
+              </>
+            )}
+          </button>
         </div>
       </div>
 
@@ -136,6 +164,51 @@ export default function NoteDetail({ note }: { note: Note }) {
                 </ul>
               </motion.div>
             )}
+
+            {/* Mark complete / next CTA */}
+            <div className="glass rounded-2xl p-5 flex flex-wrap gap-3 items-center justify-between">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.22em] text-white/45 mb-0.5">
+                  Done reading?
+                </div>
+                <div className="text-sm font-medium text-white/85">
+                  {isDone ? "Marked complete — nice work." : "Track your progress by marking this complete."}
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => toggle(note.id)}
+                  disabled={!hydrated}
+                  className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+                    isDone
+                      ? "bg-emerald-400/15 border border-emerald-400/40 text-emerald-200 hover:bg-emerald-400/25"
+                      : "bg-white text-black hover:bg-white/90"
+                  }`}
+                >
+                  {isDone ? (
+                    <>
+                      <Check className="h-4 w-4" strokeWidth={3} />
+                      Completed
+                    </>
+                  ) : (
+                    <>
+                      <Circle className="h-4 w-4" />
+                      Mark complete
+                    </>
+                  )}
+                </button>
+                {moreInCategory.length > 0 && (
+                  <Link
+                    href={`/notes/${moreInCategory[0].id}`}
+                    onClick={() => { if (!isDone && hydrated) toggle(note.id); }}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-white/85 hover:bg-white/[0.08] transition"
+                  >
+                    Next in {note.category}
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Sidebar */}
@@ -168,20 +241,31 @@ export default function NoteDetail({ note }: { note: Note }) {
                 <div className="text-[10px] uppercase tracking-[0.22em] text-cyan-300/80 mb-3">
                   More in {note.category}
                 </div>
-                <div className="space-y-2">
-                  {moreInCategory.map((m) => (
-                    <Link
-                      key={m.id}
-                      href={`/notes/${m.id}`}
-                      className="group flex items-start gap-2 rounded-lg px-3 py-2 -mx-1 hover:bg-white/[0.04] transition"
-                    >
-                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-300/60 shrink-0" />
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs font-medium text-white/85 leading-snug">{m.title}</div>
-                      </div>
-                      <ChevronRight className="h-3 w-3 text-white/30 group-hover:text-cyan-300 group-hover:translate-x-0.5 transition mt-1" />
-                    </Link>
-                  ))}
+                <div className="space-y-1">
+                  {moreInCategory.map((m) => {
+                    const mDone = completed.has(m.id);
+                    return (
+                      <Link
+                        key={m.id}
+                        href={`/notes/${m.id}`}
+                        className="group flex items-start gap-2 rounded-lg px-3 py-2 -mx-1 hover:bg-white/[0.04] transition"
+                      >
+                        <span
+                          className={`mt-1 h-3.5 w-3.5 rounded-sm border flex items-center justify-center shrink-0 ${
+                            mDone
+                              ? "border-emerald-300/60 bg-emerald-400/20 text-emerald-300"
+                              : "border-white/15 bg-white/[0.02]"
+                          }`}
+                        >
+                          {mDone && <Check className="h-2.5 w-2.5" strokeWidth={3} />}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <div className={`text-xs font-medium leading-snug ${mDone ? "text-white/65" : "text-white/85"}`}>{m.title}</div>
+                        </div>
+                        <ChevronRight className="h-3 w-3 text-white/30 group-hover:text-cyan-300 group-hover:translate-x-0.5 transition mt-1" />
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}
