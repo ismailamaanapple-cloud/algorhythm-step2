@@ -7,66 +7,98 @@ import {
   Search,
   Check,
   Circle,
-  ChevronRight,
   RotateCcw,
-  BookOpen,
+  ChevronRight,
+  Sparkles,
+  Compass,
+  Brain,
+  Bone,
+  Activity,
+  Workflow,
+  Stethoscope,
+  ClipboardList,
 } from "lucide-react";
 import { NOTES } from "@/data/notes";
 import { useNoteProgress } from "@/hooks/useNoteProgress";
 
-// Per-specialty visual identity
-const CATEGORY_COLOR: Record<string, string> = {
-  Cardiology: "from-rose-500 to-red-700",
-  Pulmonary: "from-sky-500 to-blue-700",
-  Gastroenterology: "from-amber-500 to-orange-700",
-  Endocrine: "from-emerald-500 to-teal-700",
-  Renal: "from-yellow-500 to-amber-700",
-  Hematology: "from-red-500 to-rose-800",
-  Oncology: "from-fuchsia-600 to-purple-800",
-  Neurology: "from-violet-500 to-purple-700",
-  "OB/GYN": "from-pink-500 to-fuchsia-700",
-  Breast: "from-pink-400 to-rose-600",
-  Pediatrics: "from-cyan-400 to-blue-600",
-  Emergency: "from-red-600 to-orange-700",
-  "Infectious Disease": "from-lime-500 to-green-700",
-  Trauma: "from-orange-600 to-red-800",
-  Dermatology: "from-amber-400 to-yellow-600",
-  Musculoskeletal: "from-slate-400 to-zinc-600",
-  Immunology: "from-teal-400 to-cyan-700",
-  Rheumatology: "from-indigo-500 to-violet-700",
-  Geriatrics: "from-stone-400 to-zinc-600",
-  "Preventive Medicine": "from-green-400 to-emerald-600",
-  Biostatistics: "from-blue-400 to-indigo-600",
-  "Ethics & Professionalism": "from-slate-500 to-gray-700",
-  Surgery: "from-red-500 to-rose-700",
-  Anesthesia: "from-purple-500 to-fuchsia-700",
-  Ophthalmology: "from-cyan-500 to-teal-700",
-  ENT: "from-blue-500 to-cyan-700",
-  Psychiatry: "from-violet-400 to-purple-600",
-  "Acute Stabilization": "from-red-500 to-orange-700",
+// OMM grouping: organize OMM notes into clinically meaningful regions
+const OMM_GROUPS: Record<string, string> = {
+  "omm-fundamentals": "Foundations",
+  "omm-fryette": "Foundations",
+  "omm-cervical": "Spinal Diagnosis",
+  "omm-thoracic-ribs": "Spinal Diagnosis",
+  "omm-lumbar": "Spinal Diagnosis",
+  "omm-sacrum": "Pelvis & Sacrum",
+  "omm-innominate": "Pelvis & Sacrum",
+  "omm-cranial": "Cranial",
+  "omm-counterstrain": "Treatment Techniques",
+  "omm-muscle-energy": "Treatment Techniques",
+  "omm-hvla-others": "Treatment Techniques",
+  "omm-viscerosomatic": "Reflexes & Application",
+  "omm-chapmans": "Reflexes & Application",
+  "omm-special-situations": "Clinical Practice",
+  "omm-indications": "Clinical Practice",
 };
 
-const getColor = (cat: string) => CATEGORY_COLOR[cat] ?? "from-zinc-500 to-slate-700";
+const GROUP_ORDER = [
+  "Foundations",
+  "Spinal Diagnosis",
+  "Pelvis & Sacrum",
+  "Cranial",
+  "Treatment Techniques",
+  "Reflexes & Application",
+  "Clinical Practice",
+];
+
+const GROUP_META: Record<string, { icon: React.ReactNode; accent: string; description: string }> = {
+  Foundations: {
+    icon: <Compass className="h-4 w-4" />,
+    accent: "from-violet-400 to-purple-600",
+    description: "Core principles, TART, Fryette's laws",
+  },
+  "Spinal Diagnosis": {
+    icon: <Bone className="h-4 w-4" />,
+    accent: "from-rose-400 to-red-600",
+    description: "Cervical, thoracic, ribs, lumbar dysfunctions",
+  },
+  "Pelvis & Sacrum": {
+    icon: <Workflow className="h-4 w-4" />,
+    accent: "from-amber-400 to-orange-600",
+    description: "Sacral torsions, innominate dysfunctions",
+  },
+  Cranial: {
+    icon: <Brain className="h-4 w-4" />,
+    accent: "from-cyan-400 to-sky-600",
+    description: "PRM, SBS strain patterns",
+  },
+  "Treatment Techniques": {
+    icon: <Activity className="h-4 w-4" />,
+    accent: "from-emerald-400 to-teal-600",
+    description: "Counterstrain, ME, HVLA, MFR, BLT",
+  },
+  "Reflexes & Application": {
+    icon: <Stethoscope className="h-4 w-4" />,
+    accent: "from-pink-400 to-fuchsia-600",
+    description: "Viscerosomatics, Chapman's points",
+  },
+  "Clinical Practice": {
+    icon: <ClipboardList className="h-4 w-4" />,
+    accent: "from-indigo-400 to-violet-600",
+    description: "Special populations, contras, documentation",
+  },
+};
 
 type Status = "all" | "completed" | "not-started";
 
-export default function NotesLibrary() {
+export default function OmmLibrary() {
   const { completed, toggle, reset, hydrated } = useNoteProgress();
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<Status>("all");
-  const [activeCategory, setActiveCategory] = useState<string | "All">("All");
 
-  // Exclude OMM (has its own section)
-  const studyNotes = useMemo(() => NOTES.filter((n) => n.category !== "OMM"), []);
-
-  const allCategories = useMemo(
-    () => Array.from(new Set(studyNotes.map((n) => n.category))).sort(),
-    [studyNotes],
-  );
+  const ommNotes = useMemo(() => NOTES.filter((n) => n.category === "OMM"), []);
 
   const filtered = useMemo(() => {
-    return studyNotes.filter((n) => {
-      if (activeCategory !== "All" && n.category !== activeCategory) return false;
+    return ommNotes.filter((n) => {
       if (status === "completed" && !completed.has(n.id)) return false;
       if (status === "not-started" && completed.has(n.id)) return false;
       if (query.trim()) {
@@ -74,7 +106,6 @@ export default function NotesLibrary() {
         const haystack = [
           n.title,
           n.summary,
-          n.category,
           ...(n.sections ?? []).flatMap((s) => [s.heading, ...s.bullets]),
           ...(n.pearls ?? []),
         ]
@@ -84,21 +115,22 @@ export default function NotesLibrary() {
       }
       return true;
     });
-  }, [studyNotes, activeCategory, status, query, completed]);
+  }, [ommNotes, status, query, completed]);
 
-  // Group by specialty
   const groups = useMemo(() => {
     const map = new Map<string, typeof NOTES>();
     for (const n of filtered) {
-      if (!map.has(n.category)) map.set(n.category, []);
-      map.get(n.category)!.push(n);
+      const group = OMM_GROUPS[n.id] ?? "Other";
+      if (!map.has(group)) map.set(group, []);
+      map.get(group)!.push(n);
     }
-    return Array.from(map.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+    // Order by GROUP_ORDER
+    return GROUP_ORDER.filter((g) => map.has(g)).map((g) => [g, map.get(g)!] as const);
   }, [filtered]);
 
-  const totalCompleted = studyNotes.filter((n) => completed.has(n.id)).length;
-  const totalNotes = studyNotes.length;
-  const percent = totalNotes > 0 ? Math.round((totalCompleted / totalNotes) * 100) : 0;
+  const totalCompleted = ommNotes.filter((n) => completed.has(n.id)).length;
+  const totalCount = ommNotes.length;
+  const percent = totalCount > 0 ? Math.round((totalCompleted / totalCount) * 100) : 0;
 
   return (
     <div className="mx-auto max-w-5xl px-6 pt-12 pb-24">
@@ -109,19 +141,19 @@ export default function NotesLibrary() {
         transition={{ duration: 0.5 }}
         className="mb-12"
       >
-        <div className="text-xs uppercase tracking-[0.24em] text-cyan-300/80 mb-3 flex items-center gap-2">
-          <BookOpen className="h-3 w-3" /> Study Notes
+        <div className="text-xs uppercase tracking-[0.24em] text-amber-300/80 mb-3 flex items-center gap-2">
+          <Sparkles className="h-3 w-3" /> COMLEX Level 2 · OMM
         </div>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-4">
-          Every topic, by specialty.
+          Osteopathic Manipulative Medicine.
         </h1>
         <p className="text-white/55 text-lg max-w-2xl leading-relaxed">
-          High-yield Step 2 CK review notes organized by specialty. Mark each topic complete as you study —
-          your progress saves to this device.
+          Every dysfunction, technique, and clinical application you need for COMLEX Level 2 — organized
+          by region. Mark each topic complete as you study; progress saves to this device.
         </p>
       </motion.div>
 
-      {/* Progress card */}
+      {/* Progress + controls */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -133,19 +165,23 @@ export default function NotesLibrary() {
             <div className="text-[10px] uppercase tracking-[0.22em] text-white/45 mb-1">Your progress</div>
             <div className="text-3xl font-bold tabular-nums">
               {hydrated ? totalCompleted : 0}
-              <span className="text-white/40 text-lg font-normal"> / {totalNotes}</span>
-              <span className="text-cyan-300 text-lg font-medium ml-3">{hydrated ? percent : 0}%</span>
+              <span className="text-white/40 text-lg font-normal"> / {totalCount}</span>
+              <span className="text-amber-300 text-lg font-medium ml-3">{hydrated ? percent : 0}%</span>
             </div>
           </div>
           {hydrated && totalCompleted > 0 && (
             <button
               onClick={() => {
-                if (confirm("Reset all progress? This cannot be undone.")) reset();
+                if (confirm("Reset all OMM progress? This cannot be undone.")) {
+                  ommNotes.forEach((n) => {
+                    if (completed.has(n.id)) toggle(n.id);
+                  });
+                }
               }}
               className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs text-white/70 hover:text-white hover:border-white/25 transition"
             >
               <RotateCcw className="h-3 w-3" />
-              Reset
+              Reset OMM
             </button>
           )}
         </div>
@@ -154,19 +190,19 @@ export default function NotesLibrary() {
             initial={{ width: 0 }}
             animate={{ width: `${hydrated ? percent : 0}%` }}
             transition={{ duration: 0.6 }}
-            className="h-full bg-gradient-to-r from-cyan-400 to-emerald-400"
+            className="h-full bg-gradient-to-r from-amber-400 to-orange-500"
           />
         </div>
       </motion.div>
 
       {/* Filter row */}
-      <div className="flex gap-3 items-center mb-6 flex-wrap">
+      <div className="flex gap-3 items-center mb-10 flex-wrap">
         <div className="relative flex-1 min-w-[240px]">
           <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search notes…"
+            placeholder="Search OMM topics…"
             className="w-full rounded-full border border-white/10 bg-white/[0.02] pl-11 pr-4 py-2.5 text-sm placeholder:text-white/35 focus:outline-none focus:border-white/30 transition"
           />
         </div>
@@ -185,59 +221,29 @@ export default function NotesLibrary() {
         </div>
       </div>
 
-      {/* Specialty chips */}
-      <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-thin -mx-1 px-1 mb-10">
-        <CategoryChip
-          active={activeCategory === "All"}
-          onClick={() => setActiveCategory("All")}
-          label="All"
-          count={studyNotes.length}
-          completed={studyNotes.filter((n) => completed.has(n.id)).length}
-          hydrated={hydrated}
-        />
-        {allCategories.map((c) => {
-          const inCat = studyNotes.filter((n) => n.category === c);
-          const done = inCat.filter((n) => completed.has(n.id)).length;
-          return (
-            <CategoryChip
-              key={c}
-              active={activeCategory === c}
-              onClick={() => setActiveCategory(c)}
-              label={c}
-              count={inCat.length}
-              completed={done}
-              hydrated={hydrated}
-              gradient={getColor(c)}
-            />
-          );
-        })}
-      </div>
-
-      {/* Specialty sections */}
+      {/* Grouped sections */}
       <div className="space-y-14">
-        {groups.map(([catName, items], gi) => {
-          const color = getColor(catName);
+        {groups.map(([groupName, items], gi) => {
+          const meta = GROUP_META[groupName] ?? GROUP_META.Foundations;
           const done = items.filter((n) => completed.has(n.id)).length;
           return (
             <motion.section
-              key={catName}
+              key={groupName}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: gi * 0.04 + 0.2 }}
+              transition={{ delay: gi * 0.05 + 0.2 }}
             >
               {/* Section header */}
               <div className="flex items-end justify-between gap-4 mb-5 flex-wrap">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`h-9 w-9 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center`}
+                    className={`h-9 w-9 rounded-xl flex items-center justify-center text-white bg-gradient-to-br ${meta.accent}`}
                   >
-                    <span className="text-white text-sm font-bold">{catName.charAt(0)}</span>
+                    {meta.icon}
                   </div>
                   <div>
-                    <h2 className="text-xl font-semibold tracking-tight">{catName}</h2>
-                    <p className="text-xs text-white/45">
-                      {items.length} {items.length === 1 ? "topic" : "topics"}
-                    </p>
+                    <h2 className="text-xl font-semibold tracking-tight">{groupName}</h2>
+                    <p className="text-xs text-white/45">{meta.description}</p>
                   </div>
                 </div>
                 <div className="text-xs text-white/55 tabular-nums flex items-center gap-2">
@@ -259,7 +265,7 @@ export default function NotesLibrary() {
                       key={n.id}
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: gi * 0.04 + i * 0.02 + 0.25 }}
+                      transition={{ delay: gi * 0.05 + i * 0.03 + 0.25 }}
                     >
                       <div
                         className={`group relative rounded-2xl border transition ${
@@ -302,7 +308,7 @@ export default function NotesLibrary() {
                         </button>
                         <ChevronRight
                           className={`absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 transition opacity-0 group-hover:opacity-100 ${
-                            isDone ? "text-emerald-300" : "text-cyan-300"
+                            isDone ? "text-emerald-300" : "text-amber-300"
                           }`}
                         />
                       </div>
@@ -316,54 +322,8 @@ export default function NotesLibrary() {
       </div>
 
       {filtered.length === 0 && (
-        <div className="mt-12 text-center text-white/55">No notes match your filter.</div>
+        <div className="mt-12 text-center text-white/55">No OMM topics match your filter.</div>
       )}
     </div>
-  );
-}
-
-function CategoryChip({
-  active,
-  onClick,
-  label,
-  count,
-  completed,
-  hydrated,
-  gradient,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-  count: number;
-  completed: number;
-  hydrated: boolean;
-  gradient?: string;
-}) {
-  const allDone = hydrated && completed === count && count > 0;
-  return (
-    <button
-      onClick={onClick}
-      className={`relative shrink-0 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
-        active
-          ? "border-white/30 bg-white text-black"
-          : "border-white/10 bg-white/[0.02] text-white/75 hover:bg-white/[0.06] hover:border-white/25"
-      }`}
-    >
-      {gradient && !active && (
-        <span className={`h-1.5 w-1.5 rounded-full bg-gradient-to-br ${gradient}`} />
-      )}
-      <span>{label}</span>
-      <span
-        className={`text-[10px] px-1.5 py-0.5 rounded-full tabular-nums ${
-          active
-            ? "bg-black/10 text-black/70"
-            : allDone
-            ? "bg-emerald-400/20 text-emerald-300"
-            : "bg-white/10 text-white/55"
-        }`}
-      >
-        {hydrated ? `${completed}/${count}` : count}
-      </span>
-    </button>
   );
 }

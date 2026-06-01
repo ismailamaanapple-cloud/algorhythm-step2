@@ -70,6 +70,15 @@ export default function Hero() {
               Study notes
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </motion.a>
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              href="/omm"
+              className="inline-flex items-center gap-2 rounded-full border border-orange-300/40 bg-orange-300/10 px-7 py-3.5 text-sm font-semibold text-orange-100 hover:bg-orange-300/20 transition"
+            >
+              OMM (COMLEX)
+              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+            </motion.a>
           </div>
 
           <div className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl w-full">
