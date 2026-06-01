@@ -52,6 +52,7 @@ const CATEGORY_COLOR: Record<string, string> = {
   ENT: "from-blue-500 to-cyan-700",
   Psychiatry: "from-violet-400 to-purple-600",
   "Acute Stabilization": "from-red-500 to-orange-700",
+  OMM: "from-amber-400 to-orange-600",
 };
 
 const getColor = (cat: string) => CATEGORY_COLOR[cat] ?? "from-zinc-500 to-slate-700";

@@ -4484,6 +4484,1127 @@ export const NOTES: Note[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════
+  // OMM / OSTEOPATHIC MANIPULATIVE MEDICINE (COMLEX Level 2)
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "omm-fundamentals",
+    session: 1,
+    category: "OMM",
+    title: "OMM Fundamentals & TART Diagnosis",
+    summary: "Somatic dysfunction, TART, direct vs indirect, barriers.",
+    sections: [
+      {
+        heading: "Somatic dysfunction (the entity OMM treats)",
+        bullets: [
+          "Definition: impaired/altered function of related components of the somatic system — skeletal, arthrodial, myofascial — and related vascular, lymphatic, neural elements",
+          "Diagnosed by TART: Tissue texture changes, Asymmetry, Restriction of motion, Tenderness (need at least one but most need multiple)",
+          "Acute somatic dysfunction: edema, erythema, warm, boggy, increased tone, painful with motion",
+          "Chronic somatic dysfunction: ropy, fibrotic, cool, decreased tone, less tender, dull/aching",
+        ],
+      },
+      {
+        heading: "Naming the dysfunction",
+        bullets: [
+          "Always named for direction of FREEDOM of motion (where it moves easiest), NOT the restriction",
+          "Example: 'C4 FRSL' = C4 prefers Flexion, Rotation Left, Side-bending Left — restricted in extension, right rotation, right sidebending",
+          "Cardinal motions: flexion/extension, rotation L/R, side-bending L/R, translation",
+        ],
+      },
+      {
+        heading: "Barriers concept",
+        bullets: [
+          "Physiologic barrier: limit of ACTIVE motion",
+          "Anatomic barrier: limit of PASSIVE motion (beyond = injury)",
+          "Restrictive barrier (pathologic): premature limit due to dysfunction",
+          "Elastic barrier: between physiologic and anatomic — engaged in HVLA",
+          "Neutral position: where ligaments are balanced (midway between extremes)",
+        ],
+      },
+      {
+        heading: "Direct vs Indirect technique",
+        bullets: [
+          "DIRECT: physician moves toward the restrictive barrier (against the freedom of motion). Examples: HVLA, muscle energy, articulatory, direct MFR",
+          "INDIRECT: physician moves AWAY from the barrier (with the freedom of motion). Examples: counterstrain, BLT, FPR, indirect MFR, cranial",
+          "Combined: still technique (indirect → direct), facilitated positional release",
+        ],
+      },
+      {
+        heading: "Major treatment systems",
+        bullets: [
+          "Active: patient assists (muscle energy, articulatory with patient breathing)",
+          "Passive: physician does the work (HVLA, soft tissue inhibition, MFR, counterstrain)",
+        ],
+      },
+    ],
+    pearls: [
+      "Always describe dysfunction by direction it MOVES TO most easily (FREEDOM)",
+      "Acute = swollen/boggy/warm; Chronic = ropy/fibrotic/cool",
+      "Direct moves toward barrier; Indirect moves away from barrier",
+      "If patient is too acute or sensitive → use INDIRECT technique (counterstrain, BLT, FPR)",
+    ],
+  },
+
+  {
+    id: "omm-fryette",
+    session: 1,
+    category: "OMM",
+    title: "Fryette's Laws & Spinal Mechanics",
+    summary: "Type I (neutral, group) vs Type II (non-neutral, single segment).",
+    sections: [
+      {
+        heading: "Fryette's First Law (Type I — Neutral)",
+        bullets: [
+          "In NEUTRAL position, side-bending and rotation occur to OPPOSITE sides",
+          "Involves a GROUP of vertebrae (≥3 segments)",
+          "Compensatory, usually chronic, asymmetric posture",
+          "Example: T5–T8 NSRRL (neutral, side-bent R, rotated L)",
+        ],
+      },
+      {
+        heading: "Fryette's Second Law (Type II — Non-neutral)",
+        bullets: [
+          "In FLEXION or EXTENSION, side-bending and rotation occur to the SAME side",
+          "Involves a SINGLE segment",
+          "Often acute, traumatic, painful",
+          "Example: T4 FRSR (flexed, rotated R, side-bent R)",
+          "Type II dysfunctions get priority for treatment",
+        ],
+      },
+      {
+        heading: "Fryette's Third Law",
+        bullets: [
+          "Motion in one plane modifies (limits) motion in the other planes",
+          "Practical: if a segment is held in flexion, side-bending and rotation will be reduced",
+        ],
+      },
+      {
+        heading: "Applies to thoracic & lumbar ONLY",
+        bullets: [
+          "Cervicals follow different rules (especially C0–C2)",
+          "C2–C7 typically: side-bending and rotation are coupled to the SAME side (Type II-like)",
+          "OA (C0–C1): side-bending and rotation OPPOSITE",
+          "AA (C1–C2): essentially pure rotation (no side-bending coupling)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Type I vs Type II",
+        headers: ["Feature", "Type I (Neutral)", "Type II (Non-neutral)"],
+        rows: [
+          ["Position", "Neutral", "Flexed or extended"],
+          ["Coupling", "Side-bending opposite rotation", "Side-bending SAME side rotation"],
+          ["Segments", "Group (≥3)", "Single segment"],
+          ["Onset", "Chronic, compensatory", "Acute, often traumatic"],
+          ["Treatment priority", "Lower", "HIGHER"],
+          ["Example", "T5–T8 NSRRL", "T4 FRSR or T4 ERSL"],
+        ],
+      },
+    ],
+    pearls: [
+      "Mnemonic: Type I — 'opposite' (neutral); Type II — 'same' (flexed/extended)",
+      "Treat Type II FIRST when both are present",
+      "Cervical spine doesn't follow Fryette's laws (C2–C7 = same-side coupling regardless of position)",
+      "OA reversed: side-bend and rotation are OPPOSITE",
+    ],
+  },
+
+  {
+    id: "omm-cervical",
+    session: 1,
+    category: "OMM",
+    title: "Cervical Spine Dysfunctions",
+    summary: "OA (C0-C1), AA (C1-C2), typical cervical C2–C7.",
+    sections: [
+      {
+        heading: "Occipitoatlantal (OA, C0–C1)",
+        bullets: [
+          "Motion: primarily FLEXION/EXTENSION (yes nod)",
+          "Side-bending and rotation are COUPLED OPPOSITE (Type-I-like)",
+          "Diagnosis: place on supine patient, side-bend test through OA only",
+          "Example: OA F SR RL (flexed, side-bent R, rotated L)",
+        ],
+      },
+      {
+        heading: "Atlantoaxial (AA, C1–C2)",
+        bullets: [
+          "Motion: ~50% of cervical ROTATION happens at AA (no nod)",
+          "Side-bending and flexion/extension are NEGLIGIBLE",
+          "Diagnosis: maximally flex cervical spine (locks out C2–C7), assess rotation L vs R at AA",
+          "Example: AA rotated L (only)",
+        ],
+      },
+      {
+        heading: "Typical cervicals (C2–C7)",
+        bullets: [
+          "Side-bending and rotation coupled to the SAME side (regardless of flexion/extension)",
+          "Articular pillars assessed for rotation; transverse processes for side-bending",
+          "Most common: lower cervical (C5-C6) dysfunctions from prolonged neck flexion (screen time)",
+        ],
+      },
+      {
+        heading: "Treatment options",
+        bullets: [
+          "Muscle energy (most common): patient pushes against operator's resistance, then operator moves into new barrier",
+          "HVLA: 'crack' technique; only after thorough screening (no rheumatoid arthritis, Down syndrome, vertebrobasilar insufficiency)",
+          "Counterstrain: indirect — find tender point, position into 'point of ease' for 90 seconds",
+          "MFR: direct or indirect myofascial release",
+        ],
+      },
+      {
+        heading: "Cervical contraindications",
+        bullets: [
+          "Avoid HVLA: vertebrobasilar insufficiency (test with extension + rotation), Down syndrome (atlantoaxial instability), Rheumatoid arthritis (transverse ligament weakness), unstable fracture, malignancy, infection, anticoagulated",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Cervical motion by segment",
+        headers: ["Segment", "Primary motion", "Coupling"],
+        rows: [
+          ["OA (C0–C1)", "Flexion/extension (yes nod)", "Side-bend & rotation OPPOSITE"],
+          ["AA (C1–C2)", "Rotation (~50% of all cervical rotation)", "Pure rotation"],
+          ["C2–C7", "All motions", "Side-bend & rotation SAME side"],
+        ],
+      },
+    ],
+    pearls: [
+      "AA dx: maximally flex neck to lock out lower segments, then assess rotation only",
+      "OA = 'opposite'; AA = rotation only; C2–C7 = same side",
+      "Vertebrobasilar test (extension + rotation): if dizziness/nausea → NO HVLA",
+      "Down syndrome + RA → screen for atlantoaxial instability before HVLA",
+    ],
+  },
+
+  {
+    id: "omm-thoracic-ribs",
+    session: 1,
+    category: "OMM",
+    title: "Thoracic Spine & Rib Dysfunctions",
+    summary: "Typical & atypical thoracics, rib motion, key rib, inhalation/exhalation dysfunctions.",
+    sections: [
+      {
+        heading: "Thoracic vertebrae",
+        bullets: [
+          "Follow Fryette's laws (Type I and II)",
+          "Rule of 3s for transverse process location relative to spinous process",
+          "T1–T3: TPs at same level as SPs",
+          "T4–T6: TPs one-half level below SPs",
+          "T7–T9: TPs one full level below SPs",
+          "T10: like T9 (TP one level below)",
+          "T11: like T6 (one-half level below)",
+          "T12: like T3 (same level)",
+        ],
+      },
+      {
+        heading: "Rib motion types",
+        bullets: [
+          "Pump handle: ribs 1–5; predominantly anterior-posterior (up/down) motion with inspiration",
+          "Bucket handle: ribs 6–10; predominantly lateral motion (sides go up/down)",
+          "Caliper: ribs 11–12 (floating); anterior-posterior motion at posterior attachment",
+        ],
+      },
+      {
+        heading: "Rib dysfunctions",
+        bullets: [
+          "Inhalation dysfunction: rib held UP (in inspiration); patient cannot fully exhale that rib down → tender on EXHALATION; the most cephalad rib in a group is the KEY rib",
+          "Exhalation dysfunction: rib held DOWN (in expiration); patient cannot fully inhale → tender on INHALATION; the most caudad rib in a group is the KEY rib",
+          "Treat the KEY rib first — the others often follow",
+        ],
+      },
+      {
+        heading: "Common rib dysfunctions (high-yield)",
+        bullets: [
+          "1st rib elevated (inhalation): tender at supraclavicular area; treat with muscle energy using scalene contraction",
+          "2nd rib: associated with shoulder/upper back pain",
+          "Anterior chest wall pain → assess ribs 2–5",
+          "Lateral chest pain → assess ribs 6–10",
+        ],
+      },
+      {
+        heading: "Treatment by mechanism",
+        bullets: [
+          "Inhalation dysfunction (held up): use EXHALATION to treat — patient exhales fully, operator holds rib down",
+          "Exhalation dysfunction (held down): use INHALATION to treat — patient inhales deeply, operator pulls rib up",
+          "Specific muscles for ME: scalenes (rib 1), pec minor (rib 2-5), serratus anterior (3-5), latissimus dorsi (rib 12), quadratus lumborum (rib 12 exhalation)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Key rib by dysfunction",
+        headers: ["Dysfunction", "Held in", "Tender on", "Key rib"],
+        rows: [
+          ["Inhalation", "Inspiration (up)", "Exhalation", "Most CEPHALAD (top) in group"],
+          ["Exhalation", "Expiration (down)", "Inhalation", "Most CAUDAD (bottom) in group"],
+        ],
+      },
+    ],
+    pearls: [
+      "Treat the KEY rib first — others follow",
+      "Inhalation dysfunction → patient exhales to treat; exhalation dysfunction → patient inhales to treat",
+      "Rule of 3s for thoracic TP location",
+      "1st rib elevated → scalene ME",
+    ],
+  },
+
+  {
+    id: "omm-lumbar",
+    session: 1,
+    category: "OMM",
+    title: "Lumbar Spine Dysfunctions",
+    summary: "Follows Fryette's laws; common in low back pain.",
+    sections: [
+      {
+        heading: "Lumbar motion",
+        bullets: [
+          "Follows Fryette's laws (Type I and II)",
+          "Primary motion: flexion/extension; some rotation but limited",
+          "Side-bending occurs with rotation per Fryette",
+        ],
+      },
+      {
+        heading: "Diagnosis",
+        bullets: [
+          "Patient prone; assess transverse processes for rotation",
+          "If TP posterior on side of rotation",
+          "Check in neutral, flexed, and extended positions to differentiate Type I from Type II",
+          "Lumbar segments often dysfunctional in low back pain, especially L4-L5 and L5-S1",
+        ],
+      },
+      {
+        heading: "Lumbar treatment options",
+        bullets: [
+          "Muscle energy (most common): patient contracts isometrically, operator engages new barrier",
+          "HVLA: lumbar rolls common; contraindications include acute disc herniation, instability",
+          "Counterstrain: psoas and iliacus tender points commonly found",
+          "Soft tissue: prone or lateral kneading of paraspinals",
+          "MFR: direct or indirect",
+        ],
+      },
+      {
+        heading: "Psoas dysfunction",
+        bullets: [
+          "Common cause of low back pain",
+          "Patient stands with trunk flexed and shifted toward side of contracted psoas",
+          "Thomas test: contracted psoas if hip doesn't extend",
+          "Treatment: counterstrain (anterior tender points), muscle energy, MFR",
+        ],
+      },
+    ],
+    pearls: [
+      "Low back pain + Type II lumbar dysfunction = treat the Type II first",
+      "Always rule out red flags before OMT (fever, weight loss, neuro deficit, cancer, IV drug use)",
+      "Psoas tender points are ANTERIOR — palpate medial to ASIS in supine",
+    ],
+  },
+
+  {
+    id: "omm-sacrum",
+    session: 1,
+    category: "OMM",
+    title: "Sacral Dysfunctions & Torsions",
+    summary: "Sacral oblique axes, torsions, unilateral flexions, sacral rocking.",
+    sections: [
+      {
+        heading: "Sacral anatomy & motion",
+        bullets: [
+          "Sacrum has 3 axes: superior transverse (respiratory), middle transverse (postural), inferior transverse",
+          "Oblique axes: LEFT oblique axis (LOA) runs L superior to R inferior; RIGHT oblique axis (ROA) runs R sup to L inf",
+          "Sacral rocking: anterior nutation (counter-nutation) with respiration",
+        ],
+      },
+      {
+        heading: "Sacral torsions (4 types) — named by direction of rotation ON the axis",
+        bullets: [
+          "Forward torsions (physiologic): name matches axis — L on L, R on R",
+          "Backward torsions (non-physiologic): name does NOT match axis — R on L, L on R",
+          "Forward torsions are more common with normal walking gait",
+          "Backward torsions are pathologic and often more symptomatic",
+        ],
+      },
+      {
+        heading: "Diagnosing torsions — key findings",
+        bullets: [
+          "Seated flexion test: positive on side of restricted axis (the axis that DOES NOT move)",
+          "L on L: seated flexion positive on R; deep sulcus on R; inferior lateral angle (ILA) posterior on L; sphinx test improves alignment",
+          "R on R: mirror of L on L (positive seated flex on L, deep sulcus on L, ILA post on R)",
+          "L on R (backward): seated flex positive on L; deep sulcus on R; ILA post on L; sphinx WORSENS",
+          "R on L (backward): mirror — seated flex positive on R; deep sulcus on L; ILA post on R",
+          "Sphinx (prone press-up) test: forward torsions IMPROVE (asymmetry decreases); backward torsions WORSEN",
+        ],
+      },
+      {
+        heading: "Unilateral sacral flexion / extension",
+        bullets: [
+          "Unilateral sacral FLEXION: one side of sacral base moves anterior and inferior; deep sulcus + ILA more inferior + posterior on the SAME side; positive seated flex on the same side; sphinx improves",
+          "Unilateral sacral EXTENSION: one side moves posterior and superior; shallow sulcus + ILA more superior + anterior on that side; sphinx worsens; less common",
+        ],
+      },
+      {
+        heading: "Sacral treatment",
+        bullets: [
+          "Muscle energy with respiration: patient inhales (for extension/backward torsion treatment) or exhales (for flexion/forward torsion treatment) while operator engages barrier",
+          "L on L: position patient in 'Sims' (left lateral recumbent), engage with patient INHALATION/exhalation cycles",
+          "Backward torsions need a different positioning (often right lateral with knees up)",
+          "Articulatory rocking, MFR, BLT are alternatives",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Sacral torsion findings summary",
+        headers: ["Torsion", "Type", "Seated flex test +", "Deep sulcus", "ILA posterior", "Sphinx test"],
+        rows: [
+          ["L on L", "Forward (physiologic)", "RIGHT", "RIGHT", "LEFT", "IMPROVES"],
+          ["R on R", "Forward (physiologic)", "LEFT", "LEFT", "RIGHT", "IMPROVES"],
+          ["L on R", "Backward (non-physiologic)", "LEFT", "RIGHT", "LEFT", "WORSENS"],
+          ["R on L", "Backward (non-physiologic)", "RIGHT", "LEFT", "RIGHT", "WORSENS"],
+        ],
+      },
+    ],
+    pearls: [
+      "Forward torsions: name MATCHES (L on L, R on R) — physiologic, improve with sphinx",
+      "Backward torsions: name MISMATCHES — pathologic, worsen with sphinx",
+      "Seated flexion test positive on the side of the RESTRICTED axis (the side that doesn't move)",
+      "L on L torsion: deep sulcus R, ILA post L, seated flex +R, sphinx improves",
+      "Sacrum follows the lumbar spine in Fryette compensation",
+    ],
+  },
+
+  {
+    id: "omm-innominate",
+    session: 1,
+    category: "OMM",
+    title: "Innominate (Pelvic) Dysfunctions",
+    summary: "Anterior/posterior rotation, upslip/downslip, in-flare/out-flare, pubic shears.",
+    sections: [
+      {
+        heading: "Innominate anatomy",
+        bullets: [
+          "Each innominate = ilium + ischium + pubis",
+          "Sacroiliac joint: motion at SI is small but significant",
+          "Common in low back/SI pain, post-partum, falls onto buttocks",
+        ],
+      },
+      {
+        heading: "Diagnosing innominate dysfunctions",
+        bullets: [
+          "Standing flexion test: positive on side of dysfunction (PSIS rises higher on dysfunctional side)",
+          "Compare landmarks bilaterally: ASIS, PSIS, pubic tubercle, ischial tuberosity, medial malleolus",
+        ],
+      },
+      {
+        heading: "Anterior rotation (forward)",
+        bullets: [
+          "ASIS on dysfunctional side: INFERIOR (lower)",
+          "PSIS on dysfunctional side: SUPERIOR (higher)",
+          "Leg appears LONGER on affected side",
+          "Common with hip flexor tightness",
+          "Treatment: muscle energy — patient supine, extend hip on affected side and pull leg into table (hamstring activation)",
+        ],
+      },
+      {
+        heading: "Posterior rotation (backward)",
+        bullets: [
+          "ASIS: SUPERIOR (higher)",
+          "PSIS: INFERIOR (lower)",
+          "Leg appears SHORTER on affected side",
+          "Treatment: muscle energy — patient supine, flex hip on affected side (psoas/quad contraction against resistance)",
+        ],
+      },
+      {
+        heading: "Innominate upslip (superior shear)",
+        bullets: [
+          "ASIS, PSIS, ischial tuberosity, and pubic tubercle ALL superior on affected side",
+          "Leg shorter on affected side",
+          "Often after fall on buttock",
+          "Treatment: HVLA (long-axis traction with internal/external rotation) most effective",
+        ],
+      },
+      {
+        heading: "Innominate downslip",
+        bullets: [
+          "All landmarks INFERIOR on affected side",
+          "Leg longer on affected side",
+          "Less common",
+          "Treatment: muscle energy or HVLA with traction",
+        ],
+      },
+      {
+        heading: "In-flare / Out-flare",
+        bullets: [
+          "In-flare: ASIS closer to midline (medial) on affected side",
+          "Out-flare: ASIS farther from midline (lateral)",
+          "Often coexists with rotational dysfunction",
+        ],
+      },
+      {
+        heading: "Pubic shear",
+        bullets: [
+          "Superior pubic shear: pubic tubercle superior on affected side; tender on palpation",
+          "Inferior pubic shear: pubic tubercle inferior",
+          "Treatment: muscle energy with adductor or abductor contraction; or 'shotgun' technique (resisted abduction → adduction)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Innominate dysfunctions — landmark patterns",
+        headers: ["Dysfunction", "ASIS", "PSIS", "Leg length"],
+        rows: [
+          ["Anterior rotation", "INFERIOR", "SUPERIOR", "LONGER on affected"],
+          ["Posterior rotation", "SUPERIOR", "INFERIOR", "SHORTER on affected"],
+          ["Upslip (superior)", "ALL SUPERIOR", "ALL SUPERIOR", "SHORTER"],
+          ["Downslip", "ALL INFERIOR", "ALL INFERIOR", "LONGER"],
+          ["In-flare", "Medial", "—", "—"],
+          ["Out-flare", "Lateral", "—", "—"],
+        ],
+      },
+    ],
+    pearls: [
+      "Standing flexion test: positive on side of INNOMINATE dysfunction (PSIS moves higher)",
+      "Seated flexion test: positive on side of SACRAL dysfunction",
+      "Anterior rotation: leg LONG (think falling forward → ASIS down); posterior rotation: leg SHORT",
+      "Upslip: high-impact fall on ischium; HVLA with long-axis traction is treatment of choice",
+      "Always reassess after treatment with all landmarks",
+    ],
+  },
+
+  {
+    id: "omm-cranial",
+    session: 1,
+    category: "OMM",
+    title: "Cranial Osteopathy & SBS Dysfunctions",
+    summary: "Primary respiratory mechanism, sphenobasilar synchondrosis (SBS) strains.",
+    sections: [
+      {
+        heading: "Primary respiratory mechanism (PRM) — 5 components (Sutherland)",
+        bullets: [
+          "Inherent motility of the brain and spinal cord",
+          "Fluctuation of cerebrospinal fluid",
+          "Mobility of intracranial and intraspinal membranes (dura)",
+          "Articular mobility of cranial bones",
+          "Involuntary mobility of the sacrum between the ilia",
+        ],
+      },
+      {
+        heading: "Cranial rhythm",
+        bullets: [
+          "10–14 cycles/minute (some sources 6–12)",
+          "Flexion phase: midline bones flex, paired bones externally rotate",
+          "Extension phase: midline bones extend, paired bones internally rotate",
+          "Sacral motion: 'craniosacral mechanism' — sacrum counter-nutates with cranial flexion",
+        ],
+      },
+      {
+        heading: "Sphenobasilar synchondrosis (SBS) — the master joint",
+        bullets: [
+          "Junction of sphenoid and basiocciput (occipital)",
+          "Cartilaginous joint that fuses by ~age 25",
+          "All cranial motion is described relative to SBS",
+        ],
+      },
+      {
+        heading: "SBS strain patterns",
+        bullets: [
+          "TORSION: sphenoid and occiput rotate in OPPOSITE directions around an AP axis. Named for the side of the HIGH greater wing of sphenoid (e.g., 'right torsion' = R greater wing high)",
+          "SIDE-BENDING ROTATION: sphenoid and occiput rotate in SAME direction around an AP axis, but ALSO side-bend at a vertical axis. Bones go away from midline on the side of the convexity. Named for side of CONVEXITY (where greater wing and occipital squama are LOW)",
+          "VERTICAL STRAIN: sphenoid base moves superiorly (superior vertical strain) or inferiorly (inferior vertical strain) relative to occiput — they remain in parallel planes",
+          "LATERAL STRAIN: sphenoid translates laterally relative to occiput; both axes are vertical and parallel; named for the side of the sphenoid base translation (e.g., 'right lateral strain' = sphenoid moved right)",
+          "COMPRESSION: sphenoid and occiput compressed together; no motion sensed; often after head trauma; commonly associated with depression, severe headache",
+        ],
+      },
+      {
+        heading: "Diagnosis basics",
+        bullets: [
+          "Vault hold: hands cradle the cranium with index on greater wings of sphenoid",
+          "Listen for cranial rhythm and the type of motion",
+          "Distinguishing torsion vs side-bending rotation: in torsion, one greater wing is HIGH while the SAME-SIDE occipital squama is LOW (opposite); in side-bending, the LOW greater wing and LOW occipital squama are on the SAME side (the convexity)",
+        ],
+      },
+      {
+        heading: "Treatment",
+        bullets: [
+          "Indirect (most common): exaggerate the strain pattern, hold until still point, allow inherent forces to correct",
+          "CV4 (compression of 4th ventricle): operator's thenar eminences engage occiput, gentle compression to enhance CSF flow; used for sinusitis, headache, fever, autonomic balancing",
+          "V-spread (frontal lift, parietal lift): spreading sutures",
+          "Indications: tension headaches, sinusitis, otitis media, post-concussion, infants with plagiocephaly, asymmetry from birth trauma",
+          "Contraindications: acute intracranial bleed, increased ICP, recent skull fracture, severe coagulopathy",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "SBS strain patterns — quick reference",
+        headers: ["Strain", "Sphenoid/Occiput motion", "Named for", "Key finding"],
+        rows: [
+          ["Torsion", "Opposite direction (one wing up, other down)", "Side of HIGH greater wing", "High wing + LOW same-side occipital squama"],
+          ["Side-bending rotation", "Same direction + side-bend", "Side of CONVEXITY (low wing + low squama same side)", "Bones bulge away on convex side"],
+          ["Vertical strain", "Sphenoid moves sup or inf parallel to occiput", "Direction of sphenoid base", "Superior or inferior strain"],
+          ["Lateral strain", "Sphenoid translates left or right", "Side of sphenoid base translation", "Parallel vertical axes shifted"],
+          ["Compression", "Squeezed together; no motion", "—", "Often post-trauma; severe headache, depression"],
+        ],
+      },
+    ],
+    pearls: [
+      "Cranial rhythm 10–14 cycles/min — independent of breathing",
+      "All paired bones in cranium: external rotation in flexion phase",
+      "CV4 enhances CSF flow — useful for autonomic balancing, tension headaches, sinusitis",
+      "Compression of SBS often follows head trauma and presents with depression + severe headache",
+      "Contraindications: acute intracranial bleed/↑ICP, recent skull fracture",
+    ],
+  },
+
+  {
+    id: "omm-counterstrain",
+    session: 1,
+    category: "OMM",
+    title: "Counterstrain & Tender Points",
+    summary: "Indirect technique using tender points and position of ease for 90 seconds.",
+    sections: [
+      {
+        heading: "Concept",
+        bullets: [
+          "Indirect technique — moves AWAY from the barrier",
+          "Find tender point (1 cm diameter, sharply painful, no rebound)",
+          "Position the patient to reduce pain by at LEAST 70% (ideally 100%)",
+          "Hold position for 90 SECONDS (anterior cervical: 30 sec)",
+          "Slowly return patient to neutral while monitoring tender point",
+          "Reassess tenderness — should be markedly improved",
+        ],
+      },
+      {
+        heading: "Anterior cervical tender points",
+        bullets: [
+          "AC1 (located on posterior aspect of ascending ramus of mandible): treat with marked flexion + side-bending and rotation AWAY",
+          "AC2-AC6: located on anterolateral tip of transverse process; flexion + side-bending and rotation AWAY from tender point",
+          "AC7: top of clavicle near sternoclavicular joint; flexion + side-bending AWAY + rotation TOWARD",
+          "Anterior cervical tender points hold for 30 SECONDS only (not 90)",
+        ],
+      },
+      {
+        heading: "Posterior cervical tender points",
+        bullets: [
+          "PC1-inion (occipital): extension + side-bending AWAY + rotation AWAY",
+          "PC2-PC7 (on inferior aspect of spinous process or lateral): extension + side-bending and rotation AWAY",
+          "Hold 90 seconds",
+        ],
+      },
+      {
+        heading: "Thoracic & lumbar tender points",
+        bullets: [
+          "Anterior thoracic (on chest wall): treat with flexion + side-bending + rotation appropriately",
+          "Posterior thoracic (on spinous processes or paravertebrals): extension + side-bending AWAY + rotation AWAY",
+          "Anterior lumbar: psoas point (medial to ASIS) — treat with knee/hip flexion and side-bend toward",
+          "Posterior lumbar: usually require extension, sometimes Sims position",
+        ],
+      },
+      {
+        heading: "Common upper extremity points",
+        bullets: [
+          "Long head of biceps (anterior): flex elbow with slight abduction and external rotation",
+          "Lateral epicondyle: flex elbow with supination",
+          "Medial epicondyle: flex elbow with pronation",
+        ],
+      },
+      {
+        heading: "Common lower extremity points",
+        bullets: [
+          "Piriformis: deep gluteal tender point — flex/abduct/externally rotate (FABER)",
+          "Iliacus: medial to ASIS — bilateral hip flexion with knees pulled toward chest, ankles crossed",
+        ],
+      },
+      {
+        heading: "Indications",
+        bullets: [
+          "ACUTE somatic dysfunction (where direct techniques would cause pain)",
+          "Post-operative, hospitalized, frail elderly patients",
+          "Pediatric patients",
+          "Patients on anticoagulation (avoid HVLA)",
+          "Acute rib pain, low back spasm",
+        ],
+      },
+      {
+        heading: "Contraindications",
+        bullets: [
+          "Patient cannot tolerate the position",
+          "Inability to relax (counterstrain requires patient relaxation)",
+          "Severe systemic illness or unstable patient",
+        ],
+      },
+    ],
+    pearls: [
+      "Reduce pain by ≥70% in the position of ease",
+      "Hold for 90 SECONDS (anterior cervical = 30 seconds)",
+      "SLOWLY return to neutral — fast return defeats the treatment",
+      "Anterior tender points: usually require FLEXION + away from tender point",
+      "Posterior tender points: usually require EXTENSION + away from tender point",
+      "Iliacus tender point treatment position: bilateral hip flexion, knees to chest, ankles crossed",
+    ],
+  },
+
+  {
+    id: "omm-muscle-energy",
+    session: 1,
+    category: "OMM",
+    title: "Muscle Energy Technique (ME)",
+    summary: "Direct technique using patient's isometric contraction.",
+    sections: [
+      {
+        heading: "Procedure",
+        bullets: [
+          "Engage the restrictive barrier (just touch it, do not push through)",
+          "Patient performs an isometric contraction (usually against the operator's resistance) for ~3–5 seconds",
+          "Patient relaxes (operator holds position)",
+          "Wait 2–3 seconds (post-isometric relaxation period)",
+          "Operator engages the NEW restrictive barrier",
+          "Repeat 3–5 times total",
+          "Reassess",
+        ],
+      },
+      {
+        heading: "Physiology",
+        bullets: [
+          "Reciprocal inhibition: contraction of agonist inhibits antagonist",
+          "Post-isometric relaxation: muscle relaxes deeper after sustained contraction",
+          "Goal: lengthen restricted muscles, restore joint motion",
+        ],
+      },
+      {
+        heading: "Forces",
+        bullets: [
+          "Patient force: small to moderate (~20% of maximum), should not cause pain or operator strain",
+          "Operator force: equal and opposite — pure isometric (no joint motion during contraction)",
+          "If patient pushes too hard, ask for less force — never let the patient overpower",
+        ],
+      },
+      {
+        heading: "Indications",
+        bullets: [
+          "Most spinal dysfunctions (Type I and Type II)",
+          "Sacral torsions (with respiratory assist)",
+          "Innominate rotations",
+          "Rib dysfunctions",
+          "Cervical dysfunctions (often preferred over HVLA)",
+        ],
+      },
+      {
+        heading: "Contraindications",
+        bullets: [
+          "Acute fracture or dislocation",
+          "Severe muscle injury or pain",
+          "Patient unable to cooperate (cognitive issues, severe weakness)",
+          "Post-surgical (recent) at site",
+        ],
+      },
+    ],
+    pearls: [
+      "Engage barrier → patient contracts (3–5 sec) → patient relaxes → wait 2–3 sec → engage NEW barrier → repeat 3–5 times",
+      "ME = DIRECT technique (toward the barrier)",
+      "Patient should use ~20% of max strength; never let them overpower",
+      "Excellent in elderly, post-op, hospitalized — gentle and effective",
+    ],
+  },
+
+  {
+    id: "omm-hvla-others",
+    session: 1,
+    category: "OMM",
+    title: "HVLA, MFR, BLT, FPR, Still",
+    summary: "Other major OMT techniques + indications/contraindications.",
+    sections: [
+      {
+        heading: "HVLA (High-Velocity Low-Amplitude / Thrust)",
+        bullets: [
+          "DIRECT technique: thrust through restrictive barrier in a quick, controlled motion",
+          "Often produces audible 'pop' (cavitation)",
+          "Localize at the segment, take up all slack (engage barrier in all 3 planes), then deliver thrust",
+          "ABSOLUTE CONTRAINDICATIONS: fracture, dislocation, joint instability, malignancy at site, infection at site, severe osteoporosis with vertebral compression fractures, Down syndrome (atlantoaxial instability), rheumatoid arthritis (transverse ligament weakness), Chiari malformation, vertebrobasilar insufficiency, recent surgery at site, anticoagulation (relative)",
+        ],
+      },
+      {
+        heading: "Myofascial Release (MFR)",
+        bullets: [
+          "Direct: load fascia toward restriction, hold until release",
+          "Indirect: load fascia AWAY from restriction (point of ease), hold until release",
+          "Stacked, then unwound by the body's inherent forces",
+          "Indications: chronic fascial restrictions, post-surgical adhesions, edema",
+          "Gentle — well-tolerated in elderly, hospitalized, post-op",
+        ],
+      },
+      {
+        heading: "BLT (Balanced Ligamentous Tension) / LAS (Ligamentous Articular Strain)",
+        bullets: [
+          "INDIRECT technique — engage point of balance where ligaments are equally tensioned",
+          "Hold position; inherent forces correct the dysfunction",
+          "Gentle and safe — used in elderly, infants, post-op",
+        ],
+      },
+      {
+        heading: "FPR (Facilitated Positional Release)",
+        bullets: [
+          "INDIRECT — quick technique",
+          "Place region in neutral, then apply facilitating force (compression or torsion)",
+          "Move to point of ease (or 'feather' the diagnosis position)",
+          "Hold 3–5 seconds, return to neutral",
+          "Quick, useful for acute dysfunctions",
+        ],
+      },
+      {
+        heading: "Still technique",
+        bullets: [
+          "COMBINED indirect/direct",
+          "Start at point of ease (indirect), apply compression or distraction, then move through neutral and into the restrictive barrier (direct)",
+          "Reassess",
+        ],
+      },
+      {
+        heading: "Soft tissue / inhibition / articulatory",
+        bullets: [
+          "Soft tissue: kneading, stretching, perpendicular traction of muscles — usually preparatory",
+          "Inhibition: sustained pressure on a hypertonic muscle to reduce tone",
+          "Articulatory: low-velocity, moderate-amplitude — gentle rhythmic motion through restricted range",
+        ],
+      },
+      {
+        heading: "Lymphatic techniques",
+        bullets: [
+          "Pedal pump (Dalrymple): rhythmic dorsiflexion of feet (pumps lower extremity lymph)",
+          "Thoracic pump: rhythmic compression on chest in supine position",
+          "Indications: edema, lymphatic congestion, pneumonia (improve lymphatic drainage), CHF (cautiously), URI",
+          "Contraindications: acute deep vein thrombosis, ABSCESS (could spread), fracture, recent abdominal surgery",
+          "Rib raising: stretches paraspinal muscles, normalizes sympathetic tone (T1–T4 for upper, T5–T9 for GI)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "OMT technique selection by patient",
+        headers: ["Scenario", "Preferred technique"],
+        rows: [
+          ["Acute somatic dysfunction (too painful for direct)", "Counterstrain, BLT, FPR, indirect MFR"],
+          ["Elderly, frail, osteoporotic", "Counterstrain, ME, BLT, indirect MFR — AVOID HVLA"],
+          ["Hospitalized, post-op", "Lymphatic, counterstrain, ME, indirect MFR"],
+          ["Acute rib pain / spasm", "Counterstrain, ME with respiration"],
+          ["Pneumonia, URI", "Rib raising + lymphatic pump"],
+          ["Pregnancy (LBP)", "ME, counterstrain, MFR; AVOID HVLA in 3rd trimester pelvis"],
+          ["Chronic recurrent low back pain", "ME, HVLA (if no contraindications), articulatory, MFR"],
+        ],
+      },
+    ],
+    pearls: [
+      "HVLA contraindications: think DOWN (Down syndrome → AA instability), RA (transverse ligament), severe osteoporosis, malignancy, infection, instability, anticoagulation",
+      "Indirect techniques (counterstrain, BLT, FPR, indirect MFR): safest for acute, frail, hospitalized",
+      "Pedal pump: AVOID with DVT (could embolize)",
+      "Rib raising: T1–T4 normalizes upper extremity/head sympathetics; T5–T9 normalizes GI sympathetics",
+    ],
+  },
+
+  {
+    id: "omm-viscerosomatic",
+    session: 1,
+    category: "OMM",
+    title: "Viscerosomatic & Somatovisceral Reflexes",
+    summary: "Sympathetic + parasympathetic innervation by organ — Chapman's points.",
+    sections: [
+      {
+        heading: "Viscerosomatic reflex",
+        bullets: [
+          "Visceral pathology → somatic dysfunction at the corresponding spinal level (sympathetic origin)",
+          "Manifests as paraspinal tissue texture changes, tenderness, restricted motion",
+          "Persistence after acute illness can become chronic somatic dysfunction (facilitation)",
+        ],
+      },
+      {
+        heading: "Somatovisceral reflex",
+        bullets: [
+          "Somatic dysfunction → visceral symptoms or dysfunction (through shared neural pathways)",
+          "Basis for using OMT to influence visceral function (e.g., rib raising for sympathetic balance)",
+        ],
+      },
+      {
+        heading: "Sympathetic levels by organ",
+        bullets: [
+          "Head & neck: T1–T4",
+          "Heart: T1–T5 (left for inotropy/rate, right for SA node)",
+          "Lungs/bronchi: T2–T7",
+          "Upper extremity: T2–T7",
+          "Esophagus, stomach, liver, gallbladder, spleen, pancreas, duodenum: T5–T9 (proximal GI tract)",
+          "Small intestine, appendix, R colon (proximal): T9–T11 (mid-GI)",
+          "L colon, kidneys, ureters, ovaries, testes: T10–L2 (lower GI/GU)",
+          "Bladder & lower extremity: T10–L2 (testes/ovaries T10; uterus, cervix T10–L2)",
+          "Erection: parasympathetic; ejaculation: sympathetic ('Point and Shoot')",
+        ],
+      },
+      {
+        heading: "Parasympathetic by organ",
+        bullets: [
+          "Head, neck, heart, lungs, GI (down to transverse colon): vagus (CN X)",
+          "Descending colon, sigmoid, rectum, bladder, reproductive organs (lower): S2–S4 (pelvic splanchnic)",
+          "Vagal stimulation: ↓HR, ↑ bronchoconstriction, ↑GI motility",
+        ],
+      },
+      {
+        heading: "Common viscerosomatic findings",
+        bullets: [
+          "Acute MI: left T1–T4 paraspinal tissue changes (often associated with referred chest, jaw, arm pain)",
+          "Pneumonia: T2–T7 paraspinal changes on affected side",
+          "Cholecystitis: right T5–T9; also right shoulder pain (phrenic nerve)",
+          "Appendicitis: T10–T12 (right); McBurney point tenderness",
+          "Renal colic: T10–L2 (back and flank pain referred)",
+          "Pelvic pathology: T10–L2 or S2–S4 (depending on organ)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Sympathetic levels — clinical pearls",
+        headers: ["Organ", "Sympathetic level", "Clinical correlate"],
+        rows: [
+          ["Head/Neck", "T1–T4", "Sinus, TMJ, headache"],
+          ["Heart", "T1–T5 (R: SA node; L: rate/contractility)", "MI viscerosomatic at left T1–T4"],
+          ["Lungs", "T2–T7", "Asthma, pneumonia, COPD"],
+          ["UE", "T2–T7", "Raynaud, CRPS, brachial plexopathy"],
+          ["Upper GI (stomach, liver, gallbladder, spleen, pancreas)", "T5–T9", "Cholecystitis = right T5–T9 + R shoulder"],
+          ["Mid GI (SI, appendix, R colon)", "T9–T11", "Appendicitis = T10–T12 right"],
+          ["Lower GI (L colon to rectum)", "T10–L2 (pre) / S2–S4 (para)", "Constipation, IBS"],
+          ["Kidneys / ureters", "T10–L2", "Renal colic referred to flank/groin"],
+          ["Pelvic organs / LE", "T10–L2 (sym) / S2–S4 (para)", "Dysmenorrhea, BPH, ED"],
+        ],
+      },
+    ],
+    pearls: [
+      "Point (parasympathetic erection, S2–S4) and Shoot (sympathetic ejaculation, T10–L2)",
+      "Asthma exacerbation: rib raising at T2–T7 reduces sympathetic outflow → bronchodilation",
+      "Vagus (CN X): heart, lungs, GI down to mid-transverse colon",
+      "S2–S4 ('S2,3,4 keep poop and pee off the floor'): pelvic parasympathetics",
+    ],
+  },
+
+  {
+    id: "omm-chapmans",
+    session: 1,
+    category: "OMM",
+    title: "Chapman's Points",
+    summary: "Anterior + posterior reflex points for visceral dysfunction.",
+    sections: [
+      {
+        heading: "What they are",
+        bullets: [
+          "Small (2–3 mm), tender, beady or pebble-like nodules in deep fascia",
+          "Located bilaterally at specific anterior and posterior body sites",
+          "Reflect dysfunction in associated viscera",
+          "Treated with gentle rotary pressure for 10–30 seconds",
+        ],
+      },
+      {
+        heading: "Anterior Chapman's points (selected high-yield)",
+        bullets: [
+          "Sinusitis: intercostal space (ICS) 1 along sternum (1st rib at sternum)",
+          "Otitis (middle ear): superior clavicle (medial third)",
+          "Pharyngitis: anterior 1st rib (lateral to sternum)",
+          "Tonsillitis: between 1st and 2nd ribs near sternum",
+          "Bronchitis: 2nd ICS near sternum",
+          "Upper lung: 3rd ICS near sternum",
+          "Lower lung: 4th ICS near sternum",
+          "Myocardium: 2nd ICS near sternum (similar location, more sensitive on heart pathology)",
+          "Esophagus / Bronchus: 2nd ICS",
+          "Stomach: 5th ICS on left (acid problem); 6th ICS on left (peristalsis problem)",
+          "Liver / Gallbladder: 5th and 6th ICS on right",
+          "Spleen: 7th ICS on left",
+          "Kidney: 1 inch lateral and superior to umbilicus",
+          "Bladder: at the umbilicus and along the linea alba below umbilicus",
+          "Urethra: along the superior pubic ramus near the symphysis",
+          "Appendix: tip of 12th rib on right",
+          "Adrenal: 1 inch lateral and 2 inches superior to umbilicus",
+          "Pancreas: 7th ICS on right",
+        ],
+      },
+      {
+        heading: "Posterior Chapman's points",
+        bullets: [
+          "Each anterior point has a corresponding posterior point at the same vertebral level",
+          "Located halfway between spinous process and transverse process (in paraspinal muscle)",
+          "Often the anterior is used for diagnosis; the posterior for monitoring resolution",
+        ],
+      },
+      {
+        heading: "Treatment principles",
+        bullets: [
+          "Gentle rotary pressure (clockwise or counterclockwise) for 10–30 seconds per point",
+          "Treat anterior point first, then posterior",
+          "Reassess for tenderness reduction",
+          "Always treat the underlying visceral problem (Chapman's helps but isn't standalone cure)",
+        ],
+      },
+    ],
+    pearls: [
+      "Stomach: 5th ICS LEFT (acid) vs 6th ICS LEFT (peristalsis)",
+      "Liver/gallbladder Chapman's on the RIGHT (5th/6th ICS)",
+      "Appendix Chapman's: tip of 12th rib on right",
+      "Adrenal Chapman's: 1 inch lateral, 2 inches superior to umbilicus",
+      "Always reassess after treating; persistent tenderness = ongoing visceral dysfunction",
+    ],
+  },
+
+  {
+    id: "omm-special-situations",
+    session: 1,
+    category: "OMM",
+    title: "OMT in Special Situations",
+    summary: "Pregnancy, hospitalized, post-op, pediatric — indications and contraindications.",
+    sections: [
+      {
+        heading: "Pregnancy",
+        bullets: [
+          "Indications: low back pain, sciatica, edema, constipation, nausea (with caution), preparation for labor",
+          "Common dysfunctions: pubic shears, sacral torsions, lumbar hyperlordosis, upper crossed syndrome",
+          "Safe techniques: counterstrain, BLT, MFR, ME (gentle), articulatory, lymphatic",
+          "AVOID: HVLA in pelvis in 3rd trimester (risk of premature labor), prone positioning after 20 weeks (use left lateral)",
+          "Pedal pump can help edema (contraindicated if DVT)",
+        ],
+      },
+      {
+        heading: "Hospitalized patients (inpatient OMT)",
+        bullets: [
+          "Pneumonia: rib raising T2–T7 + thoracic lymphatic pump + paraspinal release → improves lymphatic clearance and reduces hospital stay in some studies",
+          "Postoperative ileus: rib raising at T5–T12 + sacral rocking + mesenteric release",
+          "CHF: lymphatic techniques (cautiously — start small, monitor BP)",
+          "ICU/intubated: gentle MFR, indirect techniques, lymphatic pump if appropriate",
+          "Goal: improve homeostatic function, not necessarily 'fix' all dysfunctions",
+        ],
+      },
+      {
+        heading: "Post-operative",
+        bullets: [
+          "Counterstrain, BLT, indirect MFR — gentle, well-tolerated",
+          "Avoid direct techniques at the surgical site for 6 weeks",
+          "Lymphatic pump for post-op ileus (avoid if recent abdominal surgery to incision site)",
+          "Address ileus + atelectasis + pain with appropriate OMT",
+        ],
+      },
+      {
+        heading: "Pediatrics",
+        bullets: [
+          "Indications: torticollis, plagiocephaly, otitis media (with antibiotics if bacterial), colic, GERD, constipation, asthma",
+          "Cranial techniques very useful in infants (sutures not yet fused)",
+          "Use gentle indirect techniques — BLT, MFR, cranial",
+          "Newborns with birth trauma → cranial OMT can address strain patterns",
+        ],
+      },
+      {
+        heading: "Elderly",
+        bullets: [
+          "Avoid HVLA if osteoporosis (DEXA T-score <-2.5), vertebral compression fractures, atherosclerotic vessels (vertebrobasilar)",
+          "Counterstrain, BLT, MFR, ME (gentle) are preferred",
+          "Address polypharmacy effects on tissue (e.g., bisphosphonate osteonecrosis)",
+        ],
+      },
+      {
+        heading: "Sports medicine",
+        bullets: [
+          "Acute injuries: counterstrain, BLT, MFR (indirect)",
+          "Subacute/chronic: ME, HVLA (if appropriate)",
+          "Return-to-play decisions should incorporate OMT findings",
+          "Common areas: shoulder, lumbar, sacrum, ribs, ankle",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "OMT contraindications by technique",
+        headers: ["Technique", "Absolute contraindications"],
+        rows: [
+          ["HVLA", "Fracture, dislocation, instability, malignancy at site, infection at site, severe osteoporosis, Down syndrome (AA instability), RA (transverse ligament), vertebrobasilar insufficiency, anticoagulation (relative)"],
+          ["Lymphatic pump (pedal, thoracic)", "DVT, abscess (could spread), bone fracture, recent abdominal surgery (for thoracic pump)"],
+          ["Cranial", "Acute intracranial bleed, ↑ICP, recent skull fracture, severe coagulopathy"],
+          ["Soft tissue", "Acute fracture or severe inflammation at site"],
+          ["ME, counterstrain, BLT, MFR", "Few absolute; tailor to patient — generally very safe"],
+        ],
+      },
+    ],
+    pearls: [
+      "Pregnant patient: AVOID prone after 20 weeks (uterocaval compression); use LEFT LATERAL position",
+      "Pneumonia + OMT (rib raising + lymphatic pump) has evidence for reduced length of stay (MOPSE study)",
+      "Newborn cranial: sutures unfused, very gentle technique, excellent results for plagiocephaly, otitis",
+      "Always document dysfunctions found, technique used, and patient response",
+    ],
+  },
+
+  {
+    id: "omm-indications",
+    session: 1,
+    category: "OMM",
+    title: "OMT Indications, Contraindications & Documentation",
+    summary: "When to use, when to avoid, how to write the note.",
+    sections: [
+      {
+        heading: "When OMT is indicated",
+        bullets: [
+          "Somatic dysfunction (TART present)",
+          "As adjunct in musculoskeletal pain (low back, neck, shoulder)",
+          "Tension/cervicogenic headache",
+          "Pregnancy-related low back/pubic pain",
+          "Post-operative ileus, atelectasis (with appropriate caution)",
+          "Otitis media (in conjunction with abx)",
+          "Asthma, COPD exacerbation (lymphatic + rib raising)",
+          "Pneumonia (rib raising + lymphatic pump adjunct)",
+          "Sinusitis (lymphatic + cranial)",
+          "Functional GI complaints (IBS, constipation, gastroparesis)",
+          "Pediatric: colic, plagiocephaly, torticollis, otitis",
+        ],
+      },
+      {
+        heading: "Absolute contraindications to OMT (entire toolkit)",
+        bullets: [
+          "Lack of patient consent",
+          "Severe systemic illness (sepsis, hemodynamic instability)",
+          "Recent fracture (at the dysfunctional site)",
+          "Acute spinal cord injury",
+          "Acute MI (defer OMT)",
+        ],
+      },
+      {
+        heading: "Relative contraindications",
+        bullets: [
+          "Specific technique-based — see other notes",
+          "Anticoagulation (favor gentle indirect)",
+          "Severe osteoporosis (avoid HVLA)",
+          "Acute infection or abscess at site",
+          "Recent surgery at site (within 6 weeks)",
+        ],
+      },
+      {
+        heading: "Documentation (SOAP note OMT section)",
+        bullets: [
+          "Subjective: chief complaint, pain quality, location, severity",
+          "Objective: TART findings — name dysfunctions by direction of FREEDOM (e.g., 'C4 FRSL, T5 ERSR, R on R sacrum, anterior innominate L')",
+          "Assessment: include diagnosis + somatic dysfunctions found",
+          "Plan: list techniques used (e.g., 'ME to C4, counterstrain to PC4 tender point, HVLA to T5'), patient response, follow-up plan",
+        ],
+      },
+      {
+        heading: "Billing & ICD-10 (OMT-specific)",
+        bullets: [
+          "M99.0x: segmental and somatic dysfunction by region (M99.00 head, M99.01 cervical, M99.02 thoracic, M99.03 lumbar, M99.04 sacral, M99.05 pelvic, M99.06 LE, M99.07 UE, M99.08 rib, M99.09 abdomen)",
+          "CPT 98925-98929 based on body regions treated (1-2, 3-4, 5-6, 7-8, 9-10)",
+          "Document specific dysfunctions per region",
+        ],
+      },
+    ],
+    pearls: [
+      "Always assess and document TART before treatment",
+      "Name dysfunctions by direction of FREEDOM, not restriction",
+      "Tailor technique to the patient (acute → indirect; chronic with good tolerance → direct)",
+      "Always reassess after treatment and document patient response",
+      "OMT is an adjunct, not a substitute for definitive medical treatment",
+    ],
+  },
+
   {
     id: "ethics-step2",
     session: 2,
