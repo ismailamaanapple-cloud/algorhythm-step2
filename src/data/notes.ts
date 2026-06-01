@@ -4485,6 +4485,1620 @@ export const NOTES: Note[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════
+  // APEX 5 — NUTRITION, SCREENING, BIOSTATS, ETHICS
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "nutrition-comprehensive",
+    session: 1,
+    category: "Nutrition",
+    title: "Clinical Nutrition — Comprehensive",
+    summary: "Refeeding, micronutrient deficiencies/toxicities, TPN, malnutrition assessment, eating disorders.",
+    sections: [
+      {
+        heading: "Refeeding syndrome",
+        bullets: [
+          "Trigger: carbohydrate reintroduction in malnourished/starved patient → insulin surge",
+          "Insulin drives PO₄, K, Mg INTO cells",
+          "HALLMARK: severe HYPOPHOSPHATEMIA → ATP depletion → respiratory failure + arrhythmias",
+          "Prevention: thiamine BEFORE feeding, start low-calorie (~25% goal), advance slowly, replete electrolytes",
+          "High-risk: severe malnutrition, prolonged starvation, alcohol use disorder, anorexia nervosa, hyperemesis",
+        ],
+      },
+      {
+        heading: "Thiamine (B1) deficiency",
+        bullets: [
+          "Wernicke triad: confusion + ophthalmoplegia/nystagmus + ataxia (REVERSIBLE)",
+          "Korsakoff: amnesia + confabulation (PERMANENT)",
+          "Always give IV thiamine BEFORE glucose in malnourished",
+          "High-risk: alcoholism, hyperemesis gravidarum, anorexia, post-bariatric, starvation",
+          "Wet beriberi: high-output HF + edema",
+          "Dry beriberi: peripheral neuropathy",
+        ],
+      },
+      {
+        heading: "B12 (cobalamin) deficiency",
+        bullets: [
+          "Causes: pernicious anemia (anti-IF), metformin (impairs Ca-dependent absorption in terminal ileum), chronic PPIs, ileal resection >60 cm (lifelong IM)",
+          "Megaloblastic anemia + neuro (subacute combined degeneration of dorsal columns + corticospinal)",
+          "↑ MMA + ↑ homocysteine",
+          "Folate deficiency: ↑ homocysteine ONLY (no neuro, normal MMA)",
+          "Always give B12 BEFORE folate (folate alone worsens neuro symptoms)",
+        ],
+      },
+      {
+        heading: "Copper deficiency (post-bariatric, excess zinc)",
+        bullets: [
+          "Absorbed in stomach + proximal duodenum (bypassed in RYGB)",
+          "Mimics B12: posterior column signs (vibration, proprioception, +Romberg)",
+          "DISTINGUISHING feature: NEUTROPENIA + anemia",
+          "Normal B12 in copper deficiency",
+          "Excess zinc supplementation can also cause copper deficiency",
+        ],
+      },
+      {
+        heading: "TPN complications",
+        bullets: [
+          "Hepatic steatosis + cholestasis within 1–4 weeks",
+          "Biliary stasis → sludge/stones (no enteral stimulation = ↓ CCK)",
+          "CLABSI: most dangerous infection (central line)",
+          "Trace element deficiencies emerge with long-term TPN:",
+          "  Selenium → dilated cardiomyopathy + skeletal myopathy",
+          "  Chromium → refractory hyperglycemia",
+          "  Zinc → dermatitis + diarrhea + alopecia (acrodermatitis enteropathica)",
+          "Refeeding risk with TPN initiation",
+        ],
+      },
+      {
+        heading: "Other micronutrients (high yield)",
+        bullets: [
+          "Vitamin A: deficiency → night blindness + xerophthalmia + Bitot spots; toxicity → pseudotumor cerebri + hepatotoxicity; teratogenic (isotretinoin → craniofacial/CNS/cardiac)",
+          "Vitamin D: deficiency → rickets/osteomalacia; toxicity → hyperCa + hyperphosphate + SUPPRESSED PTH (vs primary hyperparathyroidism: low PO4)",
+          "Vitamin E: deficiency → posterior column + spinocerebellar degeneration + hemolytic anemia",
+          "Vitamin C: scurvy — bleeding/swollen gums, perifollicular hemorrhages, corkscrew hairs, poor wound healing",
+          "Vitamin K: deficiency → bleeding; warfarin interaction — dietary CONSISTENCY, not avoidance",
+          "Zinc: acrodermatitis enteropathica, hypogeusia, hypogonadism",
+          "Iodine: goiter, hypothyroidism, cretinism (pregnancy)",
+          "Selenium: TPN → dilated CM; thyroid dysfunction",
+        ],
+      },
+      {
+        heading: "TPN trace element pattern recognition",
+        bullets: [
+          "TPN + cardiomyopathy → Selenium",
+          "TPN + refractory hyperglycemia → Chromium",
+          "TPN + dermatitis + diarrhea + alopecia → Zinc",
+          "TPN + neuropathy/anemia + neutropenia → Copper",
+          "Maternal goiter + hypothyroid infant → Iodine",
+          "Refractory hypokalemia → Magnesium",
+        ],
+      },
+      {
+        heading: "Drug-nutrient interactions (high-yield)",
+        bullets: [
+          "PPIs → ↓ Mg, Ca, B12 absorption",
+          "Metformin → B12 deficiency",
+          "Isoniazid → B6 deficiency (give B6 to prevent peripheral neuropathy + sideroblastic anemia)",
+          "Loop diuretics → K + Mg wasting; replete Mg before K",
+          "Orlistat → fat-soluble vitamin (A, D, E, K) malabsorption",
+          "GLP-1 agonists (semaglutide): CONTRAINDICATED with personal/FHx MTC or MEN 2",
+        ],
+      },
+      {
+        heading: "Disease-specific nutrition",
+        bullets: [
+          "Metabolic syndrome: ≥3 of 5 (waist, TG ≥150, HDL <40/50, BP ≥130/85, FBG ≥100); first-line Mediterranean diet",
+          "Heart failure: Na restriction (≤2 g); fluid restriction if Na <130",
+          "CKD stages 4–5 (not on dialysis): protein 0.6–0.8 g/kg; once on dialysis 1.0–1.2 g/kg",
+          "Cirrhosis: DO NOT restrict protein (1.2–1.5 g/kg) to prevent sarcopenia",
+          "MASLD: 7–10% weight loss is most effective",
+          "Kidney stones (calcium oxalate): INCREASE dietary calcium (binds oxalate in gut)",
+          "Diabetes prevention: metformin if BMI ≥35, age <60, or prior GDM",
+        ],
+      },
+      {
+        heading: "Malnutrition assessment & PEM",
+        bullets: [
+          "Albumin/prealbumin: NEGATIVE acute phase reactants — drop with inflammation; NOT reliable nutrition markers in acute illness",
+          "Kwashiorkor: protein deficiency with adequate calories — bilateral pitting edema, distended abdomen, fatty liver",
+          "Marasmus: total caloric + protein deprivation — wasting, no edema",
+          "Frailty: ≥3 of 5 (weight loss, exhaustion, ↓grip strength, slow gait, low activity)",
+          "Significant weight loss in LTC: ≥5% in 1 mo, ≥7.5% in 3 mo, ≥10% in 6 mo",
+        ],
+      },
+    ],
+    pearls: [
+      "Thiamine before glucose in malnourished",
+      "B12 before folate",
+      "TPN + cardiomyopathy → Selenium; refractory hyperglycemia → Chromium",
+      "Post-bariatric + posterior column signs + normal B12 + neutropenia = Copper deficiency",
+      "Anorexia leading cause of death: cardiac arrhythmia",
+      "Don't restrict protein in cirrhosis",
+    ],
+    relatedCaseIds: ["refeeding-syndrome", "wernicke-hg", "b12-metformin", "copper-bariatric", "vitamin-a-toxicity"],
+  },
+
+  {
+    id: "screening-comprehensive",
+    session: 2,
+    category: "Preventive Medicine",
+    title: "Cancer & Adult Screening — Complete Reference",
+    summary: "Age-appropriate screening for all major cancers and conditions.",
+    sections: [
+      {
+        heading: "Colorectal cancer (CRC)",
+        bullets: [
+          "Average risk: colonoscopy q10 years starting age 45 until 75",
+          "Alternatives: FIT annually, sigmoidoscopy q5y + FIT q3y, Cologuard q3y",
+          "FHx in 1st-degree relative: start at 40 OR 10 years before relative's dx (whichever earlier)",
+          "Relative <60 at dx: repeat q5y; >60: q10y",
+          "UC: start 8–10 years after dx, q1–3y",
+          "FAP: annual colonoscopy from age 10–12; prophylactic colectomy (100% lifetime CRC risk)",
+          "Post-polypectomy: low-risk q5–10y; high-risk (≥3 adenomas, ≥10 mm, villous, HGD, SSP) q3y",
+        ],
+      },
+      {
+        heading: "Lung cancer",
+        bullets: [
+          "Annual low-dose CT (LDCT) for adults 50–80 with ≥20 pack-year history who currently smoke or quit <15 years ago",
+          "Stop if: quit ≥15 years ago OR life-expectancy-limiting illness",
+          "USPSTF 2021 lowered age from 55→50 and pack-years from 30→20",
+        ],
+      },
+      {
+        heading: "Cervical cancer",
+        bullets: [
+          "Ages 21–29: Pap alone q3 years (no HPV cotesting)",
+          "Ages 30–65: Pap + HPV q5 years (preferred) OR Pap alone q3 years",
+          "Discontinue at age 65 if adequate prior screening + no high-risk history",
+          "HIV+: annual Pap starting at diagnosis or onset of sexual activity",
+          "Immunosuppressed (SLE): annual Pap + HPV from sexual activity",
+        ],
+      },
+      {
+        heading: "Breast cancer",
+        bullets: [
+          "Mammography q2 years for average-risk women 50–74 (USPSTF; updated to start at 40 in 2024)",
+          "BRCA: genetic counseling if strong FHx; MRI screening if confirmed BRCA mutation",
+          "Discontinue when life expectancy <10 years",
+        ],
+      },
+      {
+        heading: "Prostate cancer",
+        bullets: [
+          "Shared decision-making age 55–69 (PSA)",
+          "Discuss risks of overdiagnosis + treatment morbidity",
+          "Not routinely recommended ≥70",
+        ],
+      },
+      {
+        heading: "Cardiovascular / metabolic",
+        bullets: [
+          "Diabetes T2: all adults ≥45 q3 years; earlier if BMI ≥25 + 1 risk factor (FHx, GDM, HTN, dyslipidemia, certain ethnicities)",
+          "Lipid screening: men ≥35, women ≥40–45, q4–6 years; earlier if risk factors",
+          "Pediatric lipid screening: once at 9–11 and 17–21",
+          "AAA: one-time US for men 65–75 who ever smoked",
+        ],
+      },
+      {
+        heading: "General adult",
+        bullets: [
+          "HCV: all adults 18–79 once (universal); repeat if ongoing IVDU",
+          "HBV: chronic dialysis, frequent transfusions",
+          "Osteoporosis: DEXA for all women ≥65 (or earlier with risk factors); men ≥70",
+          "Hearing: formal audiometry if communication difficulties",
+          "IPV: screen all women of childbearing age routinely",
+        ],
+      },
+      {
+        heading: "STI screening",
+        bullets: [
+          "If diagnosed with one STI → screen for HIV, syphilis, gonorrhea, HBV",
+          "Sexually active young women: chlamydia + gonorrhea annually",
+          "Trichomonas: women only",
+          "HSV: only if characteristic lesions present",
+          "HIV+ initial: STIs, hepatitis A/B/C, latent TB",
+        ],
+      },
+      {
+        heading: "Pregnancy",
+        bullets: [
+          "Initial: HIV, syphilis, HBsAg, asymptomatic bacteriuria (urine culture)",
+          "High-risk (age <25, multiple partners, STI history): gonorrhea + chlamydia at initial + 3rd trimester",
+        ],
+      },
+    ],
+    pearls: [
+      "Always start CRC screening earlier if FHx (40 or 10 years before relative's dx)",
+      "LDCT age 50–80 + ≥20 pack-years + smoking or quit <15 years",
+      "Don't continue cancer screening when life expectancy <10 years",
+      "BRCA1/2: prophylactic mastectomy + BSO consideration after childbearing",
+    ],
+  },
+
+  {
+    id: "vaccines-comprehensive",
+    session: 2,
+    category: "Preventive Medicine",
+    title: "Adult Vaccination Schedule",
+    summary: "Routine, high-risk, and PEP vaccinations for adults.",
+    sections: [
+      {
+        heading: "Routine adult vaccines",
+        bullets: [
+          "Influenza: annual, age ≥6 months; severe egg allergy NOT a contraindication to inactivated",
+          "Tdap once + Td booster q10 years; Tdap each pregnancy at 27–36 weeks",
+          "MMR: 2 doses if born after 1957 without immunity",
+          "Varicella: 2 doses if no immunity (live — avoid in pregnancy + immunocompromised)",
+          "Zoster (Shingrix recombinant): all ≥50 (and immunocompromised ≥19); SAFE in immunocompromised (not live)",
+          "HPV: all 11–12 (can start at 9); catch-up to 26 (shared decision 27–45). <15 yrs = 2 doses; ≥15 or immunocompromised = 3 doses",
+          "Hepatitis B: universal for adults 19–59",
+        ],
+      },
+      {
+        heading: "Pneumococcal (adults)",
+        bullets: [
+          "19–64 with chronic conditions (heart, lung, liver, DM, smoking): PPSV23 alone",
+          "19–64 very high risk (immunocompromised, asplenia, CSF leak, cochlear implant, CKD): PCV15 followed by PPSV23 ≥8 weeks later",
+          "≥65 (no prior vaccine): PCV20 alone OR PCV15 then PPSV23 ≥1 year later",
+        ],
+      },
+      {
+        heading: "Meningococcal",
+        bullets: [
+          "Routine: primary dose at 11–12, booster at 16",
+          "High-risk (start ≥2 months): asplenia, complement deficiency, HIV, endemic travel",
+          "Asplenia: meningococcal + pneumococcal + Hib boosters",
+        ],
+      },
+      {
+        heading: "RSV",
+        bullets: [
+          "Adults ≥60: shared decision",
+          "Pregnant: 32–36 weeks (passive antibody to newborn)",
+        ],
+      },
+      {
+        heading: "Pregnancy",
+        bullets: [
+          "GIVE: Tdap (27–36 wks), inactivated influenza, RSV (32–36 wks), RhoGAM 28 wks if Rh-",
+          "CONTRAINDICATED (live): MMR, varicella, live-attenuated intranasal influenza",
+          "HPV: not given in pregnancy (not because of teratogenicity, but lack of data)",
+          "Hepatitis A/B: high-risk OK",
+        ],
+      },
+      {
+        heading: "Post-exposure prophylaxis (PEP)",
+        bullets: [
+          "Tetanus: clean minor — Tdap if <3 doses/unknown OR ≥3 doses + ≥10 yrs; dirty/severe — Tdap + TIG if <3 doses/unknown OR ≥3 doses + ≥5 yrs",
+          "Varicella: immunocompetent → vaccine within 5 days; high-risk (pregnant, immunocompromised, infants) → VZIG",
+          "Rabies: high-risk animal (bat, raccoon, fox) → vaccine + RIG (DIFFERENT arms); low-risk (rabbits, rodents) → only wound care",
+          "Hepatitis B: unvaccinated + HBsAg+ exposure → HBV vaccine + HBIG; vaccinated immune (anti-HBs ≥10) → no PEP",
+          "HIV: 3-drug ART within 72 hours × 28 days",
+        ],
+      },
+      {
+        heading: "Contraindications",
+        bullets: [
+          "Rotavirus: history of intussusception, SCID",
+          "Pertussis (DTaP): anaphylaxis, encephalopathy, uncontrolled epilepsy",
+          "Live vaccines: pregnancy, severe immunocompromise (CD4 <200, transplant, biologics)",
+          "Mild illness (low-grade fever, cough): SAFE — only postpone for moderate/severe systemic illness",
+        ],
+      },
+    ],
+    pearls: [
+      "Shingrix is recombinant — safe in immunocompromised (Zostavax was live)",
+      "Egg allergy isn't a contraindication to inactivated flu",
+      "Asplenia needs THREE boosters: meningococcal, pneumococcal, Hib",
+      "RIG and rabies vaccine: different anatomic sites (prevent neutralization)",
+      "Always treat both Mg before K in repletion (low Mg blunts K)",
+    ],
+  },
+
+  {
+    id: "biostats-comprehensive",
+    session: 2,
+    category: "Biostatistics",
+    title: "Biostatistics & Study Design — Complete",
+    summary: "Study designs, RR vs OR, sensitivity/specificity, biases, statistical tests.",
+    sections: [
+      {
+        heading: "Study designs (strongest to weakest)",
+        bullets: [
+          "Meta-analysis > Systematic review > RCT > Cohort > Case-control > Cross-sectional > Case series/report",
+          "RCT: gold standard for causation; randomization eliminates confounding",
+          "Cohort: prospective; exposure → outcome; calculates incidence + RR",
+          "Retrospective cohort: uses past records (both exposure and outcome already occurred)",
+          "Case-control: starts with disease, looks back for exposure; OR; good for rare diseases; recall bias risk",
+          "Cross-sectional: snapshot; measures prevalence; no temporal relationship",
+          "Ecological: population-level data; ecological fallacy = main bias",
+          "Twin concordance: monozygotic vs dizygotic for heritability",
+        ],
+      },
+      {
+        heading: "Clinical trial phases",
+        bullets: [
+          "Phase I: small group of HEALTHY volunteers — SAFETY + pharmacokinetics",
+          "Phase II: patients with disease — efficacy + side effects + dosing",
+          "Phase III: large RCT — confirms efficacy, compares to standard or placebo, FDA approval",
+          "Phase IV: post-marketing surveillance — long-term/rare side effects",
+        ],
+      },
+      {
+        heading: "Risk measures",
+        bullets: [
+          "Relative Risk (RR) = Incidence in exposed / Incidence in unexposed (cohort/RCT)",
+          "Odds Ratio (OR) = ad/bc (case-control)",
+          "Relative Risk Reduction (RRR) = 1 − (Rt/Rc)",
+          "Absolute Risk Reduction (ARR) = Rc − Rt",
+          "Number Needed to Treat (NNT) = 1 / ARR (round UP)",
+          "Number Needed to Harm (NNH) = 1 / ARI",
+          "Attributable Risk = Ie − Iu",
+        ],
+      },
+      {
+        heading: "Diagnostic test characteristics",
+        bullets: [
+          "Sensitivity = TP / (TP + FN) — rules OUT (SnNout); intrinsic test property",
+          "Specificity = TN / (TN + FP) — rules IN (SpPin); intrinsic test property",
+          "PPV = TP / (TP + FP) — depends on prevalence",
+          "NPV = TN / (TN + FN) — depends on prevalence",
+          "LR+ = Sn / (1 − Sp) — large value (>10) rules IN",
+          "LR− = (1 − Sn) / Sp — small value (<0.1) rules OUT",
+          "Likelihood ratios: independent of prevalence",
+        ],
+      },
+      {
+        heading: "Cutoff effects (lower threshold)",
+        bullets: [
+          "Lower cutoff: ↑ Sn, ↑ NPV, ↓ Sp, ↓ PPV — more false positives",
+          "Higher cutoff: ↑ Sp, ↑ PPV, ↓ Sn, ↓ NPV — more false negatives",
+          "Screening test: lower cutoff (want high sensitivity)",
+          "Confirmatory test: raise cutoff (want high specificity)",
+        ],
+      },
+      {
+        heading: "Biases",
+        bullets: [
+          "Selection bias: Berkson (hospital controls), healthy worker, attrition (loss to follow-up)",
+          "Recall bias: case-control inaccurate memory",
+          "Observer bias: researcher expectation; prevent with double-blinding",
+          "Hawthorne effect: behavior change from being observed",
+          "Confounding: 3rd variable linked to both; address with randomization, matching, stratification, regression",
+          "Effect modification: NOT a bias — true difference in effect across subgroups",
+          "Lead-time bias: earlier diagnosis without survival benefit",
+          "Length-time bias: screening preferentially detects indolent disease",
+          "ITT (intention-to-treat) analysis: addresses attrition bias",
+        ],
+      },
+      {
+        heading: "Statistical tests by data type",
+        bullets: [
+          "2 means, normal distribution → t-test (paired or independent)",
+          "≥3 means → ANOVA",
+          "Categorical × categorical → chi-square (or Fisher exact if cells <5)",
+          "Paired categorical → McNemar",
+          "Continuous × continuous (linear) → Pearson correlation",
+          "Non-normal small samples → Mann-Whitney (2 groups), Kruskal-Wallis (≥3)",
+          "Survival data → Kaplan-Meier curves; log-rank test for comparison",
+        ],
+      },
+      {
+        heading: "Hypothesis testing",
+        bullets: [
+          "Null hypothesis: NO effect/difference",
+          "Type I error (α, false positive): rejecting a TRUE null; usually 0.05",
+          "Type II error (β, false negative): failing to reject a FALSE null",
+          "Power = 1 − β (probability of correctly rejecting false null)",
+          "Increase power: ↑ sample size, ↑ effect size, ↓ variability, ↑ α",
+          "P-value: probability of observing data if null is true; p < α → reject null",
+          "Confidence interval: if CI includes null value (0 for differences, 1 for ratios) = NOT significant",
+        ],
+      },
+      {
+        heading: "Distributions & central tendency",
+        bullets: [
+          "Normal distribution: 68% ±1 SD, 95% ±2 SD, 99.7% ±3 SD",
+          "Right-skewed: mean > median > mode",
+          "Left-skewed: mean < median < mode",
+          "Outliers pull MEAN; median is robust",
+          "Standard error (SE) = SD / √n",
+        ],
+      },
+    ],
+    pearls: [
+      "Cohort → RR; Case-control → OR",
+      "NNT = 1/ARR (round UP)",
+      "Sn/Sp don't depend on prevalence; PPV/NPV do",
+      "Power = 1 − β; increase n to increase power",
+      "Lead-time bias: 🕒 earlier clock; Length-time bias: 🐢 turtle (slow) cancers",
+    ],
+  },
+
+  {
+    id: "ethics-comprehensive",
+    session: 2,
+    category: "Ethics & Professionalism",
+    title: "Medical Ethics — Boards-Style Scenarios",
+    summary: "Capacity, consent, confidentiality, surrogates, end-of-life, professionalism.",
+    sections: [
+      {
+        heading: "Four principles & priority",
+        bullets: [
+          "Autonomy (gold standard; overrides everything else for competent adult)",
+          "Beneficence (best interest)",
+          "Nonmaleficence (do no harm)",
+          "Justice (fair distribution)",
+          "On boards: AUTONOMY always wins for competent adult",
+        ],
+      },
+      {
+        heading: "Decision-making capacity",
+        bullets: [
+          "4 components: Understanding + Appreciation + Reasoning + Communication of choice",
+          "ANY physician can assess (don't need psychiatry)",
+          "Decision-SPECIFIC and can fluctuate",
+          "Dementia, mental illness, intoxication do NOT automatically mean incapacity",
+          "Schizophrenia patient who can explain dx, tx, risks, reasoning → has capacity even if odd",
+          "Intoxication acutely → wait for sobriety (unless life-threatening, then emergency consent)",
+        ],
+      },
+      {
+        heading: "Informed consent — required elements",
+        bullets: [
+          "Diagnosis",
+          "Risks + benefits",
+          "Alternatives",
+          "RISK of refusing (could they die?)",
+          "Person performing procedure should obtain consent",
+          "Telephone consent OK with witness",
+          "Pregnant women can refuse anything (fetus not legally a person)",
+        ],
+      },
+      {
+        heading: "Exceptions to informed consent",
+        bullets: [
+          "Emergency: life-threatening + cannot consent + no surrogate → treat",
+          "Therapeutic privilege: rarely correct — only if disclosure causes severe psychological harm",
+          "Waiver: patient voluntarily declines info",
+          "Implied: routine low-risk procedures (blood draw)",
+        ],
+      },
+      {
+        heading: "Minors",
+        bullets: [
+          "Generally cannot consent; emergencies = always treat",
+          "FULL emancipation: marriage, military, financially independent, minor parent",
+          "PARTIAL (specific conditions): contraception, prenatal care, STI testing, substance abuse, mental health (varies by state)",
+          "Parents can NOT refuse life-saving treatment for child based on religion (Jehovah's Witnesses) → court order if time permits; transfuse if not",
+          "Judicial bypass for parental-consent abortion laws",
+        ],
+      },
+      {
+        heading: "Confidentiality — exceptions (mandatory disclosure)",
+        bullets: [
+          "Suspected child abuse OR elder abuse (suspicion alone, no proof needed)",
+          "Gunshot wounds",
+          "Reportable infections: HIV/AIDS, syphilis, TB, gonorrhea, measles, mumps",
+          "Tarasoff: identifiable target + imminent harm → warn AND protect (police + victim)",
+          "Impaired drivers (some states)",
+          "SPOUSAL abuse: cannot report without consent of competent adult victim",
+        ],
+      },
+      {
+        heading: "Confidentiality — protected",
+        bullets: [
+          "Minors STI/contraception/prenatal: do NOT disclose to parents",
+          "Spouse cannot demand records or HIV results",
+          "Police without warrant: do NOT disclose",
+          "HIPAA: no chart access without treatment/payment/operations purpose",
+        ],
+      },
+      {
+        heading: "Surrogate decision-making hierarchy",
+        bullets: [
+          "1. Living will (patient's documented wishes)",
+          "2. Healthcare proxy (DPOA): overrides default family",
+          "3. Spouse → Adult children → Parents → Siblings → Friends",
+          "Substituted judgment: 'what would the patient want?'",
+          "Best interest standard: only for patients who NEVER had capacity",
+          "Disagreement: encourage consensus → ethics committee (last resort)",
+        ],
+      },
+      {
+        heading: "End-of-life",
+        bullets: [
+          "Withholding = withdrawing (ethically equivalent)",
+          "Double effect: ethical to give high-dose opioids if intent is pain relief (even if hastens death)",
+          "DNR/DNAR: applies only to CPR; doesn't preclude ICU, surgery, dialysis",
+          "DNR + surgery: discuss preoperatively",
+          "Brain death = legal death; any physician can declare; EEG NOT required",
+          "Organ donation: separate physician (not transplant team) declares brain death",
+          "Physician-assisted death: legal in Oregon, WA, etc. (capacity, repeated requests, self-administered)",
+          "Euthanasia (physician administers): ILLEGAL everywhere in US",
+        ],
+      },
+      {
+        heading: "Professionalism",
+        bullets: [
+          "Sexual contact with current patients: ALWAYS prohibited",
+          "Psychiatrists: never with current OR former patients",
+          "Gifts: small from patients OK; industry <$100 educational only",
+          "Impaired colleague: mandatory report (resident → program director; attending → dept chair or state board)",
+          "Good Samaritan: no obligation to start; once start, must transfer to EMS",
+          "Errors: disclose to patient; apology + transparency",
+          "'I'm sorry' laws in many states protect expressions of sympathy",
+          "Wrong-site surgery, retained foreign body = NEVER events → full disclosure + RCA",
+        ],
+      },
+      {
+        heading: "Research ethics",
+        bullets: [
+          "IRB approval REQUIRED before enrolling subjects",
+          "Patient can withdraw at any time without penalty",
+          "Clinical equipoise: genuine uncertainty required for randomization",
+          "Placebo arm unethical if effective standard exists (Declaration of Helsinki)",
+          "Financial COI: mandatory disclosure",
+          "Prisoners: identical rights; no coercion with promises of release",
+          "Organ donation request: separate from treating team",
+        ],
+      },
+      {
+        heading: "Pregnant patients",
+        bullets: [
+          "Right to refuse C-section even with fetal distress (fetus not a legal person)",
+          "Spousal consent NEVER required",
+          "Brain dead + pregnant: somatic support to allow fetal maturation if family requests",
+        ],
+      },
+      {
+        heading: "Quality improvement",
+        bullets: [
+          "Value = Quality / Cost",
+          "Lean methodology: optimize workflow, eliminate waste",
+          "PDSA cycle: Plan-Do-Study-Act",
+          "Measures: structural, process, outcome, balancing",
+          "SMART goals: Specific, Measurable, Achievable, Relevant, Time-bound",
+          "Root-cause analysis (RCA): RETROSPECTIVE after sentinel event",
+          "FMEA: PROSPECTIVE, identifies how processes could fail",
+          "Strong actions: forcing functions; weak: training, double-checks",
+          "Active errors: sharp end (operator); latent: blunt end (system flaws)",
+        ],
+      },
+    ],
+    pearls: [
+      "AUTONOMY > Beneficence on boards — competent adult can refuse anything",
+      "Capacity ≠ Competence (clinical vs legal)",
+      "Tarasoff: duty to warn AND protect",
+      "Brain death = legal death; no EEG required",
+      "Spousal abuse: cannot report without consent (vs child/elder = mandatory)",
+      "PROXY > family hierarchy",
+      "Pregnant women can refuse C-section regardless of fetal outcome",
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // APEX OBGYN — COMPREHENSIVE OB/GYN
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "pregnancy-physiology",
+    session: 2,
+    category: "OB/GYN",
+    title: "Physiologic Changes of Pregnancy",
+    summary: "Cardiovascular, renal, hematologic, endocrine, respiratory adaptations.",
+    sections: [
+      {
+        heading: "Cardiovascular",
+        bullets: [
+          "↑ Plasma volume (50%) + ↑ RBC mass (30%) → DILUTIONAL anemia (↓ hematocrit)",
+          "↑ Preload + ↑ HR → ↑ Cardiac output (~30–50%)",
+          "↑ Progesterone → ↓ SVR → ↓ BP in first 20 weeks",
+          "Supine position + IVC compression → ↓ preload → SUPINE HYPOTENSION SYNDROME → LEFT LATERAL DECUBITUS",
+          "Physiologic S3 (3rd trimester) — benign",
+        ],
+      },
+      {
+        heading: "Renal/urinary",
+        bullets: [
+          "↑ GFR + ↑ renal blood flow → ↓ BUN and ↓ creatinine (elevated = concerning)",
+          "Progesterone → ureteral dilation + stasis → ↑ risk asymptomatic bacteriuria + pyelonephritis",
+          "Always treat asymptomatic bacteriuria in pregnancy",
+        ],
+      },
+      {
+        heading: "Hematologic",
+        bullets: [
+          "Hypercoagulable state (↑ clotting factors) → ↑ VTE risk; protective against postpartum hemorrhage",
+          "↑ Fibrinogen, ↑ factors VII, VIII, IX, X",
+          "Decreased protein S",
+        ],
+      },
+      {
+        heading: "Endocrine/respiratory",
+        bullets: [
+          "Estrogen → ↑ TBG → ↑ TOTAL T4 (free T4 normal)",
+          "Progesterone → ↑ tidal volume → respiratory ALKALOSIS (facilitates CO₂ transfer from fetus)",
+          "Pituitary doubles in size → Sheehan syndrome risk if massive PPH",
+          "Prolactin rises throughout pregnancy",
+        ],
+      },
+    ],
+    pearls: [
+      "Hypotension supine → left lateral decubitus",
+      "Asymptomatic bacteriuria → always treat (nitrofurantoin, amox, cefalexin)",
+      "Total T4 ↑ but free T4 normal in pregnancy",
+      "Physiologic anemia from plasma volume expansion (not iron deficiency)",
+    ],
+  },
+
+  {
+    id: "antepartum-bleeding",
+    session: 2,
+    category: "OB/GYN",
+    title: "Antepartum Bleeding — Differential",
+    summary: "Placenta previa vs abruption vs uterine rupture vs vasa previa.",
+    tables: [
+      {
+        caption: "Antepartum bleeding patterns",
+        headers: ["Condition", "Pain", "Bleeding", "Uterus", "Contractions", "Key clue"],
+        rows: [
+          ["Placenta previa", "PAINLESS", "Bright red", "Soft", "Absent", "Painless bleeding + soft uterus + previa on US"],
+          ["Placental abruption", "PAINFUL", "Variable (often dark)", "RIGID/tetanic", "Present", "HTN, cocaine, trauma; risk of DIC"],
+          ["Uterine rupture", "PAINFUL", "Variable", "Variable", "Contractions CEASE", "Prior C/S + loss of fetal station"],
+          ["Vasa previa", "PAINLESS (after ROM)", "Fetal blood", "Soft", "—", "Bleeding immediately after ROM + sudden fetal bradycardia, mom stable"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Quick differentiator rules",
+        bullets: [
+          "Painful bleeding = mom's problem (abruption, rupture)",
+          "Painless bleeding = baby's problem (previa, vasa previa)",
+          "Contractions present? Yes → abruption; No → rupture or previa",
+          "Loss of fetal station → uterine rupture until proven otherwise",
+          "Bleeding right after ROM + fetal bradycardia + stable mom → vasa previa",
+        ],
+      },
+      {
+        heading: "Placenta previa management",
+        bullets: [
+          "Confirm with transabdominal US",
+          "NEVER digital cervical exam (risk of severe hemorrhage)",
+          "Pelvic rest (no intercourse)",
+          "Scheduled C-section at 36–37 weeks",
+          "If actively bleeding hemodynamically unstable → emergent C-section",
+        ],
+      },
+      {
+        heading: "Placental abruption management",
+        bullets: [
+          "Stabilize mother (IV fluids, transfusion as needed)",
+          "Continuous fetal monitoring",
+          "Delivery if maternal/fetal instability — vaginal if stable, C/S if not",
+          "DIC workup (fibrinogen, platelets, PT/PTT)",
+        ],
+      },
+      {
+        heading: "Uterine rupture management",
+        bullets: [
+          "Emergent ex-lap + C-section (NO time for imaging)",
+          "Strongest RF: prior cesarean (especially classical incision)",
+          "TOLAC carries small but real rupture risk",
+        ],
+      },
+      {
+        heading: "Vasa previa management",
+        bullets: [
+          "If diagnosed antenatally on US/Doppler: scheduled C-section at 34–37 weeks",
+          "If ROM occurs + bleeding: emergent crash C-section",
+          "Fetal exsanguination within minutes",
+        ],
+      },
+      {
+        heading: "Placental adherence (accreta spectrum)",
+        bullets: [
+          "Accreta: adherent to myometrium",
+          "Increta: invades myometrium",
+          "Percreta: invades through into bladder",
+          "RFs: prior C/S + previa overlying scar",
+          "Manage with planned cesarean hysterectomy",
+        ],
+      },
+    ],
+    pearls: [
+      "Loss of fetal station during labor = uterine rupture",
+      "Painful + rigid uterus + cocaine/HTN = abruption",
+      "Painless bright-red + soft uterus = previa (NEVER do digital exam)",
+      "After ROM + fetal bradycardia + stable mom = vasa previa",
+    ],
+    relatedCaseIds: ["uterine-rupture-tolac", "placental-abruption", "placenta-previa-classic", "vasa-previa"],
+  },
+
+  {
+    id: "aneuploidy-screening",
+    session: 2,
+    category: "OB/GYN",
+    title: "Prenatal Aneuploidy Screening",
+    summary: "First/second trimester screens and diagnostic testing.",
+    tables: [
+      {
+        caption: "Screening patterns",
+        headers: ["Test", "Timing", "Components", "T21 pattern", "T18 pattern"],
+        rows: [
+          ["First trimester", "10–13 weeks", "β-hCG + PAPP-A + nuchal translucency (NT)", "↑ hCG, ↓ PAPP-A, ↑ NT", "↓ hCG, ↓ PAPP-A, ↑ NT"],
+          ["Quad screen", "15–20 weeks", "AFP + β-hCG + estriol + inhibin A", "↑ hCG, ↑ inhibin, ↓ AFP, ↓ estriol", "All LOW (and ↓/normal inhibin)"],
+          ["Cell-free fetal DNA (NIPT)", "≥10 weeks", "Fetal DNA in maternal blood", "Positive screen", "Positive screen"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Diagnostic testing",
+        bullets: [
+          "CVS: 10–13 weeks (chorionic villus sampling)",
+          "Amniocentesis: ≥15 weeks",
+          "NEVER skip directly to termination counseling without confirmatory testing",
+        ],
+      },
+      {
+        heading: "AFP interpretation",
+        bullets: [
+          "↑ AFP causes:",
+          "  Open neural tube defects (anencephaly, spina bifida)",
+          "  Abdominal wall defects (gastroschisis, omphalocele)",
+          "  Multiple gestation",
+          "  Incorrect dating (most common cause)",
+          "↑ AFP is NOT a sign of T21 (T21 has LOW AFP)",
+          "MSAFP + acetylcholinesterase in amniotic fluid → NTD confirmation",
+        ],
+      },
+      {
+        heading: "Anatomy ultrasound",
+        bullets: [
+          "18–20 weeks",
+          "Major structural anomalies, NTD, cardiac, renal, abdominal wall, limbs",
+        ],
+      },
+    ],
+    pearls: [
+      "T21 quad: ↑hCG + ↑inhibin + ↓AFP + ↓estriol (only hCG/inhibin up)",
+      "T18 quad: all LOW",
+      "↑ AFP = open defect (NTD or abdominal wall), NOT T21",
+      "Cell-free DNA is highly accurate but still a SCREEN — confirm with CVS or amnio",
+    ],
+    relatedCaseIds: ["first-trimester-screen"],
+  },
+
+  {
+    id: "prenatal-care-timeline",
+    session: 2,
+    category: "OB/GYN",
+    title: "Routine Prenatal Care Timeline",
+    summary: "Visit-by-visit prenatal labs and screening.",
+    sections: [
+      {
+        heading: "Initial visit (8–10 weeks)",
+        bullets: [
+          "Labs: CBC, blood type + Rh + antibody screen, HIV, syphilis (RPR/VDRL), HBsAg, anti-HCV, rubella IgG, varicella IgG, urine culture (asymptomatic bacteriuria), urinalysis (protein)",
+          "STIs (chlamydia + gonorrhea) if <25 or high-risk",
+          "Pap if due",
+          "Confirm dating with US",
+          "Naegele rule: LMP + 7 days − 3 months + 1 year",
+        ],
+      },
+      {
+        heading: "10–13 weeks",
+        bullets: [
+          "Nuchal translucency + PAPP-A + β-hCG (first trimester aneuploidy screen)",
+          "Cell-free DNA option from 10 weeks",
+          "CVS if diagnostic indicated",
+        ],
+      },
+      {
+        heading: "15–20 weeks",
+        bullets: [
+          "Quad screen (AFP + β-hCG + estriol + inhibin A)",
+          "Amniocentesis if diagnostic needed",
+        ],
+      },
+      {
+        heading: "18–20 weeks",
+        bullets: [
+          "Anatomy ultrasound",
+        ],
+      },
+      {
+        heading: "24–28 weeks",
+        bullets: [
+          "1-hour 50 g glucose challenge (GDM screen); if ≥140 → 3-hr 100 g OGTT",
+          "Repeat antibody screen if Rh-negative",
+        ],
+      },
+      {
+        heading: "27–36 weeks",
+        bullets: [
+          "Tdap (each pregnancy)",
+          "RSV vaccine (32–36 weeks)",
+        ],
+      },
+      {
+        heading: "28 weeks",
+        bullets: [
+          "RhoGAM (Rh-negative + unsensitized)",
+        ],
+      },
+      {
+        heading: "35–37 weeks",
+        bullets: [
+          "Group B Strep (GBS) rectovaginal swab",
+        ],
+      },
+      {
+        heading: "3rd trimester repeat (if high-risk)",
+        bullets: [
+          "Repeat STIs (chlamydia, gonorrhea, HIV, syphilis) if <25 or high-risk",
+        ],
+      },
+    ],
+    pearls: [
+      "Naegele rule for EDC",
+      "GTPAL: Gravidity, Term, Preterm, Abortion, Living",
+      "β-hCG doubles q48h in early IUP; lagging = ectopic",
+      "Discriminatory zone: β-hCG >1500–2000 + empty uterus → ectopic",
+      "Tdap each pregnancy 27–36 weeks; passive antibody transfer",
+    ],
+  },
+
+  {
+    id: "labor-management",
+    session: 2,
+    category: "OB/GYN",
+    title: "Labor Management & Dystocia",
+    summary: "Stages of labor, arrest disorders, shoulder dystocia.",
+    sections: [
+      {
+        heading: "Stages of labor",
+        bullets: [
+          "First stage: onset of labor → 10 cm",
+          "  Latent phase: 0–6 cm (slow)",
+          "  Active phase: 6–10 cm (faster)",
+          "Second stage: 10 cm → delivery of fetus",
+          "Third stage: delivery of placenta (<30 min)",
+          "Fourth stage: first hour postpartum (recovery)",
+        ],
+      },
+      {
+        heading: "Arrest disorders",
+        bullets: [
+          "Latent arrest (0–5 cm): prolonged but doesn't mandate C/S; supportive",
+          "ACTIVE phase arrest (≥6 cm + ROM + no change ≥4 h with adequate contractions OR ≥6 h with inadequate) → C-section",
+          "Adequate contractions: ≥200 Montevideo units in 10 min, or 3–5 contractions/10 min",
+          "Second stage arrest: head low (≥+2 station) → operative vaginal; high → C/S",
+          "Augment first with OXYTOCIN if contractions inadequate",
+        ],
+      },
+      {
+        heading: "Operative vaginal delivery",
+        bullets: [
+          "Indications: prolonged 2nd stage, maternal exhaustion, non-reassuring tracing, maternal cardiac condition limiting Valsalva",
+          "Forceps vs vacuum (similar success; vacuum easier to use but ↑ cephalohematoma)",
+          "Prerequisites: fully dilated, ROM, head at ≥+2, no malposition",
+        ],
+      },
+      {
+        heading: "Cesarean delivery indications",
+        bullets: [
+          "Maternal: arrest of labor, severe preeclampsia (sometimes), HSV active lesions, placenta previa",
+          "Fetal: non-reassuring tracing, malpresentation, multi-gestation (often), prior classical C/S",
+          "VL ≥1000 in HIV+ mom",
+        ],
+      },
+      {
+        heading: "Shoulder dystocia",
+        bullets: [
+          "Head delivered but anterior shoulder fails to deliver",
+          "RFs: macrosomia, GDM, prolonged 2nd stage, prior dystocia",
+          "HELPERR: Help, Episiotomy, Legs (McRoberts — hyperflex thighs to abdomen), Pressure (suprapubic), Enter rotational (Rubin, Wood's screw), Remove posterior arm, Roll patient (Gaskin/all-fours)",
+          "AVOID fundal pressure (impacts shoulder further)",
+          "Complications: brachial plexus injury, clavicle/humerus fracture, hypoxia",
+        ],
+      },
+      {
+        heading: "Tocolysis (preterm labor)",
+        bullets: [
+          "Nifedipine (CCB): first-line for most",
+          "Indomethacin: <32 weeks (premature ductus closure if used later)",
+          "Magnesium sulfate: <32 weeks for neuroprotection",
+          "Terbutaline: short-term only",
+          "Goal: buy 48 hours for steroids",
+          "Antenatal corticosteroids (betamethasone or dex) <34 weeks reduce NRDS, IVH, NEC",
+          "GBS prophylaxis with PCN G if unknown or positive",
+        ],
+      },
+      {
+        heading: "Induction of labor",
+        bullets: [
+          "Cervical ripening if unfavorable Bishop score: misoprostol (PGE1) or dinoprostone (PGE2), or mechanical (Foley)",
+          "Oxytocin for augmentation",
+          "Amniotomy as appropriate",
+          "Contraindications: prior classical C/S, transverse lie, placenta previa, vasa previa",
+        ],
+      },
+    ],
+    pearls: [
+      "≥6 cm + ROM + no change ≥4 h with adequate contractions = active phase arrest = C/S",
+      "Inadequate contractions → augment with oxytocin FIRST",
+      "Shoulder dystocia first move: McRoberts + suprapubic pressure",
+      "Indomethacin contraindicated >32 weeks (premature ductus closure)",
+      "Oxytocin → SIADH risk (ADH-like)",
+    ],
+    relatedCaseIds: ["active-phase-arrest", "preterm-labor-management", "shoulder-dystocia"],
+  },
+
+  {
+    id: "ob-hypertensive-comprehensive",
+    session: 2,
+    category: "OB/GYN",
+    title: "Hypertensive Disorders of Pregnancy",
+    summary: "Chronic HTN, gestational, preeclampsia (mild/severe), HELLP, eclampsia.",
+    tables: [
+      {
+        caption: "Classification of HTN in pregnancy",
+        headers: ["Disorder", "Timing", "BP", "Proteinuria/end-organ"],
+        rows: [
+          ["Chronic HTN", "Pre-pregnancy or <20 wks", ">140/90", "No"],
+          ["Gestational HTN", ">20 wks", ">140/90", "No"],
+          ["Preeclampsia", ">20 wks", ">140/90", "YES (proteinuria or end-organ dysfunction)"],
+          ["Preeclampsia w/ severe features", ">20 wks", "≥160/110", "+ severe features"],
+          ["Eclampsia", "Any after 20 wks (or postpartum)", "Variable", "+ SEIZURE"],
+          ["HELLP", "3rd trim or postpartum", "Often normal", "Hemolysis + ↑LFTs + ↓platelets"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Severe features (any one mandates delivery)",
+        bullets: [
+          "BP ≥160 systolic or ≥110 diastolic",
+          "Platelets <100,000",
+          "AST/ALT ≥2× ULN + RUQ/epigastric pain",
+          "Cr >1.1 or doubling",
+          "Pulmonary edema",
+          "Persistent headache or visual changes (scotomata)",
+          "Seizures (eclampsia)",
+        ],
+      },
+      {
+        heading: "Treatment by stage",
+        bullets: [
+          "<37 weeks + NO severe features: expectant management with monitoring",
+          "≥37 weeks OR ANY severe features: DELIVER",
+          "BP control: labetalol, hydralazine, nifedipine (NOT methyldopa for acute — slow onset)",
+          "Magnesium sulfate for seizure prophylaxis in severe preeclampsia + eclampsia",
+          "Continue Mg 24 hours postpartum",
+        ],
+      },
+      {
+        heading: "Magnesium toxicity",
+        bullets: [
+          "Loss of DTRs first → respiratory depression → cardiac arrest",
+          "Rescue: IV calcium gluconate",
+        ],
+      },
+      {
+        heading: "Eclampsia management",
+        bullets: [
+          "First-line: IV magnesium sulfate (NOT benzos)",
+          "Add benzos if refractory",
+          "Stabilize mother first, then deliver",
+          "Can occur up to 6 weeks postpartum",
+        ],
+      },
+      {
+        heading: "HELLP",
+        bullets: [
+          "Hemolysis + Elevated LFTs + Low Platelets",
+          "May have NORMAL BP (atypical preeclampsia)",
+          "Severe feature → DELIVER regardless of GA",
+          "Postpartum HELLP can occur up to 7 days after delivery",
+        ],
+      },
+      {
+        heading: "Antihypertensives in pregnancy",
+        bullets: [
+          "Safe: 'Hypertensive moms Love nifedipine' — Hydralazine, methyldopa (chronic), Labetalol, Nifedipine",
+          "TERATOGENIC: ACE inhibitors, ARBs (renal agenesis, Potter sequence, oligohydramnios)",
+          "Avoid diuretics in preeclampsia (volume-depleted state)",
+        ],
+      },
+      {
+        heading: "Preeclampsia prevention",
+        bullets: [
+          "Low-dose aspirin (81 mg) starting 12–28 weeks in high-risk women",
+          "High-risk: prior preeclampsia, chronic HTN, DM, autoimmune (SLE, APS), multiple gestation, renal disease",
+        ],
+      },
+    ],
+    pearls: [
+      "Preeclampsia BEFORE 20 weeks → MOLE or APS",
+      "Severe features at any GA = deliver",
+      "Mg toxicity → calcium gluconate",
+      "ACE/ARB CONTRAINDICATED in pregnancy",
+      "ASA 81 mg prevents preeclampsia in high-risk",
+      "HELLP can have normal BP",
+    ],
+    relatedCaseIds: ["preeclampsia-severe-features", "eclampsia-mgmt"],
+  },
+
+  {
+    id: "pregnancy-teratogens",
+    session: 2,
+    category: "OB/GYN",
+    title: "Teratogens & Medications in Pregnancy",
+    summary: "High-yield teratogenic patterns.",
+    tables: [
+      {
+        caption: "Classic teratogens",
+        headers: ["Drug", "Effect"],
+        rows: [
+          ["ACE inhibitors / ARBs", "Renal agenesis → Potter sequence, oligohydramnios"],
+          ["Warfarin", "Nasal hypoplasia + stippled epiphyses (fetal warfarin syndrome)"],
+          ["Isotretinoin (vit A)", "Severe craniofacial + CNS + cardiac (use iPLEDGE)"],
+          ["Methotrexate", "Aminopterin syndrome — limb + craniofacial defects"],
+          ["Lithium", "Ebstein anomaly (tricuspid valve)"],
+          ["Methimazole (1st trim)", "Cutis aplasia (absence of skin); choanal/esophageal atresia"],
+          ["Phenytoin", "Fetal hydantoin syndrome (cleft lip/palate, cardiac defects)"],
+          ["Valproate", "Neural tube defects (highest risk anticonvulsant)"],
+          ["Carbamazepine", "Neural tube defects + craniofacial"],
+          ["Tetracyclines", "Tooth discoloration + bone growth inhibition"],
+          ["Fluoroquinolones", "Cartilage damage"],
+          ["Aminoglycosides", "Ototoxicity (CN VIII)"],
+          ["NSAIDs (3rd trim)", "Premature ductus arteriosus closure + oligohydramnios"],
+          ["Thalidomide", "Phocomelia (limb defects)"],
+          ["DES (historical)", "Clear cell adenocarcinoma of vagina in daughters"],
+          ["Alcohol", "Fetal alcohol syndrome (FAS) — facial dysmorphism, growth restriction, neuro"],
+          ["Cocaine", "Placental abruption, IUGR, neonatal stroke"],
+          ["Tobacco", "IUGR, preterm birth, placental abruption"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Hyperthyroidism in pregnancy",
+        bullets: [
+          "1st trimester: PTU (methimazole = cutis aplasia)",
+          "2nd/3rd trimester: methimazole (long-term PTU = hepatotoxicity)",
+          "Radioactive iodine: ABSOLUTELY CONTRAINDICATED",
+          "Propranolol for symptoms",
+        ],
+      },
+      {
+        heading: "DVT/PE in pregnancy",
+        bullets: [
+          "LMWH preferred (does not cross placenta)",
+          "AVOID warfarin and DOACs",
+          "Switch to UFH near delivery",
+        ],
+      },
+      {
+        heading: "Hypertension in pregnancy",
+        bullets: [
+          "Safe: 'HMLN' — Hydralazine, Methyldopa, Labetalol, Nifedipine",
+          "Avoid: ACEi, ARBs, atenolol, diuretics (preeclampsia)",
+        ],
+      },
+      {
+        heading: "Vaccines",
+        bullets: [
+          "SAFE: inactivated influenza, Tdap (27–36 wks), Hep A/B (high-risk), RSV (32–36 wks)",
+          "CONTRAINDICATED (live): MMR, varicella, intranasal flu",
+          "HPV: not given in pregnancy",
+        ],
+      },
+    ],
+    pearls: [
+      "ACEi/ARB → Potter sequence",
+      "Methimazole 1st trim → cutis aplasia (use PTU)",
+      "Lithium → Ebstein anomaly",
+      "Valproate → highest NTD risk among anticonvulsants",
+      "NSAIDs 3rd trim → premature ductus closure",
+      "Mom on isotretinoin: 2 forms of contraception + monthly pregnancy tests",
+    ],
+    relatedCaseIds: ["teratogen-methimazole"],
+  },
+
+  {
+    id: "postpartum-comprehensive",
+    session: 2,
+    category: "OB/GYN",
+    title: "Postpartum Complications",
+    summary: "Endometritis, PPH, sepsis, peripartum CM, depression.",
+    sections: [
+      {
+        heading: "Postpartum hemorrhage (PPH)",
+        bullets: [
+          "Definition: >500 mL after vaginal, >1000 mL after C/S, OR symptomatic blood loss",
+          "Early (<24h) vs late (>24h, up to 6 weeks)",
+          "4 T's: Tone (atony, MOST common) + Trauma + Tissue (retained placenta) + Thrombin (coagulopathy)",
+          "Step ladder: massage + oxytocin → tranexamic acid → methylergonovine (avoid HTN) → carboprost (avoid asthma) → misoprostol",
+          "Mechanical: bimanual compression, Bakri balloon",
+          "Surgical: B-Lynch suture, uterine artery ligation/embolization, hysterectomy",
+        ],
+      },
+      {
+        heading: "Endometritis",
+        bullets: [
+          "Most common cause of postpartum fever days 2–10",
+          "Biggest RF: cesarean delivery (×5–10 risk vs vaginal)",
+          "Triad: fever + uterine tenderness + foul lochia",
+          "Empiric: IV clindamycin + gentamicin (no cultures needed first)",
+          "Polymicrobial — E. coli most common single",
+          "Continue until afebrile 24–48 hours",
+        ],
+      },
+      {
+        heading: "Postpartum fever differential",
+        bullets: [
+          "Endometritis: uterine tenderness, foul lochia",
+          "Surgical site infection: incision erythema/discharge",
+          "Mastitis: breast pain/erythema (dicloxacillin; continue breastfeeding)",
+          "Pyelonephritis: flank pain, CVA tenderness",
+          "Septic pelvic thrombophlebitis: persistent fever despite abx",
+          "Atelectasis: post-anesthesia, low-grade",
+          "DVT/PE: chest pain, dyspnea, swelling",
+        ],
+      },
+      {
+        heading: "Mastitis vs breast abscess",
+        bullets: [
+          "Mastitis: unilateral erythema + induration + fever; S. aureus (also continuing to nurse helps)",
+          "Treat: dicloxacillin or cephalexin × 10–14 days; continue breastfeeding",
+          "Abscess: fluctuant mass — needs I&D + abx",
+          "Inflammatory breast cancer: rapidly progressive, peau d'orange (DDx)",
+        ],
+      },
+      {
+        heading: "Peripartum cardiomyopathy",
+        bullets: [
+          "Last month of pregnancy or within 5 months postpartum",
+          "Dilated cardiomyopathy, EF <45%",
+          "Treat like HFrEF: diuretics + β-blocker + ACEi/ARB (POSTPARTUM only)",
+          "During pregnancy: avoid ACEi/ARB, use hydralazine + nitrate",
+          "Anticoagulate if EF <30% (LV thrombus risk)",
+          "Recurrence risk in subsequent pregnancy is high if EF doesn't recover",
+        ],
+      },
+      {
+        heading: "Sheehan syndrome",
+        bullets: [
+          "Postpartum hemorrhage → pituitary infarction (pituitary doubles in pregnancy)",
+          "First sign: failure to lactate (prolactin)",
+          "Then: amenorrhea, hypothyroid symptoms, adrenal insufficiency",
+          "Replace: hydrocortisone FIRST, then levothyroxine, then estrogen",
+        ],
+      },
+      {
+        heading: "Postpartum mood disorders",
+        bullets: [
+          "Postpartum blues: 2–3 days to <2 weeks; mild; reassurance",
+          "Postpartum depression: 4 weeks to 12 months; SSRI + CBT",
+          "Postpartum psychosis: days–weeks; delusions, hallucinations, infanticide risk → EMERGENCY hospitalization",
+          "#1 RF for postpartum depression: prior history of depression",
+        ],
+      },
+      {
+        heading: "Postpartum DVT/PE",
+        bullets: [
+          "Highest VTE risk in 6-week postpartum period (vs nonpregnant)",
+          "LMWH for treatment",
+          "Prophylaxis after C/S in high-risk",
+        ],
+      },
+      {
+        heading: "Normal postpartum lochia",
+        bullets: [
+          "Lochia rubra: days 1–4 (red/dark)",
+          "Lochia serosa: days 4–10 (pink/brown)",
+          "Lochia alba: days 11–6 weeks (white/yellow)",
+        ],
+      },
+    ],
+    pearls: [
+      "Postpartum fever + uterine tenderness = endometritis (clinda + gent)",
+      "PPH first step: massage + oxytocin",
+      "Mastitis: keep nursing + dicloxacillin",
+      "Peripartum CM: ACEi after delivery only",
+      "Sheehan: failure to lactate is first sign; replace cortisol BEFORE thyroid",
+      "Postpartum psychosis = psychiatric emergency",
+    ],
+    relatedCaseIds: ["chorioamnionitis", "endometritis-postcs", "pph-atony-management", "peripartum-cardiomyopathy"],
+  },
+
+  {
+    id: "ob-fetal-surveillance",
+    session: 2,
+    category: "OB/GYN",
+    title: "Antepartum Fetal Surveillance",
+    summary: "NST, BPP, CST, Doppler; oligohydramnios, post-term, IUGR.",
+    sections: [
+      {
+        heading: "Non-stress test (NST)",
+        bullets: [
+          "First-line for decreased fetal movement",
+          "Reactive (normal): ≥2 accelerations of ≥15 bpm × 15 sec in 20 minutes",
+          "Nonreactive → proceed to BPP",
+          "Acceleration confirms fetal autonomic nervous system intact",
+        ],
+      },
+      {
+        heading: "Biophysical profile (BPP)",
+        bullets: [
+          "5 components × 2 points = 10 max",
+          "NST (reactive)",
+          "Fetal breathing movements",
+          "Gross body movements",
+          "Fetal tone",
+          "Amniotic fluid volume",
+          "8–10: reassuring; 6: equivocal; ≤4: deliver",
+        ],
+      },
+      {
+        heading: "Contraction stress test (CST)",
+        bullets: [
+          "If BPP equivocal",
+          "Late decelerations → uteroplacental insufficiency",
+        ],
+      },
+      {
+        heading: "Umbilical artery Doppler",
+        bullets: [
+          "End-diastolic flow: normal forward",
+          "Reduced flow → placental insufficiency",
+          "Absent or REVERSED end-diastolic flow → severe insufficiency → consider delivery",
+        ],
+      },
+      {
+        heading: "Oligohydramnios",
+        bullets: [
+          "Amniotic fluid index (AFI) <5 cm or single deepest pocket <2 cm",
+          "Causes: uteroplacental insufficiency (HTN), renal agenesis (Potter), NSAIDs (indomethacin), post-term, PROM",
+          "Complications: cord compression → variable decels, meconium aspiration",
+          "Management: depends on cause; deliver if term and unresolving",
+        ],
+      },
+      {
+        heading: "Polyhydramnios",
+        bullets: [
+          "AFI >24 cm",
+          "Causes: fetal swallowing/GI obstruction (esophageal/duodenal atresia, TEF), GDM, multiple gestation, anencephaly, fetal anemia",
+          "Complications: preterm labor, malpresentation, cord prolapse",
+        ],
+      },
+      {
+        heading: "IUGR / Fetal growth restriction",
+        bullets: [
+          "Symmetric (early insult): TORCH, chromosomal, drugs/alcohol — entire body small",
+          "Asymmetric (late insult): uteroplacental insufficiency — brain-sparing, smaller abdomen/liver",
+          "Surveillance: serial growth US, Doppler, BPP/NST",
+        ],
+      },
+      {
+        heading: "Post-term pregnancy (>42 weeks)",
+        bullets: [
+          "Placental aging → ↓ perfusion → oligohydramnios + fetal distress",
+          "Risks: macrosomia, meconium aspiration, stillbirth",
+          ">41 weeks: increased monitoring",
+          ">42 weeks: INDUCE labor",
+        ],
+      },
+      {
+        heading: "Fetal heart rate patterns",
+        bullets: [
+          "Normal baseline: 110–160 bpm",
+          "Moderate variability (6–25 bpm): reassuring",
+          "Accelerations: reassuring (autonomic intact)",
+          "Early decels: head compression — benign",
+          "Late decels: uteroplacental insufficiency — concerning (deliver if recurrent)",
+          "Variable decels: cord compression — amnioinfusion if recurrent",
+          "Category I: normal; Category II: indeterminate; Category III: abnormal (sinusoidal, absent variability + decels) → emergent delivery",
+        ],
+      },
+    ],
+    pearls: [
+      "Decreased fetal movement → NST first",
+      "NST nonreactive → BPP",
+      "Late decels = uteroplacental insufficiency",
+      "Variable decels = cord compression",
+      "Sinusoidal pattern = severe fetal anemia (consider Kleihauer-Betke)",
+      "Oligohydramnios → renal/placental; Polyhydramnios → swallowing/obstruction",
+    ],
+    relatedCaseIds: ["decreased-fetal-movement", "oligohydramnios-htn", "postterm-induction"],
+  },
+
+  {
+    id: "ob-multiple-gestation",
+    session: 2,
+    category: "OB/GYN",
+    title: "Multiple Gestation & Special Twin Topics",
+    summary: "Chorionicity types, TTTS, MoMo twin management.",
+    tables: [
+      {
+        caption: "Twin types",
+        headers: ["Type", "Mechanism", "Risk profile", "Delivery"],
+        rows: [
+          ["Dichorionic-diamniotic (DCDA)", "Dizygotic or early MZ split <3d", "Lowest risk", "38 weeks"],
+          ["Monochorionic-diamniotic (MCDA)", "MZ split day 4–8", "TTTS risk", "36–37 weeks"],
+          ["Monochorionic-monoamniotic (MoMo)", "MZ split day 8–13", "Cord entanglement risk", "32–34 weeks C/S"],
+          ["Conjoined", "MZ split day 13+", "Various", "Individualized"],
+        ],
+      },
+    ],
+    sections: [
+      {
+        heading: "Twin-twin transfusion syndrome (TTTS)",
+        bullets: [
+          "Only in MCDA (shared placenta with anastomoses)",
+          "Donor twin: small, anemic, oligohydramnios",
+          "Recipient twin: large, polycythemic, polyhydramnios, hydrops",
+          "Treatment: laser ablation of placental anastomoses",
+        ],
+      },
+      {
+        heading: "Complications of multiples",
+        bullets: [
+          "Preterm labor (most common)",
+          "Hyperemesis gravidarum (↑ β-hCG)",
+          "Preeclampsia",
+          "Gestational diabetes",
+          "Anemia",
+          "Malpresentation",
+          "PPH (uterine atony from overdistention)",
+        ],
+      },
+    ],
+    pearls: [
+      "MoMo twins: deliver C/S at 32–34 weeks (cord entanglement)",
+      "MCDA: monitor for TTTS",
+      "MZ split timing determines chorionicity (earlier = more separate)",
+      "Multiples = ↑ risk of every OB complication",
+    ],
+    relatedCaseIds: ["twin-pregnancy-mc-mc"],
+  },
+
+  {
+    id: "gyn-amenorrhea-pcos",
+    session: 2,
+    category: "OB/GYN",
+    title: "PCOS & Amenorrhea Workup",
+    summary: "Primary vs secondary amenorrhea; PCOS management.",
+    sections: [
+      {
+        heading: "Primary amenorrhea (no menses by 15)",
+        bullets: [
+          "Breasts present (estrogen working):",
+          "  Uterus absent: Müllerian agenesis (46,XX) vs androgen insensitivity (46,XY)",
+          "  Uterus present: outflow obstruction (imperforate hymen, vaginal septum)",
+          "Breasts absent:",
+          "  Low FSH: hypothalamic/pituitary (Kallmann)",
+          "  High FSH: gonadal failure (Turner 45,XO)",
+        ],
+      },
+      {
+        heading: "Secondary amenorrhea (cessation ≥3 months)",
+        bullets: [
+          "First: pregnancy test (β-hCG)",
+          "Then: TSH, prolactin",
+          "If prolactin high: MRI pituitary (prolactinoma)",
+          "If normal: FSH",
+          "  High FSH: premature ovarian failure",
+          "  Low FSH: hypothalamic amenorrhea (anorexia, athletes, stress)",
+          "  Normal FSH: PCOS, Asherman, outflow",
+          "Progesterone challenge: withdrawal bleed = anovulation; no bleed = hypoestrogenic OR outflow",
+        ],
+      },
+      {
+        heading: "PCOS (Rotterdam criteria — 2 of 3)",
+        bullets: [
+          "Oligo/anovulation",
+          "Hyperandrogenism (clinical or biochemical)",
+          "Polycystic ovaries on US",
+          "Associated: insulin resistance, metabolic syndrome, T2DM, OSA, NAFLD",
+          "Endometrial cancer risk from chronic anovulation",
+        ],
+      },
+      {
+        heading: "PCOS management",
+        bullets: [
+          "Not pregnant: COCs (first-line — menstrual regulation + anti-androgen)",
+          "Spironolactone for hirsutism/acne",
+          "Metformin for insulin resistance",
+          "Weight loss + lifestyle",
+          "Pregnant: letrozole first-line (over clomiphene)",
+          "Acanthosis nigricans suggests insulin resistance",
+        ],
+      },
+    ],
+    pearls: [
+      "Always pregnancy test first in secondary amenorrhea",
+      "Müllerian agenesis: 46,XX, normal T, no uterus, normal breast",
+      "Androgen insensitivity: 46,XY, high T, no uterus, no axillary/pubic hair, female phenotype",
+      "PCOS endometrial cancer risk → progestin to protect",
+      "Letrozole > clomiphene for PCOS infertility (less multiples, better live birth)",
+    ],
+    relatedCaseIds: ["pcos-management"],
+  },
+
+  {
+    id: "gyn-cancers",
+    session: 2,
+    category: "OB/GYN",
+    title: "Gynecologic Cancers",
+    summary: "Endometrial, ovarian, cervical, vulvar cancers.",
+    sections: [
+      {
+        heading: "Endometrial cancer",
+        bullets: [
+          "Most common gynecologic malignancy in developed countries",
+          "Postmenopausal bleeding = endometrial cancer until proven otherwise → endometrial biopsy",
+          "RFs: unopposed estrogen, obesity, PCOS, nulliparity, late menopause, tamoxifen, Lynch syndrome",
+          "Type I (endometrioid): estrogen-driven, better prognosis",
+          "Type II (serous, clear cell): older, aggressive, p53",
+          "TVUS endometrial stripe ≤4 mm in postmenopausal: reassuring",
+          "Tx: total hysterectomy + BSO ± lymph node dissection",
+        ],
+      },
+      {
+        heading: "Ovarian cancer",
+        bullets: [
+          "5th leading cause of cancer death in women",
+          "'Silent killer' — usually advanced at diagnosis",
+          "Symptoms: bloating, pelvic pain, early satiety, urinary symptoms",
+          "RFs: family history (BRCA), age, nulliparity, infertility, Lynch",
+          "Protective: OCPs, breastfeeding, pregnancy",
+          "Markers: CA-125 (elevated but not specific), HE4, alpha-fetoprotein (yolk sac), β-hCG (choriocarcinoma), LDH (dysgerminoma)",
+          "Tx: surgical debulking + platinum-based chemo",
+          "BRCA1/2: consider prophylactic BSO after childbearing complete",
+        ],
+      },
+      {
+        heading: "Cervical cancer",
+        bullets: [
+          "Caused by high-risk HPV (16, 18, others)",
+          "Vaccine: 11–12 (catch-up to 26)",
+          "Screening: Pap 21–29 q3y; 30–65 Pap+HPV q5y",
+          "Squamous cell most common (HPV); adenocarcinoma less common",
+          "Tx: cone biopsy for early → radical hysterectomy ± chemoradiation",
+        ],
+      },
+      {
+        heading: "Vulvar cancer",
+        bullets: [
+          "Postmenopausal women",
+          "Mostly squamous cell (HPV-related or lichen sclerosus background)",
+          "Biopsy any persistent lesion",
+          "Tx: wide local excision ± vulvectomy + LN dissection",
+        ],
+      },
+      {
+        heading: "Gestational trophoblastic disease (GTD)",
+        bullets: [
+          "Spectrum: complete mole → partial mole → invasive mole → choriocarcinoma → placental site trophoblastic tumor",
+          "Choriocarcinoma: hematogenous spread (lungs); very chemo-sensitive (methotrexate)",
+          "Persistent ↑ β-hCG after mole evacuation → suspect malignant GTD",
+        ],
+      },
+    ],
+    pearls: [
+      "Postmenopausal bleeding = endometrial biopsy",
+      "Ovarian 'silent killer' — vague abdominal symptoms",
+      "BRCA: consider prophylactic BSO after childbearing",
+      "Cervical cancer: HPV vaccine + screening prevents most",
+      "Choriocarcinoma: highly chemosensitive (methotrexate)",
+    ],
+    relatedCaseIds: ["endometrial-cancer-bleeding"],
+  },
+
+  {
+    id: "gyn-benign",
+    session: 2,
+    category: "OB/GYN",
+    title: "Benign Gynecologic Conditions",
+    summary: "Fibroids, endometriosis, adenomyosis, ovarian cysts, lichen sclerosus.",
+    sections: [
+      {
+        heading: "Uterine leiomyomas (fibroids)",
+        bullets: [
+          "Most common pelvic tumor in reproductive-age women",
+          "Symptoms: heavy menstrual bleeding, bulk symptoms (urinary frequency, pelvic pressure)",
+          "Enlarged irregular uterus on bimanual exam",
+          "Confirm with TVUS",
+          "Tx: NSAIDs, OCPs, LNG-IUD, GnRH agonists; UAE; myomectomy; hysterectomy",
+        ],
+      },
+      {
+        heading: "Adenomyosis",
+        bullets: [
+          "Endometrial glands within myometrium",
+          "Boggy, ENLARGED, tender uterus",
+          "Menorrhagia + dysmenorrhea",
+          "MRI confirms (vs fibroids: discrete masses)",
+          "Tx: NSAIDs, hormonal therapy, hysterectomy",
+        ],
+      },
+      {
+        heading: "Endometriosis",
+        bullets: [
+          "Endometrial tissue OUTSIDE uterus",
+          "Classic triad: chronic pelvic pain + dysmenorrhea + deep dyspareunia",
+          "Dyschezia (rectal), infertility",
+          "Gold standard dx: laparoscopy with biopsy",
+          "Tx: NSAIDs + COCs → progestins → GnRH agonists → laparoscopic excision",
+          "Letrozole or IVF for fertility",
+        ],
+      },
+      {
+        heading: "Ovarian cysts",
+        bullets: [
+          "Functional: follicular (most common), corpus luteum",
+          "Dermoid (mature cystic teratoma): hair, teeth, sebum",
+          "Endometrioma ('chocolate cyst'): endometriosis",
+          "Management depends on size + characteristics + age",
+          "Simple cyst <5 cm in premenopausal: observe",
+          "Complex or postmenopausal: surgical evaluation",
+        ],
+      },
+      {
+        heading: "Ovarian torsion",
+        bullets: [
+          "Sudden severe unilateral pain + N/V + adnexal mass",
+          "RFs: ovarian mass >5 cm, pregnancy, fertility treatment",
+          "Doppler may show ↓ flow (but normal flow doesn't rule out)",
+          "Emergent laparoscopy with detorsion ± cystectomy",
+          "Right > left (sigmoid protects)",
+        ],
+      },
+      {
+        heading: "PID (pelvic inflammatory disease)",
+        bullets: [
+          "Lower abd pain + CMT + adnexal tenderness",
+          "Treat empirically (don't wait for cultures)",
+          "Outpatient: ceftriaxone IM + doxycycline ± metronidazole",
+          "Inpatient: cefoxitin/cefotetan + doxycycline (if pregnant, severe, TOA, no response)",
+          "Complications: infertility, ectopic, chronic pain, Fitz-Hugh-Curtis (perihepatitis)",
+        ],
+      },
+      {
+        heading: "Lichen sclerosus",
+        bullets: [
+          "Postmenopausal vulvar pruritus + atrophic white patches in figure-of-eight",
+          "Risk of vulvar SCC (biopsy if suspicious)",
+          "Treat: high-potency topical corticosteroid (clobetasol)",
+        ],
+      },
+      {
+        heading: "Bartholin gland cyst/abscess",
+        bullets: [
+          "Vulvar swelling, may be tender if abscess",
+          "Cyst: observation if asymptomatic",
+          "Abscess: I&D + Word catheter or marsupialization",
+          "If recurrent or postmenopausal: biopsy (rule out cancer)",
+        ],
+      },
+    ],
+    pearls: [
+      "Endometriosis triad: chronic pelvic pain + dysmenorrhea + deep dyspareunia",
+      "Adenomyosis: ENLARGED boggy uterus + menorrhagia",
+      "Fibroids: enlarged IRREGULAR uterus",
+      "Ovarian torsion: emergent surgery to preserve fertility",
+      "Lichen sclerosus: clobetasol + biopsy if suspicious",
+    ],
+    relatedCaseIds: ["uterine-fibroids", "endometriosis-classic", "ovarian-torsion", "pid-diagnosis", "lichen-sclerosus"],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
   // OMM / OSTEOPATHIC MANIPULATIVE MEDICINE (COMLEX Level 2)
   // ═══════════════════════════════════════════════════════════════════
 
