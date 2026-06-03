@@ -6099,6 +6099,945 @@ export const NOTES: Note[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════
+  // PHARMACOLOGY — HIGH-YIELD DRUG CLASSES
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "pharm-anticoagulants",
+    session: 2,
+    category: "Pharmacology",
+    title: "Anticoagulants — warfarin, heparin, LMWH, DOACs",
+    summary: "Mechanism, monitoring, reversal, and when to pick which agent.",
+    sections: [
+      {
+        heading: "Mechanism & monitoring",
+        bullets: [
+          "Unfractionated heparin (UFH): activates antithrombin → inhibits IIa + Xa; monitor aPTT (or anti-Xa); reversed by protamine",
+          "Low molecular weight heparin (LMWH, enoxaparin): inhibits Xa >> IIa; monitor anti-Xa (only in renal failure, pregnancy, extremes of weight); partial reversal with protamine",
+          "Warfarin: inhibits vitamin K epoxide reductase → ↓ factors II, VII, IX, X (and proteins C, S); monitor INR (target 2–3, or 2.5–3.5 for mechanical mitral valve)",
+          "DOACs: apixaban, rivaroxaban, edoxaban (anti-Xa); dabigatran (anti-IIa); no routine monitoring; renal clearance matters",
+        ],
+      },
+      {
+        heading: "Reversal agents",
+        bullets: [
+          "Warfarin: vitamin K (PO/IV) + 4-factor PCC (immediate) or FFP (slower)",
+          "Heparin: protamine sulfate (1 mg per 100 units UFH)",
+          "Dabigatran: idarucizumab",
+          "Apixaban / rivaroxaban: andexanet alfa (or 4-factor PCC if not available)",
+        ],
+      },
+      {
+        heading: "When to pick which",
+        bullets: [
+          "Acute DVT/PE, hemodynamically stable: DOAC (apixaban or rivaroxaban) → continue ≥3 mo (longer if unprovoked)",
+          "Pregnancy: LMWH (preferred); NEVER warfarin (teratogen) or DOACs (no data, placenta-crossing)",
+          "Mechanical heart valve: WARFARIN only (DOACs failed RE-ALIGN trial)",
+          "Severe renal failure (CrCl <15–30): warfarin or UFH; DOACs/LMWH require dose adjustment or avoidance",
+          "Active cancer-associated VTE: DOAC (apixaban) or LMWH",
+          "AFib + valvular (moderate–severe MS): WARFARIN; DOACs in non-valvular only",
+        ],
+      },
+      {
+        heading: "Heparin-induced thrombocytopenia (HIT)",
+        bullets: [
+          "Suspect: platelet drop >50% from baseline OR <100,000 between days 5–14 of heparin (sooner if prior exposure)",
+          "Paradoxical thrombosis (arterial or venous) despite low platelets",
+          "Stop ALL heparin (including LMWH and flushes); start argatroban or fondaparinux (no platelet effect)",
+          "Do NOT give warfarin until platelets recover and on alternative anticoag (risk of skin necrosis)",
+          "4Ts score for pretest probability; confirm with anti-PF4 ELISA → serotonin release assay if equivocal",
+        ],
+      },
+      {
+        heading: "Other key warnings",
+        bullets: [
+          "Warfarin skin necrosis: paradoxical clotting in first 5 days (protein C deficiency unmasked) — bridge with heparin",
+          "Warfarin teratogen: fetal warfarin syndrome (nasal hypoplasia, stippled epiphyses), CNS abnormalities",
+          "Long-term warfarin: hair loss, purple toe syndrome (cholesterol embolization), osteoporosis",
+          "DOACs: do not crush enteric-coated formulations; check for drug interactions (CYP3A4 inducers ↓ levels)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Anticoagulant comparison",
+        headers: ["Drug", "Reversal / monitoring"],
+        rows: [
+          ["UFH", "Protamine; aPTT"],
+          ["LMWH (enoxaparin)", "Partial protamine; anti-Xa (in special cases)"],
+          ["Warfarin", "Vitamin K + 4F-PCC; INR"],
+          ["Dabigatran", "Idarucizumab; no routine monitoring"],
+          ["Apixaban / rivaroxaban", "Andexanet alfa or 4F-PCC; no routine monitoring"],
+        ],
+      },
+    ],
+    pearls: [
+      "Pregnant + VTE → LMWH (NEVER warfarin in 1st trimester or DOACs ever)",
+      "Mechanical mitral valve → warfarin only (target INR 2.5–3.5)",
+      "HIT: stop heparin, start argatroban; do NOT give warfarin until platelet count recovers",
+      "Warfarin + amiodarone, fluoroquinolones, TMP-SMX, metronidazole → ↑↑ INR (CYP inhibition)",
+      "Rifampin, carbamazepine, phenytoin, St John's wort → ↓ warfarin/DOAC effect (CYP induction)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-diabetes",
+    session: 2,
+    category: "Pharmacology",
+    title: "Diabetes drugs — insulin & orals",
+    summary: "Pick the right agent by comorbidity. Know the killers (DKA, lactic acid, hypoglycemia, MTC).",
+    sections: [
+      {
+        heading: "Metformin (first-line for T2DM)",
+        bullets: [
+          "Mechanism: ↓ hepatic gluconeogenesis; ↑ peripheral insulin sensitivity",
+          "Side effects: GI upset (titrate slowly), B12 deficiency (check yearly), LACTIC ACIDOSIS",
+          "Contraindications: eGFR <30 (caution 30–45); hold for contrast, surgery, acute illness",
+          "Does NOT cause hypoglycemia by itself; weight neutral or modest loss",
+        ],
+      },
+      {
+        heading: "GLP-1 agonists (semaglutide, liraglutide, dulaglutide, tirzepatide)",
+        bullets: [
+          "Mechanism: ↑ glucose-dependent insulin secretion, ↓ glucagon, slows gastric emptying, ↑ satiety",
+          "Big wins: weight loss, ↓ CV mortality (semaglutide, liraglutide), renal protection",
+          "Side effects: nausea/vomiting, pancreatitis, gallstones",
+          "BLACK BOX: medullary thyroid cancer (avoid in MEN-2, personal/family hx of MTC)",
+        ],
+      },
+      {
+        heading: "SGLT-2 inhibitors (-flozin: empagliflozin, dapagliflozin, canagliflozin)",
+        bullets: [
+          "Mechanism: ↓ glucose reabsorption in PCT → glucosuria",
+          "Big wins: ↓ CV mortality, ↓ HF hospitalizations, ↓ progression of CKD (independent of glycemic effect)",
+          "Side effects: euglycemic DKA, mycotic GU infections, volume depletion, Fournier gangrene (rare)",
+          "Hold for surgery, illness, fasting; restart when eating normally",
+          "Now first-line add-on for T2DM + HFrEF or CKD",
+        ],
+      },
+      {
+        heading: "Other orals",
+        bullets: [
+          "Sulfonylureas (glipizide, glyburide): ↑ insulin release → HYPOGLYCEMIA (esp glyburide in elderly); weight gain",
+          "DPP-4 inhibitors (-gliptin: sitagliptin): mild A1c lowering, weight neutral; pancreatitis risk (small), arthralgia",
+          "TZDs (pioglitazone): insulin sensitizer; CONTRAINDICATED in CHF (fluid retention), bladder cancer (controversial), fractures",
+          "α-glucosidase inhibitors (acarbose): GI side effects, mild A1c effect (less used)",
+        ],
+      },
+      {
+        heading: "Insulin",
+        bullets: [
+          "Rapid (lispro, aspart, glulisine): onset 15 min, peak 1 hr, duration 3–5 hr — with meals",
+          "Short (regular): onset 30 min, peak 2 hr, duration 6–8 hr — IV in DKA",
+          "Intermediate (NPH): onset 1–2 hr, peak 6–10 hr — basal in cheaper regimens",
+          "Long (glargine, detemir, degludec): peakless, 18–24+ hr — true basal",
+          "Total daily dose start: 0.4–0.5 units/kg, split 50% basal / 50% prandial",
+          "Insulin requirement DOUBLES in DKA recovery; HALVES during illness or fasting",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Diabetes drug picker by comorbidity",
+        headers: ["Comorbidity", "Preferred add-on"],
+        rows: [
+          ["ASCVD", "GLP-1 (sema, lira) or SGLT-2"],
+          ["HFrEF", "SGLT-2 inhibitor"],
+          ["CKD (eGFR < 60)", "SGLT-2 (if eGFR > 20) or GLP-1"],
+          ["Obesity", "GLP-1 (tirzepatide best)"],
+          ["Cost / minimal disease", "Sulfonylurea or NPH insulin"],
+        ],
+      },
+    ],
+    pearls: [
+      "Metformin + IV contrast → hold 48 hr; check creatinine before restarting",
+      "Euglycemic DKA on SGLT-2 → blood glucose may be ~200 with massive ketosis; check ketones",
+      "GLP-1 + personal/family history of medullary thyroid cancer or MEN-2 → DON'T use",
+      "Pioglitazone + CHF = NO (fluid retention worsens HF)",
+      "Glyburide is the riskiest sulfonylurea for hypoglycemia in elderly — use glipizide instead",
+    ],
+    relatedCaseIds: ["glp1-mtc", "b12-metformin"],
+  },
+
+  {
+    id: "pharm-beta-blockers",
+    session: 2,
+    category: "Pharmacology",
+    title: "β-blockers — selectivity, ISA, ABCs of side effects",
+    summary: "Cardioselective vs non-selective, with the indications and contraindications that matter.",
+    sections: [
+      {
+        heading: "Classes",
+        bullets: [
+          "β1-selective (cardioselective): metoprolol, atenolol, bisoprolol, esmolol, nebivolol — preferred in COPD, DM, PAD",
+          "Non-selective (β1+β2): propranolol, nadolol, timolol — useful in migraine, essential tremor, performance anxiety",
+          "Mixed α+β: labetalol, carvedilol — labetalol for hypertensive emergency (incl pregnancy), carvedilol for HFrEF",
+          "ISA (intrinsic sympathomimetic activity): pindolol, acebutolol — less bradycardia; avoid post-MI",
+        ],
+      },
+      {
+        heading: "Major indications",
+        bullets: [
+          "HFrEF: carvedilol, metoprolol succinate (NOT tartrate), bisoprolol → mortality benefit",
+          "Post-MI: any β-blocker × at least 1 yr",
+          "Rate control AFib: metoprolol or atenolol",
+          "Migraine prophylaxis: propranolol, metoprolol",
+          "Essential tremor: propranolol",
+          "Performance anxiety: propranolol PRN (short-acting)",
+          "Hyperthyroidism (until antithyroid takes effect): propranolol",
+          "Variceal bleeding prophylaxis (cirrhosis): nadolol, propranolol",
+          "Pheochromocytoma: AFTER α-blockade (phenoxybenzamine) — never first",
+        ],
+      },
+      {
+        heading: "Side effects (ABCDE)",
+        bullets: [
+          "Asthma / bronchospasm (especially non-selective)",
+          "Bradycardia, heart block",
+          "Claudication / cold extremities (worsen PAD)",
+          "Depression, fatigue, sexual dysfunction",
+          "Erectile dysfunction; masks hypoglycemia symptoms (sweating preserved; tachycardia masked) in diabetics",
+        ],
+      },
+      {
+        heading: "Contraindications / caveats",
+        bullets: [
+          "Asthma: avoid non-selective; cardioselective at low dose OK in COPD",
+          "Decompensated HF: hold; restart slowly when euvolemic",
+          "2nd/3rd degree AV block (without pacer)",
+          "Cocaine intoxication: unopposed α → AVOID β-blockers; use benzos, phentolamine if HTN crisis",
+          "Pheochromocytoma: phenoxybenzamine first, then β-blocker",
+        ],
+      },
+      {
+        heading: "Overdose",
+        bullets: [
+          "Bradycardia + hypotension; hypoglycemia, seizures",
+          "Treatment: IV fluids, atropine, glucagon (drug of choice), high-dose insulin / euglycemia, calcium, lipid emulsion in severe",
+          "Pacing if refractory bradycardia",
+        ],
+      },
+    ],
+    pearls: [
+      "HFrEF: only carvedilol, metoprolol SUCCINATE, and bisoprolol have mortality benefit",
+      "Cocaine chest pain: NO β-blocker (use benzos + nitrate); 'unopposed α' risk historically taught — modern evidence less clear, board answer = avoid",
+      "Pheochromocytoma needs α-blockade FIRST (phenoxybenzamine), then β to prevent hypertensive crisis",
+      "Glucagon is the antidote for β-blocker AND calcium-channel blocker overdose (via cAMP)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-ace-arb",
+    session: 2,
+    category: "Pharmacology",
+    title: "ACE inhibitors & ARBs",
+    summary: "First-line in HFrEF, post-MI, CKD with proteinuria, HTN with DM. Know the kidney and the cough.",
+    sections: [
+      {
+        heading: "Mechanism",
+        bullets: [
+          "ACE-I (-pril: lisinopril, enalapril, captopril): block ACE → ↓ angiotensin II + ↑ bradykinin (responsible for cough/angioedema)",
+          "ARBs (-sartan: losartan, valsartan, candesartan): block AT1 receptor → no bradykinin effect → no cough; lower angioedema risk",
+          "ARNI (sacubitril-valsartan): adds neprilysin inhibition → ↑ natriuretic peptides; first-line for HFrEF NYHA II–III",
+        ],
+      },
+      {
+        heading: "Indications",
+        bullets: [
+          "HTN with DM or proteinuria (renal-protective)",
+          "HFrEF (mortality benefit)",
+          "Post-MI (esp. with reduced EF)",
+          "Diabetic nephropathy (microalbuminuria)",
+          "Non-diabetic CKD with proteinuria",
+        ],
+      },
+      {
+        heading: "Side effects",
+        bullets: [
+          "Dry cough (ACE-I only) — 10–20%, weeks to months after start; switch to ARB",
+          "Angioedema (ACE-I > ARB; higher in Black patients) — discontinue immediately, do NOT switch within class without caution",
+          "Hyperkalemia (be careful with K-sparing diuretics, NSAIDs, K supplements)",
+          "Acute kidney injury — esp. with bilateral renal artery stenosis or volume depletion",
+          "First-dose hypotension (esp. in volume-depleted patients)",
+          "PREGNANCY CATEGORY X: oligohydramnios, fetal renal failure, skull defects, hypotension",
+        ],
+      },
+      {
+        heading: "Monitoring",
+        bullets: [
+          "Check BMP within 1–2 weeks of starting or dose change",
+          "Expect Cr rise up to 30% (acceptable due to ↓ intraglomerular pressure)",
+          "Hold if Cr rises >30%, K >5.5, or symptomatic hypotension",
+        ],
+      },
+    ],
+    pearls: [
+      "ACE-I + ARB combo = MORE harm than benefit (hyperK, AKI, hypotension); never combine",
+      "Bilateral renal artery stenosis on ACE-I → AKI; classic vignette: HTN + flash pulmonary edema + asymmetric kidneys",
+      "Pregnant patient on ACE-I → STOP immediately, switch to labetalol/methyldopa/nifedipine",
+      "ARB tolerance better than ACE-I for cough; if angioedema with ACE-I, ARBs are USUALLY but not always safe",
+      "Sacubitril-valsartan: 36-hr washout from ACE-I before starting (combined = high angioedema risk)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-diuretics",
+    session: 2,
+    category: "Pharmacology",
+    title: "Diuretics — loop, thiazide, K-sparing",
+    summary: "Where they act in the nephron, what they do to electrolytes, what they cause.",
+    sections: [
+      {
+        heading: "Loop diuretics (furosemide, bumetanide, torsemide, ethacrynic acid)",
+        bullets: [
+          "Site: thick ascending limb (NKCC2 blocker)",
+          "Effects: ↑↑ Na, K, Cl, Ca, Mg, H+ excretion; massive diuresis",
+          "Indications: HF, pulmonary edema, severe HTN, hypercalcemia, refractory edema",
+          "Side effects: hypokalemia, hypomagnesemia, hypocalcemia, metabolic alkalosis, hyperuricemia (→ gout), ototoxicity (esp. with aminoglycosides)",
+          "Ethacrynic acid: only loop usable in true sulfa allergy",
+        ],
+      },
+      {
+        heading: "Thiazides (HCTZ, chlorthalidone, indapamide)",
+        bullets: [
+          "Site: distal convoluted tubule (NCC blocker)",
+          "Effects: moderate diuresis; HOLDS calcium (treats hypercalciuria, stones)",
+          "Indications: essential HTN (first-line), CHF (less effective than loop), calcium-stone prophylaxis, nephrogenic DI",
+          "Side effects: 'hyperGLUC' = HYPERglycemia, HYPERlipidemia, HYPERuricemia (gout), HYPERcalcemia; HYPOnatremia, HYPOkalemia, HYPOmagnesemia",
+          "Chlorthalidone preferred over HCTZ (longer half-life, better BP control)",
+        ],
+      },
+      {
+        heading: "K-sparing (spironolactone, eplerenone, amiloride, triamterene)",
+        bullets: [
+          "Spironolactone, eplerenone: aldosterone receptor antagonists",
+          "Amiloride, triamterene: ENaC blockers (collecting duct)",
+          "Indications: HFrEF mortality benefit (spironolactone, eplerenone), hyperaldosteronism, cirrhosis with ascites, refractory HTN, acne in women, PCOS",
+          "Side effects: HYPERkalemia, gynecomastia (spironolactone, NOT eplerenone), metabolic acidosis",
+          "Monitor K every 1–2 weeks initially, then every 3 months",
+        ],
+      },
+      {
+        heading: "Other",
+        bullets: [
+          "Mannitol (osmotic): ↑ ICP, glaucoma; CAN cause pulmonary edema",
+          "Acetazolamide (CA inhibitor): altitude sickness prophylaxis, glaucoma, idiopathic intracranial HTN; causes metabolic acidosis",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Diuretic electrolyte effects at a glance",
+        headers: ["Drug", "Effect"],
+        rows: [
+          ["Furosemide", "↓ K, Mg, Ca; metabolic alkalosis"],
+          ["HCTZ", "↓ K, Na; ↑ Ca, glucose, uric acid"],
+          ["Spironolactone", "↑ K; gynecomastia (men)"],
+          ["Acetazolamide", "↓ K, HCO₃; metabolic acidosis"],
+          ["Mannitol", "Volume shift; risk of pulm edema"],
+        ],
+      },
+    ],
+    pearls: [
+      "Calcium stones → THIAZIDE (lowers urine Ca via DCT reabsorption)",
+      "Cirrhosis ascites → SPIRONOLACTONE first-line (high aldosterone in cirrhosis)",
+      "HCTZ + lithium → ↑ lithium levels (renal reabsorption)",
+      "Loop + aminoglycoside → ototoxicity",
+      "Spironolactone gynecomastia → switch to ELPERENONE (selective MR antagonist)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-statins-lipids",
+    session: 2,
+    category: "Pharmacology",
+    title: "Statins & lipid drugs",
+    summary: "Pick the right intensity, know the myopathy, when to add ezetimibe or PCSK9.",
+    sections: [
+      {
+        heading: "Statin intensity (ACC/AHA)",
+        bullets: [
+          "High-intensity (LDL ↓ ≥ 50%): atorvastatin 40–80, rosuvastatin 20–40",
+          "Moderate-intensity (LDL ↓ 30–49%): atorvastatin 10–20, rosuvastatin 5–10, simvastatin 20–40, pravastatin 40–80",
+          "Low-intensity: rarely indicated; only for intolerance",
+        ],
+      },
+      {
+        heading: "Who needs a statin",
+        bullets: [
+          "Clinical ASCVD (prior MI, stroke, PAD): HIGH intensity (or moderate if >75)",
+          "LDL ≥ 190: high intensity",
+          "Diabetes age 40–75: moderate (high if other ASCVD risk factors)",
+          "Primary prevention 40–75 + 10-yr ASCVD ≥ 7.5%: discuss; ≥20% start moderate-high intensity",
+        ],
+      },
+      {
+        heading: "Side effects",
+        bullets: [
+          "Myalgia (5–10%) — usually benign, check CK if severe",
+          "Rhabdomyolysis (rare, <0.1%) — CK >10× ULN, dark urine, weakness; stop drug",
+          "Statin-induced autoimmune myopathy (anti-HMGCR antibodies) — persistent weakness despite stopping",
+          "Hepatic dysfunction — minor LFT bumps common; only stop if >3× ULN",
+          "New-onset DM (slight ↑ risk; benefits outweigh in most)",
+          "Drug interactions: simvastatin + amiodarone, fibrates, macrolides, fluconazole, cyclosporine → ↑ myopathy risk",
+        ],
+      },
+      {
+        heading: "When statin alone isn't enough",
+        bullets: [
+          "Add EZETIMIBE first (cheap, oral, additional ~20% LDL drop, modest CV benefit)",
+          "Then PCSK9 inhibitors (evolocumab, alirocumab) — injectable, very expensive, big LDL drops, CV mortality benefit",
+          "Bempedoic acid — alternative if statin intolerant, ↓ LDL ~15–20%, modest CV benefit",
+          "Inclisiran — siRNA against PCSK9, q6mo injection",
+        ],
+      },
+      {
+        heading: "Other lipid agents",
+        bullets: [
+          "Fibrates (fenofibrate, gemfibrozil): ↓ TG; use for TG >500 to prevent pancreatitis",
+          "Niacin: rarely used; flushing, hyperglycemia, gout",
+          "Omega-3 (icosapent ethyl): ↓ TG; CV benefit at high doses (REDUCE-IT)",
+          "Bile acid sequestrants (cholestyramine): rarely first-line; GI side effects, drug binding interactions",
+        ],
+      },
+    ],
+    pearls: [
+      "Simvastatin max dose 20 mg with amiodarone (or 10 mg with verapamil/diltiazem) — myopathy risk",
+      "Pregnancy: STOP statins (category X officially, but emerging data less concerning)",
+      "ALT 3× ULN or unexplained myalgia → hold statin, work up",
+      "Niacin + simvastatin: no incremental benefit in CV outcomes (AIM-HIGH), more harm",
+      "Statin + grapefruit juice → ↑ levels (simvastatin, atorvastatin; pravastatin/rosuvastatin OK)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-antibiotics",
+    session: 2,
+    category: "Pharmacology",
+    title: "Antibiotics — pick the right one",
+    summary: "Class-by-class with coverage, side effects, and the test-worthy gotchas.",
+    sections: [
+      {
+        heading: "Penicillins / β-lactams",
+        bullets: [
+          "Penicillin G/V: strep, Treponema, Listeria, susceptible enterococcus",
+          "Amoxicillin / amox-clav: otitis media, sinusitis, dental, +H. influenzae, +anaerobes (clav)",
+          "Antipseudomonal pens (piperacillin-tazobactam): broad gram-neg + anaerobes + Pseudomonas",
+          "Cephalosporins: 1st gen (cefazolin) skin/preop; 3rd gen (ceftriaxone) CAP/meningitis; 4th gen (cefepime) Pseudomonas; 5th gen (ceftaroline) MRSA",
+          "Carbapenems (meropenem, imipenem): broadest gram-neg/anaerobic; reserve for resistant; seizure risk (imipenem)",
+          "Side effects: rash, anaphylaxis, C. diff; cefepime → neurotoxicity in renal failure",
+        ],
+      },
+      {
+        heading: "Macrolides (azithro, clarithro, erythro)",
+        bullets: [
+          "Atypical pneumonia (Mycoplasma, Legionella, Chlamydia), pertussis, H. pylori (clarithro)",
+          "Side effects: QT prolongation, GI motility (erythro = pro-kinetic), hearing loss with high dose",
+        ],
+      },
+      {
+        heading: "Fluoroquinolones (cipro, levo, moxi)",
+        bullets: [
+          "Cipro: UTI, GI, Pseudomonas; weak gram-positive",
+          "Levo, moxi: 'respiratory FQ' for CAP",
+          "BOXED warnings: tendon rupture (esp Achilles + steroids), QT prolongation, aortic aneurysm/dissection, peripheral neuropathy, C. diff",
+          "Avoid in pregnancy and children (cartilage); avoid with steroids in elderly",
+        ],
+      },
+      {
+        heading: "Aminoglycosides (gentamicin, tobramycin, amikacin)",
+        bullets: [
+          "Gram-negative; synergy with β-lactam for endocarditis (enterococcus)",
+          "Side effects: NEPHROTOXICITY, OTOTOXICITY (irreversible), neuromuscular blockade",
+          "Once-daily dosing safer; monitor peaks/troughs; avoid with loops",
+        ],
+      },
+      {
+        heading: "Vancomycin (IV)",
+        bullets: [
+          "MRSA, severe gram-positive infections",
+          "Side effects: red man syndrome (rate-related infusion reaction; pre-treat with antihistamine, slow infusion), nephrotoxicity, ototoxicity",
+          "PO vancomycin: C. diff (NOT absorbed)",
+        ],
+      },
+      {
+        heading: "Other key agents",
+        bullets: [
+          "TMP-SMX (Bactrim): UTI, MRSA skin, PCP, toxoplasmosis prophylaxis; hyperK, photosensitivity, Stevens-Johnson, kernicterus in neonates",
+          "Tetracyclines (doxy): atypicals, Lyme, rickettsia, acne; PHOTOSENSITIVITY, tooth discoloration in kids/preg, esophagitis",
+          "Metronidazole: anaerobes, C. diff, BV, trichomonas, H. pylori; disulfiram-like with alcohol, peripheral neuropathy",
+          "Clindamycin: anaerobes, MRSA; C. DIFF (classic), pseudomembranous colitis",
+          "Linezolid: MRSA, VRE; serotonin syndrome, lactic acidosis, bone marrow suppression",
+          "Daptomycin: MRSA, VRE; CANNOT use in pneumonia (inactivated by surfactant); rhabdo, eosinophilic pneumonia",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Antibiotic gotchas",
+        headers: ["Drug", "Test-worthy warning"],
+        rows: [
+          ["FQ (cipro/levo)", "Tendon rupture, QT, aorta, neuropathy"],
+          ["Aminoglycosides", "Nephro + irreversible ototoxicity"],
+          ["TMP-SMX", "HyperK, SJS, kernicterus in newborns"],
+          ["Tetracyclines", "Photosensitivity; not in kids/pregnancy"],
+          ["Metronidazole", "Disulfiram with alcohol"],
+          ["Clindamycin", "C. difficile colitis"],
+          ["Daptomycin", "Doesn't work for pneumonia"],
+          ["Linezolid", "Serotonin syndrome with SSRIs"],
+        ],
+      },
+    ],
+    pearls: [
+      "Empiric meningitis in adults: vancomycin + ceftriaxone (+ ampicillin if >50 or immunocompromised for Listeria)",
+      "Empiric CAP (outpatient): amoxicillin or doxycycline (or azithro if no comorbidities); inpatient ICU: β-lactam + macrolide OR β-lactam + FQ",
+      "C. diff treatment: ORAL vancomycin OR oral fidaxomicin (first-line, replacing metronidazole)",
+      "MRSA skin/soft tissue: TMP-SMX, doxycycline, clindamycin; serious infections: vancomycin or linezolid",
+      "Pseudomonas: pip-tazo, cefepime, ceftazidime, meropenem, FQs (cipro best), aminoglycosides",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-psych",
+    session: 2,
+    category: "Pharmacology",
+    title: "Psych meds — SSRIs, mood stabilizers, antipsychotics",
+    summary: "Pick by indication; know the deadly side effects (serotonin syndrome, NMS, lithium tox).",
+    sections: [
+      {
+        heading: "SSRIs (fluoxetine, sertraline, escitalopram, citalopram, paroxetine)",
+        bullets: [
+          "First-line: depression, anxiety (GAD, OCD, panic, PTSD, social), PMDD",
+          "Side effects: sexual dysfunction, GI upset, weight neutral or modest gain (paroxetine = most weight gain)",
+          "QT prolongation: citalopram (dose-dependent), escitalopram",
+          "Withdrawal: especially paroxetine (short half-life) — taper",
+          "Pregnancy: sertraline preferred; paroxetine TERATOGENIC (cardiac defects) — avoid",
+          "Serotonin syndrome with MAOI/tramadol/linezolid/triptans: clonus, hyperthermia, autonomic instability, AMS",
+        ],
+      },
+      {
+        heading: "Other antidepressants",
+        bullets: [
+          "SNRIs (venlafaxine, duloxetine): depression + neuropathic pain; HTN, sweating",
+          "Bupropion: no sexual side effects, smoking cessation, ADHD adjunct; LOWERS SEIZURE THRESHOLD (avoid in seizure disorder, eating disorders)",
+          "Mirtazapine: weight gain + sedation (good for elderly with depression + insomnia + low appetite)",
+          "Trazodone: sleep (low-dose) > antidepressant; priapism",
+          "TCAs (amitriptyline, nortriptyline): neuropathic pain, migraine prophylaxis; anticholinergic, orthostatic, CARDIAC TOXICITY in overdose (wide QRS — give bicarb)",
+          "MAOIs (phenelzine, tranylcypromine): rarely used; hypertensive crisis with tyramine; serotonin syndrome with serotonergic drugs",
+        ],
+      },
+      {
+        heading: "Mood stabilizers",
+        bullets: [
+          "Lithium: bipolar mania prophylaxis; narrow therapeutic index (0.6–1.2); tremor, polyuria (nephrogenic DI), hypothyroidism, weight gain, EBSTEIN anomaly in pregnancy; toxicity at >1.5 → confusion, seizures, arrhythmia",
+          "Valproate: bipolar, seizures; hepatotoxicity, pancreatitis, weight gain, thrombocytopenia, NEURAL TUBE DEFECTS, alopecia",
+          "Lamotrigine: bipolar depression, seizures; STEVENS-JOHNSON syndrome (titrate slowly)",
+          "Carbamazepine: seizures, trigeminal neuralgia; SJS, agranulocytosis, SIADH, neural tube defects",
+        ],
+      },
+      {
+        heading: "Antipsychotics",
+        bullets: [
+          "Typical (haloperidol, fluphenazine, chlorpromazine): D2 blockade; high EPS, tardive dyskinesia, hyperprolactinemia",
+          "Atypical (risperidone, quetiapine, olanzapine, aripiprazole, ziprasidone, clozapine): lower EPS; METABOLIC syndrome (weight, DM, lipids — esp olanzapine)",
+          "Clozapine: refractory schizophrenia ONLY; AGRANULOCYTOSIS (weekly ANC × 6 mo), myocarditis, seizures, sialorrhea, ileus; lowest EPS, best for negative symptoms",
+          "Quetiapine: sleep-friendly, low EPS; orthostasis",
+          "Aripiprazole: partial agonist; activating",
+          "Neuroleptic Malignant Syndrome (NMS): rigidity, hyperthermia, AMS, autonomic instability; days to weeks after start; stop drug, supportive, dantrolene/bromocriptine",
+        ],
+      },
+      {
+        heading: "Anxiolytics & hypnotics",
+        bullets: [
+          "Benzos (lorazepam, clonazepam): rapid anxiety relief, alcohol withdrawal, seizures; ADDICTIVE, fall risk in elderly; reverse with flumazenil (rarely used — seizure risk)",
+          "Buspirone: GAD; non-addictive; takes 2–4 weeks",
+          "Z-drugs (zolpidem): sleep; sleep-driving/eating; tolerance",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Psych toxidromes",
+        headers: ["Syndrome", "Features / antidote"],
+        rows: [
+          ["Serotonin syndrome", "Clonus, hyperthermia, hyperreflexia; stop drug, cyproheptadine"],
+          ["Neuroleptic Malignant Syndrome", "Rigidity, hyperthermia, AMS; stop drug, dantrolene/bromocriptine"],
+          ["Lithium toxicity", "Tremor, AMS, seizures; hydration, dialysis if severe"],
+          ["TCA overdose", "Wide QRS, hypotension, seizures; IV bicarb"],
+          ["Tyramine + MAOI", "Hypertensive crisis; phentolamine"],
+        ],
+      },
+    ],
+    pearls: [
+      "Pregnancy + bipolar → lamotrigine or low-dose lithium (avoid valproate, carbamazepine; avoid lithium 1st trimester if possible)",
+      "SSRI in pregnancy → sertraline preferred; AVOID paroxetine",
+      "Wellbutrin (bupropion) → AVOID in eating disorders + seizure disorders",
+      "Clozapine starts → weekly CBC × 6 mo, then biweekly × 6, then monthly",
+      "Lithium + NSAID/ACE-I/thiazide → ↑ lithium level (toxicity)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-steroids",
+    session: 2,
+    category: "Pharmacology",
+    title: "Corticosteroids — chronic use, withdrawal, stress dose",
+    summary: "What chronic steroids do to a body, when to taper, when to stress-dose.",
+    sections: [
+      {
+        heading: "Equivalent doses (rough)",
+        bullets: [
+          "Hydrocortisone 20 mg = prednisone 5 mg = methylprednisolone 4 mg = dexamethasone 0.75 mg",
+          "Hydrocortisone has the most mineralocorticoid effect; dexamethasone has the least",
+        ],
+      },
+      {
+        heading: "Side effects of chronic use",
+        bullets: [
+          "Iatrogenic Cushing syndrome: central obesity, moon facies, striae, buffalo hump",
+          "Osteoporosis: give Ca + vit D, consider bisphosphonate if >5 mg prednisone × 3+ months",
+          "Hyperglycemia / new-onset DM",
+          "HTN, fluid retention",
+          "Cataracts, glaucoma",
+          "Avascular necrosis (esp femoral head)",
+          "Mood changes: insomnia, mania, psychosis",
+          "Skin: thinning, easy bruising, poor wound healing",
+          "Infection susceptibility (bacterial, fungal, reactivated TB)",
+          "PUD risk (esp with NSAIDs)",
+          "Adrenal suppression with prolonged use → cannot stop abruptly",
+        ],
+      },
+      {
+        heading: "Withdrawal",
+        bullets: [
+          "Suppression occurs after ~3 weeks of >20 mg/day prednisone (or equivalent)",
+          "TAPER over weeks-months; abrupt stop → adrenal crisis (hypotension, hyponatremia, hyperkalemia, hypoglycemia)",
+          "After taper, may need stress-dose steroids for surgery/illness × 6–12 months",
+        ],
+      },
+      {
+        heading: "Stress dosing",
+        bullets: [
+          "Minor surgery / mild illness: continue usual dose or double × 24 hr",
+          "Moderate surgery: hydrocortisone 50 mg IV pre-op, then taper over 1–2 days",
+          "Major surgery / critical illness: hydrocortisone 100 mg IV q8h × 24–48 hr then taper",
+          "Septic shock with relative adrenal insufficiency: hydrocortisone 200 mg/day",
+        ],
+      },
+      {
+        heading: "Special situations",
+        bullets: [
+          "Asthma exacerbation: short course (5 days) prednisone — no taper needed",
+          "Giant cell arteritis (temporal): high-dose prednisone START before biopsy (vision-saving)",
+          "Bell's palsy: prednisone within 72 hr improves outcomes",
+          "Pneumocystis pneumonia: add steroids if PaO2 < 70 or A-a gradient ≥ 35",
+          "Severe alcoholic hepatitis (MDF > 32): prednisolone reduces 28-day mortality",
+        ],
+      },
+    ],
+    pearls: [
+      "Chronic prednisone > 5 mg × 3 mo → check DEXA + start Ca/vit D + consider bisphosphonate",
+      "Never stop chronic high-dose steroids abruptly → adrenal crisis",
+      "Stress dose: triple usual dose for sick day; hydrocortisone IV for major stress",
+      "Steroid + NSAID = ↑ PUD risk — add PPI",
+      "Latent TB on chronic steroids → treat to prevent reactivation",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-aeds",
+    session: 2,
+    category: "Pharmacology",
+    title: "Antiepileptic drugs (AEDs)",
+    summary: "Pick by seizure type; know pregnancy safety and the dirty toxicities.",
+    sections: [
+      {
+        heading: "By seizure type",
+        bullets: [
+          "Focal seizures: carbamazepine, oxcarbazepine, lamotrigine, levetiracetam, lacosamide",
+          "Generalized tonic-clonic: valproate, lamotrigine, levetiracetam, topiramate",
+          "Absence: ETHOSUXIMIDE first-line; valproate alternative",
+          "Status epilepticus: lorazepam IV → phenytoin/fosphenytoin or levetiracetam → midazolam/propofol/pentobarbital infusion",
+          "Myoclonic / Juvenile myoclonic epilepsy: valproate (or levetiracetam in women)",
+        ],
+      },
+      {
+        heading: "Pregnancy",
+        bullets: [
+          "AVOID: valproate (neural tube defects, ↓ IQ), carbamazepine (NTD), phenytoin (fetal hydantoin syndrome), topiramate (cleft palate)",
+          "Safer: lamotrigine, levetiracetam — preferred in women of childbearing age",
+          "All pregnant women on AEDs: high-dose folic acid (4 mg/day) preconception and 1st trimester",
+        ],
+      },
+      {
+        heading: "Major side effects to know",
+        bullets: [
+          "Phenytoin: gingival hyperplasia, hirsutism, ataxia, nystagmus, megaloblastic anemia, drug-induced lupus, SJS, osteopenia, zero-order kinetics",
+          "Carbamazepine: SIADH, agranulocytosis, aplastic anemia, SJS (HLA-B*1502 in Asians), hepatotoxic, induces CYP",
+          "Valproate: hepatotoxicity, pancreatitis, weight gain, alopecia, hyperammonemia, thrombocytopenia, NTD in pregnancy",
+          "Lamotrigine: Stevens-Johnson syndrome (titrate slowly — esp with valproate)",
+          "Levetiracetam: irritability, behavioral changes, depression",
+          "Topiramate: word-finding difficulty, weight loss, kidney stones, oligohidrosis",
+          "Phenobarbital: sedation, dependence, induces CYP",
+        ],
+      },
+      {
+        heading: "Monitoring",
+        bullets: [
+          "Phenytoin: total + free (free is what matters in low albumin / uremia)",
+          "Valproate: levels + LFTs + ammonia if AMS",
+          "Carbamazepine: levels + CBC + Na",
+          "Lamotrigine: usually not needed; rash → STOP",
+        ],
+      },
+    ],
+    pearls: [
+      "Lamotrigine + valproate → SJS risk ↑↑ (valproate inhibits lamotrigine metabolism); titrate very slowly",
+      "Phenytoin + tube feeds → ↓ absorption; hold feeds 1–2 hr around dose",
+      "Childbearing woman on AED → lamotrigine or levetiracetam + folic acid 4 mg",
+      "Status epilepticus first line: IV lorazepam (or buccal midazolam if no IV)",
+      "Carbamazepine for Asian patients → HLA-B*1502 test (SJS risk)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-asthma-copd",
+    session: 2,
+    category: "Pharmacology",
+    title: "Asthma & COPD inhalers — stepwise therapy",
+    summary: "SABA, ICS, LABA, LAMA, biologics — when each gets added.",
+    sections: [
+      {
+        heading: "Asthma stepwise (GINA-ish)",
+        bullets: [
+          "Step 1: low-dose ICS + formoterol PRN (preferred to SABA-only)",
+          "Step 2: daily low-dose ICS + SABA or ICS/formoterol PRN",
+          "Step 3: low-dose ICS-LABA (formoterol or salmeterol) + SABA",
+          "Step 4: medium-dose ICS-LABA",
+          "Step 5: high-dose ICS-LABA + LAMA (tiotropium) + consider biologic",
+          "Biologics: omalizumab (anti-IgE — allergic asthma), mepolizumab/benralizumab (anti-IL-5 — eosinophilic), dupilumab (anti-IL-4/13 — type 2 inflammation)",
+        ],
+      },
+      {
+        heading: "COPD stepwise (GOLD)",
+        bullets: [
+          "Group A (low risk, few sx): SABA or SAMA PRN",
+          "Group B (low risk, more sx): LABA or LAMA",
+          "Group E (high risk regardless): LABA + LAMA; add ICS if eos ≥ 300 or frequent exacerbations",
+          "DON'T use ICS monotherapy in COPD (no benefit, increased pneumonia risk)",
+          "Roflumilast for severe COPD with chronic bronchitis + frequent exacerbations",
+          "Pulmonary rehab + smoking cessation + vaccines (influenza, pneumococcal, COVID) — biggest non-drug interventions",
+        ],
+      },
+      {
+        heading: "Acute exacerbations",
+        bullets: [
+          "Asthma exacerbation: O2, nebulized albuterol + ipratropium, systemic steroids (PO if mild–moderate, IV if severe), IV magnesium if severe",
+          "Asthma escalation: BiPAP if respiratory failure; intubate if AMS, exhaustion, hypercapnia worsening",
+          "COPD exacerbation: O2 (target SpO2 88–92%), bronchodilators, steroids (prednisone 40 mg × 5 days), antibiotics (if purulent sputum, increased dyspnea, mechanical ventilation)",
+          "COPD severe: BiPAP if pH < 7.35 with hypercapnia and respiratory acidosis (decreases intubation rate)",
+        ],
+      },
+      {
+        heading: "Side effects",
+        bullets: [
+          "SABA (albuterol): tachycardia, tremor, hypokalemia, hyperglycemia",
+          "LAMA (tiotropium): dry mouth, urinary retention (caution in BPH); paradoxical bronchospasm",
+          "ICS: oral candidiasis (rinse mouth), dysphonia, ↑ pneumonia in COPD, growth velocity slightly slowed in kids (catches up)",
+          "Theophylline (rare use): narrow therapeutic index, arrhythmia, seizures, GI",
+        ],
+      },
+    ],
+    pearls: [
+      "Asthma + β-blocker → use cardioselective only (or avoid); non-selective can trigger bronchospasm",
+      "Asthma + aspirin sensitivity + nasal polyps = Samter's triad → use leukotriene modifier (montelukast) or biologics",
+      "COPD goal O2 sat 88–92% (avoid V/Q mismatch and CO2 retention)",
+      "BiPAP saves intubation in COPD exacerbation with hypercapnic respiratory acidosis (pH < 7.35)",
+      "ICS in COPD only when eosinophils ≥ 300 or frequent exacerbations on dual bronchodilator",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-ob-drugs",
+    session: 2,
+    category: "Pharmacology",
+    title: "OB pharmacology — magnesium, oxytocics, tocolytics, RhoGAM",
+    summary: "The OB drugs Step 2 hammers — dosing windows and contraindications.",
+    sections: [
+      {
+        heading: "Magnesium sulfate",
+        bullets: [
+          "Preeclampsia with severe features → seizure prophylaxis (IV loading + maintenance)",
+          "Eclampsia → treat active seizure",
+          "Neuroprotection in preterm labor < 32 weeks (reduces cerebral palsy)",
+          "Toxicity: hyporeflexia → respiratory depression → cardiac arrest; antidote = CALCIUM GLUCONATE",
+          "Monitor: deep tendon reflexes, urine output, respirations, serum Mg",
+        ],
+      },
+      {
+        heading: "Tocolytics (preterm labor)",
+        bullets: [
+          "Indomethacin (NSAID): < 32 weeks (closes PDA + oligohydramnios after 32 wks)",
+          "Nifedipine: any GA; first-line if > 32 wks",
+          "Terbutaline: short-term only (FDA warning for >48-72 hr — maternal cardiac toxicity); avoid in DM, cardiac disease",
+          "Magnesium: also tocolytic but mainly for neuroprotection now",
+          "Don't tocolyze: chorioamnionitis, IUFD, abruption with hemodynamic instability, severe preeclampsia, lethal fetal anomaly",
+          "Always give: betamethasone (lung maturity) + Mg (if <32 wks) + GBS prophylaxis",
+        ],
+      },
+      {
+        heading: "Postpartum hemorrhage uterotonics",
+        bullets: [
+          "Oxytocin: first-line, given IV/IM after delivery",
+          "Methylergonovine: 2nd line; CONTRAINDICATED in HTN (incl preeclampsia) — vasoconstriction",
+          "Carboprost (PGF2α): CONTRAINDICATED in asthma — bronchospasm",
+          "Misoprostol (PGE1): rectal; bronchospasm OK but no methyl/carbo",
+          "Tranexamic acid: within 3 hr of PPH onset (WOMAN trial)",
+          "Sequence: bimanual massage → oxytocin → 2nd uterotonic → balloon → uterine artery embolization → hysterectomy",
+        ],
+      },
+      {
+        heading: "Cervical ripening / induction",
+        bullets: [
+          "Misoprostol (PGE1, off-label): vaginal/oral; AVOID in prior C-section (uterine rupture)",
+          "Dinoprostone (PGE2): vaginal insert",
+          "Mechanical: Foley balloon — safe in prior C-section",
+          "Oxytocin: titrate; risk of hyperstimulation and rupture",
+        ],
+      },
+      {
+        heading: "Rh isoimmunization (RhoGAM)",
+        bullets: [
+          "Rh-negative mother + Rh-positive fetus risk → give anti-D IG (RhoGAM)",
+          "Timing: 28 weeks routinely; within 72 hr postpartum if baby Rh+; after any antepartum bleeding, ECV, amniocentesis, abortion",
+          "Kleihauer-Betke for massive fetomaternal hemorrhage → may need higher RhoGAM dose",
+        ],
+      },
+      {
+        heading: "Other key OB drugs",
+        bullets: [
+          "Betamethasone: lung maturity, give 24–34 weeks at risk of preterm delivery (also up to 36+6 in late preterm)",
+          "Indomethacin: closes PDA in newborns; also tocolytic",
+          "Methotrexate: ectopic pregnancy (unruptured, β-hCG < 5000, no fetal cardiac activity)",
+          "Mifepristone + misoprostol: medical abortion < 70 days",
+          "Pre-pregnancy folate 400 µg (4 mg if prior NTD or on AEDs)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "OB drug contraindications",
+        headers: ["Drug", "Don't give if…"],
+        rows: [
+          ["Methylergonovine", "Hypertension / preeclampsia"],
+          ["Carboprost", "Asthma"],
+          ["Indomethacin tocolysis", "> 32 wks (PDA closure)"],
+          ["Misoprostol induction", "Prior C-section"],
+          ["Terbutaline", "Beyond 48–72 hr; maternal cardiac disease"],
+          ["Magnesium toxicity", "Antidote = calcium gluconate"],
+        ],
+      },
+    ],
+    pearls: [
+      "Severe preeclampsia → magnesium for seizure prophylaxis + labetalol/nifedipine/hydralazine for BP",
+      "Mg toxicity: lose DTRs first → respiratory depression → arrest. Give CALCIUM",
+      "PPH uterotonic sequence: oxytocin → methylergonovine (NOT in HTN) → carboprost (NOT in asthma) → misoprostol",
+      "Rh-neg mom: RhoGAM at 28 wks + within 72 hr postpartum if baby Rh+",
+      "Pregnant + DVT → LMWH (NEVER warfarin, NEVER DOACs)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-chemo-classics",
+    session: 2,
+    category: "Pharmacology",
+    title: "Chemo toxicity classics",
+    summary: "The drug-side effect pairs Step 2 loves to test.",
+    sections: [
+      {
+        heading: "Cardiotoxicity",
+        bullets: [
+          "Doxorubicin (anthracycline): dose-dependent cardiomyopathy; monitor with ECHO; dexrazoxane for prevention",
+          "Trastuzumab: reversible cardiomyopathy (often); avoid concurrent with anthracycline",
+          "5-FU / capecitabine: coronary vasospasm → angina/MI; hold and use diltiazem",
+        ],
+      },
+      {
+        heading: "Pulmonary toxicity",
+        bullets: [
+          "Bleomycin: pulmonary fibrosis (dose-related); monitor DLCO; AVOID supplemental O2 unless needed (potentiates damage)",
+          "Methotrexate: hypersensitivity pneumonitis (acute or chronic)",
+        ],
+      },
+      {
+        heading: "Nephrotoxicity",
+        bullets: [
+          "Cisplatin: nephrotoxic + ototoxic + peripheral neuropathy + nausea — hydrate aggressively, give amifostine",
+          "Methotrexate: AKI (crystal formation in acid urine) — give leucovorin + alkalinize urine",
+          "Ifosfamide: hemorrhagic cystitis — give MESNA (binds acrolein); also neurotoxic",
+          "Cyclophosphamide: hemorrhagic cystitis — MESNA",
+        ],
+      },
+      {
+        heading: "Neurotoxicity",
+        bullets: [
+          "Vincristine: peripheral neuropathy (axonal), constipation — never give intrathecally (fatal)",
+          "Cisplatin: peripheral neuropathy, ototoxicity",
+          "Methotrexate intrathecal: aseptic meningitis, leukoencephalopathy",
+          "Ifosfamide: encephalopathy — methylene blue or thiamine",
+        ],
+      },
+      {
+        heading: "Other classics",
+        bullets: [
+          "Tamoxifen: endometrial cancer risk, VTE; hot flashes; agonist effects on bone (protective)",
+          "Aromatase inhibitors (anastrozole): osteoporosis, no endometrial risk (postmenopausal only)",
+          "Imatinib (CML): GI, fluid retention, hepatotoxicity",
+          "Checkpoint inhibitors (nivolumab, pembrolizumab): immune-mediated colitis, pneumonitis, hepatitis, endocrine (hypophysitis, thyroid, T1DM) — treat with steroids",
+          "Rituximab: hepatitis B reactivation (screen first), PML, infusion reactions",
+          "G-CSF (filgrastim): bone pain (loratadine), Sweet syndrome, splenomegaly",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Drug ↔ toxicity classics",
+        headers: ["Drug", "Hallmark toxicity"],
+        rows: [
+          ["Doxorubicin", "Cardiomyopathy"],
+          ["Bleomycin", "Pulmonary fibrosis (avoid O2)"],
+          ["Cisplatin", "Nephro + oto + neuro"],
+          ["Cyclophosphamide", "Hemorrhagic cystitis (MESNA)"],
+          ["Vincristine", "Peripheral neuropathy"],
+          ["Methotrexate", "AKI, pneumonitis (rescue with leucovorin)"],
+          ["Tamoxifen", "Endometrial Ca, VTE"],
+          ["Imatinib", "Fluid retention, LFT"],
+          ["Checkpoint inhibitors", "Autoimmune-anything"],
+        ],
+      },
+    ],
+    pearls: [
+      "Methotrexate overdose / high-dose → leucovorin rescue; alkalinize urine (NaHCO3) and hydrate",
+      "Cisplatin: pre-hydrate + post-hydrate, antiemetic prophylaxis (NK1 + 5HT3 + dex)",
+      "Bleomycin pulmonary tox: monitor DLCO; avoid high FiO2 during anesthesia (lifelong)",
+      "Tamoxifen + endometrial ca: worsens if duration > 5 yr — postmenopausal switch to AI",
+      "Vincristine NEVER intrathecal (always fatal)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
   // EKG — HIGH-YIELD PATTERN RECOGNITION
   // ═══════════════════════════════════════════════════════════════════
 
