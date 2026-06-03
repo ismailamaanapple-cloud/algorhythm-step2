@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { User as UserIcon, LogOut, Layers, BookMarked } from "lucide-react";
+import { User as UserIcon, LogOut, Layers, TrendingUp } from "lucide-react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 
 export default function AuthButton() {
@@ -77,20 +77,20 @@ export default function AuthButton() {
             </div>
             <div className="p-1">
               <Link
+                href="/dashboard"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-white/80 hover:bg-white/5 transition"
+              >
+                <TrendingUp className="h-4 w-4 text-violet-300" />
+                Dashboard
+              </Link>
+              <Link
                 href="/flashcards"
                 onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-white/80 hover:bg-white/5 transition"
               >
                 <Layers className="h-4 w-4 text-cyan-300" />
                 Flashcards
-              </Link>
-              <Link
-                href="/account"
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-white/80 hover:bg-white/5 transition"
-              >
-                <BookMarked className="h-4 w-4 text-violet-300" />
-                Your progress
               </Link>
               <button
                 onClick={async () => {

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, XCircle, RotateCcw, ChevronRight, Trophy } from "lucide-react";
 import type { Case, CaseOption } from "@/data/cases";
+import { useAuth } from "@/lib/auth/AuthProvider";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 const shuffle = <T,>(arr: T[]): T[] => {
   const a = [...arr];
@@ -26,6 +28,7 @@ export default function CasePlayer({
   initialIndex?: number;
   mode?: "single" | "deck";
 }) {
+  const { user } = useAuth();
   const [index, setIndex] = useState(initialIndex);
   const [phase, setPhase] = useState<Phase>("play");
   const [picked, setPicked] = useState<CaseOption | null>(null);
@@ -57,6 +60,18 @@ export default function CasePlayer({
     setPicked(opt);
     setStats((s) => (opt.isCorrect ? { ...s, correct: s.correct + 1 } : { ...s, wrong: s.wrong + 1 }));
     setPhase("feedback");
+    // Persist case result so the Performance Dashboard can aggregate it.
+    if (user) {
+      const supabase = getSupabaseBrowserClient();
+      void supabase?.from("case_progress").upsert(
+        {
+          user_id: user.id,
+          case_id: current.id,
+          correct: opt.isCorrect,
+        },
+        { onConflict: "user_id,case_id" },
+      );
+    }
   }
 
   function next() {

@@ -27,6 +27,7 @@ export default function Nav() {
               <Layers className="h-3.5 w-3.5 text-cyan-300" />
               Flashcards
             </Link>
+            <Link href="/dashboard" className="px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition">Dashboard</Link>
             <Link href="/omm" className="px-3 py-1.5 rounded-lg text-amber-200/85 hover:text-amber-100 hover:bg-amber-300/10 transition">OMM</Link>
           </div>
           <div className="flex items-center gap-2">
