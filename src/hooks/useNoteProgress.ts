@@ -1,11 +1,24 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useAuth } from "@/lib/auth/AuthProvider";
 
 const STORAGE_KEY = "algorhythm:completedNotes";
 const MIGRATED_KEY = "algorhythm:noteProgressMigrated";
+
+/**
+ * Module-level singletons. The hook is called from many places (NoteDetail,
+ * NotesLibrary, EkgLibrary, PharmLibrary, OmmLibrary, Dashboard, the nav…).
+ * Without these, every component mount would re-fetch from Supabase and race
+ * against pending writes — causing "mark complete, navigate back, it's
+ * unchecked again" because the stale cloud read stomps the fresh local state.
+ *
+ * With the singletons, we sync the cloud ONCE per user-id and trust the
+ * local Set + the cross-tab/same-tab event bus for everything after that.
+ */
+let cloudSyncedFor: string | null = null;
+let cloudSyncInFlight: Promise<void> | null = null;
 
 function loadFromStorage(): Set<string> {
   if (typeof window === "undefined") return new Set();
@@ -24,24 +37,20 @@ function saveToStorage(ids: Set<string>) {
   if (typeof window === "undefined") return;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...ids]));
+    // Same-tab notification so every other useNoteProgress consumer re-reads.
     window.dispatchEvent(new CustomEvent("algorhythm:progress-change"));
   } catch {
     // ignore
   }
 }
 
-/**
- * Tracks note completion. When logged in, reads/writes Supabase as the source
- * of truth and mirrors to localStorage for instant reads. On first login,
- * migrates existing localStorage progress up to the cloud.
- */
 export function useNoteProgress() {
   const { user } = useAuth();
   const [completed, setCompleted] = useState<Set<string>>(new Set());
   const [hydrated, setHydrated] = useState(false);
-  const migrationDone = useRef(false);
 
-  // Initial hydrate from localStorage.
+  // 1. Hydrate from localStorage on mount + subscribe to the event bus so we
+  //    re-read whenever ANY other component (or tab) updates progress.
   useEffect(() => {
     setCompleted(loadFromStorage());
     setHydrated(true);
@@ -55,51 +64,70 @@ export function useNoteProgress() {
     };
   }, []);
 
-  // When user logs in, pull cloud rows + push any local-only rows up.
+  // 2. Cloud sync — runs at most ONCE per user-id across the whole app, even
+  //    if many components mount the hook. Merges cloud and local (union), so
+  //    a write that happened just before navigation can't be erased by a
+  //    racing cloud read.
   useEffect(() => {
     if (!user) {
-      migrationDone.current = false;
+      cloudSyncedFor = null;
+      cloudSyncInFlight = null;
       return;
     }
+    if (cloudSyncedFor === user.id) return; // already synced this session
+
     const supabase = getSupabaseBrowserClient();
     if (!supabase) return;
-    let active = true;
 
-    (async () => {
-      // 1. Pull existing rows.
-      const { data: rows } = await supabase
-        .from("note_progress")
-        .select("note_id")
-        .eq("user_id", user.id);
-      const cloudRows = (rows ?? []) as { note_id: string }[];
-      const cloud = new Set<string>(cloudRows.map((r) => r.note_id));
+    let cancelled = false;
 
-      // 2. First-time migration: union local + cloud, push diff up.
-      const migratedKey = `${MIGRATED_KEY}:${user.id}`;
-      const alreadyMigrated = localStorage.getItem(migratedKey) === "1";
-      const local = loadFromStorage();
-      const toUpload = [...local].filter((id) => !cloud.has(id));
-      if (!alreadyMigrated && toUpload.length > 0) {
-        await supabase.from("note_progress").upsert(
-          toUpload.map((note_id) => ({ user_id: user.id, note_id })),
-          { onConflict: "user_id,note_id" },
-        );
-        toUpload.forEach((id) => cloud.add(id));
-      }
-      localStorage.setItem(migratedKey, "1");
-      migrationDone.current = true;
+    // Reuse an in-flight sync if another mount kicked one off at the same time.
+    if (!cloudSyncInFlight) {
+      cloudSyncInFlight = (async () => {
+        const { data: rows } = await supabase
+          .from("note_progress")
+          .select("note_id")
+          .eq("user_id", user.id);
+        const cloudRows = (rows ?? []) as { note_id: string }[];
+        const cloud = new Set<string>(cloudRows.map((r) => r.note_id));
 
-      // 3. Sync UI + localStorage to cloud.
-      if (!active) return;
-      setCompleted(cloud);
-      saveToStorage(cloud);
-    })();
+        // First-time migration: push local-only ids up.
+        const migratedKey = `${MIGRATED_KEY}:${user.id}`;
+        const alreadyMigrated = localStorage.getItem(migratedKey) === "1";
+        const local = loadFromStorage();
+        const toUpload = [...local].filter((id) => !cloud.has(id));
+        if (!alreadyMigrated && toUpload.length > 0) {
+          await supabase.from("note_progress").upsert(
+            toUpload.map((note_id) => ({ user_id: user.id, note_id })),
+            { onConflict: "user_id,note_id" },
+          );
+          toUpload.forEach((id) => cloud.add(id));
+        }
+        if (!alreadyMigrated) {
+          localStorage.setItem(migratedKey, "1");
+        }
+
+        // Merge local ∪ cloud — DO NOT replace local outright. A user who
+        // marked something complete in the last 100ms and is mid-navigation
+        // must not have it stomped by a cloud read that hasn't seen the write yet.
+        const liveLocal = loadFromStorage();
+        const merged = new Set<string>([...liveLocal, ...cloud]);
+        saveToStorage(merged);
+        cloudSyncedFor = user.id;
+      })();
+    }
+
+    cloudSyncInFlight.finally(() => {
+      cloudSyncInFlight = null;
+      if (!cancelled) setCompleted(loadFromStorage());
+    });
 
     return () => {
-      active = false;
+      cancelled = true;
     };
   }, [user]);
 
+  // 3. Write helpers — local first (instant), cloud fire-and-forget.
   const writeCloud = useCallback(
     async (id: string, add: boolean) => {
       if (!user) return;
