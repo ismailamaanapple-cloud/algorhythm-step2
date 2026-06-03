@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 /**
  * Server-side Supabase client. Uses Next.js 16 async cookies() API.
  * Returns null if env vars are missing (build-time safety).
+ *
+ * Matches the browser client's `implicit` flow so cookie/session shapes line up.
  */
 export async function getSupabaseServerClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -13,6 +15,7 @@ export async function getSupabaseServerClient() {
   const cookieStore = await cookies();
 
   return createServerClient(url, anon, {
+    auth: { flowType: "implicit" },
     cookies: {
       getAll() {
         return cookieStore.getAll();

@@ -5,6 +5,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2, AlertTriangle } from "lucide-react";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
+/**
+ * With implicit flow, the Supabase magic-link redirect lands here with the
+ * access + refresh tokens in the URL hash (e.g. `#access_token=...`). The
+ * browser client auto-detects them on init (detectSessionInUrl: true). We
+ * confirm by calling getSession() and then bounce to `?next=`.
+ */
 export default function AuthCallbackClient() {
   const router = useRouter();
   const search = useSearchParams();
@@ -22,7 +28,6 @@ export default function AuthCallbackClient() {
         return;
       }
 
-      const code = search.get("code");
       const next = search.get("next") || "/";
       const errorParam = search.get("error");
       const errorDesc =
@@ -36,8 +41,8 @@ export default function AuthCallbackClient() {
         return;
       }
 
-      // Magic-link / OAuth PKCE path: ?code=... is exchanged client-side so
-      // the browser client can read its own code verifier from storage.
+      // Legacy PKCE path — only used if for some reason a code is in the URL.
+      const code = search.get("code");
       if (code) {
         const { error } = await supabase.auth.exchangeCodeForSession(code);
         if (cancelled) return;
@@ -50,21 +55,22 @@ export default function AuthCallbackClient() {
         return;
       }
 
-      // Implicit / hash-token path (older email link style): supabase-js
-      // auto-detects the session from window.location on getSession().
-      const { data, error } = await supabase.auth.getSession();
-      if (cancelled) return;
-      if (error) {
-        setErrMsg(error.message);
-        setStatus("error");
-        return;
-      }
-      if (data.session) {
-        router.replace(next);
-        return;
+      // Implicit flow: token is in the URL hash. supabase-js auto-detects it
+      // on client creation. Poll briefly because detection is async.
+      for (let i = 0; i < 20; i++) {
+        const { data } = await supabase.auth.getSession();
+        if (data.session) {
+          if (cancelled) return;
+          router.replace(next);
+          return;
+        }
+        await new Promise((r) => setTimeout(r, 100));
       }
 
-      setErrMsg("missing_code");
+      if (cancelled) return;
+      setErrMsg(
+        "No session was created. The link may have expired, or your browser blocked the redirect.",
+      );
       setStatus("error");
     }
 
@@ -94,12 +100,7 @@ export default function AuthCallbackClient() {
         <h1 className="text-xl font-bold tracking-tight mb-2">
           Sign-in didn&apos;t finish
         </h1>
-        <p className="text-sm text-white/65 mb-4 break-words">{errMsg}</p>
-        <p className="text-[11px] text-white/45 mb-6">
-          This usually means you opened the magic link in a different browser
-          than where you started. Try again, and click the link in the same
-          window where you submitted your email.
-        </p>
+        <p className="text-sm text-white/65 mb-6 break-words">{errMsg}</p>
         <button
           onClick={() => router.replace("/")}
           className="inline-flex items-center gap-2 rounded-full bg-white text-black px-5 py-2.5 text-sm font-semibold hover:bg-white/90 transition"

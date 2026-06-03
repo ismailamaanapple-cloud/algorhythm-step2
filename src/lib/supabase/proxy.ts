@@ -14,6 +14,7 @@ export async function updateSession(request: NextRequest) {
   if (!url || !anon) return response;
 
   const supabase = createServerClient(url, anon, {
+    auth: { flowType: "implicit" },
     cookies: {
       getAll() {
         return request.cookies.getAll();
