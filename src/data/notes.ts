@@ -6099,6 +6099,447 @@ export const NOTES: Note[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════
+  // APEX 5 + 6 — RHEUM, DERM, HEME / ONC, ENDO
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "rheum-comprehensive",
+    session: 2,
+    category: "Rheumatology",
+    title: "Connective tissue diseases — comprehensive",
+    summary:
+      "SLE, Sjögren, scleroderma/CREST, polymyalgia rheumatica, dermatomyositis, polymyositis, fibromyalgia.",
+    sections: [
+      {
+        heading: "SLE (systemic lupus erythematosus)",
+        bullets: [
+          "Young women, especially Black/Hispanic/Asian",
+          "Classic features: malar rash sparing nasolabial folds, oral ulcers, photosensitivity, serositis, arthritis, nephritis",
+          "ANA highly sensitive (98%); anti-dsDNA + anti-Smith are specific; low complement (C3/C4) during flares",
+          "Antiphospholipid syndrome (lupus anticoagulant, anti-β2-GP1) → thromboses, miscarriage",
+          "Lupus nephritis: classes I–VI; class III/IV (proliferative) need biopsy + immunosuppression",
+          "Treatment: hydroxychloroquine ALWAYS; steroids for flares; MMF/cyclophosphamide for severe nephritis",
+        ],
+      },
+      {
+        heading: "Sjögren syndrome",
+        bullets: [
+          "Dry eyes (keratoconjunctivitis sicca) + dry mouth (xerostomia) + parotid enlargement",
+          "Anti-Ro (SSA) and anti-La (SSB) antibodies",
+          "Schirmer test + lip biopsy (focal lymphocytic infiltrate) confirm",
+          "Associations: RA, SLE, primary biliary cholangitis",
+          "↑ risk of B-cell lymphoma (MALT in salivary glands)",
+          "Treatment: artificial tears, pilocarpine for xerostomia, hydroxychloroquine for arthralgias",
+        ],
+      },
+      {
+        heading: "Systemic sclerosis (scleroderma)",
+        bullets: [
+          "Diffuse: rapid skin thickening (trunk + proximal extremities), interstitial lung disease (ILD), renal crisis — anti-Scl-70 (topoisomerase I)",
+          "Limited (CREST): Calcinosis, Raynaud, Esophageal dysmotility, Sclerodactyly, Telangiectasias — anti-centromere antibody",
+          "Pulmonary hypertension is the leading cause of death in CREST",
+          "ILD is the leading cause of death in diffuse scleroderma",
+          "Scleroderma renal crisis: severe HTN + AKI → ACE-INHIBITORS first-line (one of the few times ACE-I is used in scleroderma)",
+          "No disease-modifying therapy; symptom-targeted: PPIs for GERD, CCBs for Raynaud, sildenafil/bosentan for PAH",
+        ],
+      },
+      {
+        heading: "Polymyositis & dermatomyositis",
+        bullets: [
+          "Symmetric proximal weakness over weeks-months; difficulty climbing stairs, brushing hair",
+          "Dermatomyositis adds: heliotrope rash (eyelids), Gottron papules (MCPs), shawl sign, mechanic hands",
+          "CK markedly elevated; anti-Jo-1 (antisynthetase syndrome with ILD), anti-Mi-2 (DM with classic skin), anti-SRP (severe necrotizing)",
+          "Strong association with malignancy in DM > PM — screen at diagnosis",
+          "Treatment: high-dose steroids + MTX or azathioprine; IVIG for severe; rituximab refractory",
+        ],
+      },
+      {
+        heading: "Polymyalgia rheumatica & fibromyalgia",
+        bullets: [
+          "PMR: age >50, bilateral proximal stiffness >30 min, ↑ ESR (often >50), NORMAL CK; rapid response to low-dose prednisone",
+          "PMR coexists with GCA in 40–50% — always screen for headache/jaw claudication/visual",
+          "Fibromyalgia: widespread pain >3 months, multiple tender points, NORMAL labs, sleep disturbance, fatigue",
+          "Fibro management: aerobic exercise, CBT, amitriptyline, duloxetine, pregabalin — NOT opioids, NOT steroids",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Autoantibody quick reference",
+        headers: ["Antibody", "Disease"],
+        rows: [
+          ["Anti-dsDNA", "SLE (specific; correlates with nephritis)"],
+          ["Anti-Smith", "SLE (highly specific)"],
+          ["Anti-Ro/SSA, anti-La/SSB", "Sjögren (also neonatal lupus, subacute cutaneous SLE)"],
+          ["Anti-centromere", "Limited scleroderma (CREST)"],
+          ["Anti-Scl-70 (topoisomerase)", "Diffuse scleroderma"],
+          ["Anti-Jo-1", "Antisynthetase syndrome (PM/DM with ILD)"],
+          ["Anti-Mi-2", "Dermatomyositis (classic skin findings)"],
+          ["Anti-U1 RNP", "Mixed connective tissue disease"],
+          ["c-ANCA (anti-PR3)", "GPA (Wegener)"],
+          ["p-ANCA (anti-MPO)", "MPA, EGPA"],
+        ],
+      },
+    ],
+    pearls: [
+      "Hydroxychloroquine for ALL SLE — reduces flares and mortality",
+      "Scleroderma renal crisis is the one time you reach for an ACE-I (captopril) immediately",
+      "Sjögren has the highest B-cell (MALT) lymphoma risk of any rheum disease",
+      "DM + new diagnosis → age-appropriate cancer screening (ovarian, lung, GI)",
+      "Fibromyalgia diagnosis is clinical with NORMAL labs — exclude RA, hypothyroid, vitamin D deficiency first",
+    ],
+    relatedCaseIds: ["pmr-gca", "dermatomyositis", "polymyalgia-rheumatica", "behcet-syndrome"],
+  },
+
+  {
+    id: "derm-comprehensive-skin",
+    session: 2,
+    category: "Dermatology",
+    title: "Dermatology — high-yield patterns",
+    summary:
+      "Tinea, scabies, eczema herpeticum, skin cancers, SJS/TEN, drug eruptions, vitiligo, burns.",
+    sections: [
+      {
+        heading: "Superficial infections",
+        bullets: [
+          "Tinea corporis: annular scaly plaque with central clearing, KOH-positive hyphae — TOPICAL antifungal (terbinafine, clotrimazole)",
+          "Tinea capitis: scaly alopecic patch with black dots in children — ORAL griseofulvin or terbinafine (topical doesn't penetrate hair shaft)",
+          "Pityriasis versicolor: hypo/hyperpigmented trunk patches, KOH 'spaghetti and meatballs' — topical selenium sulfide or topical antifungal",
+          "Scabies: severe nocturnal itch, web spaces / flexor wrists / waist papules — topical permethrin for patient AND household, wash linens",
+          "Impetigo: honey-colored crusts in children — topical mupirocin (or oral cephalexin for extensive); Group A Strep / S. aureus",
+        ],
+      },
+      {
+        heading: "Eczema spectrum",
+        bullets: [
+          "Atopic dermatitis: chronic itchy flexural rash; associated with asthma, allergic rhinitis (atopic triad)",
+          "Treatment: emollients, topical steroids (low potency face/folds), topical calcineurin inhibitors (tacrolimus, pimecrolimus), dupilumab for severe",
+          "Eczema herpeticum: sudden vesicular eruption with punched-out erosions on eczema — IV acyclovir; ophthalmology if periocular",
+          "Contact dermatitis (type IV): linear/geometric pattern matching exposure (nickel, poison ivy) — avoid trigger, topical steroids",
+        ],
+      },
+      {
+        heading: "Skin cancers",
+        bullets: [
+          "Basal cell carcinoma: pearly papule, telangiectasias, rolled borders, slow growing, rare metastasis — Mohs surgery for face/recurrent",
+          "Squamous cell carcinoma: hyperkeratotic, ulcerated; sun-exposed; transplant patients — surgical excision; can metastasize",
+          "Actinic keratosis: rough scaly precursor to SCC — cryotherapy or topical 5-FU/imiquimod",
+          "Melanoma: ABCDE — Asymmetry, Border irregular, Color varied, Diameter >6 mm, Evolution; thickness (Breslow depth) determines prognosis",
+          "Melanoma: wide local excision + sentinel lymph node biopsy if depth ≥0.8 mm; immunotherapy for metastatic (anti-PD1, anti-CTLA4)",
+        ],
+      },
+      {
+        heading: "Severe drug eruptions",
+        bullets: [
+          "SJS / TEN: lamotrigine, allopurinol, sulfa, anticonvulsants, NSAIDs — stop drug, burn unit, supportive care",
+          "DRESS: drug rash + eosinophilia + systemic sx (fever, LFTs, kidney) — 2–8 weeks after drug; stop drug, steroids",
+          "Erythema multiforme: target lesions, HSV-triggered most common — supportive; treat HSV trigger",
+          "AGEP: acute generalized exanthematous pustulosis — antibiotics; self-limited",
+        ],
+      },
+      {
+        heading: "Other classic findings",
+        bullets: [
+          "Vitiligo: sharply demarcated depigmented patches, Wood lamp accentuation, autoimmune associations (thyroid, T1DM) — topical steroids, calcineurin inhibitors, UV phototherapy",
+          "Erythema nodosum: tender red nodules on shins; sarcoidosis, IBD, strep, OCPs, TB — find trigger, NSAIDs, treat cause",
+          "Pyoderma gangrenosum: rapidly enlarging painful ulcer with violaceous edge; IBD, RA — steroids; do NOT debride (pathergy)",
+          "Lipoma: soft mobile painless subcutaneous mass; observe unless symptomatic",
+          "Sister Mary Joseph nodule: periumbilical metastatic node — GI/GU malignancy",
+        ],
+      },
+      {
+        heading: "Burns",
+        bullets: [
+          "Superficial (1st): erythema only, painful — supportive (aloe, NSAIDs)",
+          "Partial-thickness (2nd): blisters, painful — wound care, topical antibiotics (silver sulfadiazine — NOT in sulfa allergy/face)",
+          "Full-thickness (3rd): leathery, painless, white/charred — surgical excision + skin grafting",
+          "Parkland formula: 4 mL × kg × % BSA burned (lactated Ringers) over 24 hours, half in first 8 hours",
+          "Burns >20% BSA or to face/hands/perineum → transfer to burn center",
+          "Inhalation injury (carbonaceous sputum, hoarseness, facial burns) → early intubation",
+        ],
+      },
+    ],
+    pearls: [
+      "Pearly papule + telangiectasia + sun-exposed face = BCC — Mohs surgery",
+      "Punched-out vesicles on eczema = eczema herpeticum → IV acyclovir, NOT steroids",
+      "Severe nocturnal pruritus + household members itching = scabies → permethrin for everyone, wash bedding",
+      "Tinea CAPITIS needs ORAL antifungal (topical can't penetrate hair shaft)",
+      "Sudden eruption of many seborrheic keratoses (Leser-Trélat sign) → think GI malignancy",
+    ],
+    relatedCaseIds: ["sjs-ten-anticonvulsant", "necrotizing-fasciitis", "eczema-herpeticum"],
+  },
+
+  {
+    id: "heme-anemia-comprehensive",
+    session: 2,
+    category: "Hematology",
+    title: "Anemia — by MCV, comprehensively",
+    summary:
+      "Microcytic, normocytic, macrocytic causes — and the smear findings that nail each one.",
+    sections: [
+      {
+        heading: "Microcytic (MCV < 80)",
+        bullets: [
+          "Iron deficiency: ↓ ferritin (most specific), ↑ TIBC, ↓ transferrin saturation; pica; blood loss until proven otherwise",
+          "Anemia of chronic disease: ↑ ferritin (acute-phase), ↓ TIBC, normal-low serum iron; treat underlying inflammation",
+          "Thalassemia: target cells, basophilic stippling; trait → microcytic with NORMAL iron studies; α has 4 alleles, β has 2",
+          "Sideroblastic anemia: ringed sideroblasts on marrow; causes: lead, alcohol, isoniazid (give B6), copper deficiency, MDS",
+          "Lead poisoning: basophilic stippling, microcytic anemia, abdominal pain, neuropathy; check serum lead; chelate with succimer (peds) or EDTA",
+        ],
+      },
+      {
+        heading: "Normocytic (MCV 80–100)",
+        bullets: [
+          "Anemia of chronic kidney disease: ↓ EPO; treat with EPO replacement when Hb <10, iron stores adequate",
+          "Hemolysis: ↑ LDH, ↑ indirect bili, ↓ haptoglobin, ↑ reticulocytes",
+          "Hereditary spherocytosis: NORTHERN European, family history, ↑ MCHC, NEGATIVE Coombs, splenomegaly; splenectomy if severe",
+          "G6PD deficiency: oxidative stress (sulfa, antimalarials, fava beans, infections) → bite cells + Heinz bodies; check level after acute episode resolves",
+          "Warm AIHA: IgG, spherocytes, POSITIVE direct Coombs; SLE, CLL, drugs (methyldopa); steroids first-line",
+          "Cold AIHA: IgM, Mycoplasma, EBV; cold avoidance; rituximab refractory",
+          "MAHA: schistocytes; TTP/HUS/DIC/HELLP/malignant HTN/mechanical valves",
+        ],
+      },
+      {
+        heading: "Macrocytic (MCV > 100)",
+        bullets: [
+          "B12 deficiency: ↑ MMA + ↑ homocysteine; neuro symptoms (subacute combined degeneration); pernicious anemia (autoimmune anti-IF), strict vegan, ileal disease",
+          "Folate deficiency: ↑ homocysteine + NORMAL MMA; no neuro symptoms; alcoholics, methotrexate, pregnancy",
+          "Non-megaloblastic: alcohol, liver disease, hypothyroidism, MDS, drugs (hydroxyurea, zidovudine)",
+          "Reticulocytosis: any cause of hemolysis or recent bleeding can cause apparent macrocytosis",
+        ],
+      },
+      {
+        heading: "Special situations",
+        bullets: [
+          "Sickle cell disease: vaso-occlusive crisis, acute chest syndrome, splenic sequestration in kids, aplastic crisis (parvovirus B19)",
+          "Hydroxyurea reduces SCD crises; transfusions for severe; vaccinations critical (Pneumococcus, Hib, Meningococcus due to functional asplenia)",
+          "Paroxysmal nocturnal hemoglobinuria: morning dark urine + thrombosis + pancytopenia; CD55/CD59 deficiency; eculizumab",
+          "Aplastic anemia: pancytopenia + hypocellular marrow + NO hepatosplenomegaly; idiopathic, drugs (chloramphenicol, sulfa), viruses; stem cell transplant",
+          "Pure red cell aplasia: only RBC line affected; parvovirus B19 (esp in immunocompromised) or thymoma",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Smear findings ↔ diagnosis",
+        headers: ["Smear finding", "Diagnosis"],
+        rows: [
+          ["Target cells", "Thalassemia, HbC, liver disease, asplenia"],
+          ["Schistocytes", "MAHA (TTP/HUS/DIC/HELLP)"],
+          ["Spherocytes", "Hereditary spherocytosis, warm AIHA"],
+          ["Bite cells / Heinz bodies", "G6PD deficiency"],
+          ["Basophilic stippling", "Lead poisoning, thalassemia"],
+          ["Howell-Jolly bodies", "Asplenia (functional or surgical)"],
+          ["Ringed sideroblasts", "Sideroblastic anemia, MDS"],
+          ["Tear drop cells", "Myelofibrosis"],
+          ["Hypersegmented neutrophils", "B12 / folate deficiency"],
+          ["Auer rods", "AML (APL has the most)"],
+        ],
+      },
+    ],
+    pearls: [
+      "B12 deficiency: ↑ MMA AND ↑ homocysteine; folate deficiency only ↑ homocysteine (MMA normal)",
+      "↑ ferritin + ↓ TIBC in chronic inflammation = anemia of chronic disease (not iron deficiency)",
+      "Microcytic anemia + NORMAL iron studies + ↑ HbA2 = β-thalassemia trait — DO NOT give iron",
+      "Negative Coombs + spherocytes + family history = hereditary spherocytosis (not warm AIHA)",
+      "Mechanical valve + chronic anemia + schistocytes = valve hemolysis → echo to assess paravalvular leak",
+    ],
+    relatedCaseIds: ["iron-deficiency-pica", "g6pd-deficiency", "ttp", "hus-pediatric", "acute-chest-syndrome"],
+  },
+
+  {
+    id: "heme-onc-comprehensive",
+    session: 2,
+    category: "Hematology",
+    title: "Leukemias, lymphomas & oncologic emergencies",
+    summary:
+      "Acute & chronic leukemias, Hodgkin vs NHL, plus tumor lysis / febrile neutropenia / cord compression / SVC syndrome.",
+    sections: [
+      {
+        heading: "Acute leukemias",
+        bullets: [
+          "ALL: kids, pancytopenia, hepatosplenomegaly, bone pain, mediastinal mass (T-cell) — treat with combination chemo + CNS prophylaxis",
+          "AML: adults, Auer rods, gum hypertrophy (M5), DIC (M3 = APL)",
+          "APL (M3): t(15;17), Auer rods bundles, DIC — start ATRA empirically (don't wait for genetics)",
+          "AML risk: prior chemo (alkylators), radiation, MDS, Down syndrome, benzene",
+          "Diagnosis: ≥20% blasts in marrow",
+        ],
+      },
+      {
+        heading: "Chronic leukemias & myeloproliferative",
+        bullets: [
+          "CLL: elderly, smudge cells, indolent, often asymptomatic — observation if early; treat with ibrutinib / venetoclax / chemoimmunotherapy when symptomatic",
+          "CLL complications: hypogammaglobulinemia (infections), AIHA, Richter transformation to DLBCL",
+          "CML: BCR-ABL t(9;22), massive splenomegaly, basophilia — imatinib (TKI); monitor BCR-ABL PCR",
+          "Hairy cell leukemia: middle-aged men, massive splenomegaly, pancytopenia, hairy cells with TRAP positivity — cladribine",
+          "Polycythemia vera: JAK2 V617F, pruritus after hot showers, erythromelalgia — phlebotomy + ASA",
+          "Essential thrombocythemia: platelets >450k, JAK2/CALR/MPL — ASA + hydroxyurea if high-risk",
+          "Myelofibrosis: tear drop cells, leukoerythroblastic blood, massive splenomegaly — ruxolitinib, allogeneic SCT in young fit",
+        ],
+      },
+      {
+        heading: "Lymphomas",
+        bullets: [
+          "Hodgkin: Reed-Sternberg cells (CD15+ CD30+), bimodal age, B symptoms, contiguous nodal spread, EBV-associated — ABVD chemo, highly curable",
+          "Hodgkin alcohol-induced node pain (rare but classic)",
+          "NHL: more common than HD, NON-contiguous spread, extranodal involvement common",
+          "DLBCL: most common NHL, aggressive but curable — R-CHOP",
+          "Follicular: indolent, t(14;18) BCL-2 — watchful waiting if asymptomatic; rituximab + chemo when symptomatic",
+          "Burkitt: c-MYC t(8;14), highest mitotic rate, starry sky — aggressive curative chemo, TLS prophylaxis essential",
+          "MALT lymphoma (stomach): H. pylori → triple therapy can be curative if low-grade",
+        ],
+      },
+      {
+        heading: "Plasma cell disorders",
+        bullets: [
+          "MGUS: M-spike < 3 g/dL, marrow <10% plasma cells, NO end-organ damage — observe, ~1%/yr to myeloma",
+          "Multiple myeloma: CRAB (Calcium ↑, Renal failure, Anemia, Bone lytic), M-spike, ≥10% clonal plasma cells",
+          "MM workup: SPEP, UPEP, serum free light chains, X-rays (NOT bone scan), bone marrow",
+          "Waldenström: IgM monoclonal gammopathy, hyperviscosity syndrome (headache, blurry vision, retinal vein engorgement)",
+        ],
+      },
+      {
+        heading: "Oncologic emergencies",
+        bullets: [
+          "Tumor lysis: high cell-turnover tumors post-chemo (Burkitt, ALL); ↑ K, ↑ PO4, ↓ Ca, AKI — IV fluids + rasburicase",
+          "Febrile neutropenia: ANC <500 + fever >38.3 once or >38.0 sustained → cultures + empiric pip-tazo/cefepime within 1 hour",
+          "Spinal cord compression: back pain + neurologic deficits + known malignancy → emergent MRI + IV dexamethasone + radiation/surgery",
+          "SVC syndrome: facial/upper extremity edema, JVD, dyspnea; lung cancer (small cell), lymphoma → CT, biopsy, radiation, stenting",
+          "Hypercalcemia of malignancy: PTH suppressed, PTHrP elevated → IV fluids + bisphosphonate (zoledronic acid) + calcitonin for acute",
+          "Hyperleukocytosis: WBC >100k in AML → leukapheresis + induction; risk of leukostasis (CNS, lung)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Translocations to know",
+        headers: ["Translocation", "Disease"],
+        rows: [
+          ["t(9;22) BCR-ABL", "CML (Philadelphia chromosome); also ALL"],
+          ["t(15;17) PML-RARA", "APL (M3 AML)"],
+          ["t(8;14) c-MYC", "Burkitt lymphoma"],
+          ["t(14;18) BCL-2", "Follicular lymphoma"],
+          ["t(11;14) cyclin D1", "Mantle cell lymphoma"],
+          ["t(8;21), inv(16)", "Favorable AML"],
+        ],
+      },
+    ],
+    pearls: [
+      "Auer rods + DIC + bleeding = APL → start ATRA IMMEDIATELY",
+      "CLL is the most common adult leukemia in Western countries — smudge cells are pathognomonic",
+      "Elderly patient + lytic skull lesions + hypercalcemia + renal failure = multiple myeloma (CRAB)",
+      "Burkitt and high-grade NHL → high tumor lysis risk; pre-hydrate + rasburicase",
+      "Febrile neutropenia: get cultures BUT start antibiotics within 60 min — don't wait",
+    ],
+    relatedCaseIds: ["apl-emergency", "cml-imatinib", "burkitt-lymphoma", "hodgkin-lymphoma", "multiple-myeloma", "tumor-lysis-syndrome", "polycythemia-vera", "febrile-neutropenia"],
+  },
+
+  {
+    id: "endo-secondary-htn-adrenal",
+    session: 2,
+    category: "Endocrinology",
+    title: "Secondary HTN & adrenal disorders",
+    summary:
+      "When to look beyond essential HTN — Conn, Cushing, pheo, renovascular, CAH, adrenal insufficiency.",
+    sections: [
+      {
+        heading: "When to suspect secondary HTN",
+        bullets: [
+          "Onset before age 30 or after 55",
+          "Resistant HTN on ≥3 drugs at max doses",
+          "Severe HTN with end-organ damage",
+          "Spontaneous hypokalemia (think hyperaldosteronism)",
+          "Episodic HTN with headache/palpitations/sweating (think pheo)",
+          "Abdominal bruit (think renovascular)",
+          "Differential arm/leg BP (think coarctation)",
+        ],
+      },
+      {
+        heading: "Primary hyperaldosteronism (Conn)",
+        bullets: [
+          "HTN + hypoK + metabolic alkalosis (some patients are normokalemic)",
+          "Aldosterone:renin ratio (ARR) >20–30 → screen positive",
+          "Confirm: saline suppression test (failure to suppress aldosterone)",
+          "Adrenal CT → adrenal vein sampling to lateralize",
+          "Unilateral adenoma → adrenalectomy; bilateral hyperplasia → spironolactone or eplerenone",
+        ],
+      },
+      {
+        heading: "Cushing syndrome",
+        bullets: [
+          "Central obesity, moon facies, buffalo hump, purple striae, easy bruising, proximal weakness, hyperglycemia, HTN",
+          "Screen: 24-h urine cortisol, late-night salivary cortisol, OR 1-mg overnight dexamethasone suppression",
+          "If positive → ACTH level. Low ACTH = adrenal (CT adrenals). High ACTH = pituitary (MRI) or ectopic (chest/CT)",
+          "High-dose dexamethasone suppression: pituitary tumor suppresses, ectopic does not",
+          "Treatment: surgical resection of tumor; ketoconazole / metyrapone bridge",
+        ],
+      },
+      {
+        heading: "Pheochromocytoma",
+        bullets: [
+          "Episodic HTN + headache + palpitations + diaphoresis (the 5 P's: pressure, pain, palpitations, perspiration, pallor)",
+          "Screen: plasma free metanephrines (most sensitive) OR 24-h urine metanephrines",
+          "Confirm + localize: CT/MRI adrenals; MIBG scan if extra-adrenal suspected",
+          "Pre-op: α-blockade (phenoxybenzamine) FIRST, then β-blocker — never reverse order",
+          "Surgical resection curative; check for MEN-2 (medullary thyroid CA + parathyroid)",
+        ],
+      },
+      {
+        heading: "Renovascular HTN",
+        bullets: [
+          "Atherosclerotic (older, smoking, CVD risk) vs Fibromuscular dysplasia (young women, 'string of beads')",
+          "Clues: abdominal bruit, asymmetric kidneys, AKI on ACE-I (bilateral disease)",
+          "Screen: renal artery Doppler, CTA, or MRA",
+          "Treat: ACE-I/ARB if unilateral disease (NEVER bilateral); angioplasty for FMD; medical management for atherosclerotic (revasc doesn't improve outcomes in most)",
+        ],
+      },
+      {
+        heading: "Adrenal insufficiency",
+        bullets: [
+          "Primary (Addison): adrenal destruction → ↑ ACTH → hyperpigmentation, hypoglycemia, hyperK, hypoNa, hypotension",
+          "Secondary: pituitary failure → normal K (mineralocorticoid intact), no hyperpigmentation",
+          "Test: AM cortisol < 3 = deficient; > 15 = excludes; intermediate → cosyntropin stim test",
+          "Acute (Addisonian crisis): hypotension + AMS + electrolyte chaos → STRESS-dose hydrocortisone 100 mg IV, fluids",
+          "Chronic: replace hydrocortisone (or prednisone) + fludrocortisone (if primary)",
+        ],
+      },
+      {
+        heading: "Congenital adrenal hyperplasia",
+        bullets: [
+          "21-hydroxylase deficiency (most common): salt-wasting crisis + ambiguous genitalia in girls, virilization; ↑ 17-OH progesterone",
+          "11β-hydroxylase deficiency: HTN + virilization (excess 11-deoxycortisol has mineralocorticoid activity)",
+          "17α-hydroxylase deficiency: HTN + hypoK + no virilization + lack of secondary sex characteristics",
+          "Treat: hydrocortisone (+ fludrocortisone for salt-wasting); surgical correction of genitalia",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Secondary HTN pattern recognition",
+        headers: ["Clinical clue", "Diagnosis"],
+        rows: [
+          ["HTN + hypoK + alkalosis", "Primary hyperaldosteronism"],
+          ["Central obesity + striae + HTN", "Cushing syndrome"],
+          ["Episodic HTN + headache + palpitations", "Pheochromocytoma"],
+          ["Abdominal bruit + young woman", "FMD (renovascular HTN)"],
+          ["BP differential arm vs leg", "Coarctation of aorta"],
+          ["HTN + virilization", "11β-hydroxylase CAH"],
+          ["HTN + hypoK + no virilization", "17α-hydroxylase CAH"],
+          ["Hyperpigmentation + hyperK + hypotension", "Primary adrenal insufficiency (Addison)"],
+        ],
+      },
+    ],
+    pearls: [
+      "Pheo: α-blockade BEFORE β-blockade (or unopposed α causes hypertensive crisis)",
+      "Acute adrenal crisis: don't wait for labs — give IV hydrocortisone 100 mg + IV fluids",
+      "HTN + hypokalemia in a young patient is the classic Conn syndrome clue",
+      "Bilateral renal artery stenosis + ACE-I → AKI (the canonical pre-renal AZOTEMIA scenario)",
+      "MEN-2 = medullary thyroid CA + pheo + parathyroid; screen for pheo BEFORE thyroid surgery",
+    ],
+    relatedCaseIds: ["primary-hyperaldosteronism", "fibromuscular-dysplasia"],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
   // PHARMACOLOGY — HIGH-YIELD DRUG CLASSES
   // ═══════════════════════════════════════════════════════════════════
 
