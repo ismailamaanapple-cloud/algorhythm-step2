@@ -3,7 +3,7 @@ import OmmLibrary from "@/components/OmmLibrary";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "OMM — COMLEX Level 2 | Algorhythm",
+  title: "OMM — COMLEX Level 2 | 250+",
   description: "Comprehensive osteopathic manipulative medicine review for COMLEX Level 2.",
 };
 

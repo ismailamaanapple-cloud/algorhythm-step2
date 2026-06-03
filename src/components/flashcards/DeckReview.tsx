@@ -179,12 +179,24 @@ export default function DeckReview({
                       flipped ? "bg-emerald-300" : "bg-cyan-300"
                     }`}
                   />
-                  {flipped ? "Answer" : "Question"} · {card.kind}
+                  {flipped ? "Answer" : (card.kind === "case" ? "Vignette" : "Question")}
+                  <span className="text-white/30">·</span>
+                  <span className="text-white/55 capitalize">{card.kind}</span>
                 </div>
                 <div className="flex-1 flex items-center">
-                  <div className="text-xl md:text-2xl font-medium leading-relaxed">
-                    {flipped ? card.back : card.front}
-                  </div>
+                  {flipped ? (
+                    <CardBack text={card.back} />
+                  ) : (
+                    <div
+                      className={`leading-relaxed font-medium ${
+                        card.kind === "case"
+                          ? "text-base md:text-lg text-white/90"
+                          : "text-xl md:text-2xl"
+                      }`}
+                    >
+                      {card.front}
+                    </div>
+                  )}
                 </div>
                 {!flipped && (
                   <button
@@ -235,6 +247,69 @@ export default function DeckReview({
           )}
         </>
       )}
+    </div>
+  );
+}
+
+/**
+ * Renders the back-of-card text. Case backs use a structured format like:
+ *   <diagnosis>
+ *
+ *   Next step → <action>
+ *   <rationale>
+ *
+ *   • key pt 1
+ *   • key pt 2
+ *
+ * Split on double-newlines and style each block.
+ */
+function CardBack({ text }: { text: string }) {
+  const blocks = text.split(/\n\n+/);
+  const [first, ...rest] = blocks;
+  return (
+    <div className="w-full space-y-4">
+      <div className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-br from-emerald-200 to-cyan-200 bg-clip-text text-transparent">
+        {first}
+      </div>
+      {rest.map((b, i) => {
+        const isNext = b.startsWith("Next step");
+        const isBullets = b.trim().startsWith("•");
+        if (isNext) {
+          const lines = b.split("\n");
+          return (
+            <div
+              key={i}
+              className="rounded-xl border border-amber-300/30 bg-amber-400/[0.06] px-4 py-3"
+            >
+              <div className="text-xs uppercase tracking-[0.22em] text-amber-200 mb-1.5">
+                {lines[0]}
+              </div>
+              {lines[1] && (
+                <div className="text-sm text-white/80 leading-relaxed">
+                  {lines.slice(1).join(" ")}
+                </div>
+              )}
+            </div>
+          );
+        }
+        if (isBullets) {
+          return (
+            <ul key={i} className="space-y-1.5 text-sm text-white/80 leading-relaxed">
+              {b.split("\n").map((l, li) => (
+                <li key={li} className="flex gap-2">
+                  <span className="text-cyan-300 shrink-0 mt-0.5">◆</span>
+                  <span>{l.replace(/^•\s*/, "")}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+        return (
+          <div key={i} className="text-sm text-white/75 leading-relaxed whitespace-pre-line">
+            {b}
+          </div>
+        );
+      })}
     </div>
   );
 }

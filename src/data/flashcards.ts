@@ -1,165 +1,261 @@
 // =============================================================================
-// Pre-built flashcards — deterministically derived from NOTES at module load.
-// Splits pearls and bullets on `→`, `:` or `=` into front/back pairs.
-// Every card has a stable `source_id` so we can dedupe across sessions.
+// Pre-built flashcards — built deliberately, not by stupid string-splitting.
+//
+// Three sources, in order of quality:
+//   1. CASES  → vignette → diagnosis (+ next step + key teaching pts).  THE
+//      highest-yield cards. ~250+ of them, all hand-written board stems.
+//   2. PEARLS → only those with a clean arrow split ("X → Y"). Skip the rest.
+//   3. TABLES → 2-col tables whose column headers map cleanly to a Q/A. We
+//      detect "disease/presentation" patterns and flip the card direction so
+//      the front is the presentation (the way the exam tests you).
+//
+// Every card has a stable `source_id` so SRS state survives content edits.
 // =============================================================================
 
-import type { Note } from "./notes";
+import type { Note, NoteTable } from "./notes";
+import type { Case } from "./cases";
 import { NOTES } from "./notes";
+import { CASES } from "./cases";
+
+export type FlashcardKind = "case" | "pearl" | "table";
 
 export type Flashcard = {
-  /** Stable id — `${noteId}:${type}:${idx}` so it survives content edits. */
+  /** Stable id — survives edits so SRS state stays attached. */
   source_id: string;
-  noteId: string;
-  noteTitle: string;
+  noteId?: string;
+  caseId?: string;
   category: string;
-  /** Where the card came from inside the note. */
-  kind: "pearl" | "bullet" | "table";
+  kind: FlashcardKind;
   front: string;
   back: string;
   tags: string[];
 };
 
-// --- splitters --------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------------------
 
-const SPLITTERS = [" → ", " ⇒ ", " => ", ": ", " = "];
+const ARROW = /[→⇒]/;
+// Headers that mean "this column is the disease / diagnosis / answer".
+const DISEASE_HEADERS =
+  /disease|condition|diagnos|syndrome|disorder|cancer|tumor|infection|cause|etiology|organism|pathogen|name/i;
+// Headers that mean "this column is the clinical findings / presentation".
+const PRESENT_HEADERS =
+  /present|sign|symptom|feature|finding|histor|labs?|imaging|exam|trigger|when|setting|scenario/i;
+// Headers that mean "this column is the treatment / management".
+const MGMT_HEADERS =
+  /treat|manag|therap|drug|antibiot|step|next|workup|test|approach/i;
 
-function trySplit(text: string): [string, string] | null {
-  const t = text.trim().replace(/\s+/g, " ");
-  for (const sep of SPLITTERS) {
-    const idx = t.indexOf(sep);
-    // Must have meaningful content on both sides, and not start the line with the separator.
-    if (idx > 4 && idx < t.length - 4) {
-      const left = t.slice(0, idx).trim();
-      const right = t.slice(idx + sep.length).trim();
-      if (left.length >= 3 && right.length >= 3 && left.length < 220) {
-        return [left, right];
-      }
-    }
-  }
-  return null;
-}
-
-function cleanFront(s: string): string {
-  // Trim trailing punctuation and turn into a prompt-shaped string.
-  return s.replace(/[:.;,]+$/, "").trim();
-}
-
-function cleanBack(s: string): string {
+function clean(s: string): string {
   return s.replace(/\s+/g, " ").trim();
 }
 
-// --- generators -------------------------------------------------------------
-
-function cardsForNote(note: Note): Flashcard[] {
-  const cards: Flashcard[] = [];
-
-  // 1. Pearls — each pearl becomes a card. Prefer split if natural.
-  (note.pearls ?? []).forEach((pearl, i) => {
-    const split = trySplit(pearl);
-    if (split) {
-      const [front, back] = split;
-      cards.push({
-        source_id: `${note.id}:pearl:${i}`,
-        noteId: note.id,
-        noteTitle: note.title,
-        category: note.category,
-        kind: "pearl",
-        front: cleanFront(front) + "?",
-        back: cleanBack(back),
-        tags: [note.category, "pearl"],
-      });
-    } else {
-      // Whole-pearl cloze — front is the note + "Pearl" + first 8 words.
-      const words = pearl.trim().split(/\s+/);
-      const teaser = words.slice(0, 6).join(" ");
-      cards.push({
-        source_id: `${note.id}:pearl:${i}`,
-        noteId: note.id,
-        noteTitle: note.title,
-        category: note.category,
-        kind: "pearl",
-        front: `${note.title}: complete the pearl — "${teaser}…"`,
-        back: cleanBack(pearl),
-        tags: [note.category, "pearl"],
-      });
-    }
-  });
-
-  // 2. Bullets — only those with a natural split (arrow/colon). Caps at 6 per
-  // section to keep the deck readable.
-  (note.sections ?? []).forEach((section, si) => {
-    let added = 0;
-    section.bullets.forEach((bullet, bi) => {
-      if (added >= 6) return;
-      const split = trySplit(bullet);
-      if (!split) return;
-      const [front, back] = split;
-      cards.push({
-        source_id: `${note.id}:bullet:${si}:${bi}`,
-        noteId: note.id,
-        noteTitle: note.title,
-        category: note.category,
-        kind: "bullet",
-        front: `${cleanFront(front)}?`,
-        back: cleanBack(back),
-        tags: [note.category, section.heading],
-      });
-      added++;
-    });
-  });
-
-  // 3. Table rows — every row in a 2-column table becomes a card.
-  (note.tables ?? []).forEach((table, ti) => {
-    if (table.headers.length !== 2) return; // only clean 2-col tables
-    const [hL, hR] = table.headers;
-    table.rows.forEach((row, ri) => {
-      if (row.length !== 2) return;
-      const [l, r] = row;
-      if (!l || !r || l.length < 2 || r.length < 2) return;
-      cards.push({
-        source_id: `${note.id}:table:${ti}:${ri}`,
-        noteId: note.id,
-        noteTitle: note.title,
-        category: note.category,
-        kind: "table",
-        front: `${l} — ${hR.toLowerCase()}?`,
-        back: cleanBack(r),
-        tags: [note.category, table.caption ?? hL],
-      });
-    });
-  });
-
-  return cards;
+export function slugifyTopic(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
-export const PREBUILT_FLASHCARDS: Flashcard[] = NOTES.flatMap(cardsForNote);
+// --------------------------------------------------------------------------
+// Source 1 — Cases (the gold standard)
+// --------------------------------------------------------------------------
 
-export const PREBUILT_DECKS: { noteId: string; title: string; category: string; cards: Flashcard[] }[] =
-  NOTES.map((n) => ({
-    noteId: n.id,
+function cardForCase(c: Case): Flashcard {
+  const correct = c.options.find((o) => o.isCorrect);
+  const mgmt = correct
+    ? `\n\nNext step → ${correct.label}\n${correct.rationale}`
+    : "";
+  const points = c.keyPoints.length
+    ? "\n\n" + c.keyPoints.map((k) => `• ${k}`).join("\n")
+    : "";
+  return {
+    source_id: `case:${c.id}`,
+    caseId: c.id,
+    category: c.topic,
+    kind: "case",
+    front: c.stem,
+    back: `${c.diagnosis}${mgmt}${points}`,
+    tags: [c.topic, "case", c.difficulty],
+  };
+}
+
+// --------------------------------------------------------------------------
+// Source 2 — Pearls (only if naturally split)
+// --------------------------------------------------------------------------
+
+function cardForPearl(note: Note, pearl: string, idx: number): Flashcard | null {
+  const text = clean(pearl);
+  if (text.length < 24 || text.length > 360) return null;
+
+  // Arrow split: "Setting / trigger → action / answer"
+  const m = text.match(ARROW);
+  if (m && m.index !== undefined) {
+    const i = m.index;
+    const front = text.slice(0, i).replace(/[\s:;,]+$/, "").trim();
+    const back = text.slice(i + 1).replace(/^[\s:;,]+/, "").trim();
+    if (front.length >= 10 && back.length >= 6 && front.length < 200) {
+      return {
+        source_id: `${note.id}:pearl:${idx}`,
+        noteId: note.id,
+        category: note.category,
+        kind: "pearl",
+        front: front.endsWith("?") ? front : `${front}?`,
+        back,
+        tags: [note.category, "pearl", note.title],
+      };
+    }
+  }
+
+  return null; // Don't ship pearls without a clean Q/A split.
+}
+
+// --------------------------------------------------------------------------
+// Source 3 — Tables (column-aware, flipped to vignette-first when sensible)
+// --------------------------------------------------------------------------
+
+function cardForTableRow(
+  note: Note,
+  table: NoteTable,
+  ti: number,
+  row: string[],
+  ri: number,
+): Flashcard | null {
+  if (table.headers.length !== 2 || row.length !== 2) return null;
+  const [hL, hR] = table.headers.map((h) => clean(h));
+  const [cL, cR] = row.map((c) => clean(c));
+  if (!cL || !cR || cL.length < 3 || cR.length < 3 || cL.length > 280 || cR.length > 320) {
+    return null;
+  }
+
+  const leftDisease = DISEASE_HEADERS.test(hL);
+  const rightDisease = DISEASE_HEADERS.test(hR);
+  const leftPresent = PRESENT_HEADERS.test(hL);
+  const rightPresent = PRESENT_HEADERS.test(hR);
+  const leftMgmt = MGMT_HEADERS.test(hL);
+  const rightMgmt = MGMT_HEADERS.test(hR);
+
+  let front: string;
+  let back: string;
+
+  if (leftDisease && rightPresent) {
+    // Flip — exam tests "presentation → name the dx"
+    front = cR;
+    back = cL;
+  } else if (leftPresent && rightDisease) {
+    front = cL;
+    back = cR;
+  } else if (leftDisease && rightMgmt) {
+    front = `${hR} for ${cL}?`;
+    back = cR;
+  } else if (leftMgmt && rightDisease) {
+    front = `${hL} for ${cR}?`;
+    back = cL;
+  } else {
+    // Default: use the right column as the "answer" — most tables read L→R.
+    front = `${cL} — ${hR.toLowerCase()}?`;
+    back = cR;
+  }
+
+  return {
+    source_id: `${note.id}:table:${ti}:${ri}`,
+    noteId: note.id,
+    category: note.category,
+    kind: "table",
+    front,
+    back,
+    tags: [note.category, "table", table.caption ?? hL],
+  };
+}
+
+// --------------------------------------------------------------------------
+// Build cards
+// --------------------------------------------------------------------------
+
+const CASE_CARDS: Flashcard[] = CASES.map(cardForCase);
+
+const NOTE_CARDS: Flashcard[] = NOTES.flatMap((note) => {
+  const cards: Flashcard[] = [];
+  (note.pearls ?? []).forEach((p, i) => {
+    const c = cardForPearl(note, p, i);
+    if (c) cards.push(c);
+  });
+  (note.tables ?? []).forEach((t, ti) => {
+    t.rows.forEach((row, ri) => {
+      const c = cardForTableRow(note, t, ti, row, ri);
+      if (c) cards.push(c);
+    });
+  });
+  return cards;
+});
+
+export const PREBUILT_FLASHCARDS: Flashcard[] = [...CASE_CARDS, ...NOTE_CARDS];
+
+// --------------------------------------------------------------------------
+// Decks
+// --------------------------------------------------------------------------
+
+export type Deck = {
+  id: string;            // 'case-neurology' | noteId
+  title: string;
+  category: string;
+  source: "case" | "note";
+  cards: Flashcard[];
+};
+
+const noteDecks: Deck[] = NOTES.map((n) => {
+  const cards = NOTE_CARDS.filter((c) => c.noteId === n.id);
+  return {
+    id: n.id,
     title: n.title,
     category: n.category,
-    cards: PREBUILT_FLASHCARDS.filter((c) => c.noteId === n.id),
-  })).filter((d) => d.cards.length > 0);
+    source: "note" as const,
+    cards,
+  };
+}).filter((d) => d.cards.length > 0);
 
-export function getDeckByNoteId(noteId: string) {
-  return PREBUILT_DECKS.find((d) => d.noteId === noteId);
+const caseTopics = Array.from(new Set(CASES.map((c) => c.topic))).sort();
+const caseDecks: Deck[] = caseTopics.map((topic) => {
+  const cards = CASE_CARDS.filter((c) => c.category === topic);
+  return {
+    id: `case-${slugifyTopic(topic)}`,
+    title: `${topic} — case vignettes`,
+    category: topic,
+    source: "case" as const,
+    cards,
+  };
+});
+
+export const PREBUILT_DECKS: Deck[] = [...caseDecks, ...noteDecks];
+
+export function getDeck(id: string): Deck | undefined {
+  return PREBUILT_DECKS.find((d) => d.id === id);
 }
 
-/** Group decks by category for the library view. */
-export function decksByCategory() {
-  const map = new Map<string, typeof PREBUILT_DECKS>();
-  for (const deck of PREBUILT_DECKS) {
-    const arr = map.get(deck.category) ?? [];
-    arr.push(deck);
-    map.set(deck.category, arr);
+export function decksByCategory(): { category: string; decks: Deck[] }[] {
+  const m = new Map<string, Deck[]>();
+  for (const d of PREBUILT_DECKS) {
+    const arr = m.get(d.category) ?? [];
+    arr.push(d);
+    m.set(d.category, arr);
   }
-  return [...map.entries()]
+  // Cases-decks first within each category, then by title.
+  for (const [, arr] of m) {
+    arr.sort((a, b) => {
+      if (a.source !== b.source) return a.source === "case" ? -1 : 1;
+      return a.title.localeCompare(b.title);
+    });
+  }
+  return [...m.entries()]
     .map(([category, decks]) => ({ category, decks }))
     .sort((a, b) => a.category.localeCompare(b.category));
 }
 
 export function totalCardCount(): number {
   return PREBUILT_FLASHCARDS.length;
+}
+
+export function totalCaseCardCount(): number {
+  return CASE_CARDS.length;
 }

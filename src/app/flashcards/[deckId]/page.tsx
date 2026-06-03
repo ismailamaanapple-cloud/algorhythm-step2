@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import DeckReview from "@/components/flashcards/DeckReview";
-import { PREBUILT_DECKS } from "@/data/flashcards";
+import { PREBUILT_DECKS, getDeck } from "@/data/flashcards";
 
 export function generateStaticParams() {
-  return PREBUILT_DECKS.map((d) => ({ deckId: d.noteId }));
+  return PREBUILT_DECKS.map((d) => ({ deckId: d.id }));
 }
 
 export default async function DeckPage({
@@ -14,7 +14,7 @@ export default async function DeckPage({
   params: Promise<{ deckId: string }>;
 }) {
   const { deckId } = await params;
-  const deck = PREBUILT_DECKS.find((d) => d.noteId === deckId);
+  const deck = getDeck(deckId);
   if (!deck) notFound();
   return (
     <>

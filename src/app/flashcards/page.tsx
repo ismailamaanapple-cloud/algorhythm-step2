@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import FlashcardsLibrary from "@/components/flashcards/FlashcardsLibrary";
 
 export const metadata: Metadata = {
-  title: "Flashcards — Algorhythm",
+  title: "Flashcards — 250+",
   description:
     "Spaced-repetition flashcards covering every Step 2 CK & OMM topic. Sign in to sync progress and create your own cards from highlights.",
 };

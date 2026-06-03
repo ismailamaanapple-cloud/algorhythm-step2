@@ -108,7 +108,7 @@ export default function LoginModal() {
                 Save your progress
               </div>
               <h2 className="text-2xl font-bold tracking-tight mb-1">
-                Sign in to Algorhythm
+                Sign in to 250+
               </h2>
               <p className="text-sm text-white/65 leading-relaxed">
                 Track completed notes, save highlights, and review your
@@ -195,7 +195,7 @@ export default function LoginModal() {
             )}
 
             <p className="mt-6 text-[10px] text-white/40 leading-relaxed">
-              By signing in you agree to use Algorhythm for personal study.
+              By signing in you agree to use 250+ for personal study.
               We store your progress, highlights, and flashcards — and
               nothing else.
             </p>

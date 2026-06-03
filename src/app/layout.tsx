@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Algorhythm — Step 2 CK Active Recall",
-  description: "Play through Step 2 CK clinical algorithms. Active recall, gamified.",
+  title: "250+ — Score a 250 on Step 2 CK",
+  description:
+    "Spaced-repetition flashcards, case vignettes, and high-yield notes built to get you to a 250 or plus on Step 2 CK.",
 };
 
 export default function RootLayout({

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
-import { PREBUILT_FLASHCARDS, type Flashcard } from "@/data/flashcards";
+import { PREBUILT_FLASHCARDS, getDeck, type Flashcard } from "@/data/flashcards";
 import { newCardState, reviewCard, type Grade, type SrsState } from "@/lib/srs";
 
 export type ReviewRow = SrsState & { card_id: string };
@@ -11,14 +11,17 @@ export type ReviewRow = SrsState & { card_id: string };
 /**
  * Builds the list of cards in a given deck (or all) merged with the user's
  * SRS state from Supabase. Cards without a review row use a fresh state.
+ *
+ * `deckId` matches PREBUILT_DECKS[].id (which is the noteId for note decks
+ * and `case-<topic>` for case decks). Pass undefined to review across all.
  */
-export function useDeck(noteId?: string) {
+export function useDeck(deckId?: string) {
   const { user } = useAuth();
   const [reviews, setReviews] = useState<Map<string, ReviewRow>>(new Map());
   const [loading, setLoading] = useState(true);
 
-  const cards: Flashcard[] = noteId
-    ? PREBUILT_FLASHCARDS.filter((c) => c.noteId === noteId)
+  const cards: Flashcard[] = deckId
+    ? (getDeck(deckId)?.cards ?? [])
     : PREBUILT_FLASHCARDS;
 
   useEffect(() => {
@@ -109,7 +112,7 @@ export function useDeck(noteId?: string) {
     return () => {
       active = false;
     };
-  }, [user, noteId, cards.length]); // re-run on user/deck change
+  }, [user, deckId, cards.length]); // re-run on user/deck change
 
   const getDbId = useCallback(
     (sourceId: string) => reviews.get(`__src:${sourceId}`)?.card_id,
