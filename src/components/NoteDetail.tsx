@@ -22,6 +22,7 @@ import HighlightableText from "@/components/highlights/HighlightableText";
 import HighlightToolbar, {
   type PendingSelection,
 } from "@/components/highlights/HighlightToolbar";
+import QuickQuiz from "@/components/notes/QuickQuiz";
 
 const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   1: "from-violet-500 to-purple-700",
@@ -312,6 +313,9 @@ export default function NoteDetail({ note }: { note: Note }) {
                 </ul>
               </motion.div>
             )}
+
+            {/* Quick quiz on this note's material */}
+            <QuickQuiz note={note} />
 
             {/* Mark complete / next CTA */}
             <div className="glass rounded-2xl p-5 flex flex-wrap gap-3 items-center justify-between">

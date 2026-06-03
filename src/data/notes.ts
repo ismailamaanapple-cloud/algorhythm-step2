@@ -6099,6 +6099,782 @@ export const NOTES: Note[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════
+  // EKG — HIGH-YIELD PATTERN RECOGNITION
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "ekg-stemi-localization",
+    session: 2,
+    category: "EKG",
+    title: "STEMI — localization by leads",
+    summary:
+      "Map the ST-elevation pattern to the infarct territory and the culprit artery.",
+    sections: [
+      {
+        heading: "Recognize a STEMI",
+        bullets: [
+          "ST elevation ≥1 mm in 2 contiguous limb leads OR ≥2 mm in V2–V3 (men ≥40), ≥2.5 mm (men <40), ≥1.5 mm (women)",
+          "New LBBB with chest pain = STEMI equivalent (use Sgarbossa criteria)",
+          "Reciprocal ST depression in opposite leads CONFIRMS true STEMI vs early repolarization",
+          "Hyperacute T waves precede ST elevation — broad, peaked, symmetric",
+        ],
+      },
+      {
+        heading: "Territory by ST-elevation pattern",
+        bullets: [
+          "Anterior (V1–V4) → LAD; proximal LAD if also lateral V5–V6 + reciprocal in II/III/aVF",
+          "Inferior (II, III, aVF) → RCA (80%) or LCx; check V4R for RV involvement",
+          "Lateral (I, aVL, V5–V6) → LCx",
+          "Posterior (ST depression V1–V3 + tall R V1–V2) → LCx or distal RCA",
+          "RV infarct (V4R ST elevation) → proximal RCA — preload-dependent, AVOID nitrates, GIVE fluids",
+          "Left main / 3-vessel: ST elevation in aVR > 1 mm with widespread ST depression",
+        ],
+      },
+      {
+        heading: "Management (door-to-needle / door-to-balloon)",
+        bullets: [
+          "PCI within 90 min if PCI-capable center; transfer to PCI center if within 120 min total",
+          "Fibrinolytics if PCI not available within 120 min and no contraindications; within 30 min of door",
+          "MONA-BASH: O2 if hypoxic, ASA 325 chewed, nitrates (NOT in RV/severe AS/sildenafil), morphine, β-blocker (delay if CHF/shock), ACE-i, statin, heparin",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "STEMI lead-to-artery map",
+        headers: ["Lead pattern", "Likely culprit artery"],
+        rows: [
+          ["V1–V4 (anterior)", "LAD"],
+          ["I, aVL, V5–V6 (lateral)", "LCx"],
+          ["II, III, aVF (inferior)", "RCA (or LCx)"],
+          ["V1–V3 ST depression + tall R V1 (posterior)", "LCx / distal RCA"],
+          ["V4R elevation (right ventricular)", "Proximal RCA"],
+          ["aVR > 1 mm + diffuse ST depression", "Left main / severe 3-vessel"],
+        ],
+      },
+    ],
+    pearls: [
+      "Inferior STEMI + bradycardia + hypotension → think RV infarct → fluids first, AVOID nitrates",
+      "New LBBB + chest pain = treat as STEMI",
+      "aVR elevation with diffuse ST depression → left main occlusion, get to cath lab",
+      "Posterior STEMI hides as ST depression in V1–V3 with tall R waves — get posterior leads",
+      "Wellens' syndrome: biphasic or deep symmetric T inversion V2–V3 → critical LAD stenosis, even if asymptomatic",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-arrhythmias-narrow",
+    session: 2,
+    category: "EKG",
+    title: "Narrow-complex tachycardias",
+    summary:
+      "Differentiate sinus tach, AFib, AFlutter, SVT — and pick the right move.",
+    sections: [
+      {
+        heading: "Rapid pattern recognition",
+        bullets: [
+          "Sinus tach: rate 100–150, P before every QRS, regular — treat the underlying cause",
+          "AFib: irregularly irregular, NO discrete P waves, baseline fibrillation — rate control + anticoagulate",
+          "Atrial flutter: 'sawtooth' flutter waves (best in II/III/aVF), regular if conduction is constant (often 2:1 at 150 bpm)",
+          "AVNRT / AVRT (SVT): regular narrow tach 150–250, NO visible P waves (buried in QRS), abrupt onset/offset",
+          "MAT: ≥3 different P-wave morphologies, irregular, rate >100 — associated with COPD; treat hypoxia",
+        ],
+      },
+      {
+        heading: "Acute management",
+        bullets: [
+          "Unstable (hypotension, AMS, chest pain, CHF) → synchronized cardioversion regardless of rhythm",
+          "Stable SVT → vagal maneuvers → adenosine 6 mg IV (then 12 → 12)",
+          "Stable AFib RVR → β-blocker or non-DHP CCB (diltiazem) for rate control",
+          "Stable AFlutter → same rate control; consider cardioversion if recent onset",
+          "MAT: treat COPD, give magnesium; AVOID β-blockers (bronchospasm)",
+        ],
+      },
+      {
+        heading: "Anticoagulation (AFib / AFlutter)",
+        bullets: [
+          "CHA₂DS₂-VASc ≥2 (men) or ≥3 (women) → anticoagulate (DOAC preferred over warfarin)",
+          "Valvular AFib (mod–severe MS or mechanical valve) → WARFARIN only",
+          "Cardioversion: if AFib >48 hr or unknown → 3 weeks anticoag before OR TEE to rule out clot; then 4 weeks after",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Narrow-complex tachycardia at a glance",
+        headers: ["Rhythm", "EKG hallmark"],
+        rows: [
+          ["Sinus tachycardia", "P before every QRS, rate 100–150"],
+          ["AFib", "Irregularly irregular, NO P waves"],
+          ["Atrial flutter", "Sawtooth F waves; often 2:1 at exactly 150"],
+          ["SVT (AVNRT)", "Regular 150–250, hidden P, abrupt on/off"],
+          ["MAT", "≥3 P morphologies, irregular (COPD)"],
+        ],
+      },
+    ],
+    pearls: [
+      "Regular narrow tach at exactly 150 → think atrial flutter with 2:1 block",
+      "Adenosine both treats AND diagnoses — unmasks flutter waves if not SVT",
+      "AFib + WPW (wide bizarre irregular tach) → procainamide; AVOID AV nodal blockers (adenosine, β-blocker, CCB, digoxin)",
+      "Holiday-heart AFib: ETOH-triggered, often self-terminates",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-arrhythmias-wide",
+    session: 2,
+    category: "EKG",
+    title: "Wide-complex tachycardias & VT/VF",
+    summary: "VT vs SVT with aberrancy, torsades, VF — and what to shock vs not.",
+    sections: [
+      {
+        heading: "Assume VT until proven otherwise",
+        bullets: [
+          "ANY wide-complex tachycardia (QRS >120 ms) in a patient with known CAD or HF = VT until proven otherwise",
+          "Monomorphic VT: regular, uniform wide QRS — usually scar-based (post-MI)",
+          "Polymorphic VT: changing QRS morphology; if QT long → Torsades de Pointes",
+          "VFib: chaotic, no organized QRS — pulseless",
+          "Pulseless VT/VFib → defibrillate (UNsynchronized), epinephrine every 3–5 min, amiodarone after 2nd–3rd shock",
+        ],
+      },
+      {
+        heading: "Stable vs unstable VT",
+        bullets: [
+          "Unstable (pulse but hypotensive/AMS/CP) → synchronized cardioversion",
+          "Stable VT with pulse → amiodarone or procainamide IV; sotalol alternative",
+          "Pulseless VT → defibrillation per ACLS",
+        ],
+      },
+      {
+        heading: "Torsades de Pointes",
+        bullets: [
+          "Polymorphic VT with QT prolongation; sinusoidal 'twisting' baseline",
+          "Causes: hypoK, hypoMg, hypoCa, congenital long QT, drugs (Class IA/III antiarrhythmics, macrolides, fluoroquinolones, methadone, ondansetron, antipsychotics)",
+          "Treat: IV magnesium sulfate; correct electrolytes; pace or isoproterenol to ↑ HR (shortens QT)",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Wide-complex tach decoder",
+        headers: ["Pattern", "Action"],
+        rows: [
+          ["Monomorphic VT, stable", "Amiodarone or procainamide IV"],
+          ["Monomorphic VT, unstable", "Synchronized cardioversion"],
+          ["Pulseless VT / VFib", "Defibrillate (unsynchronized), CPR, epi, amiodarone"],
+          ["Torsades (long QT)", "IV magnesium, correct K/Mg, pace if recurrent"],
+          ["AFib with WPW", "Procainamide; AVOID AV nodal blockers"],
+        ],
+      },
+    ],
+    pearls: [
+      "Never treat wide-complex tach with verapamil/diltiazem — could be VT and cause arrest",
+      "Magnesium first-line for torsades regardless of serum Mg level",
+      "VFib + unwitnessed/unsuccessful resuscitation > 20 min → consider therapeutic hypothermia post-ROSC for neuro protection (32–36°C × 24 hr)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-av-blocks",
+    session: 2,
+    category: "EKG",
+    title: "AV blocks — 1°, Mobitz I/II, complete",
+    summary: "Recognize each block by PR pattern and dropped beats; know who needs a pacemaker.",
+    sections: [
+      {
+        heading: "The four blocks",
+        bullets: [
+          "1° AV block: PR > 200 ms, every P conducts — usually benign, no treatment",
+          "Mobitz I (Wenckebach): progressively lengthening PR until a QRS is dropped, then resets — AV node, USUALLY benign (often inferior MI, drugs)",
+          "Mobitz II: constant PR, sudden non-conducted P (dropped QRS) — INFRA-nodal (His/Purkinje); high risk of progression to complete block → pacemaker",
+          "3° (complete) AV block: P and QRS dissociated, regular at independent rates; narrow QRS = junctional escape, wide QRS = ventricular escape → pacemaker",
+        ],
+      },
+      {
+        heading: "Pacing decisions",
+        bullets: [
+          "Symptomatic bradycardia → atropine 0.5–1 mg IV; if no response → transcutaneous pacing → epi/dopamine drip → transvenous pacer",
+          "Mobitz II or complete heart block → PERMANENT pacemaker (regardless of symptoms)",
+          "Inferior MI causing Mobitz I or transient complete block → usually resolves with reperfusion (vagal-mediated)",
+          "Anterior MI with new block → bad sign (extensive infarction); consider permanent pacing",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Block recognition",
+        headers: ["EKG finding", "Block"],
+        rows: [
+          ["PR > 200 ms, every P conducted", "1° AV block"],
+          ["PR lengthens until QRS drops", "Mobitz I (Wenckebach)"],
+          ["PR constant, random dropped QRS", "Mobitz II"],
+          ["P and QRS independent (AV dissociation)", "Complete (3°) AV block"],
+        ],
+      },
+    ],
+    pearls: [
+      "Mobitz I = Wenckebach = AV node — usually benign, monitor",
+      "Mobitz II = below the AV node = unpredictable → permanent pacemaker",
+      "Cannon A waves on JVP = atrium contracting against closed tricuspid (complete block, VT)",
+      "Lyme carditis is a classic reversible cause of high-grade AV block — treat with ceftriaxone before placing a permanent pacer",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-electrolytes",
+    session: 2,
+    category: "EKG",
+    title: "EKG changes by electrolyte",
+    summary: "Hyperkalemia, hypokalemia, hypocalcemia, hypercalcemia — recognize and treat fast.",
+    sections: [
+      {
+        heading: "Potassium",
+        bullets: [
+          "Hyperkalemia (rising): peaked T waves → PR prolongation, P-wave flattening → wide QRS → sine-wave → asystole/VF",
+          "Hypokalemia: U waves, T-wave flattening, ST depression, prolonged QT — predisposes to torsades",
+        ],
+      },
+      {
+        heading: "Calcium",
+        bullets: [
+          "Hypocalcemia: prolonged QT (specifically prolonged ST segment) — risk of torsades",
+          "Hypercalcemia: SHORT QT, Osborn (J) waves with severe hypercalcemia",
+        ],
+      },
+      {
+        heading: "Treatment priorities",
+        bullets: [
+          "Hyperkalemia with EKG changes → calcium gluconate IV (stabilizes membrane) FIRST → insulin + glucose, β-agonist (shift K into cells) → kayexalate / dialysis (remove K)",
+          "Hypokalemia → replace K AND magnesium (Mg deficit prevents K replenishment)",
+          "Hypocalcemia symptomatic → IV calcium gluconate",
+          "Hypercalcemia → IV normal saline; calcitonin for fast effect; bisphosphonate for sustained",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Electrolyte EKG signature",
+        headers: ["Finding", "Likely electrolyte"],
+        rows: [
+          ["Peaked T waves", "Hyperkalemia"],
+          ["U waves, ↓K rhythm", "Hypokalemia"],
+          ["Prolonged QT (long ST)", "Hypocalcemia"],
+          ["Short QT, Osborn waves", "Hypercalcemia"],
+          ["Sine wave QRS", "Severe (>7) hyperkalemia"],
+        ],
+      },
+    ],
+    pearls: [
+      "Calcium gluconate stabilizes the myocyte but does NOT lower K — still need to shift + remove",
+      "Hypokalemia is resistant to correction without simultaneous magnesium repletion",
+      "Digoxin toxicity mimics hyperkalemia EKG findings + 'scooped' ST depression",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-pericarditis-pe-mimics",
+    session: 2,
+    category: "EKG",
+    title: "Pericarditis vs PE vs STEMI mimics",
+    summary: "Diffuse ST elevation, PR depression, S1Q3T3 — what's not a STEMI.",
+    sections: [
+      {
+        heading: "Acute pericarditis",
+        bullets: [
+          "DIFFUSE concave ST elevation (all leads except aVR + V1)",
+          "PR DEPRESSION in same leads (PR elevation in aVR)",
+          "No reciprocal changes (vs STEMI)",
+          "Often follows viral URI; pleuritic chest pain worse supine, better leaning forward; friction rub",
+          "Treat: NSAIDs (or aspirin if post-MI) + colchicine; steroids only if refractory or autoimmune",
+        ],
+      },
+      {
+        heading: "Pulmonary embolism",
+        bullets: [
+          "Most common EKG finding: SINUS TACHYCARDIA",
+          "Classic but UNcommon: S1Q3T3 — deep S in I, Q wave in III, inverted T in III (RV strain)",
+          "T-wave inversions V1–V4 (anterior); new RBBB; right axis deviation",
+          "Diagnose with CT-PA (or V/Q if contrast contraindicated); D-dimer for low-pretest probability",
+          "Treat: anticoagulation (DOAC if hemodynamically stable); tPA if massive PE with shock",
+        ],
+      },
+      {
+        heading: "STEMI mimics to know",
+        bullets: [
+          "Benign early repolarization: J-point notch, concave ST elevation in V2–V5, no reciprocal changes",
+          "LBBB: discordant ST/T (opposite QRS direction) — use Sgarbossa criteria for STEMI in LBBB",
+          "LV aneurysm: persistent ST elevation weeks after MI",
+          "Brugada: coved ST elevation V1–V3 + RBBB-like pattern — channelopathy, risk of sudden death",
+          "Takotsubo cardiomyopathy: ST elevation that doesn't fit a vascular territory, apical ballooning, post-stressor",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "ST-elevation differential",
+        headers: ["Pattern", "Diagnosis"],
+        rows: [
+          ["Localized ST elevation + reciprocal depression", "STEMI"],
+          ["Diffuse concave ST elevation + PR depression", "Pericarditis"],
+          ["Coved ST V1–V3 + RBBB-like", "Brugada"],
+          ["Concave ST V2–V5 + J notch", "Early repolarization (benign)"],
+          ["Persistent ST elevation post-MI", "LV aneurysm"],
+        ],
+      },
+    ],
+    pearls: [
+      "Pericarditis with effusion + Beck's triad (hypotension, JVD, muffled heart sounds) = tamponade → urgent pericardiocentesis",
+      "Most common EKG finding in PE is sinus tach — don't anchor on S1Q3T3",
+      "Brugada is autosomal dominant — screen first-degree relatives; ICD if syncope",
+      "Wellens' (deep biphasic T waves V2–V3) in pain-free patient = critical LAD stenosis",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-wpw-long-qt-brugada",
+    session: 2,
+    category: "EKG",
+    title: "Pre-excitation & channelopathies",
+    summary: "WPW, long QT, Brugada, HCM — sudden cardiac death syndromes.",
+    sections: [
+      {
+        heading: "WPW (Wolff–Parkinson–White)",
+        bullets: [
+          "Short PR (<120 ms) + delta wave (slurred upstroke of QRS) + wide QRS",
+          "Accessory pathway (bundle of Kent) bypasses AV node",
+          "Risk: AFib conducting down accessory pathway → wide bizarre irregular tach → can degenerate to VFib",
+          "AFib + WPW: treat with PROCAINAMIDE (or ibutilide); AVOID adenosine, β-blockers, CCBs, digoxin",
+          "Definitive: catheter ablation of accessory pathway",
+        ],
+      },
+      {
+        heading: "Long QT syndrome",
+        bullets: [
+          "QTc > 460 ms (women) or >450 ms (men) at rest",
+          "Congenital: Romano–Ward (AD, isolated), Jervell–Lange-Nielsen (AR + sensorineural deafness)",
+          "Acquired: hypoK, hypoMg, hypoCa, drugs (antiarrhythmics, macrolides, fluoroquinolones, antipsychotics, methadone, ondansetron)",
+          "Risk: torsades → syncope → sudden death",
+          "Manage: β-blockers; ICD if syncope or family history of SCD; avoid QT-prolonging drugs",
+        ],
+      },
+      {
+        heading: "Brugada syndrome",
+        bullets: [
+          "Type 1 (diagnostic): coved ST elevation ≥2 mm + inverted T in V1–V3",
+          "Autosomal dominant SCN5A mutation (sodium channel)",
+          "Risk: polymorphic VT/VF, sudden death (often in sleep)",
+          "ICD for symptomatic or those with family history of SCD; provocative testing with class IC antiarrhythmic to unmask",
+        ],
+      },
+      {
+        heading: "HCM (hypertrophic cardiomyopathy)",
+        bullets: [
+          "Massive LVH on EKG often with strain pattern, dagger Q waves in lateral leads",
+          "Echo: asymmetric septal hypertrophy, systolic anterior motion of mitral valve, dynamic LVOT obstruction",
+          "Murmur LOUDER with Valsalva and standing (decreased preload), QUIETER with squat/hand grip",
+          "Avoid digoxin, diuretics, vasodilators; β-blockers or CCBs first-line",
+          "ICD for high-risk: family history SCD, syncope, septum >30 mm, NSVT on Holter",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "SCD syndromes — features",
+        headers: ["Syndrome", "Hallmark"],
+        rows: [
+          ["WPW", "Delta wave + short PR"],
+          ["Long QT", "QTc >460/450 ms"],
+          ["Brugada", "Coved ST V1–V3"],
+          ["HCM", "LVH + dynamic LVOT murmur ↑ Valsalva"],
+          ["ARVC", "Epsilon wave V1, T inv V1–V3, RV origin VT"],
+        ],
+      },
+    ],
+    pearls: [
+      "AFib in a WPW patient: never give AV nodal blockers — they preferentially conduct down the accessory pathway and can precipitate VFib",
+      "Methadone is a notorious QT prolonger — always check QTc before starting and at intervals",
+      "Brugada often presents as nocturnal sudden death in young men (esp Southeast Asian); screen family",
+      "HCM is the most common cause of sudden cardiac death in young athletes",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-axis-hypertrophy",
+    session: 2,
+    category: "EKG",
+    title: "Axis, LVH, RVH — the basics",
+    summary: "Quick axis determination, LVH/RVH criteria, BBB recognition.",
+    sections: [
+      {
+        heading: "Axis in 5 seconds",
+        bullets: [
+          "Look at QRS in lead I and lead II (or aVF)",
+          "I up + II up → NORMAL axis (-30 to +90)",
+          "I up + II down → LEFT axis (-30 to -90) — LVH, LBBB, inferior MI, LAFB, WPW",
+          "I down + II up → RIGHT axis (+90 to +180) — RVH, PE, lateral MI, COPD, LPFB, dextrocardia",
+          "I down + II down → EXTREME axis (NW quadrant) — VT, hyperkalemia, severe pathology",
+        ],
+      },
+      {
+        heading: "LVH criteria (Sokolow-Lyon)",
+        bullets: [
+          "S in V1 + R in V5 or V6 ≥ 35 mm",
+          "R in aVL ≥ 11 mm",
+          "Strain pattern: ST depression and T inversion in lateral leads (I, aVL, V5–V6)",
+        ],
+      },
+      {
+        heading: "RVH criteria",
+        bullets: [
+          "R/S ratio in V1 > 1 (R wave > S in V1)",
+          "Right axis deviation",
+          "Causes: chronic lung disease (COPD), pulmonary HTN, congenital heart disease, severe PE",
+        ],
+      },
+      {
+        heading: "Bundle branch blocks (QRS >120 ms)",
+        bullets: [
+          "RBBB: rSR' (M shape) in V1; wide S in I, V6",
+          "LBBB: broad notched R in I, V5–V6; QS or rS in V1",
+          "New LBBB with chest pain = STEMI equivalent",
+          "RBBB doesn't typically affect QRS axis or invalidate STEMI criteria; LBBB does",
+        ],
+      },
+    ],
+    pearls: [
+      "LVH with strain in a hypertensive patient = chronic uncontrolled HTN until proven otherwise",
+      "S1Q3T3 in PE reflects acute RV strain — accompanied by sinus tach and T inversions V1–V4",
+      "Bifascicular block (RBBB + LAFB or LPFB) + 1° AV block = trifascicular block — high risk of complete heart block",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-bradycardia-conduction",
+    session: 2,
+    category: "EKG",
+    title: "Bradycardias & sinus node disease",
+    summary: "Sinus brady, sick sinus, junctional rhythms — when to pace.",
+    sections: [
+      {
+        heading: "Sinus bradycardia",
+        bullets: [
+          "Sinus rate < 60 bpm — often normal in athletes",
+          "Pathologic causes: medications (β-blocker, CCB, digoxin, opioids, clonidine), inferior MI, hypothyroid, hypothermia, ↑ICP, sleep apnea",
+          "Symptomatic → atropine; if refractory → pacing",
+        ],
+      },
+      {
+        heading: "Sick sinus syndrome",
+        bullets: [
+          "Alternating bradycardia and tachycardia (often AFib alternating with sinus brady) — 'tachy-brady'",
+          "Common in elderly; causes syncope and palpitations",
+          "Diagnosis with Holter or event monitor",
+          "Treat: PACEMAKER (then medication can be used to control tachy component safely)",
+        ],
+      },
+      {
+        heading: "Junctional rhythms",
+        bullets: [
+          "Origin: AV node escape — rate 40–60 bpm, narrow QRS, no P or inverted P (retrograde)",
+          "Accelerated junctional: 60–100 (digoxin toxicity, post-cardiac surgery, MI)",
+          "Treat underlying cause; pacing if symptomatic and persistent",
+        ],
+      },
+    ],
+    pearls: [
+      "Symptomatic sinus brady → atropine 0.5 mg IV first; max 3 mg before moving to pacing",
+      "β-blocker / CCB overdose with bradycardia → calcium gluconate, glucagon, high-dose insulin / euglycemia therapy",
+      "Sick sinus with concurrent AFib + bradycardia: pacemaker first, then anticoagulate based on CHA₂DS₂-VASc",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-stable-cad-stress",
+    session: 2,
+    category: "EKG",
+    title: "Stable CAD — stress testing & risk",
+    summary:
+      "Who needs a stress test, what kind, and how to interpret findings.",
+    sections: [
+      {
+        heading: "Stress test selection",
+        bullets: [
+          "Can exercise + baseline EKG interpretable → EXERCISE EKG stress test (first-line)",
+          "Can exercise + baseline EKG uninterpretable (LBBB, paced, baseline ST changes) → exercise + imaging (echo or nuclear)",
+          "Cannot exercise → pharmacologic stress: dobutamine echo OR vasodilator nuclear (regadenoson, adenosine, dipyridamole)",
+          "AVOID vasodilator stress in severe asthma/COPD or active bronchospasm — use dobutamine instead",
+        ],
+      },
+      {
+        heading: "Positive stress test findings",
+        bullets: [
+          "≥1 mm horizontal or down-sloping ST depression at 80 ms after J point = ischemic",
+          "Hypotension with stress = severe disease (decreased CO from extensive ischemia)",
+          "Ventricular arrhythmias with stress → consider EP study",
+          "Reversible perfusion defect on nuclear → flow-limiting stenosis",
+        ],
+      },
+      {
+        heading: "What to do with the result",
+        bullets: [
+          "High-risk stress test (large area, hypotension, low workload, multivessel defects) → coronary angiography",
+          "Positive moderate → maximize medical therapy (ASA, statin, β-blocker, ACE-i, nitrate)",
+          "Pre-op cardiac risk: only stress test if active cardiac condition OR poor functional capacity (<4 METs) AND moderate–high risk surgery",
+        ],
+      },
+    ],
+    pearls: [
+      "Treadmill stress test sensitivity 60–70% — negative test doesn't rule out CAD if pretest probability high",
+      "Exercise tolerance of 4 METs (climb a flight of stairs) is a key threshold for pre-op clearance",
+      "Routine cardiac stress testing is NOT recommended for asymptomatic low-risk adults (USPSTF)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-acs-non-stemi",
+    session: 2,
+    category: "EKG",
+    title: "NSTEMI / unstable angina",
+    summary:
+      "Recognize NSTE-ACS, risk stratify, and pick early vs delayed invasive strategy.",
+    sections: [
+      {
+        heading: "Diagnosis",
+        bullets: [
+          "Symptoms of angina + ST depression or T-wave inversion (no ST elevation)",
+          "Troponin elevated → NSTEMI; troponin normal → unstable angina",
+          "Get serial troponins (0 and 3–6 hr) — high-sensitivity rules out earlier",
+        ],
+      },
+      {
+        heading: "Risk stratification (TIMI score)",
+        bullets: [
+          "TIMI risk factors (1 point each, score 0–7): age ≥65, ≥3 CAD risk factors, known CAD ≥50% stenosis, ASA use in last 7 days, ≥2 anginal episodes in 24 hr, ST changes ≥0.5 mm, +troponin",
+          "TIMI ≥3 → early invasive strategy (cath within 24 hr)",
+        ],
+      },
+      {
+        heading: "Immediate management",
+        bullets: [
+          "ASA 325 chewed + P2Y12 inhibitor (clopidogrel, ticagrelor, prasugrel)",
+          "Anticoagulation: heparin (UFH) or enoxaparin",
+          "β-blocker (unless contraindicated), statin (high-intensity), nitrate for symptoms",
+          "Cath if high-risk features (hemodynamic instability, refractory angina, dynamic EKG changes, TIMI ≥3)",
+        ],
+      },
+    ],
+    pearls: [
+      "Refractory chest pain despite max medical therapy = take to cath lab regardless of TIMI",
+      "Type 2 MI: oxygen supply-demand mismatch (sepsis, anemia, tachycardia) — treat underlying, not necessarily cath",
+      "GRACE score better predicts 6-month mortality; TIMI better for in-hospital decisions",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-paced-rhythms",
+    session: 2,
+    category: "EKG",
+    title: "Paced rhythms & ICD basics",
+    summary:
+      "Recognize pacing spikes, understand modes (DDD, VVI), know when device failure is happening.",
+    sections: [
+      {
+        heading: "Pacing on the strip",
+        bullets: [
+          "Pacing spike before P = atrial pacing; before QRS = ventricular pacing; before both = dual-chamber",
+          "Paced ventricular QRS looks like LBBB (RV apical lead) — wide, broad in V6",
+          "DDD: dual chamber sensed + paced (most common in dual-lead pacers)",
+          "VVI: ventricle only, demand-paced — used in AFib/AFlutter with bradycardia",
+        ],
+      },
+      {
+        heading: "Indications for pacing",
+        bullets: [
+          "Symptomatic sinus brady (incl. sick sinus)",
+          "Mobitz II AV block",
+          "Complete (3°) AV block",
+          "Symptomatic bifascicular/trifascicular block",
+        ],
+      },
+      {
+        heading: "Indications for ICD (primary prevention)",
+        bullets: [
+          "EF ≤35% from ischemic cardiomyopathy ≥40 days post-MI (NYHA II–III)",
+          "EF ≤35% from non-ischemic cardiomyopathy on optimal medical therapy ≥3 mo",
+          "HCM with risk features, Brugada with syncope, long QT with syncope on β-blocker",
+          "Prior cardiac arrest from VT/VF (secondary prevention — Class I)",
+        ],
+      },
+      {
+        heading: "Pacemaker failure",
+        bullets: [
+          "Failure to capture: spike present, no QRS — lead displacement, low battery, fibrosis",
+          "Failure to sense: spike during a beat (could induce arrhythmia)",
+          "Pacemaker syndrome: ventricular pacing with retrograde atrial conduction → cannon A waves, fatigue, hypotension — fix with dual-chamber upgrade",
+        ],
+      },
+    ],
+    pearls: [
+      "MRI-conditional pacemakers/ICDs are now common — verify model before declining imaging",
+      "AICD shock + patient awake → check rhythm; if rhythm appropriate VT/VF, device worked; if inappropriate, deactivate with magnet",
+      "Always interrogate device after syncope — captures rhythm at time of event",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-pe-rv-strain",
+    session: 2,
+    category: "EKG",
+    title: "RV strain, PE, and cor pulmonale",
+    summary:
+      "EKG findings of acute and chronic RV overload — when to suspect what.",
+    sections: [
+      {
+        heading: "Acute RV strain (PE)",
+        bullets: [
+          "Sinus tachycardia (most common)",
+          "S1Q3T3 (classic but only ~20%)",
+          "T-wave inversions V1–V4",
+          "New incomplete or complete RBBB",
+          "Right axis deviation",
+        ],
+      },
+      {
+        heading: "Cor pulmonale (chronic RV pressure overload)",
+        bullets: [
+          "P pulmonale: tall (>2.5 mm) peaked P wave in II — RA enlargement",
+          "RVH: R/S ratio >1 in V1, right axis deviation",
+          "Low voltage in limb leads (COPD with hyperinflation)",
+        ],
+      },
+      {
+        heading: "Diagnosis & management of PE",
+        bullets: [
+          "Low pretest probability (Wells score 0–4) → D-dimer; negative D-dimer rules out",
+          "High pretest (Wells >4) or positive D-dimer → CT-PA (V/Q if contrast contraindicated)",
+          "Massive PE (hypotension/shock) → systemic thrombolysis (tPA)",
+          "Submassive PE (RV strain on echo or CT, +troponin, normotensive) → consider catheter-directed thrombolysis vs anticoagulation alone",
+          "Stable PE → DOAC (apixaban or rivaroxaban) for ≥3 mo (longer if unprovoked)",
+        ],
+      },
+    ],
+    pearls: [
+      "PE prophylaxis missed → submassive PE post-op is a common board scenario",
+      "Pregnant patient with suspected PE: V/Q scan preferred over CT-PA (lower radiation to breasts); LMWH for treatment (NO warfarin or DOAC)",
+      "Echo finding of McConnell's sign (RV free wall akinesia with preserved apex) is highly specific for acute PE",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ekg-cardiac-arrest-acls",
+    session: 2,
+    category: "EKG",
+    title: "Cardiac arrest rhythms & ACLS",
+    summary:
+      "Shockable vs non-shockable rhythms; the ACLS algorithm in plain English.",
+    sections: [
+      {
+        heading: "Shockable rhythms",
+        bullets: [
+          "Ventricular fibrillation (VFib): chaotic, no QRS",
+          "Pulseless ventricular tachycardia (pulseless VT)",
+          "→ DEFIBRILLATE (unsynchronized) ASAP; resume CPR immediately × 2 min",
+        ],
+      },
+      {
+        heading: "Non-shockable rhythms",
+        bullets: [
+          "Asystole: flat line — confirm in 2 leads, check leads/gain",
+          "PEA (pulseless electrical activity): organized rhythm on monitor but no pulse",
+          "→ CPR + epinephrine 1 mg IV every 3–5 min; treat reversible causes",
+        ],
+      },
+      {
+        heading: "Reversible causes — the 'H's and T's",
+        bullets: [
+          "Hs: hypovolemia, hypoxia, H+ (acidosis), hypo/hyperK, hypothermia",
+          "Ts: tension PTX, tamponade, toxins, thrombosis (pulmonary or coronary)",
+          "Each one has a specific fix: fluids, oxygen, bicarb, calcium/K shift, warming, needle decompression, pericardiocentesis, antidote, lytics/PCI",
+        ],
+      },
+      {
+        heading: "Post-ROSC care",
+        bullets: [
+          "Targeted temperature management 32–36°C × 24 hr (for comatose post-arrest)",
+          "Get 12-lead EKG to look for STEMI → emergency cath",
+          "Hemodynamic support, mechanical ventilation, neuro prognostication ≥72 hr after rewarming",
+        ],
+      },
+    ],
+    pearls: [
+      "Don't interrupt compressions for pulse checks longer than 10 seconds",
+      "First-line for refractory VFib after 3 shocks: amiodarone 300 mg IV bolus",
+      "End-tidal CO₂ < 10 mmHg during CPR after 20 minutes = poor prognosis (consider stopping)",
+      "Eyewitnessed arrest of young athlete on field → suspect HCM, commotio cordis (blunt chest trauma during T-wave), congenital LQT",
+    ],
+    relatedCaseIds: ["cardiac-arrest"],
+  },
+
+  {
+    id: "ekg-syncope-workup",
+    session: 2,
+    category: "EKG",
+    title: "Syncope — EKG-first workup",
+    summary: "Cardiac vs non-cardiac syncope; what an EKG must rule out.",
+    sections: [
+      {
+        heading: "EKG findings that demand admission",
+        bullets: [
+          "Long QT (drug or congenital)",
+          "Brugada pattern (coved ST V1–V3)",
+          "Pre-excitation (delta wave) with documented arrhythmia",
+          "Bifascicular or trifascicular block",
+          "Pathologic Q waves (prior MI) with syncope",
+          "Ventricular arrhythmias",
+          "HCM (LVH + strain on EKG)",
+        ],
+      },
+      {
+        heading: "Categories of syncope",
+        bullets: [
+          "Reflex (neurally mediated): vasovagal, situational (cough, micturition), carotid sinus — most common, benign",
+          "Orthostatic: postural drop in BP — meds (diuretics, α-blockers), volume depletion, autonomic neuropathy",
+          "Cardiac: arrhythmia (Brady/Tachy) OR structural (AS, HCM, tamponade, PE, MI) — HIGH risk",
+          "Neurologic: rare; seizures, basilar TIA, SAH — usually accompanied by other neuro findings",
+        ],
+      },
+      {
+        heading: "Workup priority",
+        bullets: [
+          "EVERY syncope patient: 12-lead EKG, orthostatic vitals, history (warning signs, exertion, position)",
+          "Exertional syncope → ECHO to evaluate for AS, HCM, anomalous coronary",
+          "Syncope WITHOUT warning, while supine, or during exertion → cardiac until proven otherwise",
+          "San Francisco Syncope Rule (CHESS): CHF, Hct <30%, EKG abnormal, SOB, SBP <90 → admit",
+        ],
+      },
+    ],
+    pearls: [
+      "Syncope during exertion = cardiac (AS, HCM, anomalous coronary, arrhythmia) until proven otherwise — get echo + cardiology",
+      "Vasovagal syncope in young patients with prodrome (nausea, warmth, blurry vision) is the most common cause — reassure, conservative measures",
+      "Suspected arrhythmia but normal Holter → use 30-day event monitor or implantable loop recorder",
+    ],
+    relatedCaseIds: [],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
   // OMM / OSTEOPATHIC MANIPULATIVE MEDICINE (COMLEX Level 2)
   // ═══════════════════════════════════════════════════════════════════
 
