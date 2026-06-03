@@ -1,12 +1,14 @@
-import type { NextRequest } from "next/server";
-import { updateSession } from "@/lib/supabase/proxy";
+// Auth state lives client-side (localStorage) with implicit-flow Supabase,
+// so we no longer need a proxy to refresh server-side cookies. Keeping the
+// file as a no-op pass-through; remove it later if Next 16 stops requiring
+// the convention.
+import { NextResponse, type NextRequest } from "next/server";
 
-export async function proxy(request: NextRequest) {
-  return updateSession(request);
+export function proxy(_request: NextRequest) {
+  return NextResponse.next();
 }
 
 export const config = {
-  // Run on every route except static assets + Next internals + favicon.
   matcher: [
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
   ],

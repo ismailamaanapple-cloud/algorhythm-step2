@@ -1,23 +1,28 @@
 "use client";
 
-import { createBrowserClient } from "@supabase/ssr";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-let _client: ReturnType<typeof createBrowserClient> | null = null;
+let _client: SupabaseClient | null = null;
 
 /**
  * Browser-side Supabase client (singleton).
  *
- * Uses the IMPLICIT auth flow rather than PKCE so that magic-link clicks
- * survive being opened in a different browser/window than the one that
- * requested them — the access token is delivered in the URL hash instead of
- * requiring a verifier cookie that has to survive the round-trip.
+ * We deliberately use plain `@supabase/supabase-js` rather than
+ * `@supabase/ssr`'s createBrowserClient — the latter hardcodes
+ * `flowType: "pkce"` and ignores any override, which breaks magic-link
+ * sign-ins whenever the email is opened in a different browser than the
+ * one that requested it (the PKCE verifier cookie isn't there).
+ *
+ * Implicit flow puts the access token in the URL hash on redirect, so the
+ * link works from any browser. Session persists in localStorage; that's
+ * fine because all our data access is client-side and gated by RLS.
  */
-export function getSupabaseBrowserClient() {
+export function getSupabaseBrowserClient(): SupabaseClient | null {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !anon) return null;
   if (_client) return _client;
-  _client = createBrowserClient(url, anon, {
+  _client = createClient(url, anon, {
     auth: {
       flowType: "implicit",
       detectSessionInUrl: true,
