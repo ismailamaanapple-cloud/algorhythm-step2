@@ -1,12 +1,27 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Sparkles, ChevronRight, Play, Check, Circle } from "lucide-react";
+import {
+  ArrowLeft,
+  Sparkles,
+  ChevronRight,
+  Play,
+  Check,
+  Circle,
+  Highlighter,
+} from "lucide-react";
 import type { Note } from "@/data/notes";
 import { NOTES } from "@/data/notes";
 import { CASES } from "@/data/cases";
 import { useNoteProgress } from "@/hooks/useNoteProgress";
+import { useAuth } from "@/lib/auth/AuthProvider";
+import { useHighlights, type HighlightColor, type SectionKind } from "@/hooks/useHighlights";
+import HighlightableText from "@/components/highlights/HighlightableText";
+import HighlightToolbar, {
+  type PendingSelection,
+} from "@/components/highlights/HighlightToolbar";
 
 const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   1: "from-violet-500 to-purple-700",
@@ -14,18 +29,128 @@ const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   3: "from-amber-500 to-orange-700",
 };
 
+type AnchorParts = { kind: SectionKind; sectionIdx: number; bulletIdx: number | null };
+
+function parseAnchor(a: string | null): AnchorParts | null {
+  if (!a) return null;
+  const [kind, s, b] = a.split(":");
+  if (!kind) return null;
+  const valid: SectionKind[] = ["section", "table", "pearls", "summary"];
+  if (!valid.includes(kind as SectionKind)) return null;
+  return {
+    kind: kind as SectionKind,
+    sectionIdx: parseInt(s ?? "0", 10) || 0,
+    bulletIdx: b == null || b === "" ? null : parseInt(b, 10),
+  };
+}
+
 export default function NoteDetail({ note }: { note: Note }) {
   const { completed, toggle, hydrated } = useNoteProgress();
+  const { openLogin } = useAuth();
   const isDone = completed.has(note.id);
 
   const relatedCases = (note.relatedCaseIds ?? [])
     .map((id) => CASES.find((c) => c.id === id))
     .filter((c): c is NonNullable<typeof c> => !!c);
 
-  // Group "more in category" by same specialty (not session) for better browsing
   const moreInCategory = NOTES.filter(
     (n) => n.category === note.category && n.id !== note.id,
   ).slice(0, 6);
+
+  // Highlights state + persistence.
+  const { items: highlights, create, makeFlashcard, isAuthed } = useHighlights(note.id);
+  const [pending, setPending] = useState<PendingSelection | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const groupedHighlights = useCallback(
+    (kind: SectionKind, sectionIdx: number, bulletIdx: number | null) =>
+      highlights.filter(
+        (h) =>
+          h.section_kind === kind &&
+          h.section_idx === sectionIdx &&
+          (h.bullet_idx ?? null) === bulletIdx,
+      ),
+    [highlights],
+  );
+
+  // Selection handler — collapses a window selection inside the content area
+  // into a stable (anchor, offset, text) tuple for the toolbar.
+  useEffect(() => {
+    function handleUp() {
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed) return;
+      const range = sel.getRangeAt(0);
+      const anchor = (range.commonAncestorContainer.parentElement?.closest(
+        "[data-anchor]",
+      ) ?? null) as HTMLElement | null;
+      if (!anchor) return;
+      const inside = contentRef.current?.contains(anchor);
+      if (!inside) return;
+      const parts = parseAnchor(anchor.getAttribute("data-anchor"));
+      if (!parts) return;
+      const text = sel.toString().trim();
+      if (text.length < 3) return;
+      // Calculate offset relative to the anchor's text content.
+      const fullText = anchor.textContent ?? "";
+      const startOffset = fullText.indexOf(text);
+      if (startOffset < 0) return;
+      const rect = range.getBoundingClientRect();
+      setPending({
+        text,
+        sectionKind: parts.kind,
+        sectionIdx: parts.sectionIdx,
+        bulletIdx: parts.bulletIdx,
+        startOffset,
+        endOffset: startOffset + text.length,
+        x: rect.left + rect.width / 2,
+        y: rect.top,
+      });
+    }
+    document.addEventListener("mouseup", handleUp);
+    document.addEventListener("touchend", handleUp);
+    return () => {
+      document.removeEventListener("mouseup", handleUp);
+      document.removeEventListener("touchend", handleUp);
+    };
+  }, []);
+
+  const handleHighlight = useCallback(
+    async (color: HighlightColor) => {
+      if (!pending) return null;
+      return create({
+        note_id: note.id,
+        section_kind: pending.sectionKind,
+        section_idx: pending.sectionIdx,
+        bullet_idx: pending.bulletIdx,
+        start_offset: pending.startOffset,
+        end_offset: pending.endOffset,
+        text_content: pending.text,
+        color,
+        note: null,
+      });
+    },
+    [pending, create, note.id],
+  );
+
+  const handleMakeFlashcard = useCallback(
+    async (front: string, back: string) => {
+      if (!pending) return false;
+      const h = await create({
+        note_id: note.id,
+        section_kind: pending.sectionKind,
+        section_idx: pending.sectionIdx,
+        bullet_idx: pending.bulletIdx,
+        start_offset: pending.startOffset,
+        end_offset: pending.endOffset,
+        text_content: pending.text,
+        color: "yellow",
+        note: null,
+      });
+      if (!h) return false;
+      return makeFlashcard(h, front, back);
+    },
+    [pending, create, makeFlashcard, note.id],
+  );
 
   return (
     <div className="min-h-[100dvh] flex flex-col">
@@ -70,12 +195,22 @@ export default function NoteDetail({ note }: { note: Note }) {
         </div>
       </div>
 
-      <div className="flex-1 mx-auto max-w-5xl w-full px-6 py-8 md:py-12">
+      <div className="flex-1 mx-auto max-w-5xl w-full px-6 py-8 md:py-12" ref={contentRef}>
         {/* Hero */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
           <div className="text-xs uppercase tracking-[0.22em] text-cyan-300/80 mb-3">{note.category}</div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">{note.title}</h1>
-          <p className="text-white/65 text-base md:text-lg max-w-3xl leading-relaxed">{note.summary}</p>
+          <p className="text-white/65 text-base md:text-lg max-w-3xl leading-relaxed">
+            <HighlightableText
+              text={note.summary}
+              highlights={groupedHighlights("summary", 0, null)}
+              dataAnchor="summary:0"
+            />
+          </p>
+          <div className="mt-4 text-[11px] text-white/45 inline-flex items-center gap-1.5">
+            <Highlighter className="h-3 w-3" />
+            Select any text to highlight it or make a flashcard.
+          </div>
         </motion.div>
 
         {/* Sections */}
@@ -97,7 +232,13 @@ export default function NoteDetail({ note }: { note: Note }) {
                   {section.bullets.map((b, j) => (
                     <li key={j} className="flex gap-2.5 text-sm text-white/80 leading-relaxed">
                       <span className="text-white/30 mt-1.5 shrink-0">•</span>
-                      <span>{b}</span>
+                      <span>
+                        <HighlightableText
+                          text={b}
+                          highlights={groupedHighlights("section", i, j)}
+                          dataAnchor={`section:${i}:${j}`}
+                        />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -159,7 +300,13 @@ export default function NoteDetail({ note }: { note: Note }) {
                   {note.pearls.map((p, i) => (
                     <li key={i} className="flex gap-2.5 text-sm text-white/85 leading-relaxed">
                       <span className="text-amber-300 mt-0.5 shrink-0">◆</span>
-                      <span>{p}</span>
+                      <span>
+                        <HighlightableText
+                          text={p}
+                          highlights={groupedHighlights("pearls", 0, i)}
+                          dataAnchor={`pearls:0:${i}`}
+                        />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -214,6 +361,23 @@ export default function NoteDetail({ note }: { note: Note }) {
 
           {/* Sidebar */}
           <aside className="space-y-6">
+            <div className="glass rounded-2xl p-5">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-cyan-300/80 mb-3 flex items-center gap-2">
+                <Sparkles className="h-3 w-3" /> Flashcards for this note
+              </div>
+              <Link
+                href={`/flashcards/${note.id}`}
+                className="block rounded-lg bg-gradient-to-br from-violet-500/20 to-cyan-500/20 border border-cyan-300/20 px-3 py-3 hover:from-violet-500/30 hover:to-cyan-500/30 transition"
+              >
+                <div className="text-xs font-semibold text-white/90">
+                  Open pre-built deck
+                </div>
+                <div className="text-[11px] text-white/55 mt-0.5">
+                  Auto-generated from pearls & key bullets
+                </div>
+              </Link>
+            </div>
+
             {relatedCases.length > 0 && (
               <div className="glass rounded-2xl p-5">
                 <div className="text-[10px] uppercase tracking-[0.22em] text-amber-300/80 mb-3 flex items-center gap-2">
@@ -273,6 +437,18 @@ export default function NoteDetail({ note }: { note: Note }) {
           </aside>
         </div>
       </div>
+
+      <HighlightToolbar
+        pending={pending}
+        onClear={() => setPending(null)}
+        onHighlight={handleHighlight}
+        onMakeFlashcard={handleMakeFlashcard}
+        isAuthed={isAuthed}
+        onSignInPrompt={() => {
+          setPending(null);
+          openLogin();
+        }}
+      />
     </div>
   );
 }

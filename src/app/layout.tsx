@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/lib/auth/AuthProvider";
+import LoginModal from "@/components/auth/LoginModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +33,10 @@ export default function RootLayout({
         <div className="aurora" />
         <div className="grid-overlay" />
         <div className="noise" />
-        {children}
+        <AuthProvider>
+          {children}
+          <LoginModal />
+        </AuthProvider>
       </body>
     </html>
   );
