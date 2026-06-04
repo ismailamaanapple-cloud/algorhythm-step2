@@ -5253,6 +5253,112 @@ export const CASES: Case[] = [
     ],
   },
 
+  // ═══ INFERTILITY (OB/GYN) ═══
+
+  {
+    id: "infertility-pcos",
+    session: 3, topic: "OB/GYN", difficulty: "medium",
+    stem: "28-year-old woman with irregular menses (5 cycles/year), hirsutism, BMI 32, and 14 months of trying to conceive. Mid-luteal progesterone is low. US shows polycystic-appearing ovaries.",
+    question: "Best first-line ovulation-induction agent?",
+    options: [
+      ok("Letrozole", "Letrozole is first-line for PCOS ovulation induction (PPCOS II trial — higher live birth rates and fewer multiples than clomiphene)."),
+      no("Clomiphene citrate", "Clomid was historic first-line but has been superseded by letrozole in PCOS."),
+      no("Gonadotropins (FSH)", "Second/third-line after letrozole fails; higher cost and multiple gestation risk."),
+      no("Immediate IVF", "Reserved for refractory cases; oral agents should be tried first."),
+    ],
+    diagnosis: "PCOS-associated anovulatory infertility",
+    keyPoints: [
+      "PCOS is the most common cause of anovulatory infertility",
+      "Lifestyle first: 5–10% weight loss can restore ovulation",
+      "Letrozole 2.5–7.5 mg on cycle days 3–7 — superior to clomiphene per PPCOS II",
+      "Add metformin if insulin resistant",
+      "Watch for OHSS, especially with gonadotropins",
+      "Refractory → gonadotropins or laparoscopic ovarian drilling, then IVF",
+    ],
+  },
+  {
+    id: "infertility-hypothalamic",
+    session: 3, topic: "OB/GYN", difficulty: "medium",
+    stem: "23-year-old competitive marathon runner with secondary amenorrhea for 18 months and 12 months of inability to conceive. BMI 17.5. Labs: FSH 2.1, LH 1.4, estradiol 12, normal TSH and prolactin.",
+    question: "Most likely cause + best first step?",
+    options: [
+      ok("Hypothalamic amenorrhea — restore caloric intake and reduce exercise", "Low BMI + intense exercise + ↓ FSH/LH/E₂ = functional hypothalamic amenorrhea. Energy restoration first, before pharmacologic ovulation induction."),
+      no("PCOS — start letrozole", "FSH and LH are LOW (PCOS has normal-high LH with elevated LH:FSH ratio)."),
+      no("Premature ovarian insufficiency — donor egg IVF", "POI has HIGH FSH; her FSH is low."),
+      no("Start clomiphene right away", "Clomid won't work in hypothalamic amenorrhea (intact axis required). Restore energy first; then gonadotropins or pulsatile GnRH if needed."),
+    ],
+    diagnosis: "Functional hypothalamic amenorrhea",
+    keyPoints: [
+      "Low BMI / excessive exercise / chronic stress → ↓ GnRH → ↓ FSH/LH → anovulation",
+      "Hallmark: low FSH AND low LH AND low estradiol (vs POI: high FSH)",
+      "Female athlete triad: amenorrhea + low energy availability + osteoporosis",
+      "First step: nutritional restoration + decreased exercise + treat eating disorder",
+      "If refractory: pulsatile GnRH (most physiologic) or gonadotropins",
+      "Clomiphene doesn't work — requires intact hypothalamus",
+    ],
+  },
+  {
+    id: "infertility-poi",
+    session: 3, topic: "OB/GYN", difficulty: "medium",
+    stem: "32-year-old woman with 6 months of amenorrhea and infertility. Hot flashes and vaginal dryness. FSH 48 and 52 on two separate days, estradiol 10. AMH undetectable.",
+    question: "Most appropriate next step?",
+    options: [
+      ok("Karyotype, fragile X premutation testing, adrenal autoantibodies; counsel on donor-oocyte IVF", "POI workup must rule out Turner mosaic, fragile X, and autoimmune cause. Best fertility option is donor egg IVF."),
+      no("Start letrozole", "Ovaries don't have remaining follicular reserve to respond."),
+      no("IVF with her own eggs", "Spontaneous response rate <5%; donor oocytes have far better outcomes."),
+      no("Reassure — she will resume ovulation", "POI has a low spontaneous reversal rate; counseling and planning required."),
+    ],
+    diagnosis: "Premature ovarian insufficiency (POI)",
+    keyPoints: [
+      "Diagnosis: ≥4 months amenorrhea + FSH >30–40 on two occasions, age <40",
+      "Workup MUST include karyotype (Turner mosaic), fragile X premutation, adrenal autoantibodies",
+      "Spontaneous pregnancy <5% — donor oocyte IVF has the best outcomes",
+      "Estrogen replacement until natural menopause age (~50) for bone, CV, GU health",
+      "Screen for associated autoimmunity (thyroid, adrenal)",
+    ],
+  },
+  {
+    id: "infertility-male-factor",
+    session: 3, topic: "OB/GYN", difficulty: "easy",
+    stem: "30-year-old couple with 12 months of infertility. Female workup normal. Male partner's first semen analysis: sperm concentration 4 million/mL (low), motility 25%, normal morphology 2%.",
+    question: "Best next step?",
+    options: [
+      ok("Repeat semen analysis in 4–6 weeks with abstinence 2–7 days and refer to urology", "Spermatogenesis cycle is ~72 days. One abnormal SA is not diagnostic — confirm before acting."),
+      no("Proceed directly to IVF with ICSI", "Confirm the abnormality first; treatable causes (varicocele, hormonal, drug-related) should be addressed."),
+      no("Empiric clomiphene on the male partner", "Second-line and only after endocrine workup."),
+      no("Recommend donor sperm", "Premature without urology workup."),
+    ],
+    diagnosis: "Male-factor infertility (oligoasthenoteratospermia)",
+    keyPoints: [
+      "Repeat any abnormal semen analysis in 4–6 weeks before acting (cycle = 72 days)",
+      "Workup: physical (varicocele, testicular size), FSH/LH/T/PRL, U/S scrotum",
+      "Varicocele is the most common SURGICALLY correctable cause",
+      "STOP any exogenous testosterone — it shuts down spermatogenesis",
+      "Severe oligo/azoospermia → ICSI with retrieved sperm (TESE if needed)",
+      "Klinefelter (47,XXY): small firm testes, ↑ FSH + ↑ LH + low T → microTESE possible in some",
+    ],
+  },
+  {
+    id: "infertility-hydrosalpinx",
+    session: 3, topic: "OB/GYN", difficulty: "medium",
+    stem: "Couple with 2 years of unexplained infertility. HSG shows bilateral hydrosalpinges. Patient is otherwise healthy, age 31.",
+    question: "Best next step before IVF?",
+    options: [
+      ok("Bilateral salpingectomy (or proximal tubal occlusion), then IVF", "Hydrosalpinx fluid is embryotoxic — IVF success rates roughly HALVE without tube removal/occlusion."),
+      no("Proceed directly to IVF without surgery", "Hydrosalpinx halves implantation rates — address the tubes first."),
+      no("Tubal reanastomosis", "Reserved for select younger patients with focal proximal blockage."),
+      no("Empiric clomid + IUI", "Won't bypass blocked tubes."),
+    ],
+    diagnosis: "Tubal-factor infertility (hydrosalpinx)",
+    keyPoints: [
+      "Hydrosalpinx fluid is embryotoxic — refluxes into uterus and impairs implantation",
+      "Salpingectomy or proximal tubal occlusion BEFORE IVF doubles success rates",
+      "Most common cause of tubal disease: PID (chlamydia, gonorrhea)",
+      "Tubal reanastomosis only for select cases (young, distal patency, ≥4 cm tube)",
+      "Ectopic pregnancy risk persists post-IVF if abnormal tubes left in place",
+    ],
+  },
+
   // additional close out
   {
     id: "gist",

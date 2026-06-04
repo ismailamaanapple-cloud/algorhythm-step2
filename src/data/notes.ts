@@ -6099,6 +6099,143 @@ export const NOTES: Note[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════
+  // INFERTILITY (OB/GYN)
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "infertility-comprehensive",
+    session: 2,
+    category: "OB/GYN",
+    title: "Infertility — workup & treatment by cause",
+    summary:
+      "Definition, initial workup of both partners, treatment by underlying cause (PCOS, hypothalamic, POI, hyperprolactinemia, male factor, tubal), and ART (IUI, IVF, ICSI).",
+    sections: [
+      {
+        heading: "Definition & when to start workup",
+        bullets: [
+          "Infertility = inability to conceive after 12 months of regular unprotected intercourse",
+          "Woman ≥35 → workup at 6 months (ovarian reserve declines after 35)",
+          "Start IMMEDIATELY if known risk factor: amenorrhea, prior PID, chemo/radiation, age >40, known male factor (varicocele, post-vasectomy)",
+          "About 15% of couples affected",
+          "Causes by frequency: ovulatory 25%, male factor 25%, tubal/peritoneal 25%, uterine 10%, unexplained 15%",
+        ],
+      },
+      {
+        heading: "Initial workup (BOTH partners simultaneously)",
+        bullets: [
+          "Semen analysis (do FIRST — cheap, easy, identifies 25% of cases)",
+          "Ovulation: mid-luteal (day 21) progesterone (>3 = ovulating); ovulation predictor kits; BBT charts",
+          "Tubal patency: hysterosalpingogram (HSG) — also has mild therapeutic benefit (lipid-soluble contrast)",
+          "Ovarian reserve: AMH (best), day-3 FSH + estradiol, antral follicle count (AFC) on US",
+          "Endocrine: TSH, prolactin, FSH/LH/estradiol, total testosterone, DHEA-S",
+          "Pelvic ultrasound to assess uterus and ovaries",
+        ],
+      },
+      {
+        heading: "Female: ovulatory disorders (by cause)",
+        bullets: [
+          "PCOS (most common anovulation): irregular menses + hyperandrogenism + polycystic ovaries; weight loss + LETROZOLE 1st-line (replaces clomid per PPCOS II)",
+          "Hypothalamic amenorrhea: low BMI / excessive exercise / stress; LOW FSH + LOW LH + low estradiol; restore energy intake, then pulsatile GnRH or gonadotropins",
+          "Premature ovarian insufficiency (POI): age <40 + HIGH FSH (>30–40); donor egg IVF — get karyotype, fragile X premutation, adrenal autoantibodies",
+          "Hyperprolactinemia: prolactinoma, drugs (antipsychotics, metoclopramide, opiates), hypothyroidism; treat with CABERGOLINE (or bromocriptine in pregnancy)",
+          "Thyroid dysfunction: treat to TSH <2.5 in women trying to conceive",
+        ],
+      },
+      {
+        heading: "Female: tubal & uterine factors",
+        bullets: [
+          "Tubal disease: PID (most common cause), endometriosis, prior pelvic surgery, ectopic with salpingectomy",
+          "HSG bilateral occlusion → IVF; hydrosalpinx → SALPINGECTOMY before IVF (fluid is embryotoxic)",
+          "Uterine factors: fibroids (esp submucosal), endometrial polyps, Asherman (intrauterine adhesions), septate uterus",
+          "Hysteroscopy for diagnosis + treatment of intracavitary lesions",
+          "Endometriosis: laparoscopic confirmation; mild–moderate may benefit from surgical excision/ablation; severe → IVF",
+        ],
+      },
+      {
+        heading: "Male factor",
+        bullets: [
+          "Repeat abnormal semen analysis in 4–6 weeks (spermatogenesis cycle 72 days)",
+          "Varicocele is the most common surgically correctable cause",
+          "Klinefelter (47,XXY): small firm testes, azoospermia, ↑ FSH, ↑ LH, low T → donor sperm or microTESE + ICSI",
+          "Hypogonadotropic hypogonadism: ↓ FSH/LH/T → hCG + FSH stimulation",
+          "Exogenous testosterone SHUTS DOWN spermatogenesis — must STOP before any workup",
+          "Congenital bilateral absence of vas (CBAVD): test for CF mutations (both partners) → ICSI with TESE",
+          "Severe oligospermia / azoospermia → ICSI: a single viable sperm enables pregnancy",
+        ],
+      },
+      {
+        heading: "Treatment ladders by diagnosis",
+        bullets: [
+          "PCOS: weight loss → letrozole → letrozole + metformin → gonadotropins → IVF",
+          "Hypothalamic: restore weight/energy → pulsatile GnRH or gonadotropins",
+          "Hyperprolactinemia: cabergoline (treat the cause)",
+          "POI: donor oocyte IVF",
+          "Tubal blockage: IVF (salpingectomy first if hydrosalpinx)",
+          "Severe male factor: ICSI ± donor sperm",
+          "Unexplained: empiric letrozole/clomid + IUI × 3–6 cycles → IVF",
+          "Age >38 + unexplained: skip empiric IUI, go directly to IVF",
+        ],
+      },
+      {
+        heading: "Assisted reproductive technology (ART)",
+        bullets: [
+          "IUI (intrauterine insemination): processed sperm placed in uterus around ovulation; cycle success ~10–15%",
+          "IVF (in vitro fertilization): ovarian stimulation → oocyte retrieval → fertilization in lab → embryo transfer; per-cycle live birth ~30–50% depending on age",
+          "ICSI: single sperm injected into oocyte — for severe male factor",
+          "PGT (preimplantation genetic testing): aneuploidy screening (PGT-A) or single-gene (PGT-M); useful in advanced maternal age or known mutation",
+          "Single-embryo transfer recommended in good-prognosis patients to avoid multiples",
+          "Cryopreservation of embryos and oocytes available; egg freezing for fertility preservation (pre-chemo, age, social)",
+        ],
+      },
+      {
+        heading: "Complications & risks of treatment",
+        bullets: [
+          "Ovarian hyperstimulation syndrome (OHSS): abdominal pain, ascites, hemoconcentration, VTE; risk highest in PCOS phenotype; supportive, dopamine agonist (cabergoline) prophylaxis in high-risk cycles",
+          "Multiple gestation: highest with gonadotropins; lower with letrozole than clomid; IVF risk minimized with eSET (single embryo transfer)",
+          "Ectopic pregnancy risk slightly elevated post-IVF",
+          "Psychological burden — counseling and support groups",
+          "Cost: IUI ~$500–1500/cycle; IVF $12–20k/cycle — variable insurance coverage",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Anovulation: pattern recognition",
+        headers: ["Lab pattern", "Diagnosis"],
+        rows: [
+          ["↑ androgens, US polycystic ovaries, hirsutism, irregular menses", "PCOS"],
+          ["↓ FSH + ↓ LH + low E₂ + low BMI/over-exercise", "Hypothalamic amenorrhea"],
+          ["↑ FSH (>30–40) + ↑ LH + low E₂ in woman <40", "Premature ovarian insufficiency"],
+          ["↑ Prolactin (drug, prolactinoma, hypothyroid)", "Hyperprolactinemia"],
+          ["Abnormal TSH (esp ↑)", "Thyroid-related anovulation"],
+        ],
+      },
+      {
+        caption: "Initial test → action",
+        headers: ["Finding", "Next step"],
+        rows: [
+          ["Abnormal semen analysis", "Repeat in 4–6 weeks + urology referral"],
+          ["Low mid-luteal progesterone", "Endocrine workup (TSH, prolactin, FSH/LH/E₂, androgens)"],
+          ["Bilateral tubal occlusion / hydrosalpinx", "IVF (salpingectomy first if hydrosalpinx)"],
+          ["All tests normal", "Empiric letrozole + IUI × 3–6 → IVF"],
+          ["Age ≥35 + unexplained ≥6 mo", "Move to IVF early"],
+        ],
+      },
+    ],
+    pearls: [
+      "LETROZOLE has replaced clomiphene as first-line for PCOS ovulation induction (higher live births, fewer multiples — PPCOS II)",
+      "Hydrosalpinx fluid is EMBRYOTOXIC — salpingectomy before IVF or success rates halve",
+      "Repeat abnormal semen analysis before acting (spermatogenesis cycle = 72 days)",
+      "Exogenous testosterone in a man trying to conceive must be STOPPED — it shuts down sperm production",
+      "POI workup mandates karyotype + fragile X premutation + adrenal antibodies",
+      "Klinefelter (47,XXY) → microTESE can recover sperm for ICSI in some patients",
+      "Cabergoline > bromocriptine for hyperprolactinemia (better tolerated, twice weekly) — switch to bromocriptine if pregnancy planned",
+      "OHSS risk: PCOS phenotype + young + high follicle count; use GnRH antagonist + cabergoline prophylaxis",
+    ],
+    relatedCaseIds: ["pcos-management", "infertility-male-factor", "infertility-pcos", "infertility-hypothalamic", "infertility-poi"],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
   // APEX 5 + 6 — RHEUM, DERM, HEME / ONC, ENDO
   // ═══════════════════════════════════════════════════════════════════
 
