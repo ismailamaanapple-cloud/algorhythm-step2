@@ -6099,6 +6099,928 @@ export const NOTES: Note[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════
+  // PEDIATRICS COMPREHENSIVE
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "peds-milestones",
+    session: 2,
+    category: "Pediatrics",
+    title: "Developmental milestones",
+    summary:
+      "Gross motor, fine motor, language, and social-cognitive milestones from birth to 5 years — and when delay needs workup.",
+    sections: [
+      {
+        heading: "When delays demand a workup",
+        bullets: [
+          "Loss of any previously acquired skill at any age → URGENT workup (regressive autism, leukodystrophy, etc.)",
+          "No social smile by 2 months; no babbling by 9 months; no first words by 16 months; no 2-word phrases by 24 months",
+          "Not walking by 18 months → check CK (Duchenne), hip exam",
+          "Hand preference before 18 months → suspect hemiparesis on opposite side",
+          "Persistent primitive reflexes after expected disappearance (Moro >6 mo, palmar grasp >4 mo) → CNS pathology",
+        ],
+      },
+      {
+        heading: "0–6 months — head-to-toe progression",
+        bullets: [
+          "2 mo: social smile, lifts head 45°, follows past midline, coos",
+          "4 mo: rolls front-to-back, laughs, looks at hand, grabs",
+          "6 mo: sits with support, rolls both ways, transfers objects hand-to-hand, babbles ('mama' non-specific), stranger anxiety begins",
+        ],
+      },
+      {
+        heading: "9–18 months — mobility & first words",
+        bullets: [
+          "9 mo: sits without support, pulls to stand, pincer grasp emerging, says 'mama/dada' specifically, plays peek-a-boo, object permanence",
+          "12 mo: cruises → first independent steps, 1–2 words besides mama/dada, waves bye-bye, follows one-step command",
+          "15 mo: walks alone, 3-finger feeds self, 3–5 words, points to wants",
+          "18 mo: runs, scribbles, ≥10 words, identifies one body part, plays alongside (parallel play emerges)",
+        ],
+      },
+      {
+        heading: "2–5 years — language explosion",
+        bullets: [
+          "2 yr: kicks ball, 2-word phrases, ~50 words, 50% understandable, parallel play, follows 2-step commands",
+          "3 yr: pedals tricycle, draws circle, 3-word sentences, ~75% understandable, knows age/name/gender",
+          "4 yr: hops on one foot, draws cross then square, 4-word sentences, 100% understandable, cooperative play",
+          "5 yr: skips, draws triangle, prints name, asks meaning of words, has best friend",
+        ],
+      },
+      {
+        heading: "Red flags & autism screening",
+        bullets: [
+          "M-CHAT screen at 18 and 24 months (autism)",
+          "Autism red flags: no joint attention, no pointing, no pretend play, lack of social smile, repetitive behaviors",
+          "Diagnostic eval if M-CHAT positive — refer to developmental pediatrics",
+          "ADHD: cannot diagnose <4 years old; symptoms in ≥2 settings, ≥6 months",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Quick milestone reference",
+        headers: ["Age", "Key milestone"],
+        rows: [
+          ["2 mo", "Social smile"],
+          ["4 mo", "Rolls front-to-back, laughs"],
+          ["6 mo", "Sits with support, babbles, stranger anxiety"],
+          ["9 mo", "Pulls to stand, pincer grasp, 'mama/dada' specific"],
+          ["12 mo", "First independent steps, 1–2 words"],
+          ["18 mo", "Runs, 10+ words, identifies body part"],
+          ["2 yr", "2-word phrases, 50 words, parallel play"],
+          ["3 yr", "Pedals tricycle, 3-word sentences, draws circle"],
+          ["4 yr", "Hops one foot, draws cross, cooperative play"],
+          ["5 yr", "Skips, prints name, draws triangle"],
+        ],
+      },
+    ],
+    pearls: [
+      "Loss of acquired skills at ANY age = urgent neuro workup (regression)",
+      "No walking by 18 months in a boy → check CK to rule out Duchenne",
+      "Hand preference before 18 months means hemiparesis on the OTHER side",
+      "Persistent Moro reflex past 6 months suggests upper motor neuron pathology",
+      "Autism screen at 18 + 24 months with M-CHAT; early ID + intervention improves outcomes",
+      "Stranger anxiety appears ~6 mo and peaks ~9 mo — REASSURE caregivers it's normal",
+      "Parallel play (2 yr) → cooperative play (4 yr) — common sequence question",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "peds-vaccine-schedule",
+    session: 2,
+    category: "Pediatrics",
+    title: "Pediatric vaccine schedule",
+    summary:
+      "CDC childhood immunization schedule, contraindications, and special-situation vaccines.",
+    sections: [
+      {
+        heading: "Routine schedule (memorize the ages)",
+        bullets: [
+          "Birth: HepB #1",
+          "2 mo: HepB #2, DTaP #1, Hib #1, IPV #1, PCV13 #1, RV #1",
+          "4 mo: DTaP #2, Hib #2, IPV #2, PCV13 #2, RV #2",
+          "6 mo: HepB #3, DTaP #3, Hib #3 (if PRP-T), PCV13 #3, RV #3 (if rotateq), influenza (annual after 6 mo)",
+          "12–15 mo: MMR #1, varicella #1, HepA #1, PCV13 booster, Hib booster",
+          "15–18 mo: DTaP #4",
+          "4–6 yr: DTaP #5, IPV #4, MMR #2, varicella #2",
+          "11–12 yr: Tdap, HPV (2-dose if started before 15, 3-dose if 15+), meningococcal #1",
+          "16 yr: meningococcal #2, MenB optional shared decision-making",
+        ],
+      },
+      {
+        heading: "Contraindications & precautions",
+        bullets: [
+          "ABSOLUTE: anaphylaxis to prior dose or vaccine component",
+          "Live vaccines (MMR, varicella, rotavirus, yellow fever, BCG): contraindicated in pregnancy + severe immunocompromise (CD4 <200 for MMR/VZV)",
+          "Egg allergy: most flu vaccines safe; carefully observe — only severe hx contraindicates older formulations",
+          "Intussusception history → no rotavirus",
+          "Severe combined immunodeficiency (SCID) → no live vaccines",
+          "Live vaccines OK in HIV with CD4 >200 (MMR, varicella)",
+          "Mild illness (URI, low fever) is NOT a contraindication",
+        ],
+      },
+      {
+        heading: "Special populations",
+        bullets: [
+          "Pregnancy: Tdap every pregnancy (27–36 weeks) + flu seasonal; NEVER live vaccines",
+          "Asplenia (anatomic or functional like SCD): pneumococcal (PCV13 + PPSV23), Hib, meningococcal — encapsulated organisms",
+          "Immigrants/refugees: catch-up schedule based on age",
+          "HCWs: HepB series, MMR, Tdap, annual flu, COVID, varicella",
+          "Travelers: yellow fever (live — avoid in pregnant/immunocompromised), typhoid, HepA, Japanese encephalitis depending on destination",
+        ],
+      },
+      {
+        heading: "Post-exposure prophylaxis",
+        bullets: [
+          "Rabies: vaccine series + RIG (if not previously vaccinated) for high-risk bite/exposure",
+          "Tetanus: TIG + vaccine if dirty wound + no recent booster (or unknown)",
+          "HepB: vaccine + HBIG within 24 hr of high-risk exposure (NB to HepB+ mom, needle stick from HepB+ source)",
+          "Measles: vaccine within 72 hr OR IG within 6 days for susceptible contacts",
+          "Varicella: VariZIG for immunocompromised, neonates born to mom with active VZV, or VZ-negative pregnant women",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Live vs killed vaccines",
+        headers: ["Live (avoid in pregnancy + immunocompromise)", "Killed/inactivated/subunit"],
+        rows: [
+          ["MMR", "DTaP, Tdap, Td"],
+          ["Varicella", "Hib"],
+          ["Rotavirus", "HepB, HepA"],
+          ["Influenza (LAIV nasal)", "Influenza (IIV injectable)"],
+          ["Yellow fever, BCG, oral typhoid", "HPV, PCV13, PPSV23, meningococcal"],
+        ],
+      },
+    ],
+    pearls: [
+      "Pregnancy: Tdap every pregnancy at 27–36 wks (passive immunity to newborn for pertussis)",
+      "Anatomic/functional asplenia → vaccinate for encapsulated organisms (Pneumo, Hib, Meningo)",
+      "Egg allergy ≠ contraindication to flu vaccine in most cases",
+      "HepB at birth is the ONLY routine birth vaccine in US",
+      "Catch-up immunization: minimum intervals between doses — never start over",
+      "Live virus vaccines: separate by ≥28 days if not given on same day (otherwise immune interference)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "peds-congenital-heart",
+    session: 2,
+    category: "Pediatrics",
+    title: "Congenital heart disease",
+    summary:
+      "Cyanotic (5 T's) vs acyanotic shunts, when to suspect, what to image, when to fix.",
+    sections: [
+      {
+        heading: "Acyanotic — left-to-right shunts",
+        bullets: [
+          "VSD (most common CHD): holosystolic harsh murmur at LLSB; small ones close spontaneously; large → CHF in infancy → surgical closure",
+          "ASD: fixed split S2, soft systolic ejection murmur at ULSB from increased pulmonic flow; often asymptomatic until adulthood; close if symptomatic or large",
+          "PDA: continuous 'machinery' murmur at LUSB; preterm infants → close with indomethacin; term/older → surgical or catheter closure",
+          "AV canal defect: associated with Down syndrome; CHF early; surgical repair",
+          "All untreated L→R shunts can develop Eisenmenger syndrome → cyanosis from reversed shunt",
+        ],
+      },
+      {
+        heading: "Cyanotic — the 5 T's + 1 H",
+        bullets: [
+          "Tetralogy of Fallot (most common cyanotic past infancy): pulmonary stenosis, VSD, overriding aorta, RVH; 'tet spells' → squat or knee-to-chest; surgical repair",
+          "Transposition of great arteries: severe cyanosis at BIRTH; need PGE1 + balloon septostomy → arterial switch (Jatene)",
+          "Tricuspid atresia: cyanosis + LVH + decreased pulmonary markings; staged Fontan procedure",
+          "Truncus arteriosus: single common trunk; CHF + cyanosis; early surgical repair",
+          "TAPVR (total anomalous pulmonary venous return): 'snowman' on CXR if supracardiac type",
+          "Hypoplastic left heart syndrome: poor systemic perfusion, gray baby; PGE1 + Norwood/Sano + Fontan staged",
+        ],
+      },
+      {
+        heading: "Other key lesions",
+        bullets: [
+          "Coarctation of aorta: HTN in upper extremities, weak femoral pulses, BP discrepancy; associated with Turner syndrome and bicuspid aortic valve; rib notching on CXR (older kids); surgical or catheter repair",
+          "Aortic stenosis (congenital, bicuspid): late presentation with syncope, angina; rarely critical in newborn (ducts-dependent)",
+          "Ebstein anomaly: lithium exposure; tricuspid valve displaced into RV; arrhythmias",
+          "Critical pulmonary stenosis: ductal-dependent in newborn",
+        ],
+      },
+      {
+        heading: "Workup & management approach",
+        bullets: [
+          "Cyanotic newborn: hyperoxia test (PaO2 fails to rise above 100 on 100% O2 → cardiac cause)",
+          "Echo is the diagnostic test of choice for almost all CHD",
+          "Ductal-dependent lesions (HLHS, transposition, severe coarctation, pulmonary atresia) → KEEP DUCT OPEN with PGE1",
+          "Eisenmenger physiology: established pulmonary HTN reverses shunt → cyanosis → contraindication to repair",
+          "All CHD patients need endocarditis prophylaxis ONLY if: unrepaired cyanotic, prosthetic material <6 mo post-op, residual defect adjacent to prosthetic",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "CHD pattern recognition",
+        headers: ["Finding", "Likely lesion"],
+        rows: [
+          ["Holosystolic murmur LLSB in infant", "VSD"],
+          ["Fixed split S2", "ASD"],
+          ["Continuous machinery murmur", "PDA"],
+          ["Cyanosis + boot-shaped heart, 'tet spells'", "Tetralogy of Fallot"],
+          ["Severe cyanosis at birth, 'egg on string'", "Transposition (TGA)"],
+          ["Differential BP arms vs legs, rib notching", "Coarctation of aorta"],
+          ["AV canal in Down syndrome", "AVSD"],
+          ["Continuous machinery + maternal rubella", "PDA from congenital rubella"],
+        ],
+      },
+    ],
+    pearls: [
+      "Cyanotic CHD = the 5 T's: TOF, TGA, Tricuspid atresia, Truncus, TAPVR (+ HLHS)",
+      "Ductal-dependent lesions in newborn → PGE1 (prevents closure of PDA, maintains shunt)",
+      "Tet spells (cyanotic spell in TOF) → knee-to-chest (increases SVR, decreases R→L shunt)",
+      "Down syndrome + heart defect → most often AV canal (endocardial cushion defect)",
+      "Turner syndrome + CHD → coarctation or bicuspid aortic valve",
+      "Maternal lithium → Ebstein anomaly",
+      "Eisenmenger physiology is a CONTRAINDICATION to closure (need lung-heart transplant)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "peds-newborn-neonatology",
+    session: 2,
+    category: "Pediatrics",
+    title: "Newborn & neonatology",
+    summary:
+      "Jaundice, RDS, NEC, HIE, meconium aspiration, neonatal sepsis, transient tachypnea, newborn screening.",
+    sections: [
+      {
+        heading: "Neonatal jaundice",
+        bullets: [
+          "Physiologic (24 hr – 1 wk): unconjugated; supportive; phototherapy if approaching threshold",
+          "Pathologic (<24 hr of life OR >2 wk OR very high) — workup",
+          "Breastfeeding jaundice: dehydration in first week — more feeds",
+          "Breast milk jaundice: starts later (week 2), benign β-glucuronidase effect — continue breastfeeding",
+          "Hemolytic (ABO, Rh, hereditary spherocytosis, G6PD): rapid rise → consider exchange",
+          "Conjugated jaundice (direct bili >2 or >20%): ALWAYS pathologic — biliary atresia (Kasai by 2 months), CF, neonatal hepatitis",
+          "Kernicterus: bilirubin-induced encephalopathy — preventable cause of CP; thresholds vary by hours of life + risk factors",
+        ],
+      },
+      {
+        heading: "Respiratory distress in the newborn",
+        bullets: [
+          "Surfactant deficiency (RDS): preterm, ground-glass CXR, air bronchograms; CPAP, exogenous surfactant; betamethasone if anticipated preterm delivery",
+          "Transient tachypnea of newborn (TTN): term, often post-C-section; fluid in fissure on CXR; resolves 24–72 hr",
+          "Meconium aspiration: post-term + meconium-stained fluid; chemical pneumonitis + risk of pulmonary HTN",
+          "Pneumonia (GBS, gram-negs): respiratory distress + sepsis features",
+          "Persistent pulmonary hypertension of newborn (PPHN): cyanosis + pre/post-ductal sat difference; iNO, ECMO",
+          "Diaphragmatic hernia: scaphoid abdomen + bowel sounds in chest + respiratory distress; do NOT bag-mask (worsens), intubate",
+        ],
+      },
+      {
+        heading: "Neonatal sepsis",
+        bullets: [
+          "Early-onset (<7 days): GBS, E. coli, Listeria — empiric ampicillin + gentamicin",
+          "Late-onset (>7 days): coag-negative Staph, S. aureus, gram-negatives — empiric vancomycin + cefotaxime or gentamicin",
+          "Always check + treat for meningitis if sepsis (LP, add appropriate coverage)",
+          "Maternal GBS+ → intrapartum penicillin or clindamycin if allergic",
+          "Risk factors: prematurity, prolonged ROM (>18 hr), maternal chorio, GBS positive without prophylaxis",
+        ],
+      },
+      {
+        heading: "Necrotizing enterocolitis (NEC)",
+        bullets: [
+          "Preterm + first weeks of life; rare in term newborns",
+          "Abdominal distention, bloody stools, feeding intolerance, sepsis features",
+          "X-ray: pneumatosis intestinalis (air in bowel wall) — pathognomonic; portal venous gas; pneumoperitoneum if perforated",
+          "Treatment: NPO, NG decompression, IV antibiotics (ampicillin + gentamicin + metronidazole or clindamycin), TPN; surgery if perforation/clinical deterioration",
+          "Breast milk PROTECTS against NEC",
+        ],
+      },
+      {
+        heading: "HIE & birth injuries",
+        bullets: [
+          "Hypoxic-ischemic encephalopathy (HIE): perinatal hypoxia → seizures, encephalopathy, multi-organ dysfunction",
+          "Therapeutic hypothermia (33.5°C × 72 hr) within 6 hr of birth — neuroprotection",
+          "Brachial plexus injuries: Erb (C5–C6) 'waiter's tip' from shoulder dystocia; Klumpke (C8–T1) claw hand",
+          "Caput succedaneum: crosses suture lines (soft tissue), resolves days",
+          "Cephalohematoma: subperiosteal, does NOT cross sutures, weeks to resolve, watch for jaundice",
+          "Subgaleal hemorrhage: under aponeurosis, can be massive (life-threatening blood loss)",
+        ],
+      },
+      {
+        heading: "Newborn screening",
+        bullets: [
+          "Heel-stick blood spot: PKU, congenital hypothyroidism, CF, sickle cell, biotinidase, galactosemia, MCAD, etc.",
+          "Hearing screen (otoacoustic emissions or ABR) all newborns",
+          "Critical CHD screen with pulse oximetry (pre + post-ductal sats)",
+          "Bilirubin screening (transcutaneous or serum) before discharge",
+          "Hep B vaccine (and HBIG if mom HBsAg+)",
+        ],
+      },
+    ],
+    pearls: [
+      "Conjugated hyperbilirubinemia in a newborn is ALWAYS pathologic — biliary atresia until proven otherwise (Kasai before 60 days)",
+      "Pneumatosis intestinalis on abdominal X-ray = NEC",
+      "GBS+ mother → intrapartum penicillin (clindamycin if penicillin-allergic with documented susceptibility)",
+      "Therapeutic hypothermia for HIE within 6 hours of birth — every hour matters",
+      "Diaphragmatic hernia: do NOT bag-mask (distends bowel in chest) — INTUBATE",
+      "Cephalohematoma respects suture lines; subgaleal does not and can exsanguinate",
+      "Caput succedaneum is SOFT TISSUE → crosses sutures (vs cephalohematoma which is subperiosteal)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "peds-child-abuse",
+    session: 2,
+    category: "Pediatrics",
+    title: "Child abuse & non-accidental trauma",
+    summary:
+      "Red-flag patterns, when to suspect, the workup, and the mandated-reporter rules.",
+    sections: [
+      {
+        heading: "Red-flag injury patterns",
+        bullets: [
+          "Posterior or lateral RIB FRACTURES (especially in young infants) — highly specific for NAT",
+          "Metaphyseal corner fractures (bucket-handle) — pathognomonic for NAT (caused by forceful pulling/twisting)",
+          "Long bone fractures in non-ambulatory infants (cannot fall — must be inflicted)",
+          "Multiple fractures in different stages of healing",
+          "Bruises in a non-mobile infant (TEN-4 rule: torso, ears, neck in any child <4 → suspect)",
+          "Patterned bruises (looped cord, hand prints, bite marks)",
+          "Burns: glove/stocking distribution (forced immersion), cigarette burns (round, deep, symmetric)",
+        ],
+      },
+      {
+        heading: "Abusive head trauma",
+        bullets: [
+          "Formerly 'shaken baby syndrome' — now abusive head trauma (AHT)",
+          "Triad: subdural hematoma + retinal hemorrhages + encephalopathy",
+          "Subdural hemorrhage WITHOUT external trauma in an infant is highly suspicious",
+          "Retinal hemorrhages — get ophthalmology dilated exam (especially extensive bilateral)",
+          "Sequelae: developmental delay, cerebral palsy, seizures, vision loss, death",
+        ],
+      },
+      {
+        heading: "Sexual abuse clues",
+        bullets: [
+          "STD in a child (gonorrhea, syphilis, chlamydia, trichomonas) is presumptive of abuse",
+          "Anogenital injury without consistent history",
+          "Pregnancy in an adolescent (always screen for abuse)",
+          "Behavioral changes: regression, age-inappropriate sexual knowledge, sudden school problems",
+          "Most sexual abuse perpetrators are KNOWN to the child (family member, friend)",
+        ],
+      },
+      {
+        heading: "Workup when suspected",
+        bullets: [
+          "Skeletal survey: <2 yrs in suspected physical abuse — multiple views, repeat in 2 weeks (callus formation makes occult fractures visible)",
+          "Head CT (non-contrast) + ophthalmology exam if abusive head trauma suspected",
+          "Bone health labs: Ca, phos, alk phos, vit D — rule out osteogenesis imperfecta",
+          "Coagulation studies if bruising — rule out bleeding disorder",
+          "Direct admission to hospital for protection if needed",
+        ],
+      },
+      {
+        heading: "Reporting & mandated reporter rules",
+        bullets: [
+          "Physicians are MANDATED REPORTERS in all 50 states",
+          "Standard: REASONABLE SUSPICION (not proof) — your duty is to REPORT, not to investigate",
+          "Failure to report is a criminal offense in most jurisdictions",
+          "Report to Child Protective Services (CPS) or law enforcement per state law",
+          "Document objectively — photographs of injuries when possible",
+          "Do NOT confront the suspected abuser; safety first",
+          "Continue medical care — reporting is not adversarial",
+        ],
+      },
+      {
+        heading: "Neglect",
+        bullets: [
+          "Failure to thrive (weight <3rd percentile or crossing 2 percentile lines down)",
+          "Lack of medical care (missed immunizations, untreated conditions)",
+          "Educational neglect",
+          "Severe poor hygiene",
+          "Workup: nutritional assessment, social work, CPS report if intentional",
+        ],
+      },
+    ],
+    pearls: [
+      "Reasonable suspicion + mandated reporter = legal obligation to REPORT. Period.",
+      "Posterior or lateral rib fractures in an infant = NAT until proven otherwise (squeeze injury)",
+      "Bucket-handle (metaphyseal corner) fractures = pathognomonic for NAT",
+      "Subdural hemorrhage + retinal hemorrhages + encephalopathy = abusive head trauma",
+      "TEN-4: Torso/Ear/Neck bruise in any child <4 yo → suspect abuse",
+      "STD in a child = abuse until proven otherwise",
+      "Document objectively; do NOT confront the suspected abuser",
+      "Osteogenesis imperfecta (blue sclera, dentinogenesis) is the main mimic to rule out for multiple fractures",
+    ],
+    relatedCaseIds: [],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // TOXICOLOGY COMPREHENSIVE
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "tox-comprehensive",
+    session: 2,
+    category: "Emergency",
+    title: "Toxicology — toxidromes & antidotes",
+    summary:
+      "Pattern recognition (toxidromes), the drug↔antidote table, and the specific poisonings worth knowing cold.",
+    sections: [
+      {
+        heading: "The 5 toxidromes",
+        bullets: [
+          "Anticholinergic: hot (fever), dry (no sweat), red (flushed), blind (mydriasis), mad (delirium), full bladder, bowel quiet → atropine, antihistamines, TCAs, antipsychotics, scopolamine",
+          "Cholinergic (DUMBELS or SLUDGE): Diarrhea, Urination, Miosis, Bradycardia, Emesis, Lacrimation, Salivation → organophosphates, sarin, pilocarpine; treat with atropine + pralidoxime",
+          "Sympathomimetic: HTN, tachycardia, mydriasis, DIAPHORESIS (vs anticholinergic which is dry), agitation → cocaine, methamphetamine; benzos, NOT β-blockers (unopposed α)",
+          "Opioid: miosis, respiratory depression, decreased mental status, decreased bowel sounds → heroin, fentanyl, oxycodone; naloxone",
+          "Sedative-hypnotic: CNS depression with normal vitals (or mild slowing) → benzos, barbs, ETOH, GHB; flumazenil (rarely used — seizure risk)",
+        ],
+      },
+      {
+        heading: "Antidote quick reference",
+        bullets: [
+          "Acetaminophen → N-acetylcysteine (NAC); follow Rumack-Matthew nomogram",
+          "Aspirin / salicylates → alkalinize urine (bicarbonate), hemodialysis if severe; supportive",
+          "Anticholinergic → physostigmine (cautious; not for TCAs)",
+          "Benzodiazepines → flumazenil (rarely used)",
+          "β-blocker / CCB → glucagon, high-dose insulin / euglycemia, calcium, lipid emulsion if refractory",
+          "Carbon monoxide → 100% O2 first; hyperbaric O2 for severe (loss of consciousness, pregnancy, cardiac involvement)",
+          "Cyanide → hydroxocobalamin (turns urine pink) OR amyl nitrite + sodium nitrite + sodium thiosulfate",
+          "Digoxin → digoxin-specific Fab (Digibind) for life-threatening toxicity (hyperK, arrhythmia)",
+          "Heparin → protamine sulfate",
+          "Iron → deferoxamine",
+          "Lead → succimer (PO, kids), EDTA or BAL (severe)",
+          "Methanol / ethylene glycol → fomepizole (or ethanol); hemodialysis",
+          "Methemoglobinemia → methylene blue",
+          "Opioid → naloxone",
+          "Organophosphate → atropine + pralidoxime",
+          "TCA → IV sodium bicarbonate (treats wide QRS)",
+          "Warfarin → vitamin K + 4-factor PCC (or FFP)",
+        ],
+      },
+      {
+        heading: "MUDPILES — anion gap acidosis",
+        bullets: [
+          "Methanol",
+          "Uremia",
+          "DKA (also AKA, starvation)",
+          "Propylene glycol",
+          "Iron, INH (isoniazid)",
+          "Lactic acidosis (sepsis, shock, metformin, cyanide, CO)",
+          "Ethylene glycol",
+          "Salicylates",
+        ],
+      },
+      {
+        heading: "Specific poisonings",
+        bullets: [
+          "TCA overdose: anticholinergic + wide QRS + seizures + hypotension → IV sodium bicarbonate (narrows QRS)",
+          "Salicylates: tinnitus + tachypnea + mixed primary respiratory alkalosis + AG metabolic acidosis; treat with alkalinization + dialysis if severe",
+          "Acetaminophen: phase 1 (0–24 hr) asymptomatic; phase 2 (24–72) RUQ pain + ↑ AST/ALT; phase 3 (72–96) hepatic failure; NAC before phase 3",
+          "CO poisoning: headache + nausea + confusion; cherry-red skin (rare); SpO2 reads NORMAL (falsely); diagnosis carboxyhemoglobin level; treat 100% O2 then HBO if severe",
+          "Methanol: visual changes ('snowstorm'), papilledema; metabolized to formic acid; fomepizole + dialysis",
+          "Ethylene glycol: CNS depression + AG acidosis + AKI from calcium oxalate crystals in urine; fomepizole + dialysis",
+          "Iron overdose (kids): initial GI symptoms → quiescent phase → shock + metabolic acidosis → hepatic necrosis; deferoxamine",
+          "Lead: abdominal pain + neuropathy + microcytic anemia + basophilic stippling; succimer in kids",
+          "Lithium: tremor + ataxia + confusion + seizures; hydrate + hemodialysis if severe (>4 mEq/L or severe symptoms)",
+          "Cocaine chest pain: AVOID β-blockers (unopposed α); benzos + nitrates first; phentolamine for refractory HTN",
+        ],
+      },
+      {
+        heading: "GI decontamination",
+        bullets: [
+          "Activated charcoal: within 1 hour of ingestion; not for caustics, hydrocarbons, metals (lead, iron, lithium), alcohols",
+          "Whole bowel irrigation: PEG; for sustained-release, packets (body packers), iron, lead",
+          "Gastric lavage: rarely used now",
+          "Forced emesis (syrup of ipecac): NO LONGER RECOMMENDED",
+          "Urinary alkalinization: salicylates, phenobarbital",
+          "Hemodialysis: METHANOL, ethylene glycol, salicylates (severe), lithium, theophylline, valproate",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Drug ↔ antidote master list",
+        headers: ["Drug / toxin", "Antidote"],
+        rows: [
+          ["Acetaminophen", "N-acetylcysteine"],
+          ["Aspirin / salicylates", "Sodium bicarbonate + dialysis"],
+          ["Benzodiazepines", "Flumazenil"],
+          ["β-blocker / CCB", "Glucagon + Ca + insulin/glucose"],
+          ["Carbon monoxide", "100% O2 ± hyperbaric"],
+          ["Cyanide", "Hydroxocobalamin"],
+          ["Digoxin", "Digoxin-specific Fab"],
+          ["Heparin", "Protamine sulfate"],
+          ["Iron", "Deferoxamine"],
+          ["Lead", "Succimer (or EDTA/BAL)"],
+          ["Methanol / ethylene glycol", "Fomepizole + dialysis"],
+          ["Methemoglobinemia", "Methylene blue"],
+          ["Opioids", "Naloxone"],
+          ["Organophosphates", "Atropine + pralidoxime"],
+          ["TCAs", "IV sodium bicarbonate"],
+          ["Warfarin", "Vitamin K + 4F-PCC"],
+        ],
+      },
+    ],
+    pearls: [
+      "TCA wide QRS = give sodium bicarbonate (narrows QRS, prevents arrhythmia)",
+      "Cocaine chest pain = NO β-blockers — give benzos + nitrates",
+      "CO poisoning: SpO2 reads falsely normal — order carboxyhemoglobin",
+      "Anion gap acidosis with visual symptoms = methanol; with oxalate crystals = ethylene glycol",
+      "Hyperkalemia + bradyarrhythmia + GI symptoms + visual changes (yellow halos) = digoxin tox → Fab",
+      "Activated charcoal won't bind metals (iron, lead, lithium), alcohols, caustics",
+      "Anticholinergic = HOT, DRY, RED, BLIND, MAD; sympathomimetic = WET (diaphoretic) — that's the differentiator",
+    ],
+    relatedCaseIds: [],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // SURGERY + TRAUMA COMPREHENSIVE
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "surgery-acute-abdomen",
+    session: 2,
+    category: "Surgery",
+    title: "Acute abdomen — workup by quadrant",
+    summary:
+      "Pain location → differential → imaging choice → when to operate. The classic Step 2 surgery question.",
+    sections: [
+      {
+        heading: "RUQ pain",
+        bullets: [
+          "Acute cholecystitis: Murphy sign, fever, leukocytosis → US first (wall thickening, pericholecystic fluid, sonographic Murphy) → laparoscopic cholecystectomy",
+          "Ascending cholangitis: Charcot triad (fever, jaundice, RUQ pain) ± Reynolds pentad (+ AMS + hypotension) → IV antibiotics + emergent ERCP",
+          "Hepatitis: ↑↑ AST/ALT (>1000), risk factors; viral serologies",
+          "Liver abscess: amebic (travel) vs pyogenic (biliary disease); CT, drainage + antibiotics",
+          "Choledocholithiasis: ↑ bilirubin + dilated CBD; ERCP",
+        ],
+      },
+      {
+        heading: "RLQ pain",
+        bullets: [
+          "Appendicitis: migration of pain from periumbilical to RLQ, McBurney point, Rovsing/Psoas/Obturator signs; CT (or US in kids/pregnant) → laparoscopic appendectomy",
+          "Ovarian torsion (women): sudden severe pain, often after exertion, with adnexal mass; transvaginal US with Doppler; emergent laparoscopy",
+          "Ectopic pregnancy: positive β-hCG + adnexal mass + free fluid; methotrexate vs salpingostomy/-ectomy",
+          "Mesenteric adenitis: post-viral, mimics appendicitis (mostly in kids); supportive",
+          "Crohn flare: ileitis; bowel wall thickening on imaging",
+          "Cecal volvulus: distended colon with 'coffee bean' sign on plain film; colonoscopic detorsion or surgery",
+        ],
+      },
+      {
+        heading: "LUQ pain",
+        bullets: [
+          "Splenic rupture: trauma (Kehr sign — left shoulder pain) or mono with sport contact; FAST or CT; observe if stable, splenectomy if unstable",
+          "Pancreatitis: epigastric → LUQ radiating to back; lipase >3x ULN; CT for complications",
+          "Splenic infarct: SCD, AFib, endocarditis; CT",
+          "Gastric ulcer perforation: free air on upright CXR; emergent surgery",
+        ],
+      },
+      {
+        heading: "LLQ pain",
+        bullets: [
+          "Diverticulitis: LLQ pain + fever + leukocytosis in middle-aged adults; CT (do NOT colonoscope acutely); antibiotics ± drainage of abscess; surgery for perforation/recurrent",
+          "Ovarian torsion (left)",
+          "Sigmoid volvulus: elderly, constipation, distended; 'coffee bean' or 'omega' sign; sigmoidoscopic detorsion → elective resection",
+        ],
+      },
+      {
+        heading: "Diffuse / epigastric pain",
+        bullets: [
+          "Mesenteric ischemia: pain OUT OF PROPORTION to exam, AFib (embolic) or atherosclerosis (thrombotic) or low flow (NOMI) or venous thrombosis; CTA → angiography + embolectomy or fluids + heparin",
+          "Bowel obstruction: distention, vomiting, no flatus, high-pitched bowel sounds; X-ray (air-fluid levels, dilated loops) → CT; NG decompression, fluids, surgery if strangulated or complete",
+          "Pancreatitis (see LUQ)",
+          "Ruptured AAA: severe back/abdominal pain + hypotension + pulsatile mass; bedside US if stable, OR emergently if not",
+          "Aortic dissection (covered in cardio): tearing chest/back pain + unequal BPs; CT angiography",
+          "Perforated viscus: sudden severe pain + rigid abdomen + free air on upright CXR; emergent surgery",
+        ],
+      },
+      {
+        heading: "Imaging algorithm",
+        bullets: [
+          "Suspected perforation → upright CXR (free air under diaphragm) or CT abdomen",
+          "Suspected appendicitis → CT (US in kids/pregnant)",
+          "Suspected biliary → US first",
+          "Suspected SBO → upright + supine abdominal X-rays first → CT",
+          "Suspected mesenteric ischemia → CTA mesenteric arteries",
+          "Suspected AAA rupture → bedside US if unstable, CTA if stable",
+          "Pregnancy + abdominal pain → US first (avoids radiation), MRI if more detail needed",
+        ],
+      },
+      {
+        heading: "When to operate immediately",
+        bullets: [
+          "Free air on CXR (perforated viscus)",
+          "Peritonitis (rigid, board-like abdomen)",
+          "Hemodynamic instability with abdominal source",
+          "Ruptured AAA with hypotension",
+          "Strangulated bowel obstruction (fever, leukocytosis, peritonitis)",
+          "Acute mesenteric ischemia",
+        ],
+      },
+    ],
+    pearls: [
+      "Pain out of proportion to exam = mesenteric ischemia until proven otherwise",
+      "Charcot triad = cholangitis → emergent ERCP",
+      "Free air under diaphragm = perforated viscus → emergent surgery",
+      "Pulsatile abdominal mass + hypotension = ruptured AAA → OR (don't waste time on CT)",
+      "Appendicitis in pregnancy or pediatrics → US first to minimize radiation; CT if non-diagnostic",
+      "Volvulus on plain film: cecal = 'coffee bean' in RLQ, sigmoid = 'omega/bent inner tube' in LLQ",
+      "Acute pancreatitis: lipase > amylase for specificity; CT for severity scoring only after 72 hours",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "trauma-comprehensive",
+    session: 2,
+    category: "Trauma",
+    title: "Trauma — ATLS, head & abdominal injuries",
+    summary:
+      "Primary survey (ABCDE), head trauma decision-making (GCS + CT), FAST, when to operate.",
+    sections: [
+      {
+        heading: "Primary survey (ABCDE)",
+        bullets: [
+          "A: Airway with cervical spine protection — intubate if GCS ≤8, severe facial trauma, expanding neck hematoma",
+          "B: Breathing — assess for tension PTX (clinical, NOT CXR — needle decompression at 2nd ICS or 4th–5th ICS midaxillary then chest tube)",
+          "C: Circulation — 2 large-bore IVs, 1L LR/NS bolus, type-and-crossmatch, control external bleeding with pressure",
+          "D: Disability — GCS, pupils, gross motor",
+          "E: Exposure — fully undress, prevent hypothermia",
+        ],
+      },
+      {
+        heading: "Head trauma & GCS",
+        bullets: [
+          "GCS = Eye (1–4) + Verbal (1–5) + Motor (1–6); max 15, min 3",
+          "GCS ≤8 → intubate (cannot protect airway)",
+          "Canadian CT Head Rule: GCS <15 at 2 hr, suspected skull fracture, basilar fracture signs (raccoon eyes, Battle sign, hemotympanum, CSF rhinorrhea), ≥2 episodes vomiting, age ≥65, dangerous mechanism",
+          "Epidural hematoma: lens-shaped on CT, MIDDLE MENINGEAL ARTERY, LUCID INTERVAL classic, biconvex; surgical evacuation",
+          "Subdural hematoma: crescent-shaped, BRIDGING VEINS, elderly/alcoholics; can be acute, subacute, or chronic",
+          "Subarachnoid: blood in cisterns/sulci; trauma OR aneurysm rupture",
+          "Diffuse axonal injury: high-velocity shear; punctate hemorrhages on CT, often poor outcome",
+          "Cushing triad (HTN + bradycardia + irregular respirations) = late sign of increased ICP",
+        ],
+      },
+      {
+        heading: "Increased ICP management",
+        bullets: [
+          "Elevate HOB 30°",
+          "Hyperosmolar therapy: mannitol or 3% hypertonic saline",
+          "Mild hyperventilation (PaCO2 32–35) — short-term only (vasoconstriction)",
+          "Maintain CPP (MAP – ICP) >60 mmHg",
+          "Surgical evacuation of hematoma if midline shift >5 mm or focal deficit",
+          "ICP monitoring (bolt) for severe TBI with GCS ≤8",
+        ],
+      },
+      {
+        heading: "Cervical spine clearance",
+        bullets: [
+          "NEXUS criteria (all 5 met to clear clinically without imaging): no posterior midline tenderness, normal alertness, no intoxication, no focal neuro deficit, no painful distracting injury",
+          "Canadian C-spine rule (alternative): age <65 + no dangerous mechanism + no paresthesias + low-risk factors (delayed onset of neck pain, sitting position in ED, ambulatory at any time, simple rear-end MVC) + able to rotate neck 45° each way → clear",
+          "If criteria not met → CT cervical spine",
+          "Spinal cord injury — high-dose steroids (methylprednisolone) is CONTROVERSIAL; current evidence does NOT support routine use",
+        ],
+      },
+      {
+        heading: "Chest trauma",
+        bullets: [
+          "Tension PTX: clinical diagnosis (hypotension, JVD, tracheal deviation, absent breath sounds, hyperresonance) — needle decompression FIRST, then chest tube",
+          "Open PTX: 3-sided occlusive dressing, then chest tube",
+          "Massive hemothorax: >1500 mL initial drainage or >200 mL/hr × 4 hr → thoracotomy",
+          "Cardiac tamponade: Beck triad (hypotension, muffled heart sounds, JVD) + pulsus paradoxus; FAST shows pericardial fluid; emergent pericardiocentesis or thoracotomy",
+          "Aortic injury: high-energy decel; widened mediastinum on CXR → CT angiography",
+          "Flail chest: ≥3 adjacent ribs with ≥2 fractures each → paradoxical chest wall motion; supportive ventilation, pain control",
+        ],
+      },
+      {
+        heading: "Abdominal trauma",
+        bullets: [
+          "Blunt + stable: CT abdomen/pelvis with contrast",
+          "Blunt + unstable: bedside FAST → if positive (free fluid), go to OR",
+          "Blunt + unstable + negative FAST: think extra-abdominal cause (chest, retroperitoneum, pelvic fracture)",
+          "Penetrating (gunshot to abdomen): explore everyone (mandatory laparotomy)",
+          "Penetrating (stab): selective — explore if peritonitis, hypotension, evisceration; CT or local exploration for stable",
+          "Spleen most common solid organ injured in blunt trauma — try to preserve (avoid splenectomy in kids if possible)",
+          "Liver lacerations: most can be managed nonoperatively if hemodynamically stable",
+          "Diaphragmatic injury: more common on LEFT (right shielded by liver); often missed",
+          "Pelvic fracture + hypotension: pelvic binder + interventional radiology for embolization or preperitoneal packing",
+        ],
+      },
+      {
+        heading: "Damage control & resuscitation",
+        bullets: [
+          "Massive transfusion protocol (MTP): 1:1:1 PRBCs:FFP:platelets",
+          "TXA within 3 hr of injury (CRASH-2)",
+          "Permissive hypotension (SBP target ~90) in penetrating trauma until source control",
+          "Damage control surgery: stop bleeding, control contamination, temporary closure → re-explore in 24–48 hr after warming, correcting coagulopathy",
+          "Lethal triad: hypothermia + acidosis + coagulopathy — prevent and reverse",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Head bleed quick recognition",
+        headers: ["Bleed", "CT appearance + classic feature"],
+        rows: [
+          ["Epidural", "Lens/biconvex; lucid interval; middle meningeal a."],
+          ["Acute subdural", "Crescent; bridging veins; elderly/anticoag"],
+          ["Chronic subdural", "Crescent + hypodense; weeks-month course"],
+          ["Subarachnoid", "Blood in sulci/cisterns; thunderclap if aneurysmal"],
+          ["Intraparenchymal", "Lobar or basal ganglia; HTN or trauma"],
+          ["Diffuse axonal injury", "Punctate hemorrhages at gray-white junction"],
+        ],
+      },
+    ],
+    pearls: [
+      "GCS ≤8 = intubate",
+      "Tension PTX = clinical Dx — DON'T wait for CXR; needle decompress now",
+      "Cushing triad (HTN + bradycardia + irregular breathing) = late herniation",
+      "FAST + unstable = OR; FAST negative + unstable = look elsewhere (chest, retroperitoneum)",
+      "Spleen is the most commonly injured organ in blunt abdominal trauma",
+      "Lethal triad: hypothermia + acidosis + coagulopathy → damage control + 1:1:1 transfusion + TXA",
+      "Pelvic fracture + hypotension → bind the pelvis FIRST, then IR embolization",
+    ],
+    relatedCaseIds: [],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // UROLOGY + OPHTHALMOLOGY
+  // ═══════════════════════════════════════════════════════════════════
+
+  {
+    id: "urology-comprehensive",
+    session: 2,
+    category: "Surgery",
+    title: "Urology — testicular, prostate, scrotal, renal masses",
+    summary:
+      "Testicular torsion (the emergency), BPH vs prostate cancer, scrotal mass workup, RCC + bladder cancer.",
+    sections: [
+      {
+        heading: "Acute scrotum — torsion vs epididymitis",
+        bullets: [
+          "Testicular torsion: SUDDEN severe pain, NAUSEA/vomiting, high-riding testis, ABSENT cremasteric reflex, horizontal lie, NEGATIVE Prehn sign (pain NOT relieved with elevation)",
+          "Time-critical: detorsion within 6 hr → ~100% salvage; >24 hr → ~0%",
+          "If high clinical suspicion → OR for manual detorsion + bilateral orchiopexy (don't delay for imaging)",
+          "If equivocal → Doppler US (decreased flow); torsion of appendix testis (blue dot sign) is benign mimic",
+          "Epididymitis: GRADUAL onset, fever, dysuria, POSITIVE Prehn sign (relief with elevation), PRESERVED cremasteric reflex; treat ceftriaxone + doxycycline (<35 yo, suspect GC/CT) or fluoroquinolone (>35 yo)",
+        ],
+      },
+      {
+        heading: "Scrotal masses",
+        bullets: [
+          "Varicocele: 'bag of worms', usually LEFT side (left gonadal vein drains into left renal vein), worse with standing/Valsalva; can cause infertility; surgical or embolization repair",
+          "Hydrocele: transilluminates; congenital (resolves <1 yr) or reactive; surgery only if persistent or symptomatic",
+          "Spermatocele: transilluminates; smooth, mobile, painless; observe",
+          "Inguinal hernia: bulge with Valsalva; surgical repair if symptomatic",
+          "Testicular cancer (young men 15–35): PAINLESS testicular mass, hard, does NOT transilluminate; AFP (yolk sac), β-hCG (choriocarcinoma), LDH; do NOT trans-scrotal biopsy — INGUINAL orchiectomy",
+          "Risk factors testicular cancer: cryptorchidism (orchiopexy before age 1 reduces risk), family hx, Klinefelter (mediastinal germ cell)",
+        ],
+      },
+      {
+        heading: "Prostate",
+        bullets: [
+          "BPH: nocturia, hesitancy, weak stream, sense of incomplete emptying; AUA score; α-blockers (tamsulosin) → 5α-reductase inhibitors (finasteride) → combination → TURP",
+          "Avoid anticholinergics in BPH (worsen urinary retention)",
+          "Acute urinary retention from BPH → Foley + α-blocker, then trial of voiding",
+          "Prostate cancer: most common cancer in men; PSA screen 55–69 (shared decision); DRE finds hard posterior nodule; biopsy if PSA >4 or DRE abnormal",
+          "Prostate cancer treatment: localized → active surveillance vs radical prostatectomy vs radiation; metastatic → androgen deprivation (leuprolide + flutamide); osteoblastic bone mets",
+          "Acute bacterial prostatitis: fever, perineal pain, dysuria, very tender prostate on DRE (DO NOT MASSAGE — bacteremia risk); fluoroquinolones × 4–6 weeks",
+          "Chronic prostatitis: pelvic pain, normal exam often; fluoroquinolones × 6 weeks",
+        ],
+      },
+      {
+        heading: "Renal masses & bladder cancer",
+        bullets: [
+          "Renal cell carcinoma (RCC): hematuria + flank pain + palpable mass (classic triad rare); paraneoplastic (EPO, PTHrP, renin); risk factors smoking, obesity, HTN, VHL; CT abdomen/pelvis → partial or radical nephrectomy",
+          "Wilms tumor: kids 2–5 yr, palpable abdominal mass, hematuria; associated with WAGR, Beckwith-Wiedemann, Denys-Drash",
+          "Bladder cancer: PAINLESS gross hematuria in older smoker; transitional cell most common; cystoscopy with biopsy → TURBT ± BCG ± radical cystectomy",
+          "Renal stones: severe colicky flank pain radiating to groin, hematuria; non-contrast CT (best test); <5 mm pass spontaneously, >10 mm need intervention (lithotripsy, ureteroscopy, percutaneous nephrolithotomy)",
+          "Calcium oxalate stones (most common): low oxalate diet, thiazide (reduces urine Ca)",
+          "Uric acid stones: radiolucent on X-ray; alkalinize urine (potassium citrate), allopurinol",
+          "Struvite stones: 'staghorn'; UTI with urease-producing bugs (Proteus, Klebsiella); treat infection + surgery",
+          "Cystine stones: kids, recurrent; cystinuria",
+        ],
+      },
+      {
+        heading: "Erectile dysfunction",
+        bullets: [
+          "Causes: vascular (atherosclerosis), neurogenic (DM, MS), endocrine (low T, hyperPRL), psychogenic, drugs (β-blockers, antipsychotics, SSRIs)",
+          "Workup: morning T, prolactin, lipid panel, glucose, TSH",
+          "Treat underlying cause first; PDE5 inhibitors (sildenafil) first-line",
+          "Sildenafil + nitrates = hypotension (CONTRAINDICATED)",
+          "Sildenafil + α-blockers can cause hypotension (caution)",
+          "Refractory: intracavernosal injection, vacuum, penile prosthesis",
+        ],
+      },
+    ],
+    pearls: [
+      "Testicular torsion = surgical EMERGENCY — do NOT delay for imaging if suspicion is high",
+      "Painless testicular mass in young man = cancer until proven otherwise → INGUINAL orchiectomy (never trans-scrotal biopsy)",
+      "Painless gross hematuria in older smoker = bladder cancer → cystoscopy",
+      "Acute prostatitis: DO NOT massage the prostate (bacteremia risk)",
+      "Tamsulosin (α1A-selective) is the BPH α-blocker of choice (less orthostatic hypotension)",
+      "Hydrocele transilluminates; testicular cancer does NOT",
+      "Sildenafil + nitrates = absolute contraindication (severe hypotension)",
+      "Calcium oxalate stones treated with THIAZIDE diuretic (reduces urine Ca via DCT reabsorption)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "ophth-comprehensive",
+    session: 2,
+    category: "Ophthalmology",
+    title: "Ophthalmology — red eye, vision loss, glaucoma",
+    summary:
+      "The red eye differential, glaucoma (open vs closed angle), diabetic + hypertensive retinopathy, acute vision loss differential.",
+    sections: [
+      {
+        heading: "Red eye differential",
+        bullets: [
+          "Conjunctivitis bacterial: purulent discharge, eyes 'glued shut' in morning; topical erythromycin (kids) or fluoroquinolone (adults, contact lens wearers — cover Pseudomonas)",
+          "Conjunctivitis viral: watery discharge, preauricular lymphadenopathy, often bilateral; supportive (highly contagious — adenovirus)",
+          "Conjunctivitis allergic: itching is prominent + bilateral; topical antihistamines",
+          "Acute angle-closure glaucoma: severe pain + halos + nausea + mid-dilated FIXED pupil + cloudy cornea + ↑↑ IOP; emergency — pilocarpine, timolol, acetazolamide, mannitol, then laser iridotomy",
+          "Corneal abrasion: pain, foreign body sensation, photophobia; fluorescein stain shows defect; topical antibiotic; NO eye patch (Pseudomonas risk in contact lens wearer)",
+          "Uveitis/iritis: pain + photophobia + ciliary flush (perilimbal redness) + cells in anterior chamber; associations: HLA-B27, sarcoid, JIA, IBD, syphilis; topical steroids + cycloplegic",
+          "Scleritis: severe deep pain, photophobia; associated RA, GPA; systemic NSAIDs/steroids; episcleritis is milder and self-limited",
+          "Keratitis: corneal inflammation; HSV (dendritic ulcer on fluorescein) → acyclovir; bacterial (esp. contact lens) → topical antibiotics + URGENT ophtho",
+        ],
+      },
+      {
+        heading: "Acute vision loss",
+        bullets: [
+          "Central retinal artery occlusion (CRAO): sudden painless monocular vision loss; cherry-red spot on fundus; ophthalmic emergency — ocular massage, anterior chamber paracentesis, work up emboli + GCA",
+          "Central retinal vein occlusion (CRVO): sudden painless less severe vision loss; 'blood and thunder' fundus (diffuse hemorrhages, dilated tortuous veins); ↑ risk DM, HTN, glaucoma",
+          "Retinal detachment: floaters → flashes → 'curtain coming down' → vision loss; risk factors high myopia, trauma, prior cataract surgery; URGENT ophtho for surgery",
+          "Vitreous hemorrhage: floaters + decreased vision; DM (proliferative retinopathy), trauma; observe vs vitrectomy",
+          "Optic neuritis: subacute vision loss + pain with eye movement; afferent pupillary defect; classic for MS — get MRI brain; IV steroids accelerate recovery",
+          "Amaurosis fugax: TIA — transient monocular vision loss ('curtain'); carotid stenosis source; carotid Doppler + antiplatelet",
+          "Giant cell arteritis: vision loss + headache + jaw claudication + ↑ ESR + age >50 — START STEROIDS BEFORE biopsy",
+        ],
+      },
+      {
+        heading: "Glaucoma",
+        bullets: [
+          "Open-angle (chronic): asymptomatic until late, cupping of optic disc (cup:disc >0.6), visual field defects; screening tonometry + fundoscopy; treat: latanoprost (PGF analog) first-line, then β-blocker drops (timolol), then surgery",
+          "Acute angle-closure: severe pain, halos, fixed mid-dilated pupil, cloudy cornea, ↑↑ IOP, nausea; emergency — DON'T dilate eyes for fundoscopy first",
+          "Treatment acute angle-closure: pilocarpine + timolol + acetazolamide + mannitol; then LASER PERIPHERAL IRIDOTOMY (definitive)",
+          "Triggers for acute angle-closure: dim light (mydriasis), anticholinergics, sympathomimetics",
+        ],
+      },
+      {
+        heading: "Diabetic & hypertensive retinopathy",
+        bullets: [
+          "Diabetic retinopathy — yearly dilated exam from diagnosis (T2DM) or 5 yr after diagnosis (T1DM)",
+          "Non-proliferative DR: microaneurysms, dot/blot hemorrhages, hard exudates, cotton wool spots",
+          "Proliferative DR: neovascularization → vitreous hemorrhage, traction retinal detachment; treat with PAN-RETINAL PHOTOCOAGULATION + anti-VEGF (bevacizumab, ranibizumab)",
+          "Diabetic macular edema: anti-VEGF intravitreal",
+          "Hypertensive retinopathy: arteriolar narrowing → AV nicking → flame hemorrhages, cotton wool spots → papilledema (malignant HTN)",
+        ],
+      },
+      {
+        heading: "Other key topics",
+        bullets: [
+          "Age-related macular degeneration: central vision loss; dry (drusen, slow) vs wet (neovascular, fast); wet AMD → anti-VEGF injections",
+          "Cataract: gradual painless vision loss with glare; risk factors age, steroids, diabetes; treat: surgical removal + IOL",
+          "Orbital cellulitis: pain with eye movement, proptosis, vision changes — EMERGENCY (CT, IV antibiotics, possible surgery)",
+          "Preseptal cellulitis: anterior to orbital septum, no eye movement pain or proptosis; oral antibiotics",
+          "Optic disc swelling (papilledema): bilateral → ↑ ICP; unilateral → optic neuritis or AION",
+          "Horner syndrome: ptosis + miosis + anhidrosis from sympathetic disruption (Pancoast tumor, carotid dissection, brainstem stroke)",
+          "Marcus Gunn pupil (RAPD): afferent pupillary defect — optic nerve disease",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Red eye quick differential",
+        headers: ["Feature", "Suggests"],
+        rows: [
+          ["Purulent discharge", "Bacterial conjunctivitis"],
+          ["Watery + preauricular node", "Viral conjunctivitis"],
+          ["Itching, bilateral", "Allergic conjunctivitis"],
+          ["Pain + halos + fixed pupil + cloudy cornea", "Acute angle-closure glaucoma"],
+          ["Pain + photophobia + ciliary flush", "Iritis/uveitis"],
+          ["Pain + dendritic ulcer (fluorescein)", "HSV keratitis"],
+          ["Severe deep pain + associated autoimmune", "Scleritis"],
+          ["Sudden vision loss + cherry-red spot", "CRAO"],
+        ],
+      },
+    ],
+    pearls: [
+      "Sudden painless monocular vision loss + cherry-red spot = CRAO (ophthalmic emergency)",
+      "Severe eye pain + halos + fixed dilated pupil = acute angle-closure glaucoma → DON'T dilate further",
+      "Dendritic ulcer on fluorescein = HSV keratitis → acyclovir, no steroids",
+      "Contact lens wearer with red eye = cover PSEUDOMONAS (fluoroquinolone), do NOT patch",
+      "Wet AMD = anti-VEGF (bevacizumab/ranibizumab)",
+      "Proliferative diabetic retinopathy = pan-retinal photocoagulation + anti-VEGF",
+      "Optic neuritis + young woman + MS workup → MRI brain (multiple sclerosis association)",
+      "Orbital cellulitis: pain with eye movement + proptosis → CT + IV antibiotics + surgery if abscess",
+    ],
+    relatedCaseIds: [],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
   // INFERTILITY (OB/GYN)
   // ═══════════════════════════════════════════════════════════════════
 
