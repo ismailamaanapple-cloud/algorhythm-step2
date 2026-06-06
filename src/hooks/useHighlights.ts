@@ -24,6 +24,7 @@ export function useHighlights(noteId: string) {
   const { user } = useAuth();
   const [items, setItems] = useState<Highlight[]>([]);
   const [loading, setLoading] = useState(true);
+  const [lastError, setLastError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user) {
@@ -36,13 +37,17 @@ export function useHighlights(noteId: string) {
     let active = true;
     (async () => {
       setLoading(true);
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("highlights")
         .select("*")
         .eq("user_id", user.id)
         .eq("note_id", noteId)
         .order("created_at", { ascending: true });
       if (!active) return;
+      if (error) {
+        console.error("[useHighlights] load failed:", error);
+        setLastError(error.message);
+      }
       setItems((data ?? []) as Highlight[]);
       setLoading(false);
     })();
@@ -51,19 +56,36 @@ export function useHighlights(noteId: string) {
     };
   }, [user, noteId]);
 
+  // Optimistic insert: render a temp row immediately, swap with the real
+  // server row once it lands. If the insert fails we surface the error and
+  // roll the temp row back so the user can SEE that something went wrong
+  // instead of silently nothing happening.
   const create = useCallback(
     async (input: Omit<Highlight, "id">): Promise<Highlight | null> => {
       if (!user) return null;
       const supabase = getSupabaseBrowserClient();
       if (!supabase) return null;
+
+      const tempId = `tmp_${Math.random().toString(36).slice(2)}`;
+      const optimistic: Highlight = { ...input, id: tempId };
+      setItems((prev) => [...prev, optimistic]);
+
       const { data, error } = await supabase
         .from("highlights")
         .insert({ ...input, user_id: user.id })
         .select("*")
         .single();
-      if (error || !data) return null;
+
+      if (error || !data) {
+        console.error("[useHighlights] insert failed:", error);
+        setLastError(error?.message ?? "insert failed");
+        // Roll back the optimistic row.
+        setItems((prev) => prev.filter((h) => h.id !== tempId));
+        return null;
+      }
       const row = data as Highlight;
-      setItems((prev) => [...prev, row]);
+      // Replace temp with server row (keeps the order).
+      setItems((prev) => prev.map((h) => (h.id === tempId ? row : h)));
       return row;
     },
     [user],
@@ -74,10 +96,21 @@ export function useHighlights(noteId: string) {
       if (!user) return;
       const supabase = getSupabaseBrowserClient();
       if (!supabase) return;
-      await supabase.from("highlights").delete().eq("id", id).eq("user_id", user.id);
+      // Optimistic remove
+      const snapshot = items;
       setItems((prev) => prev.filter((h) => h.id !== id));
+      const { error } = await supabase
+        .from("highlights")
+        .delete()
+        .eq("id", id)
+        .eq("user_id", user.id);
+      if (error) {
+        console.error("[useHighlights] delete failed:", error);
+        setLastError(error.message);
+        setItems(snapshot);
+      }
     },
-    [user],
+    [user, items],
   );
 
   const makeFlashcard = useCallback(
@@ -85,19 +118,34 @@ export function useHighlights(noteId: string) {
       if (!user) return false;
       const supabase = getSupabaseBrowserClient();
       if (!supabase) return false;
+      // Don't link to temp ids — they don't exist server-side yet.
+      const linkId = h.id.startsWith("tmp_") ? null : h.id;
       const { error } = await supabase.from("flashcards").insert({
         user_id: user.id,
         source_type: "user",
         note_id: h.note_id,
-        highlight_id: h.id,
+        highlight_id: linkId,
         front,
         back,
         tags: ["user", "highlight"],
       });
-      return !error;
+      if (error) {
+        console.error("[useHighlights] flashcard insert failed:", error);
+        setLastError(error.message);
+        return false;
+      }
+      return true;
     },
     [user],
   );
 
-  return { items, loading, create, remove, makeFlashcard, isAuthed: Boolean(user) };
+  return {
+    items,
+    loading,
+    lastError,
+    create,
+    remove,
+    makeFlashcard,
+    isAuthed: Boolean(user),
+  };
 }

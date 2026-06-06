@@ -59,7 +59,7 @@ export default function NoteDetail({ note }: { note: Note }) {
   ).slice(0, 6);
 
   // Highlights state + persistence.
-  const { items: highlights, create, makeFlashcard, isAuthed } = useHighlights(note.id);
+  const { items: highlights, create, makeFlashcard, isAuthed, lastError } = useHighlights(note.id);
   const [pending, setPending] = useState<PendingSelection | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -74,59 +74,96 @@ export default function NoteDetail({ note }: { note: Note }) {
     [highlights],
   );
 
-  // Selection handler — collapses a window selection inside the content area
+  // Selection handler — converts a window selection inside the content area
   // into a stable (anchor, offset, text) tuple for the toolbar.
   //
-  // Offsets are computed by walking text nodes inside the anchor and tracking
-  // cumulative characters, so the offset is correct even when the bullet is
-  // already partially highlighted (multiple text nodes) or when the same
-  // substring appears more than once (indexOf would return the FIRST hit).
+  // Two key fixes vs the naive version:
+  // 1. We try START → END → commonAncestor → first overlapping anchor inside
+  //    the common ancestor, because triple-clicking a bullet line puts the
+  //    range's startContainer in the sibling `<span>•</span>` outside the
+  //    data-anchor.
+  // 2. Offsets use Range.cloneRange + selectNodeContents and clamp to the
+  //    anchor boundary, so selections that extend past the anchor still
+  //    produce a valid highlight inside it.
   useEffect(() => {
+    function findAnchor(range: Range, root: HTMLElement): HTMLElement | null {
+      const probe = (node: Node | null): HTMLElement | null => {
+        if (!node) return null;
+        const el = (node.nodeType === Node.TEXT_NODE
+          ? node.parentElement
+          : (node as HTMLElement)) as HTMLElement | null;
+        const a = el?.closest("[data-anchor]") as HTMLElement | null;
+        return a && root.contains(a) ? a : null;
+      };
+      // Prefer the start, fall back to end, then common ancestor.
+      const a = probe(range.startContainer) ?? probe(range.endContainer)
+        ?? probe(range.commonAncestorContainer);
+      if (a) return a;
+      // Last-resort: look for any anchor *inside* the common ancestor that
+      // overlaps the selection (covers triple-click whole-line selections).
+      const caEl = (range.commonAncestorContainer.nodeType === Node.TEXT_NODE
+        ? range.commonAncestorContainer.parentElement
+        : (range.commonAncestorContainer as HTMLElement)) as HTMLElement | null;
+      if (caEl) {
+        const candidates = caEl.querySelectorAll<HTMLElement>("[data-anchor]");
+        for (const c of candidates) {
+          if (range.intersectsNode(c) && root.contains(c)) return c;
+        }
+      }
+      return null;
+    }
+
     function computeOffsets(
       anchor: HTMLElement,
       range: Range,
     ): { start: number; end: number } | null {
-      let chars = 0;
-      let start = -1;
-      let end = -1;
-      const walker = document.createTreeWalker(anchor, NodeFilter.SHOW_TEXT);
-      let node: Node | null = walker.nextNode();
-      while (node) {
-        const len = node.textContent?.length ?? 0;
-        if (node === range.startContainer) {
-          start = chars + range.startOffset;
+      try {
+        // start: chars from anchor's start to range's start (clamped to 0
+        // if the range starts before the anchor).
+        const startRange = range.cloneRange();
+        startRange.selectNodeContents(anchor);
+        if (anchor.contains(range.startContainer)) {
+          startRange.setEnd(range.startContainer, range.startOffset);
+        } else {
+          startRange.collapse(true);
         }
-        if (node === range.endContainer) {
-          end = chars + range.endOffset;
+        const start = startRange.toString().length;
+
+        // end: chars from anchor's start to range's end (clamped to anchor
+        // end if the selection extends past the anchor).
+        const endRange = range.cloneRange();
+        endRange.selectNodeContents(anchor);
+        if (anchor.contains(range.endContainer)) {
+          endRange.setEnd(range.endContainer, range.endOffset);
         }
-        chars += len;
-        node = walker.nextNode();
+        const end = endRange.toString().length;
+
+        if (end <= start) return null;
+        return { start, end };
+      } catch (e) {
+        console.warn("[NoteDetail] offset calc failed:", e);
+        return null;
       }
-      if (start < 0 || end < 0) return null;
-      if (start > end) [start, end] = [end, start];
-      return { start, end };
     }
 
-    function handleUp() {
+    function tryCapture() {
       const sel = window.getSelection();
-      if (!sel || sel.isCollapsed) return;
+      if (!sel || sel.isCollapsed || sel.rangeCount === 0) return;
       const range = sel.getRangeAt(0);
-      // Find the nearest enclosing [data-anchor]. commonAncestorContainer
-      // is often a Text node, so we walk up via parentElement.
-      const startEl =
-        range.commonAncestorContainer.nodeType === Node.TEXT_NODE
-          ? range.commonAncestorContainer.parentElement
-          : (range.commonAncestorContainer as HTMLElement);
-      const anchor = (startEl?.closest("[data-anchor]") ?? null) as HTMLElement | null;
+      const root = contentRef.current;
+      if (!root) return;
+      const anchor = findAnchor(range, root);
       if (!anchor) return;
-      const inside = contentRef.current?.contains(anchor);
-      if (!inside) return;
       const parts = parseAnchor(anchor.getAttribute("data-anchor"));
       if (!parts) return;
-      const text = sel.toString().trim();
-      if (text.length < 3) return;
       const off = computeOffsets(anchor, range);
       if (!off) return;
+      // Use the anchor's own substring, not the raw selection — that way
+      // the saved text matches what we'll render even if the selection
+      // extended past the anchor or grabbed bullet glyphs.
+      const text = (anchor.textContent ?? "").slice(off.start, off.end).trim();
+      if (text.length < 3) return;
+
       const rect = range.getBoundingClientRect();
       setPending({
         text,
@@ -139,6 +176,12 @@ export default function NoteDetail({ note }: { note: Note }) {
         y: rect.top,
       });
     }
+
+    // Defer one tick so the browser finishes finalizing the selection.
+    function handleUp() {
+      window.setTimeout(tryCapture, 0);
+    }
+
     document.addEventListener("mouseup", handleUp);
     document.addEventListener("touchend", handleUp);
     return () => {
@@ -505,6 +548,18 @@ export default function NoteDetail({ note }: { note: Note }) {
           openLogin();
         }}
       />
+
+      {/* Surface highlight failures so they're not silent. */}
+      {lastError && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[90] max-w-md w-[calc(100%-2rem)]">
+          <div className="glass-strong rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-xs text-rose-100">
+            <span className="font-semibold uppercase tracking-[0.18em] text-[10px] mr-2">
+              Highlight error
+            </span>
+            <span className="text-white/85">{lastError}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
