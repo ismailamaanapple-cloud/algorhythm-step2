@@ -31,6 +31,7 @@ export default function Nav() {
             <Link href="/ekg" className="px-3 py-1.5 rounded-lg text-rose-200/85 hover:text-rose-100 hover:bg-rose-300/10 transition">EKG</Link>
             <Link href="/pharmacology" className="px-3 py-1.5 rounded-lg text-emerald-200/85 hover:text-emerald-100 hover:bg-emerald-300/10 transition">Pharm</Link>
             <Link href="/dashboard" className="px-3 py-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition">Dashboard</Link>
+            <Link href="/pricing" className="px-3 py-1.5 rounded-lg text-fuchsia-200/85 hover:text-fuchsia-100 hover:bg-fuchsia-300/10 transition">Pricing</Link>
             <Link href="/omm" className="px-3 py-1.5 rounded-lg text-amber-200/85 hover:text-amber-100 hover:bg-amber-300/10 transition">OMM</Link>
           </div>
           <div className="flex items-center gap-2">

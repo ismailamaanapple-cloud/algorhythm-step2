@@ -24,6 +24,7 @@ import HighlightToolbar, {
 } from "@/components/highlights/HighlightToolbar";
 import QuickQuiz from "@/components/notes/QuickQuiz";
 import EkgStrip, { type EkgKind } from "@/components/EkgStrip";
+import PaywallGate from "@/components/paywall/PaywallGate";
 
 const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   1: "from-violet-500 to-purple-700",
@@ -304,6 +305,7 @@ export default function NoteDetail({ note }: { note: Note }) {
         </div>
       </div>
 
+      <PaywallGate itemType="note" itemId={note.id}>
       <div className="flex-1 mx-auto max-w-5xl w-full px-6 py-8 md:py-12" ref={contentRef}>
         {/* Hero */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
@@ -584,6 +586,7 @@ export default function NoteDetail({ note }: { note: Note }) {
           </aside>
         </div>
       </div>
+      </PaywallGate>
 
       <HighlightToolbar
         pending={pending}

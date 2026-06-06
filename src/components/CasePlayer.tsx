@@ -7,6 +7,7 @@ import { ArrowLeft, CheckCircle2, XCircle, RotateCcw, ChevronRight, Trophy } fro
 import type { Case, CaseOption } from "@/data/cases";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import PaywallGate from "@/components/paywall/PaywallGate";
 
 const shuffle = <T,>(arr: T[]): T[] => {
   const a = [...arr];
@@ -122,6 +123,7 @@ export default function CasePlayer({
         </div>
       </div>
 
+      <PaywallGate itemType="case" itemId={current.id}>
       <div className="flex-1 mx-auto max-w-3xl w-full px-6 py-10">
         <>
           {phase === "play" && (
@@ -310,6 +312,7 @@ export default function CasePlayer({
           )}
         </>
       </div>
+      </PaywallGate>
     </div>
   );
 }
