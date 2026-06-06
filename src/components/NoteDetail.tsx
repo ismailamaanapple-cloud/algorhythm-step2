@@ -76,14 +76,48 @@ export default function NoteDetail({ note }: { note: Note }) {
 
   // Selection handler — collapses a window selection inside the content area
   // into a stable (anchor, offset, text) tuple for the toolbar.
+  //
+  // Offsets are computed by walking text nodes inside the anchor and tracking
+  // cumulative characters, so the offset is correct even when the bullet is
+  // already partially highlighted (multiple text nodes) or when the same
+  // substring appears more than once (indexOf would return the FIRST hit).
   useEffect(() => {
+    function computeOffsets(
+      anchor: HTMLElement,
+      range: Range,
+    ): { start: number; end: number } | null {
+      let chars = 0;
+      let start = -1;
+      let end = -1;
+      const walker = document.createTreeWalker(anchor, NodeFilter.SHOW_TEXT);
+      let node: Node | null = walker.nextNode();
+      while (node) {
+        const len = node.textContent?.length ?? 0;
+        if (node === range.startContainer) {
+          start = chars + range.startOffset;
+        }
+        if (node === range.endContainer) {
+          end = chars + range.endOffset;
+        }
+        chars += len;
+        node = walker.nextNode();
+      }
+      if (start < 0 || end < 0) return null;
+      if (start > end) [start, end] = [end, start];
+      return { start, end };
+    }
+
     function handleUp() {
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed) return;
       const range = sel.getRangeAt(0);
-      const anchor = (range.commonAncestorContainer.parentElement?.closest(
-        "[data-anchor]",
-      ) ?? null) as HTMLElement | null;
+      // Find the nearest enclosing [data-anchor]. commonAncestorContainer
+      // is often a Text node, so we walk up via parentElement.
+      const startEl =
+        range.commonAncestorContainer.nodeType === Node.TEXT_NODE
+          ? range.commonAncestorContainer.parentElement
+          : (range.commonAncestorContainer as HTMLElement);
+      const anchor = (startEl?.closest("[data-anchor]") ?? null) as HTMLElement | null;
       if (!anchor) return;
       const inside = contentRef.current?.contains(anchor);
       if (!inside) return;
@@ -91,18 +125,16 @@ export default function NoteDetail({ note }: { note: Note }) {
       if (!parts) return;
       const text = sel.toString().trim();
       if (text.length < 3) return;
-      // Calculate offset relative to the anchor's text content.
-      const fullText = anchor.textContent ?? "";
-      const startOffset = fullText.indexOf(text);
-      if (startOffset < 0) return;
+      const off = computeOffsets(anchor, range);
+      if (!off) return;
       const rect = range.getBoundingClientRect();
       setPending({
         text,
         sectionKind: parts.kind,
         sectionIdx: parts.sectionIdx,
         bulletIdx: parts.bulletIdx,
-        startOffset,
-        endOffset: startOffset + text.length,
+        startOffset: off.start,
+        endOffset: off.end,
         x: rect.left + rect.width / 2,
         y: rect.top,
       });
@@ -227,7 +259,11 @@ export default function NoteDetail({ note }: { note: Note }) {
               >
                 <h2 className="text-base font-semibold tracking-tight mb-3 flex items-center gap-2">
                   <span className="text-cyan-300">◆</span>
-                  {section.heading}
+                  <HighlightableText
+                    text={section.heading}
+                    highlights={groupedHighlights("section", i, null)}
+                    dataAnchor={`section:${i}`}
+                  />
                 </h2>
                 <ul className="space-y-2">
                   {section.bullets.map((b, j) => (
@@ -256,7 +292,13 @@ export default function NoteDetail({ note }: { note: Note }) {
                 className="glass rounded-2xl p-6"
               >
                 {table.caption && (
-                  <h2 className="text-base font-semibold tracking-tight mb-3">{table.caption}</h2>
+                  <h2 className="text-base font-semibold tracking-tight mb-3">
+                    <HighlightableText
+                      text={table.caption}
+                      highlights={groupedHighlights("table", ti, null)}
+                      dataAnchor={`table:${ti}`}
+                    />
+                  </h2>
                 )}
                 <div className="overflow-x-auto -mx-2">
                   <table className="w-full text-sm">
@@ -272,11 +314,21 @@ export default function NoteDetail({ note }: { note: Note }) {
                     <tbody>
                       {table.rows.map((row, ri) => (
                         <tr key={ri} className="border-b border-white/[0.06] last:border-0">
-                          {row.map((cell, ci) => (
-                            <td key={ci} className="py-3 px-2 text-white/80 align-top text-xs md:text-sm leading-relaxed">
-                              {cell}
-                            </td>
-                          ))}
+                          {row.map((cell, ci) => {
+                            // Encode (row, col) into a single bullet_idx so the
+                            // existing schema fits — row * 100 + col supports
+                            // up to 100 cols/rows, plenty for any table here.
+                            const cellIdx = ri * 100 + ci;
+                            return (
+                              <td key={ci} className="py-3 px-2 text-white/80 align-top text-xs md:text-sm leading-relaxed">
+                                <HighlightableText
+                                  text={cell}
+                                  highlights={groupedHighlights("table", ti, cellIdx)}
+                                  dataAnchor={`table:${ti}:${cellIdx}`}
+                                />
+                              </td>
+                            );
+                          })}
                         </tr>
                       ))}
                     </tbody>
