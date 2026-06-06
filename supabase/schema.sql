@@ -169,6 +169,20 @@ create policy "flashcard_reviews self all"
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
 
+-- ---------- Grants -----------------------------------------------------------
+-- Supabase usually applies these by default for the public schema, but some
+-- projects (especially older ones or ones whose defaults were tweaked) end up
+-- without them and clients get "permission denied for table X" errors that
+-- look like RLS failures but are actually plain postgres GRANT failures.
+-- Granting explicitly here makes setup deterministic.
+grant select, insert, update, delete on public.profiles          to authenticated;
+grant select, insert, update, delete on public.note_progress     to authenticated;
+grant select, insert, update, delete on public.case_progress     to authenticated;
+grant select, insert, update, delete on public.highlights        to authenticated;
+grant select, insert, update, delete on public.flashcards        to authenticated;
+grant select, insert, update, delete on public.flashcard_reviews to authenticated;
+grant usage on all sequences in schema public to authenticated;
+
 -- =============================================================================
 -- Done. After running this:
 --   1. Authentication → Providers → enable Email + Google.
