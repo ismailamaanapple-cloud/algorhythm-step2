@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/auth/AuthProvider";
 import LoginModal from "@/components/auth/LoginModal";
 import AuthErrorBanner from "@/components/auth/AuthErrorBanner";
+import { SearchProvider } from "@/components/search/GlobalSearch";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,9 +37,11 @@ export default function RootLayout({
         <div className="grid-overlay" />
         <div className="noise" />
         <AuthProvider>
-          {children}
-          <LoginModal />
-          <AuthErrorBanner />
+          <SearchProvider>
+            {children}
+            <LoginModal />
+            <AuthErrorBanner />
+          </SearchProvider>
         </AuthProvider>
       </body>
     </html>

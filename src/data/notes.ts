@@ -14,6 +14,16 @@ export type NoteTable = {
   rows: string[][];
 };
 
+/** A visual figure to embed in a note. Currently only EKG strips. */
+export type NoteFigure = {
+  /** Kind of figure — drives which component renders it. */
+  kind: "ekg";
+  /** Specific identifier (e.g. an EkgKind like "afib", "stemi-inferior"). */
+  variant: string;
+  /** Optional override caption. */
+  caption?: string;
+};
+
 export type Note = {
   id: string;
   session: NoteSession;
@@ -23,6 +33,7 @@ export type Note = {
   sections?: NoteSection[];
   tables?: NoteTable[];
   pearls?: string[];
+  figures?: NoteFigure[];
   relatedCaseIds?: string[];
 };
 
@@ -8599,6 +8610,10 @@ export const NOTES: Note[] = [
       "Posterior STEMI hides as ST depression in V1–V3 with tall R waves — get posterior leads",
       "Wellens' syndrome: biphasic or deep symmetric T inversion V2–V3 → critical LAD stenosis, even if asymptomatic",
     ],
+    figures: [
+      { kind: "ekg", variant: "normal-sinus" },
+      { kind: "ekg", variant: "stemi-inferior" },
+    ],
     relatedCaseIds: [],
   },
 
@@ -8658,6 +8673,10 @@ export const NOTES: Note[] = [
       "AFib + WPW (wide bizarre irregular tach) → procainamide; AVOID AV nodal blockers (adenosine, β-blocker, CCB, digoxin)",
       "Holiday-heart AFib: ETOH-triggered, often self-terminates",
     ],
+    figures: [
+      { kind: "ekg", variant: "afib" },
+      { kind: "ekg", variant: "aflutter" },
+    ],
     relatedCaseIds: [],
   },
 
@@ -8713,6 +8732,11 @@ export const NOTES: Note[] = [
       "Magnesium first-line for torsades regardless of serum Mg level",
       "VFib + unwitnessed/unsuccessful resuscitation > 20 min → consider therapeutic hypothermia post-ROSC for neuro protection (32–36°C × 24 hr)",
     ],
+    figures: [
+      { kind: "ekg", variant: "vt" },
+      { kind: "ekg", variant: "torsades" },
+      { kind: "ekg", variant: "vfib" },
+    ],
     relatedCaseIds: [],
   },
 
@@ -8753,6 +8777,10 @@ export const NOTES: Note[] = [
           ["P and QRS independent (AV dissociation)", "Complete (3°) AV block"],
         ],
       },
+    ],
+    figures: [
+      { kind: "ekg", variant: "mobitz-1" },
+      { kind: "ekg", variant: "complete-block" },
     ],
     pearls: [
       "Mobitz I = Wenckebach = AV node — usually benign, monitor",
@@ -8807,6 +8835,7 @@ export const NOTES: Note[] = [
         ],
       },
     ],
+    figures: [{ kind: "ekg", variant: "hyperkalemia" }],
     pearls: [
       "Calcium gluconate stabilizes the myocyte but does NOT lower K — still need to shift + remove",
       "Hypokalemia is resistant to correction without simultaneous magnesium repletion",
@@ -8866,6 +8895,7 @@ export const NOTES: Note[] = [
         ],
       },
     ],
+    figures: [{ kind: "ekg", variant: "pericarditis" }],
     pearls: [
       "Pericarditis with effusion + Beck's triad (hypotension, JVD, muffled heart sounds) = tamponade → urgent pericardiocentesis",
       "Most common EKG finding in PE is sinus tach — don't anchor on S1Q3T3",
@@ -8935,6 +8965,7 @@ export const NOTES: Note[] = [
         ],
       },
     ],
+    figures: [{ kind: "ekg", variant: "wpw" }],
     pearls: [
       "AFib in a WPW patient: never give AV nodal blockers — they preferentially conduct down the accessory pathway and can precipitate VFib",
       "Methadone is a notorious QT prolonger — always check QTc before starting and at intervals",
@@ -9257,6 +9288,10 @@ export const NOTES: Note[] = [
           "Hemodynamic support, mechanical ventilation, neuro prognostication ≥72 hr after rewarming",
         ],
       },
+    ],
+    figures: [
+      { kind: "ekg", variant: "vfib" },
+      { kind: "ekg", variant: "asystole" },
     ],
     pearls: [
       "Don't interrupt compressions for pulse checks longer than 10 seconds",

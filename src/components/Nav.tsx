@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Layers } from "lucide-react";
 import AuthButton from "./auth/AuthButton";
 import { BrandMark, BrandWordmark } from "./Brand";
+import { SearchTrigger } from "./search/GlobalSearch";
 
 export default function Nav() {
   return (
@@ -33,6 +34,7 @@ export default function Nav() {
             <Link href="/omm" className="px-3 py-1.5 rounded-lg text-amber-200/85 hover:text-amber-100 hover:bg-amber-300/10 transition">OMM</Link>
           </div>
           <div className="flex items-center gap-2">
+            <SearchTrigger />
             <AuthButton />
           </div>
         </div>

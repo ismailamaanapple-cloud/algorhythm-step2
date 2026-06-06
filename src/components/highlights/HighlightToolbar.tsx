@@ -65,10 +65,17 @@ export default function HighlightToolbar({
 
   if (!pending) return null;
 
-  // Clamp to viewport.
+  // Position the toolbar so it's ALWAYS visible. Prefer above the selection;
+  // flip to below if there's no room above; clamp to viewport on both axes.
   const W = 320;
-  const left = Math.max(8, Math.min(window.innerWidth - W - 8, pending.x - W / 2));
-  const top = Math.max(8, pending.y - 8);
+  const H = 200; // generous estimate so we don't run off-bottom either
+  const vw = typeof window !== "undefined" ? window.innerWidth : 1024;
+  const vh = typeof window !== "undefined" ? window.innerHeight : 768;
+  const left = Math.max(8, Math.min(vw - W - 8, pending.x - W / 2));
+  // Try above the selection (rect.top - H - 8). Fall back to below if too high.
+  let top = pending.y - H - 8;
+  if (top < 8) top = pending.y + 24;
+  top = Math.max(8, Math.min(vh - H - 8, top));
 
   async function handleColor(c: HighlightColor) {
     if (!isAuthed) {

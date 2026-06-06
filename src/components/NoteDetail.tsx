@@ -23,6 +23,7 @@ import HighlightToolbar, {
   type PendingSelection,
 } from "@/components/highlights/HighlightToolbar";
 import QuickQuiz from "@/components/notes/QuickQuiz";
+import EkgStrip, { type EkgKind } from "@/components/EkgStrip";
 
 const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   1: "from-violet-500 to-purple-700",
@@ -146,25 +147,51 @@ export default function NoteDetail({ note }: { note: Note }) {
       }
     }
 
-    function tryCapture() {
+    function tryCapture(): boolean {
       const sel = window.getSelection();
-      if (!sel || sel.isCollapsed || sel.rangeCount === 0) return;
+      if (!sel || sel.rangeCount === 0) {
+        console.debug("[highlight] no selection");
+        return false;
+      }
+      if (sel.isCollapsed) {
+        console.debug("[highlight] selection collapsed");
+        return false;
+      }
       const range = sel.getRangeAt(0);
       const root = contentRef.current;
-      if (!root) return;
+      if (!root) {
+        console.debug("[highlight] no content root");
+        return false;
+      }
       const anchor = findAnchor(range, root);
-      if (!anchor) return;
+      if (!anchor) {
+        console.debug("[highlight] no data-anchor found — selection probably outside any note content block", {
+          startContainer: range.startContainer,
+          endContainer: range.endContainer,
+        });
+        return false;
+      }
       const parts = parseAnchor(anchor.getAttribute("data-anchor"));
-      if (!parts) return;
+      if (!parts) {
+        console.debug("[highlight] anchor attribute did not parse", anchor.getAttribute("data-anchor"));
+        return false;
+      }
       const off = computeOffsets(anchor, range);
-      if (!off) return;
-      // Use the anchor's own substring, not the raw selection — that way
-      // the saved text matches what we'll render even if the selection
-      // extended past the anchor or grabbed bullet glyphs.
+      if (!off) {
+        console.debug("[highlight] offset calc failed");
+        return false;
+      }
+      // Use the anchor's own substring (not the raw selection) so the saved
+      // text matches what we'll render — even if the selection extended past
+      // the anchor or grabbed glyphs from a sibling span.
       const text = (anchor.textContent ?? "").slice(off.start, off.end).trim();
-      if (text.length < 3) return;
+      if (text.length < 3) {
+        console.debug("[highlight] selection too short (<3 chars)", text);
+        return false;
+      }
 
       const rect = range.getBoundingClientRect();
+      console.debug("[highlight] capture OK", { anchor: anchor.getAttribute("data-anchor"), off, text });
       setPending({
         text,
         sectionKind: parts.kind,
@@ -175,11 +202,17 @@ export default function NoteDetail({ note }: { note: Note }) {
         x: rect.left + rect.width / 2,
         y: rect.top,
       });
+      return true;
     }
 
-    // Defer one tick so the browser finishes finalizing the selection.
+    // Try sync first — most browsers finalize selection before mouseup fires
+    // and the sync attempt preserves the user's selection state. If sync
+    // fails (e.g. iOS where the selection is briefly empty at touchend),
+    // retry one event-loop tick later.
     function handleUp() {
-      window.setTimeout(tryCapture, 0);
+      if (!tryCapture()) {
+        window.setTimeout(tryCapture, 0);
+      }
     }
 
     document.addEventListener("mouseup", handleUp);
@@ -407,6 +440,21 @@ export default function NoteDetail({ note }: { note: Note }) {
                   ))}
                 </ul>
               </motion.div>
+            )}
+
+            {/* Figures — currently rhythm strips for EKG notes */}
+            {note.figures && note.figures.length > 0 && (
+              <div className="space-y-3">
+                {note.figures.map((fig, fi) =>
+                  fig.kind === "ekg" ? (
+                    <EkgStrip
+                      key={fi}
+                      kind={fig.variant as EkgKind}
+                      caption={fig.caption}
+                    />
+                  ) : null,
+                )}
+              </div>
             )}
 
             {/* Quick quiz on this note's material */}
