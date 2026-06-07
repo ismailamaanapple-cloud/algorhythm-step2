@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bannerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08080d"/>
+      <stop offset="50%" stop-color="#0f0f17"/>
+      <stop offset="100%" stop-color="#0a141d"/>
+    </linearGradient>
+    <radialGradient id="auroraA" cx="22%" cy="32%" r="40%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="auroraB" cx="82%" cy="68%" r="45%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="auroraC" cx="60%" cy="20%" r="35%">
+      <stop offset="0%" stop-color="#d946ef" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#d946ef" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="grad250" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cffafe"/>
+    </linearGradient>
+    <linearGradient id="gradPlus" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="50%" stop-color="#e879f9"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="gradTagline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#e879f9"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.05)"/>
+    </pattern>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1200" height="630" fill="url(#bannerBg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#auroraA)"/>
+  <rect width="1200" height="630" fill="url(#auroraB)"/>
+  <rect width="1200" height="630" fill="url(#auroraC)"/>
+
+  <!-- Top-left brand chip -->
+  <g transform="translate(72, 72)">
+    <rect x="0" y="0" width="112" height="112" rx="26" fill="rgba(15,15,25,0.85)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+    <text x="56" y="78" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="900" font-size="52" letter-spacing="-2" text-anchor="middle" fill="#fff">
+      250<tspan fill="url(#gradPlus)" dx="2">+</tspan>
+    </text>
+  </g>
+  <g transform="translate(208, 110)">
+    <text x="0" y="0" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="800" font-size="34" letter-spacing="-1" fill="#fff">250+</text>
+    <text x="0" y="32" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="600" font-size="14" letter-spacing="3" fill="rgba(255,255,255,0.45)">
+      STEP 2 CK · OMM · EKG · PHARM
+    </text>
+  </g>
+
+  <!-- Headline -->
+  <g transform="translate(72, 300)">
+    <text font-family="ui-sans-serif, system-ui, sans-serif" font-weight="900" font-size="118" letter-spacing="-5" fill="#fff">
+      <tspan x="0" y="0">Score a</tspan>
+      <tspan x="0" y="120" fill="url(#gradTagline)">250 or plus.</tspan>
+    </text>
+  </g>
+
+  <!-- Subhead -->
+  <text x="72" y="540" font-family="ui-sans-serif, system-ui, sans-serif" font-size="26" fill="rgba(255,255,255,0.7)">
+    Active-recall flashcards · case vignettes · high-yield notes
+  </text>
+
+  <!-- Stat chips bottom -->
+  <g transform="translate(72, 568)" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" letter-spacing="2" fill="rgba(255,255,255,0.55)">
+    <g>
+      <rect x="0" y="0" width="124" height="28" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+      <circle cx="14" cy="14" r="4" fill="#67e8f9"/>
+      <text x="26" y="19">170+ NOTES</text>
+    </g>
+    <g transform="translate(136, 0)">
+      <rect x="0" y="0" width="124" height="28" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+      <circle cx="14" cy="14" r="4" fill="#fbbf24"/>
+      <text x="26" y="19">280+ CASES</text>
+    </g>
+    <g transform="translate(272, 0)">
+      <rect x="0" y="0" width="156" height="28" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+      <circle cx="14" cy="14" r="4" fill="#c4b5fd"/>
+      <text x="26" y="19">90+ ALGORITHMS</text>
+    </g>
+    <g transform="translate(440, 0)">
+      <rect x="0" y="0" width="174" height="28" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+      <circle cx="14" cy="14" r="4" fill="#f0abfc"/>
+      <text x="26" y="19">SPACED REPETITION</text>
+    </g>
+  </g>
+
+  <!-- Domain bottom-right -->
+  <text x="1128" y="586" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="600" fill="#fff" text-anchor="end">
+    250plus.org
+  </text>
+</svg>

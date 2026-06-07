@@ -17,9 +17,45 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "250+ — Score a 250 on Step 2 CK",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://250plus.org",
+  ),
+  title: {
+    default: "250+ — Score a 250 on Step 2 CK",
+    template: "%s · 250+",
+  },
   description:
     "Spaced-repetition flashcards, case vignettes, and high-yield notes built to get you to a 250 or plus on Step 2 CK.",
+  applicationName: "250+",
+  keywords: [
+    "Step 2 CK",
+    "USMLE",
+    "COMLEX Level 2",
+    "medical school",
+    "spaced repetition",
+    "flashcards",
+    "clinical algorithms",
+    "EKG",
+    "pharmacology",
+    "OMM",
+  ],
+  authors: [{ name: "250+" }],
+  // Open Graph (Facebook, Slack, iMessage, LinkedIn, etc.)
+  openGraph: {
+    type: "website",
+    siteName: "250+",
+    title: "250+ — Score a 250 on Step 2 CK",
+    description:
+      "Spaced-repetition flashcards, case vignettes, and high-yield notes built to get you to a 250 or plus on Step 2 CK.",
+    url: "/",
+  },
+  // Twitter / X card
+  twitter: {
+    card: "summary_large_image",
+    title: "250+ — Score a 250 on Step 2 CK",
+    description:
+      "Spaced-repetition flashcards, case vignettes, and high-yield notes — built to get you to a 250 or plus.",
+  },
 };
 
 export default function RootLayout({
