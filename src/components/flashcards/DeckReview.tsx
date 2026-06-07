@@ -15,6 +15,7 @@ import {
 import { useDeck } from "@/hooks/useFlashcards";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import type { Grade } from "@/lib/srs";
+import BackLink from "@/components/BackLink";
 
 const GRADES: { grade: Grade; label: string; sub: string; color: string }[] = [
   { grade: "again", label: "Again", sub: "< 1d",   color: "from-rose-500 to-red-600" },
@@ -61,13 +62,13 @@ export default function DeckReview({
     <div className="mx-auto max-w-3xl px-6 py-10 md:py-14">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <Link
-          href={deckId ? "/flashcards" : "/flashcards"}
+        <BackLink
+          fallbackHref="/flashcards"
           className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition"
         >
           <ArrowLeft className="h-4 w-4" />
           All decks
-        </Link>
+        </BackLink>
         <div className="text-right">
           <div className="text-[10px] uppercase tracking-[0.22em] text-cyan-300/80">
             {category}

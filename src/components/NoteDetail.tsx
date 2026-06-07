@@ -25,6 +25,7 @@ import HighlightToolbar, {
 import QuickQuiz from "@/components/notes/QuickQuiz";
 import EkgStrip, { type EkgKind } from "@/components/EkgStrip";
 import PaywallGate from "@/components/paywall/PaywallGate";
+import BackLink from "@/components/BackLink";
 
 const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   1: "from-violet-500 to-purple-700",
@@ -267,13 +268,13 @@ export default function NoteDetail({ note }: { note: Note }) {
       {/* Header */}
       <div className="sticky top-0 z-30 backdrop-blur-md bg-black/50 border-b border-white/5">
         <div className="mx-auto max-w-5xl px-6 py-4 flex items-center gap-4">
-          <Link
-            href={note.category === "OMM" ? "/omm" : "/notes"}
+          <BackLink
+            fallbackHref={note.category === "OMM" ? "/omm" : "/notes"}
             className="inline-flex items-center gap-1.5 text-sm text-white/65 hover:text-white transition shrink-0"
           >
             <ArrowLeft className="h-4 w-4" />
             <span className="hidden sm:inline">{note.category === "OMM" ? "OMM" : "Notes"}</span>
-          </Link>
+          </BackLink>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/45">
               <span className={`h-1.5 w-1.5 rounded-full bg-gradient-to-br ${SESSION_COLORS[note.session]}`} />

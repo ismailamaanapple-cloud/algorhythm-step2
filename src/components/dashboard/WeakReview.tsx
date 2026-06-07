@@ -16,6 +16,7 @@ import { useDashboard, type WeakCard } from "@/hooks/useDashboard";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { reviewCard, newCardState, type Grade } from "@/lib/srs";
+import BackLink from "@/components/BackLink";
 
 const GRADES: { grade: Grade; label: string; sub: string; color: string }[] = [
   { grade: "again", label: "Again", sub: "< 1d",   color: "from-rose-500 to-red-600" },
@@ -137,13 +138,13 @@ export default function WeakReview() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-10 md:py-14">
       <div className="flex items-center justify-between mb-8">
-        <Link
-          href="/dashboard"
+        <BackLink
+          fallbackHref="/dashboard"
           className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition"
         >
           <ArrowLeft className="h-4 w-4" />
           Dashboard
-        </Link>
+        </BackLink>
         <div className="text-right">
           <div className="text-[10px] uppercase tracking-[0.22em] text-rose-300/80 inline-flex items-center gap-1.5">
             <Flame className="h-3 w-3" />

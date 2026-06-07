@@ -8,6 +8,7 @@ import type { Case, CaseOption } from "@/data/cases";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import PaywallGate from "@/components/paywall/PaywallGate";
+import BackLink from "@/components/BackLink";
 
 const shuffle = <T,>(arr: T[]): T[] => {
   const a = [...arr];
@@ -97,10 +98,10 @@ export default function CasePlayer({
       {/* Header */}
       <div className="sticky top-0 z-30 backdrop-blur-md bg-black/50 border-b border-white/5">
         <div className="mx-auto max-w-5xl px-6 py-4 flex items-center gap-4">
-          <Link href={mode === "deck" ? "/cases" : `/cases`} className="inline-flex items-center gap-1.5 text-sm text-white/65 hover:text-white transition shrink-0">
+          <BackLink fallbackHref="/cases" className="inline-flex items-center gap-1.5 text-sm text-white/65 hover:text-white transition shrink-0">
             <ArrowLeft className="h-4 w-4" />
             <span className="hidden sm:inline">Cases</span>
-          </Link>
+          </BackLink>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-white/45">
               <span>Session {current.session}</span>
