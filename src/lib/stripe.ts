@@ -10,8 +10,10 @@ export function getStripe(): Stripe | null {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return null;
   if (_stripe) return _stripe;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _stripe = new Stripe(key, { apiVersion: "2025-09-30.clover" as any });
+  // Use the SDK's bundled default API version; passing a stale one (we had
+  // 2025-09-30.clover here previously) breaks the SDK at runtime and the
+  // route ends up returning an empty 500.
+  _stripe = new Stripe(key);
   return _stripe;
 }
 

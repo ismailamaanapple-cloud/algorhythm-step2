@@ -27,6 +27,20 @@ export default function PricingClient() {
   const [err, setErr] = useState<string | null>(null);
 
   /**
+   * Read the response body as JSON, but tolerate empty/non-JSON bodies (which
+   * happen when a serverless function crashes before sending a response).
+   */
+  async function readJson(res: Response): Promise<{ url?: string; error?: string } | null> {
+    const text = await res.text();
+    if (!text) return null;
+    try {
+      return JSON.parse(text);
+    } catch {
+      return { error: text.slice(0, 200) };
+    }
+  }
+
+  /**
    * Browser session lives in localStorage (implicit flow) so server API
    * routes can't see it via cookies. We pull the access token from the
    * Supabase client and attach it as a Bearer header instead.
@@ -53,9 +67,11 @@ export default function PricingClient() {
         headers: { "Content-Type": "application/json", ...authHeader },
         body: JSON.stringify({ plan }),
       });
-      const json = await res.json();
-      if (!res.ok || !json.url) throw new Error(json.error || "Could not start checkout.");
-      window.location.href = json.url;
+      const json = await readJson(res);
+      if (!res.ok || !json?.url) {
+        throw new Error(json?.error || `Server returned ${res.status} ${res.statusText}.`);
+      }
+      window.location.href = json.url as string;
     } catch (e) {
       setErr(e instanceof Error ? e.message : "Something went wrong.");
       setBusy(null);
