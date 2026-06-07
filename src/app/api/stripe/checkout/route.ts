@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
 import { getStripe, STRIPE_CONFIG } from "@/lib/stripe";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getUserFromAuthHeader } from "@/lib/supabase/server-auth";
 
 /**
  * POST { plan: 'monthly' | 'yearly' }
- * Creates a Stripe Checkout session for the signed-in user and returns its URL.
+ *   Headers: Authorization: Bearer <supabase access_token>
+ *
+ * Creates a Stripe Checkout session for the signed-in user and returns its
+ * URL. We verify the user via Bearer token (not cookies) because our
+ * browser client uses implicit flow with localStorage session storage.
  */
 export async function POST(request: Request) {
   const stripe = getStripe();
@@ -14,15 +18,12 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
-  const supabase = await getSupabaseServerClient();
-  if (!supabase) {
-    return NextResponse.json({ error: "Auth not configured" }, { status: 503 });
-  }
-  const { data: userData } = await supabase.auth.getUser();
-  const user = userData?.user;
-  if (!user) {
+
+  const authed = await getUserFromAuthHeader(request);
+  if (!authed) {
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
   }
+  const { user, client: supabase } = authed;
 
   const body = (await request.json().catch(() => ({}))) as { plan?: string };
   const plan = body.plan === "yearly" ? "yearly" : "monthly";
@@ -35,19 +36,17 @@ export async function POST(request: Request) {
     );
   }
 
-  // Look up profile to reuse Stripe customer id if we already have one.
+  // Reuse the stripe customer id on the user's profile if we have one.
   const { data: profile } = await supabase
     .from("profiles")
-    .select("stripe_customer_id, email")
+    .select("stripe_customer_id")
     .eq("id", user.id)
     .maybeSingle();
-
   const customerId = (profile as { stripe_customer_id?: string | null } | null)
     ?.stripe_customer_id;
 
   const origin =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    new URL(request.url).origin;
+    process.env.NEXT_PUBLIC_SITE_URL ?? new URL(request.url).origin;
 
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",

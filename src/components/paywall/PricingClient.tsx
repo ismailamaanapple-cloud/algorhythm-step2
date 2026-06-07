@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Check, Sparkles, Loader2, Crown } from "lucide-react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { usePremium } from "@/hooks/usePremium";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 const FEATURES = [
   "Unlimited notes (158+ topics across every specialty)",
@@ -25,6 +26,19 @@ export default function PricingClient() {
   const [busy, setBusy] = useState<"monthly" | "yearly" | "portal" | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
+  /**
+   * Browser session lives in localStorage (implicit flow) so server API
+   * routes can't see it via cookies. We pull the access token from the
+   * Supabase client and attach it as a Bearer header instead.
+   */
+  async function getAuthHeader(): Promise<HeadersInit> {
+    const supabase = getSupabaseBrowserClient();
+    if (!supabase) return {};
+    const { data } = await supabase.auth.getSession();
+    const token = data.session?.access_token;
+    return token ? { Authorization: `Bearer ${token}` } : {};
+  }
+
   async function subscribe(plan: "monthly" | "yearly") {
     setErr(null);
     if (!user) {
@@ -33,9 +47,10 @@ export default function PricingClient() {
     }
     setBusy(plan);
     try {
+      const authHeader = await getAuthHeader();
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...authHeader },
         body: JSON.stringify({ plan }),
       });
       const json = await res.json();
@@ -55,7 +70,11 @@ export default function PricingClient() {
     }
     setBusy("portal");
     try {
-      const res = await fetch("/api/stripe/portal", { method: "POST" });
+      const authHeader = await getAuthHeader();
+      const res = await fetch("/api/stripe/portal", {
+        method: "POST",
+        headers: authHeader,
+      });
       const json = await res.json();
       if (!res.ok || !json.url) throw new Error(json.error || "Could not open portal.");
       window.location.href = json.url;

@@ -1,25 +1,23 @@
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getUserFromAuthHeader } from "@/lib/supabase/server-auth";
 
 /**
- * POST {} — opens the Stripe Billing Portal for the signed-in customer so
- * they can cancel, update card, swap monthly↔yearly, etc.
+ * POST {} with Authorization: Bearer <supabase access_token>
+ * Opens the Stripe Billing Portal for the signed-in customer so they can
+ * cancel, update card, swap monthly↔yearly, etc.
  */
 export async function POST(request: Request) {
   const stripe = getStripe();
   if (!stripe) {
     return NextResponse.json({ error: "Payments not configured" }, { status: 503 });
   }
-  const supabase = await getSupabaseServerClient();
-  if (!supabase) {
-    return NextResponse.json({ error: "Auth not configured" }, { status: 503 });
-  }
-  const { data: userData } = await supabase.auth.getUser();
-  const user = userData?.user;
-  if (!user) {
+
+  const authed = await getUserFromAuthHeader(request);
+  if (!authed) {
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
   }
+  const { user, client: supabase } = authed;
 
   const { data: profile } = await supabase
     .from("profiles")
