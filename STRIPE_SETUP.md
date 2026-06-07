@@ -24,12 +24,12 @@ In Stripe Dashboard → **Products** → **Add product** twice:
 **Product 1: 250+ Monthly**
 - Name: `250+ Monthly`
 - Description (optional): `Unlimited access to 250+ for one month.`
-- Pricing model: **Recurring** · `$9.99` · `Monthly`
+- Pricing model: **Recurring** · `$39.99` · `Monthly`
 - Click **Save product** → copy the **price ID** (looks like `price_1AbCdEf…`)
 
 **Product 2: 250+ Yearly**
 - Name: `250+ Yearly`
-- Pricing model: **Recurring** · `$79.00` · `Yearly`
+- Pricing model: **Recurring** · `$249.99` · `Yearly`
 - Save → copy the **price ID**
 
 ## 4. Get the API keys

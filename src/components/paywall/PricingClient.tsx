@@ -167,7 +167,7 @@ export default function PricingClient() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
         <PlanCard
           title="Monthly"
-          price="$9.99"
+          price="$39.99"
           per="per month"
           sub="Try it for a month."
           highlight={false}
@@ -182,11 +182,11 @@ export default function PricingClient() {
         />
         <PlanCard
           title="Yearly"
-          price="$79"
+          price="$249.99"
           per="per year"
           sub={
             <>
-              <span className="font-semibold text-white">Save $40</span> vs monthly · billed annually
+              <span className="font-semibold text-white">Save $230</span> (~48% off) vs monthly · billed annually
             </>
           }
           highlight
