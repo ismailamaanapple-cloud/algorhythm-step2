@@ -8548,6 +8548,794 @@ export const NOTES: Note[] = [
     relatedCaseIds: [],
   },
 
+  {
+    id: "pharm-autonomic",
+    session: 2,
+    category: "Pharmacology",
+    title: "Autonomic drugs — cholinergic, anticholinergic, sympathomimetic",
+    summary:
+      "Every ANS drug you need: muscarinic agonists, cholinesterase inhibitors, anticholinergics, sympathomimetics by receptor, α-blockers — plus the killer toxidromes.",
+    sections: [
+      {
+        heading: "Direct muscarinic (cholinergic) agonists",
+        bullets: [
+          "Bethanechol — urinary retention (post-op, neurogenic bladder); resistant to AChE so longer acting",
+          "Pilocarpine — open-angle glaucoma drops; oral for Sjögren xerostomia (stimulates salivation)",
+          "Carbachol — glaucoma; α & muscarinic",
+          "Methacholine — bronchoprovocation testing in asthma",
+          "Side effects (DUMBELS): Diarrhea, Urination, Miosis, Bradycardia, Bronchoconstriction, Emesis, Lacrimation, Salivation",
+          "Avoid in: asthma/COPD (bronchospasm), peptic ulcer (↑ acid), bradyarrhythmias",
+        ],
+      },
+      {
+        heading: "Cholinesterase inhibitors (indirect cholinergic)",
+        bullets: [
+          "Edrophonium — historic 'Tensilon test' for myasthenia; rapid onset, short duration",
+          "Neostigmine — myasthenia treatment; reversal of non-depolarizing NMB (with glycopyrrolate)",
+          "Pyridostigmine — chronic myasthenia gravis maintenance; longer acting",
+          "Physostigmine — CROSSES BBB; antidote for ANTICHOLINERGIC toxicity (only one for CNS effects); CONTRAINDICATED in TCA overdose (asystole)",
+          "Donepezil, rivastigmine, galantamine — Alzheimer dementia (cognitive slowing helps mildly)",
+          "Toxicity: cholinergic crisis (DUMBELS); ANTIDOTE = atropine + pralidoxime (if organophosphate)",
+        ],
+      },
+      {
+        heading: "Anticholinergics (muscarinic antagonists)",
+        bullets: [
+          "Atropine — bradycardia (1st line ACLS), pre-op antisialagogue, mushroom toxicity, organophosphate poisoning (titrate to dry secretions)",
+          "Scopolamine — motion sickness (transdermal); antiemetic",
+          "Ipratropium / tiotropium — COPD bronchodilator (no systemic anticholinergic effects with inhalation)",
+          "Oxybutynin, tolterodine, solifenacin — overactive bladder; cause dry mouth, urinary retention (paradoxical!)",
+          "Glycopyrrolate — antisialagogue (does NOT cross BBB so no CNS effects)",
+          "Benztropine, trihexyphenidyl — Parkinson tremor; drug-induced EPS (esp acute dystonia)",
+          "Diphenhydramine, hydroxyzine — antihistamines with anticholinergic effects",
+          "TCAs, antipsychotics — significant anticholinergic SE",
+          "Toxicity (anticholinergic): 'hot as a hare, dry as a bone, red as a beet, blind as a bat, mad as a hatter, full as a flask' — fever, dry skin, flushing, mydriasis, delirium, urinary retention",
+          "Antidote: PHYSOSTIGMINE (crosses BBB; AVOID in TCA overdose — sodium bicarb is the answer there)",
+        ],
+      },
+      {
+        heading: "Sympathomimetics — by receptor",
+        bullets: [
+          "α1 selective (phenylephrine): nasal decongestant, ↑ BP in shock; reflex bradycardia",
+          "α1 + α2 (clonidine, methyldopa): central α2 agonists ↓ sympathetic outflow → HTN, ADHD, withdrawal; rebound HTN if stopped abruptly",
+          "β1 selective (dobutamine): cardiogenic shock — ↑ contractility, mild ↑ HR",
+          "β2 selective (albuterol, terbutaline, salmeterol): bronchodilator; terbutaline tocolytic",
+          "Mixed α+β (epinephrine): anaphylaxis (first line), cardiac arrest, severe asthma",
+          "Mixed α+β (norepinephrine): septic shock first line — predominantly α1",
+          "Dopamine: low doses D1 (renal), medium β1 (inotropy), high α1 (vasoconstriction)",
+          "Isoproterenol: pure β-agonist; rarely used (refractory bradycardia, torsades)",
+          "Vasopressin (V1): refractory septic shock add-on",
+          "Cocaine, amphetamines: indirect sympathomimetics (release stored catecholamines)",
+        ],
+      },
+      {
+        heading: "α-blockers",
+        bullets: [
+          "α1 selective (-osin: prazosin, doxazosin, terazosin, tamsulosin, alfuzosin, silodosin)",
+          "BPH: tamsulosin (most α1A-selective, less orthostatic hypotension)",
+          "HTN: doxazosin/terazosin (not first-line — ALLHAT showed worse outcomes); useful in BPH + HTN combo",
+          "PTSD nightmares: prazosin",
+          "Pheochromocytoma pre-op: PHENOXYBENZAMINE (irreversible non-selective α) — must be given BEFORE β-blocker",
+          "Side effects: first-dose orthostatic hypotension (give at bedtime), reflex tachycardia, dizziness",
+          "Floppy iris syndrome: tamsulosin — alert ophtho before cataract surgery",
+        ],
+      },
+      {
+        heading: "Vasopressors quick reference (shock)",
+        bullets: [
+          "Septic shock: norepinephrine 1st line → add vasopressin → add epinephrine; add hydrocortisone if refractory",
+          "Cardiogenic shock: norepinephrine ± dobutamine (inotrope) ± milrinone",
+          "Anaphylactic shock: IM epinephrine 0.3–0.5 mg",
+          "Neurogenic shock (spinal): norepinephrine; may also need atropine for bradycardia",
+          "Hypovolemic shock: FLUIDS first, then norepinephrine if persistent hypotension",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Toxidromes side by side",
+        headers: ["Toxidrome", "Hallmarks → antidote"],
+        rows: [
+          ["Cholinergic (DUMBELS)", "Wet, miosis, bradycardia, bronchospasm → atropine + pralidoxime"],
+          ["Anticholinergic", "Hot/dry/red/blind/mad → physostigmine (NOT in TCA)"],
+          ["Sympathomimetic", "HTN, tachy, MYDRIASIS, DIAPHORETIC → benzos (NOT β-blockers)"],
+          ["Opioid", "Miosis, RR↓, AMS → naloxone"],
+          ["Sedative-hypnotic", "CNS depression, vitals OK → flumazenil (rare)"],
+        ],
+      },
+    ],
+    pearls: [
+      "Physostigmine for anticholinergic tox — but NEVER in TCA overdose (causes asystole; use IV bicarb)",
+      "Atropine + pralidoxime for organophosphate poisoning (give pralidoxime EARLY, before AChE 'aging')",
+      "Sympathomimetic vs anticholinergic — both have mydriasis + tachycardia + agitation. Differentiator: DIAPHORESIS (sympathomimetic is wet; anticholinergic is dry)",
+      "Pre-pheo surgery: α-blockade FIRST (phenoxybenzamine), THEN β-blocker — never reverse",
+      "Tamsulosin patients before cataract surgery → tell the ophthalmologist (floppy iris)",
+      "Benztropine quickly reverses acute dystonia from antipsychotics",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-antiarrhythmics",
+    session: 2,
+    category: "Pharmacology",
+    title: "Antiarrhythmics — Vaughan-Williams classes",
+    summary:
+      "Class I (Na channel), II (β-block), III (K channel), IV (Ca channel), plus adenosine, digoxin, ivabradine — when to pick what.",
+    sections: [
+      {
+        heading: "Class IA — moderate Na block + ↑ AP duration",
+        bullets: [
+          "Quinidine, procainamide, disopyramide",
+          "Procainamide: AFib with WPW (drug of choice; AVOID AV nodal blockers), stable monomorphic VT",
+          "Side effects: drug-induced LUPUS (procainamide, hydralazine, INH), torsades from QT prolongation, GI (quinidine), cinchonism",
+          "Quinidine: ↑ digoxin levels (compete for renal clearance)",
+        ],
+      },
+      {
+        heading: "Class IB — weak Na block + ↓ AP duration",
+        bullets: [
+          "Lidocaine, mexiletine",
+          "Affinity for ISCHEMIC tissue — post-MI VT/VF",
+          "Side effects: CNS (perioral numbness, seizures), don't cause torsades",
+          "Lidocaine for stable VT if amiodarone fails or contraindicated",
+        ],
+      },
+      {
+        heading: "Class IC — strong Na block, no AP change",
+        bullets: [
+          "Flecainide, propafenone",
+          "Indication: 'pill-in-pocket' for paroxysmal AFib WITHOUT structural heart disease",
+          "CONTRAINDICATED in structural heart disease (CAST trial — ↑ mortality post-MI)",
+          "Pre-treat with AV nodal blocker (β-blocker or CCB) before — flecainide can convert AFib to AFlutter with 1:1 conduction",
+        ],
+      },
+      {
+        heading: "Class II — β-blockers (covered separately)",
+        bullets: [
+          "Metoprolol, atenolol, esmolol (short-acting IV)",
+          "Rate control AFib, ↓ post-MI mortality, prevent SVT recurrence",
+          "Esmolol useful for ICU rate control (titratable)",
+        ],
+      },
+      {
+        heading: "Class III — K channel block (↑ AP duration)",
+        bullets: [
+          "Amiodarone — most useful broad-spectrum; effects all classes",
+          "Sotalol — also β-blocker; QT prolongation",
+          "Dofetilide, ibutilide — used for AFib cardioversion",
+          "Amiodarone SIDE EFFECTS: pulmonary fibrosis, hepatotoxicity, hypothyroidism OR hyperthyroidism (both!), corneal microdeposits, photosensitivity, blue-gray skin, neuropathy",
+          "Amiodarone INTERACTIONS: ↑ warfarin INR; ↑ digoxin level — halve doses",
+          "All Class III can cause TORSADES from QT prolongation (less with amiodarone uniquely)",
+        ],
+      },
+      {
+        heading: "Class IV — non-DHP CCBs",
+        bullets: [
+          "Verapamil, diltiazem",
+          "Rate control AFib, terminate SVT (alternative to adenosine)",
+          "AVOID in HFrEF (negative inotrope), AVOID in WPW with AFib (worsens)",
+          "Verapamil → constipation classic",
+        ],
+      },
+      {
+        heading: "Other / 'class V'",
+        bullets: [
+          "Adenosine: SVT (AVNRT/AVRT) — 6 mg IV push, then 12 mg if needed; very short half-life (~10 sec); CONTRAINDICATED in asthma (bronchospasm)",
+          "Digoxin: rate control AFib (esp HF or sedentary); narrow therapeutic index — toxicity = visual changes (yellow halos), AV block, arrhythmias; ANTIDOTE = digoxin-specific Fab",
+          "Ivabradine: ↓ HR via funny channel (SA node); HF with sinus rhythm + HR >70 despite max β-blocker",
+          "Magnesium: torsades de pointes treatment",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Pick the antiarrhythmic",
+        headers: ["Scenario", "First-line"],
+        rows: [
+          ["AFib with WPW", "Procainamide (AVOID AV nodal blockers)"],
+          ["Stable VT with structural heart disease", "Amiodarone"],
+          ["Post-MI VT", "Lidocaine (or amiodarone)"],
+          ["Torsades", "IV magnesium"],
+          ["SVT — pharmacologic conversion", "Adenosine"],
+          ["AFib rate control (HFrEF)", "Carvedilol or metoprolol succinate (not CCB)"],
+          ["AFib rate control (no HF)", "β-blocker or diltiazem"],
+          ["Paroxysmal AFib, no structural disease", "Flecainide (pill-in-pocket)"],
+          ["HF + sinus + HR > 70", "Ivabradine added to GDMT"],
+        ],
+      },
+    ],
+    pearls: [
+      "Amiodarone has effects in ALL 4 classes — that's why it's the broad-spectrum choice",
+      "Class IC (flecainide) NEVER in structural heart disease (CAST trial: ↑ mortality)",
+      "Procainamide for AFib + WPW; never adenosine/β-blocker/CCB/digoxin (preferentially conducts down accessory pathway → VF)",
+      "Adenosine + asthma = bronchospasm (CONTRAINDICATED). Use diltiazem or β-blocker for SVT instead",
+      "Digoxin toxicity: yellow halos, AV block, hyperK; treat with digoxin-specific Fab",
+      "Amiodarone pre-start workup: TSH, LFTs, CXR, PFTs (DLCO); monitor q6mo",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-parkinson",
+    session: 2,
+    category: "Pharmacology",
+    title: "Anti-Parkinsonian drugs",
+    summary:
+      "Levodopa-carbidopa, dopamine agonists, MAO-B and COMT inhibitors, anticholinergics — when each helps and what they break.",
+    sections: [
+      {
+        heading: "Levodopa-carbidopa (gold standard)",
+        bullets: [
+          "Levodopa crosses BBB → converted to dopamine in CNS",
+          "Carbidopa = peripheral decarboxylase inhibitor → prevents peripheral conversion → less nausea, more drug to brain",
+          "Best for the bradykinesia and rigidity components",
+          "After 5–10 years: 'on-off' fluctuations + dyskinesias (peak-dose chorea)",
+          "AVOID protein with doses (large amino acids compete for transport)",
+          "AVOID first-generation antipsychotics in Parkinson (D2 blockade worsens motor); use quetiapine or clozapine if psychosis",
+        ],
+      },
+      {
+        heading: "Dopamine agonists",
+        bullets: [
+          "Pramipexole, ropinirole — non-ergot; first-line in younger patients (delays levodopa)",
+          "Side effects: somnolence, impulse control (gambling, hypersexuality), peripheral edema, hallucinations",
+          "Ergot-derived (bromocriptine, pergolide) — rarely used (cardiac valve fibrosis)",
+          "Rotigotine — transdermal patch",
+          "Apomorphine — rescue for off-episodes",
+        ],
+      },
+      {
+        heading: "MAO-B inhibitors",
+        bullets: [
+          "Selegiline, rasagiline, safinamide",
+          "↑ dopamine in synapse by blocking breakdown",
+          "Mild monotherapy in early disease; adjunct to levodopa for off-episodes",
+          "Watch for serotonin syndrome with SSRIs, TCAs, tramadol, meperidine",
+          "Tyramine hypertensive crisis at higher doses (lose B-selectivity)",
+        ],
+      },
+      {
+        heading: "COMT inhibitors",
+        bullets: [
+          "Entacapone, tolcapone, opicapone",
+          "↑ levodopa half-life by blocking peripheral breakdown",
+          "Tolcapone: hepatotoxicity (need LFTs)",
+          "Always given WITH levodopa (no benefit alone)",
+        ],
+      },
+      {
+        heading: "Anticholinergics",
+        bullets: [
+          "Benztropine, trihexyphenidyl",
+          "Useful for TREMOR (especially young patients)",
+          "AVOID in elderly (confusion, urinary retention, dry mouth, falls)",
+          "Also rapidly reverses acute dystonia from antipsychotics",
+        ],
+      },
+      {
+        heading: "Amantadine",
+        bullets: [
+          "Mild antiparkinsonian + reduces levodopa-induced dyskinesias",
+          "NMDA antagonist + dopamine release",
+          "Side effects: livedo reticularis (mottled skin), ankle edema",
+        ],
+      },
+      {
+        heading: "Deep brain stimulation",
+        bullets: [
+          "Subthalamic nucleus or globus pallidus interna",
+          "For motor fluctuations + dyskinesias refractory to medications",
+          "Does NOT slow disease progression",
+          "Best candidate: good levodopa response, no dementia, intact cognition",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Parkinson drug picker",
+        headers: ["Patient", "Best initial"],
+        rows: [
+          ["Young (<65), motor symptoms", "Dopamine agonist (pramipexole)"],
+          ["Older or severe", "Levodopa-carbidopa"],
+          ["Tremor-predominant, young", "Anticholinergic (trihexyphenidyl)"],
+          ["Refractory dyskinesias", "Amantadine"],
+          ["End-of-dose 'off' periods", "COMT or MAO-B inhibitor add"],
+          ["Psychosis in Parkinson", "Quetiapine or clozapine (NEVER haloperidol)"],
+        ],
+      },
+    ],
+    pearls: [
+      "Antipsychotic + Parkinson patient → use QUETIAPINE or CLOZAPINE (low D2 affinity); NEVER haloperidol",
+      "Pramipexole/ropinirole impulse control disorders — ASK about gambling, hypersexuality",
+      "Selegiline + SSRI → serotonin syndrome risk",
+      "Anticholinergics for Parkinson are AVOIDED in elderly (worsens cognition, falls)",
+      "Stalevo = levodopa + carbidopa + entacapone (triple combo pill)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-heart-failure",
+    session: 2,
+    category: "Pharmacology",
+    title: "Heart failure — GDMT quadruple therapy",
+    summary:
+      "The four pillars for HFrEF, when to add SGLT2i and ARNI, when to use ivabradine/hydralazine-ISDN, what to AVOID.",
+    sections: [
+      {
+        heading: "Quadruple therapy for HFrEF (ALL benefit ASAP)",
+        bullets: [
+          "1. ARNI (sacubitril-valsartan) — preferred over ACE-I/ARB if tolerated; 36-hr washout from ACE-I before starting",
+          "2. β-blocker — carvedilol, metoprolol SUCCINATE, or bisoprolol (ONLY these three have mortality benefit)",
+          "3. MRA (spironolactone or eplerenone) — eplerenone for gynecomastia from spiro",
+          "4. SGLT2 inhibitor (empagliflozin, dapagliflozin) — works in both HFrEF and HFpEF, with or without diabetes",
+        ],
+      },
+      {
+        heading: "Second-tier add-ons",
+        bullets: [
+          "Hydralazine + isosorbide dinitrate — Black patients with HFrEF on optimized GDMT (A-HeFT) or ACE-I intolerant",
+          "Ivabradine — sinus rhythm + HR >70 on max β-blocker",
+          "Loop diuretic (furosemide) — symptom relief (volume overload); does NOT reduce mortality",
+          "Digoxin — reduces hospitalizations (not mortality) in symptomatic HFrEF",
+        ],
+      },
+      {
+        heading: "HFpEF",
+        bullets: [
+          "Less proven mortality benefit overall — manage comorbidities (HTN, AFib, OSA, obesity)",
+          "SGLT2i has mortality benefit in HFpEF (EMPEROR-Preserved, DELIVER) — NEW first-line",
+          "MRA modest benefit (TOPCAT post-hoc analysis)",
+          "Loop diuretics for congestion",
+          "AVOID excessive ↓ preload (HFpEF needs adequate filling)",
+        ],
+      },
+      {
+        heading: "Acute decompensated HF",
+        bullets: [
+          "LMNOP: Loop diuretics, Morphine (controversial), Nitrates, O₂, Position (upright)",
+          "Hypotensive cardiogenic shock → norepinephrine + dobutamine; consider milrinone if RV failure or pulmonary HTN",
+          "Refractory: mechanical support (IABP, Impella, VA-ECMO), then evaluate for LVAD or transplant",
+        ],
+      },
+      {
+        heading: "Drugs to AVOID in HFrEF",
+        bullets: [
+          "Non-DHP CCBs (verapamil, diltiazem) — negative inotropy",
+          "TZDs (pioglitazone, rosiglitazone) — fluid retention",
+          "NSAIDs — Na/water retention + ↓ ACE-I efficacy",
+          "Class IC antiarrhythmics (flecainide, propafenone) — proarrhythmia",
+          "Most antipsychotics, some chemo (anthracyclines, trastuzumab) — direct cardiotoxicity",
+        ],
+      },
+      {
+        heading: "Device therapy",
+        bullets: [
+          "ICD: EF ≤35% from ischemic cardiomyopathy ≥40 days post-MI OR non-ischemic on optimal med therapy ≥3 mo (NYHA II–III)",
+          "CRT (biventricular pacer): EF ≤35% + LBBB QRS ≥150 ms + NYHA II–III on optimal therapy",
+          "LVAD / heart transplant: end-stage refractory HF",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Mortality-benefit summary HFrEF",
+        headers: ["Drug class", "Effect"],
+        rows: [
+          ["ARNI > ACE-I > ARB", "↓ mortality, ↓ hospitalizations"],
+          ["β-blocker (carve/meto-S/biso)", "↓ mortality, ↓ hospitalizations"],
+          ["MRA (spiro, epler)", "↓ mortality"],
+          ["SGLT2 inhibitor", "↓ mortality, ↓ hospitalizations"],
+          ["Hydralazine + ISDN (Black pts)", "↓ mortality"],
+          ["Ivabradine", "↓ hospitalizations"],
+          ["Digoxin", "↓ hospitalizations only"],
+          ["Loop diuretic", "Symptoms only, no mortality benefit"],
+        ],
+      },
+    ],
+    pearls: [
+      "Only THREE β-blockers in HFrEF: carvedilol, metoprolol SUCCINATE (NOT tartrate), bisoprolol",
+      "ARNI replaces ACE-I/ARB — DON'T combine (angioedema risk)",
+      "SGLT2 inhibitors now first-line in BOTH HFrEF and HFpEF (mortality benefit in both)",
+      "Spironolactone → gynecomastia? switch to EPLERENONE (selective MR antagonist)",
+      "Sacubitril-valsartan: 36-hour washout after stopping ACE-I before starting (angioedema risk overlap)",
+      "Pioglitazone + HF = NO (fluid retention worsens HF)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-opioids",
+    session: 2,
+    category: "Pharmacology",
+    title: "Opioids & opioid use disorder",
+    summary:
+      "Equianalgesic dosing, naloxone, OUD treatment (methadone, buprenorphine, naltrexone), pregnancy considerations.",
+    sections: [
+      {
+        heading: "Common opioids — knowing the family",
+        bullets: [
+          "Morphine — gold standard; AVOID in renal failure (active metabolite M6G accumulates)",
+          "Hydromorphone (Dilaudid) — preferred in renal failure",
+          "Oxycodone — oral; combined with APAP (Percocet) or naloxone (Targin)",
+          "Fentanyl — IV or transdermal patch; 100× morphine potency; preferred in renal failure + hemodynamic instability",
+          "Methadone — long half-life; OUD maintenance; QT prolongation",
+          "Tramadol — weak μ agonist + SNRI activity; seizure risk; serotonin syndrome with SSRIs",
+          "Codeine — prodrug requiring CYP2D6 → morphine; AVOID in children + nursing mothers (CYP2D6 ultra-rapid metabolizers → infant death)",
+          "Meperidine — AVOID (toxic metabolite normeperidine → seizures); serotonin syndrome with MAOIs",
+        ],
+      },
+      {
+        heading: "Side effects (all opioids)",
+        bullets: [
+          "Respiratory depression — leading cause of overdose death",
+          "Sedation, AMS",
+          "Constipation (does NOT improve with tolerance) — schedule a bowel regimen (senna + docusate; methylnaltrexone for refractory)",
+          "Nausea, pruritus, urinary retention",
+          "Tolerance (need more drug for same effect) + physical dependence (withdrawal on discontinuation)",
+          "Hyperalgesia with long-term high-dose use (paradoxical pain ↑)",
+          "Miosis (pinpoint pupils)",
+        ],
+      },
+      {
+        heading: "Overdose & withdrawal",
+        bullets: [
+          "Overdose triad: miosis + respiratory depression + AMS",
+          "Antidote: NALOXONE — IV/IM/intranasal (Narcan); short half-life (30–90 min) → may need repeat dosing; PRECIPITATES withdrawal",
+          "Withdrawal: NOT life-threatening (vs alcohol/benzo which are) — nausea, diarrhea, mydriasis, piloerection ('cold turkey'), yawning, lacrimation, restless legs, anxiety, dilated pupils, muscle aches",
+          "Treat withdrawal: clonidine (autonomic), loperamide (diarrhea), ondansetron (nausea), NSAIDs (myalgia)",
+          "Neonatal abstinence syndrome (NAS): irritability, high-pitched cry, hypertonia, seizures — treat with MORPHINE or methadone taper",
+        ],
+      },
+      {
+        heading: "Opioid use disorder treatment",
+        bullets: [
+          "Methadone — full μ agonist; reduces craving; only at federally certified opioid treatment programs",
+          "Buprenorphine — PARTIAL μ agonist; ceiling effect on respiratory depression (safer); office-based prescribing (X-waiver no longer required)",
+          "Combination buprenorphine-naloxone (Suboxone): if injected, naloxone precipitates withdrawal (deterrent)",
+          "Naltrexone — μ ANTAGONIST; oral or monthly IM (Vivitrol); requires 7–10 day opioid-free period (precipitates withdrawal if not)",
+          "Naloxone for take-home (lay reversal) — co-prescribe for any high-risk patient",
+          "Pregnancy + OUD: methadone or buprenorphine maintenance; NEVER detox during pregnancy (relapse + miscarriage risk)",
+        ],
+      },
+      {
+        heading: "Equianalgesic doses (oral, approximate)",
+        bullets: [
+          "Morphine 30 mg PO = oxycodone 20 mg PO = hydrocodone 30 mg = hydromorphone 7.5 mg",
+          "Morphine 10 mg IV = morphine 30 mg PO (3:1 oral-to-IV ratio)",
+          "Fentanyl: 25 µg/hr patch ≈ morphine 60 mg/day PO (for chronic use)",
+          "Always reduce by 25–50% when switching drugs (incomplete cross-tolerance)",
+        ],
+      },
+    ],
+    pearls: [
+      "Codeine forbidden in kids + breastfeeding (CYP2D6 ultra-rapid metabolizer → fatal infant respiratory depression)",
+      "Meperidine OUT — toxic metabolite normeperidine causes seizures; serotonin syndrome with MAOIs",
+      "Morphine + renal failure → switch to hydromorphone or fentanyl (no active metabolites)",
+      "Buprenorphine: partial agonist with ceiling on respiratory depression — SAFER than methadone for outpatient OUD",
+      "Naltrexone needs 7–10 days opioid-free before starting (else precipitated withdrawal)",
+      "Pregnant + OUD → methadone or buprenorphine; do NOT detox in pregnancy",
+      "Tramadol = SNRI + opioid; AVOID with SSRIs (serotonin syndrome) + epilepsy (seizures)",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-nsaids-analgesics",
+    session: 2,
+    category: "Pharmacology",
+    title: "NSAIDs, acetaminophen & non-opioid analgesics",
+    summary:
+      "Mechanism (COX-1 vs COX-2), GI/renal/cardiac risks, aspirin dosing tiers, APAP toxicity, adjuvant analgesics.",
+    sections: [
+      {
+        heading: "NSAID classes",
+        bullets: [
+          "Non-selective (ibuprofen, naproxen, indomethacin, diclofenac, ketorolac) — block COX-1 + COX-2",
+          "COX-2 selective (celecoxib) — less GI but ↑ cardiovascular risk (rofecoxib pulled from market)",
+          "Aspirin: irreversible COX inhibitor (rest of NSAIDs reversible)",
+        ],
+      },
+      {
+        heading: "Aspirin tiers by dose",
+        bullets: [
+          "81 mg/day — antiplatelet (cardio-protective in secondary prevention; primary controversial)",
+          "325–650 mg PRN — analgesic / antipyretic",
+          "650 mg q4h or higher — anti-inflammatory (rheum diseases historically)",
+          "Acute MI: 325 mg CHEWED at presentation",
+          "TIA / stroke: 81–325 mg/day (after exclude hemorrhage)",
+        ],
+      },
+      {
+        heading: "Side effects of NSAIDs",
+        bullets: [
+          "GI: ulcer, bleeding, perforation — ↑↑ with steroid co-use, anticoagulation, age >60, prior PUD",
+          "PPI prophylaxis if ≥2 GI risk factors",
+          "Renal: AKI (vasoconstriction of afferent arteriole), interstitial nephritis, papillary necrosis",
+          "↓ ACE-I/ARB/diuretic efficacy + ↑ BP",
+          "Cardiovascular: ↑ MI/stroke risk (except aspirin) — esp diclofenac, COX-2 selective",
+          "Bronchospasm in aspirin-sensitive asthma (Samter triad: asthma + nasal polyps + ASA sensitivity)",
+          "Reye syndrome — AVOID aspirin in viral illness in children",
+          "Bleeding (irreversible with aspirin × 7–10 days; reversible with others)",
+          "Premature closure of ductus arteriosus in pregnancy after 30 wks (avoid in 3rd trimester)",
+        ],
+      },
+      {
+        heading: "Acetaminophen (APAP)",
+        bullets: [
+          "Mechanism: weak central COX inhibitor + other actions",
+          "GOOD: no GI/renal toxicity, no antiplatelet effect, safe in pregnancy",
+          "BAD: hepatotoxic in overdose (>4 g/day in healthy adults; less in alcoholic/malnourished)",
+          "Antidote: N-acetylcysteine (NAC); follow Rumack-Matthew nomogram",
+          "Phases: 1 (0–24 hr) asymptomatic, 2 (24–72) RUQ pain + ↑ AST/ALT, 3 (72–96) fulminant hepatic failure",
+          "Combined products (Percocet, Vicodin) — watch APAP totals to avoid hepatotoxicity",
+        ],
+      },
+      {
+        heading: "Adjuvant analgesics (neuropathic pain, chronic pain)",
+        bullets: [
+          "Gabapentin, pregabalin — diabetic neuropathy, postherpetic neuralgia; weight gain, sedation",
+          "TCAs (amitriptyline, nortriptyline) — neuropathic pain, migraine prophylaxis; anticholinergic",
+          "SNRIs (duloxetine, venlafaxine) — fibromyalgia, diabetic neuropathy, depression with pain",
+          "Topical lidocaine — postherpetic neuralgia, focal neuropathy",
+          "Topical capsaicin — burning sensation initially, then desensitization",
+          "Carbamazepine — trigeminal neuralgia (first-line)",
+        ],
+      },
+    ],
+    pearls: [
+      "Aspirin + viral illness in kids = Reye syndrome → use ibuprofen or APAP instead",
+      "NSAID + ACE-I + diuretic = 'triple whammy' AKI risk",
+      "Ketorolac max 5 days (renal + GI risk with longer use)",
+      "Aspirin-exacerbated respiratory disease (Samter triad): aspirin + asthma + nasal polyps → use leukotriene modifiers or biologics",
+      "APAP overdose: NAC before phase 3 (72 hr) prevents most hepatotoxicity",
+      "Carbamazepine for trigeminal neuralgia (NOT NSAIDs)",
+      "Pregnancy + NSAIDs after 30 weeks = premature PDA closure + oligohydramnios — use APAP",
+    ],
+    relatedCaseIds: ["acetaminophen-tox"],
+  },
+
+  {
+    id: "pharm-immunosuppressants",
+    session: 2,
+    category: "Pharmacology",
+    title: "Immunosuppressants (transplant + autoimmune)",
+    summary:
+      "Calcineurin inhibitors, mTOR, antimetabolites, biologics, and the gotchas (nephrotox, infections, cancers).",
+    sections: [
+      {
+        heading: "Calcineurin inhibitors",
+        bullets: [
+          "Tacrolimus (Prograf) — most used post-transplant; inhibits IL-2 transcription",
+          "Cyclosporine — older; same MOA",
+          "BOTH: nephrotoxic (key SE — monitor Cr + drug levels), HTN, hyperglycemia, neurotoxicity (tremor)",
+          "Cyclosporine specific: gingival hyperplasia + hirsutism (cosmetic clue)",
+          "Tacrolimus specific: alopecia, more DM",
+          "Many drug interactions via CYP3A4 — azoles, macrolides, grapefruit ↑ levels; rifampin/phenytoin ↓",
+        ],
+      },
+      {
+        heading: "mTOR inhibitors",
+        bullets: [
+          "Sirolimus (rapamycin), everolimus",
+          "Used to spare nephrotoxic calcineurin inhibitors",
+          "Side effects: impaired wound healing (AVOID early post-op), hyperlipidemia, pneumonitis, anemia",
+        ],
+      },
+      {
+        heading: "Antimetabolites",
+        bullets: [
+          "Mycophenolate (MMF) — inhibits purine synthesis in lymphocytes; bone marrow suppression, GI",
+          "Azathioprine — converted to 6-MP; AVOID combination with allopurinol (↑ levels → toxicity) — reduce dose 75%",
+          "Test TPMT before starting azathioprine (deficiency → severe myelosuppression)",
+          "Methotrexate — RA, psoriasis, Crohn; folate antagonist; hepatotoxicity + pneumonitis; teratogen (categ X)",
+        ],
+      },
+      {
+        heading: "Corticosteroids",
+        bullets: [
+          "Mainstay for rejection bursts + chronic maintenance (slowly taper)",
+          "Long-term complications covered separately (osteoporosis, infection, DM, etc.)",
+        ],
+      },
+      {
+        heading: "Biologics",
+        bullets: [
+          "Basiliximab — IL-2 receptor antagonist; induction therapy at time of transplant",
+          "Anti-thymocyte globulin (ATG) — depletes T cells; used in induction or acute rejection",
+          "Rituximab (anti-CD20) — RA, lymphomas, transplant rejection; PML risk, screen for HepB reactivation",
+          "TNF inhibitors (infliximab, adalimumab, etanercept) — RA, psoriasis, IBD; reactivation of TB (screen with IGRA/PPD), HepB, fungal infections; cancer (lymphoma) risk slight ↑",
+          "Eculizumab (anti-C5) — paroxysmal nocturnal hemoglobinuria, atypical HUS; ↑ meningococcal infection (vaccinate first)",
+          "IL-17 / IL-23 inhibitors (secukinumab, ustekinumab) — psoriasis",
+          "JAK inhibitors (tofacitinib, baricitinib) — RA, alopecia areata; ↑ thrombosis, infections",
+        ],
+      },
+      {
+        heading: "Long-term risks in immunosuppressed",
+        bullets: [
+          "Infections: BK virus (kidney transplant nephropathy), CMV (give prophylaxis 3–6 mo post-transplant), PJP (TMP-SMX prophylaxis), reactivation TB",
+          "Cancers: skin (esp SCC — sun protection!), PTLD (post-transplant lymphoproliferative disorder — often EBV driven)",
+          "Vaccines: NO LIVE vaccines while immunosuppressed; ensure complete before transplant",
+        ],
+      },
+    ],
+    tables: [
+      {
+        caption: "Pre-biologic safety screen",
+        headers: ["Biologic", "Screen for"],
+        rows: [
+          ["TNF inhibitors", "TB (IGRA/PPD + CXR), HepB, HIV"],
+          ["Rituximab", "HepB, prior infections"],
+          ["Eculizumab", "Meningococcal vaccine"],
+          ["Any biologic", "Check all vaccinations + update before"],
+        ],
+      },
+    ],
+    pearls: [
+      "Tacrolimus / cyclosporine = NEPHROTOXIC (the #1 SE to know)",
+      "Allopurinol + azathioprine → toxicity (xanthine oxidase blocked); reduce AZA 75%",
+      "Check TPMT before AZA, NUDT15 in Asian patients",
+      "TNF inhibitor pre-screen: TB + HepB + HIV (latent TB reactivation classic)",
+      "Eculizumab → vaccinate against MENINGOCOCCUS before starting (↑↑ risk)",
+      "Sirolimus → impaired WOUND HEALING; avoid first 3 weeks post-surgery",
+      "Cyclosporine → gingival hyperplasia + hirsutism (cosmetic differentiator)",
+      "Live vaccines NEVER in immunosuppressed; complete before transplant",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-migraine",
+    session: 2,
+    category: "Pharmacology",
+    title: "Migraine pharmacology — abortive & prophylactic",
+    summary:
+      "Triptans, ergots, CGRP antagonists, gepants, ditans — and when to switch from abortive to prophylactic.",
+    sections: [
+      {
+        heading: "Abortive (acute attack)",
+        bullets: [
+          "Step 1: NSAIDs (ibuprofen, naproxen) ± APAP — mild attacks",
+          "Step 2: Triptans (sumatriptan, rizatriptan, eletriptan, etc.) — moderate-severe",
+          "Step 3: Ergots (DHE) — rare, second-line",
+          "Step 4: Gepants (rimegepant, ubrogepant) — CGRP receptor antagonists; safe in CAD/uncontrolled HTN",
+          "Step 5: Lasmiditan (ditan) — 5-HT1F agonist; no vasoconstriction; sedation, can't drive 8 hr",
+          "Antiemetics (metoclopramide, prochlorperazine) — synergize with migraine treatment",
+          "AVOID opioids and butalbital — risk of medication overuse headache + addiction",
+        ],
+      },
+      {
+        heading: "Triptan details",
+        bullets: [
+          "Mechanism: 5-HT1B/1D agonist → vasoconstriction + ↓ inflammatory neuropeptides",
+          "CONTRAINDICATIONS: CAD, prior MI, stroke, uncontrolled HTN, hemiplegic / basilar migraine, pregnancy (avoid)",
+          "Side effects: chest tightness ('triptan chest'), flushing, dizziness",
+          "Don't combine with ergots or other triptans within 24 hr",
+          "Don't take >10 days/month → medication overuse headache",
+          "Combinations: sumatriptan-naproxen (Treximet) — synergy",
+        ],
+      },
+      {
+        heading: "CGRP-targeting drugs",
+        bullets: [
+          "Gepants (rimegepant, ubrogepant): oral, abortive — safe in vascular disease (no vasoconstriction)",
+          "CGRP monoclonal antibodies (erenumab, fremanezumab, galcanezumab, eptinezumab): IV/SC monthly-quarterly; PROPHYLAXIS",
+          "Atogepant: oral PROPHYLAXIS gepant",
+          "Side effects: constipation (erenumab), injection-site reactions; well tolerated overall",
+        ],
+      },
+      {
+        heading: "Prophylactic (≥4 attacks/month or disabling)",
+        bullets: [
+          "β-blockers — PROPRANOLOL or metoprolol (best evidence)",
+          "Anti-epileptics — TOPIRAMATE (weight loss bonus; consider in obese), valproate (teratogen — not in women of childbearing age)",
+          "TCAs — AMITRIPTYLINE (good for sleep + tension headache + migraine combo)",
+          "CGRP mAb — erenumab, etc. (newer, expensive, very effective)",
+          "Botulinum toxin (Botox) — chronic migraine (≥15 days/month)",
+          "Magnesium 400–600 mg/day — often added as adjunct",
+        ],
+      },
+      {
+        heading: "Special migraine populations",
+        bullets: [
+          "Pregnancy: APAP first; metoclopramide for nausea; avoid triptans (caution; sumatriptan safest of class); avoid valproate, topiramate, NSAIDs after 30 wks",
+          "Menstrual migraine: triptan or naproxen ×3–7 days starting 2–3 days before period",
+          "Status migrainosus (>72 hr): IV fluids + IV antiemetics + NSAID + DHE; consider steroids",
+          "Hemiplegic / basilar migraine: NO triptans (vasoconstriction risk)",
+        ],
+      },
+    ],
+    pearls: [
+      "Triptans CONTRAINDICATED in CAD, stroke, uncontrolled HTN, hemiplegic/basilar migraine, pregnancy",
+      "Sumatriptan-naproxen combo > either alone (synergy)",
+      "Medication overuse headache: triptan/opioid/butalbital use >10 days/mo → vicious cycle",
+      "Prophylaxis trigger: ≥4 attacks/month or disabling attacks",
+      "Topiramate prophylaxis = weight LOSS bonus; valproate = AVOID in women of childbearing age (NTD)",
+      "Botox for CHRONIC migraine (≥15 days/month × 3 months)",
+      "CGRP mAbs (-mab) are prophylactic; gepants/ditans/triptans are abortive",
+    ],
+    relatedCaseIds: [],
+  },
+
+  {
+    id: "pharm-osteoporosis",
+    session: 2,
+    category: "Pharmacology",
+    title: "Osteoporosis drugs",
+    summary:
+      "Bisphosphonates, denosumab, anabolics (teriparatide, romosozumab), SERM, HRT, calcium/vit D — when to use each.",
+    sections: [
+      {
+        heading: "When to treat",
+        bullets: [
+          "DEXA T-score ≤ -2.5 (lumbar spine, total hip, or femoral neck)",
+          "Hip or vertebral fracture (regardless of T-score)",
+          "T-score -1.0 to -2.5 (osteopenia) WITH 10-yr FRAX risk: ≥3% hip OR ≥20% major osteoporotic fracture",
+          "Long-term glucocorticoids (≥5 mg/day prednisone × ≥3 mo)",
+        ],
+      },
+      {
+        heading: "Bisphosphonates (first-line)",
+        bullets: [
+          "Oral: alendronate (weekly), risedronate (weekly), ibandronate (monthly)",
+          "IV: zoledronic acid (yearly) — for noncompliant or GERD",
+          "Mechanism: bind to bone hydroxyapatite → inhibit osteoclast",
+          "Take with full glass of water, sit upright × 30 min, empty stomach — prevents esophagitis",
+          "Side effects: esophagitis (oral), flu-like with first IV dose, atypical FEMUR fracture (long use), OSTEONECROSIS of the JAW (esp dental work), hypocalcemia",
+          "Drug holiday after 5 years (oral) or 3 years (IV) in low-risk patients",
+        ],
+      },
+      {
+        heading: "Denosumab (RANK-L inhibitor)",
+        bullets: [
+          "SC every 6 months",
+          "Mechanism: monoclonal antibody to RANK-L → ↓ osteoclast formation",
+          "Side effects: hypocalcemia (replete first), ONJ, atypical fractures, ↑ infections, REBOUND FRACTURES if discontinued (must transition to bisphosphonate)",
+          "Used in CKD where bisphosphonates contraindicated",
+        ],
+      },
+      {
+        heading: "Anabolic agents (build bone)",
+        bullets: [
+          "Teriparatide (PTH 1–34): SC daily × max 2 years — recombinant PTH; sequential before/after antiresorptive",
+          "Abaloparatide: similar to teriparatide; PTHrP analog",
+          "Romosozumab (anti-sclerostin): SC monthly × 12 mo; ↑ formation + ↓ resorption; risk: cardiovascular events (avoid in recent MI/stroke)",
+          "ALL anabolics: indicated for severe osteoporosis or failure of bisphosphonates",
+          "Always FOLLOW with bisphosphonate or denosumab to preserve gains",
+        ],
+      },
+      {
+        heading: "Other agents",
+        bullets: [
+          "Raloxifene (SERM): partial estrogen agonist on bone, antagonist on breast; ↓ vertebral fractures + ↓ breast CA; ↑ VTE, hot flashes",
+          "Estrogen / HRT — last-line; CV/breast CA risks",
+          "Calcium 1000–1200 mg/day + vit D 800–1000 IU — foundation for all",
+          "Calcitonin (rare) — for acute pain from vertebral compression fractures",
+        ],
+      },
+      {
+        heading: "Glucocorticoid-induced osteoporosis",
+        bullets: [
+          "Prednisone ≥5 mg/day × ≥3 mo → DEXA, calcium, vit D, consider bisphosphonate",
+          "Highest fracture risk in first 3–6 months of steroid use",
+          "Strong evidence for bisphosphonate in this population — start early",
+        ],
+      },
+    ],
+    pearls: [
+      "Bisphosphonates: full glass of water, sit upright × 30 min, empty stomach (esophagitis prevention)",
+      "Osteonecrosis of the jaw — get dental clearance BEFORE starting bisphosphonate or denosumab",
+      "Denosumab DC → rebound fractures within 1 year — MUST transition to bisphosphonate",
+      "Teriparatide max 2 years (animal osteosarcoma signal) — follow with antiresorptive",
+      "Atypical femur fracture: thigh pain with long-term bisphosphonate use → image, consider drug holiday",
+      "Steroid users (≥5 mg prednisone ≥3 mo): start bisphosphonate early — high fracture risk first 3–6 mo",
+      "Romosozumab CV risk: AVOID in recent MI or stroke",
+      "Raloxifene: ↓ vertebral fx AND ↓ breast cancer; ↑ VTE",
+    ],
+    relatedCaseIds: [],
+  },
+
   // ═══════════════════════════════════════════════════════════════════
   // EKG — HIGH-YIELD PATTERN RECOGNITION
   // ═══════════════════════════════════════════════════════════════════
