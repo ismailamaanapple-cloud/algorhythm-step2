@@ -10,6 +10,7 @@ import {
   ChevronRight,
   BookOpen,
   Stethoscope,
+  Library,
 } from "lucide-react";
 import {
   decksByCategory,
@@ -47,7 +48,7 @@ export default function FlashcardsLibrary() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="pt-10 md:pt-16 mb-10"
+        className="pt-10 md:pt-16 mb-8"
       >
         <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-cyan-200 mb-4">
           <Sparkles className="h-3 w-3" />
@@ -57,9 +58,10 @@ export default function FlashcardsLibrary() {
           Flashcards
         </h1>
         <p className="text-white/65 text-base md:text-lg max-w-3xl leading-relaxed">
-          Vignette-first cards: read the stem, name the diagnosis, see the next
-          step. Plus high-yield rules and presentation-to-diagnosis tables —
-          spaced-repetition keeps the right ones in front of you.
+          Spaced-repetition cards distilled from every note, case, and table on
+          250+. Pick a specialty mega-deck for breadth, a case-vignette deck for
+          board pattern recognition, or a specific note&apos;s deck to drill a
+          single topic.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
@@ -80,6 +82,31 @@ export default function FlashcardsLibrary() {
           )}
         </div>
       </motion.div>
+
+      {/* Legend */}
+      <div className="mb-6 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.18em]">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-400/15 text-violet-200 px-2.5 py-1">
+          <Library className="h-3 w-3" />
+          Mega
+          <span className="text-violet-100/65 ml-1 normal-case tracking-normal text-[11px]">
+            — everything in a specialty
+          </span>
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-400/15 text-amber-200 px-2.5 py-1">
+          <Stethoscope className="h-3 w-3" />
+          Cases
+          <span className="text-amber-100/65 ml-1 normal-case tracking-normal text-[11px]">
+            — vignettes only
+          </span>
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-cyan-400/15 text-cyan-200 px-2.5 py-1">
+          <BookOpen className="h-3 w-3" />
+          Note
+          <span className="text-cyan-100/65 ml-1 normal-case tracking-normal text-[11px]">
+            — single-topic deep cuts
+          </span>
+        </span>
+      </div>
 
       {/* Search */}
       <div className="relative mb-8 max-w-md">
@@ -113,31 +140,22 @@ export default function FlashcardsLibrary() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {group.decks.map((d) => {
-                const isCase = d.source === "case";
+                const meta = deckMeta(d.source);
                 return (
                   <Link
                     key={d.id}
                     href={`/flashcards/${d.id}`}
-                    className={`group glass rounded-2xl p-5 transition border ${
-                      isCase
-                        ? "border-amber-300/20 hover:border-amber-300/40 hover:bg-amber-300/[0.04]"
-                        : "border-transparent hover:border-cyan-300/30 hover:bg-white/[0.05]"
-                    }`}
+                    className={`group glass rounded-2xl p-5 transition border ${meta.border}`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5 mb-1.5">
-                          {isCase ? (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-amber-400/15 text-amber-200 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.18em]">
-                              <Stethoscope className="h-2.5 w-2.5" />
-                              Cases
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-cyan-400/15 text-cyan-200 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.18em]">
-                              <BookOpen className="h-2.5 w-2.5" />
-                              Notes
-                            </span>
-                          )}
+                          <span
+                            className={`inline-flex items-center gap-1 rounded-full ${meta.badgeBg} ${meta.badgeText} px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.18em]`}
+                          >
+                            {meta.icon}
+                            {meta.label}
+                          </span>
                         </div>
                         <div className="text-sm font-semibold tracking-tight mb-1 line-clamp-2">
                           {d.title}
@@ -157,4 +175,33 @@ export default function FlashcardsLibrary() {
       </div>
     </div>
   );
+}
+
+function deckMeta(source: "case" | "note" | "category-mega" | "case-mega") {
+  if (source === "category-mega") {
+    return {
+      icon: <Library className="h-2.5 w-2.5" />,
+      label: "Mega",
+      badgeBg: "bg-violet-400/15",
+      badgeText: "text-violet-200",
+      border: "border-violet-300/20 hover:border-violet-300/45 hover:bg-violet-300/[0.04]",
+    };
+  }
+  if (source === "case") {
+    return {
+      icon: <Stethoscope className="h-2.5 w-2.5" />,
+      label: "Cases",
+      badgeBg: "bg-amber-400/15",
+      badgeText: "text-amber-200",
+      border: "border-amber-300/20 hover:border-amber-300/45 hover:bg-amber-300/[0.04]",
+    };
+  }
+  // note
+  return {
+    icon: <BookOpen className="h-2.5 w-2.5" />,
+    label: "Note",
+    badgeBg: "bg-cyan-400/15",
+    badgeText: "text-cyan-200",
+    border: "border-transparent hover:border-cyan-300/30 hover:bg-white/[0.05]",
+  };
 }
