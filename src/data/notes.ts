@@ -14,13 +14,13 @@ export type NoteTable = {
   rows: string[][];
 };
 
-/** A visual figure to embed in a note. Currently only EKG strips. */
+/** A visual figure to embed in a note.
+ *  - "ekg":    rhythm strip (variants like "afib", "stemi-inferior")
+ *  - "figure": general medical diagrams — curves, anatomy, territories.
+ *              See src/components/figures/Figure.tsx for the variant catalog. */
 export type NoteFigure = {
-  /** Kind of figure — drives which component renders it. */
-  kind: "ekg";
-  /** Specific identifier (e.g. an EkgKind like "afib", "stemi-inferior"). */
+  kind: "ekg" | "figure";
   variant: string;
-  /** Optional override caption. */
   caption?: string;
 };
 
@@ -263,6 +263,7 @@ export const NOTES: Note[] = [
         ],
       },
     ],
+    figures: [{ kind: "figure", variant: "stroke-territory" }],
     relatedCaseIds: ["amaurosis-fugax", "ischemic-stroke-window"],
   },
 
@@ -1255,6 +1256,7 @@ export const NOTES: Note[] = [
         ],
       },
     ],
+    figures: [{ kind: "figure", variant: "frank-starling" }],
     relatedCaseIds: ["hfref-mortality", "viral-myocarditis", "trastuzumab-cardiotoxicity", "restrictive-cm", "hocm-asymptomatic"],
   },
 
@@ -1428,6 +1430,7 @@ export const NOTES: Note[] = [
         ],
       },
     ],
+    figures: [{ kind: "figure", variant: "heart-auscultation" }],
     relatedCaseIds: ["aortic-stenosis", "marfan-aortic"],
   },
 
@@ -1517,6 +1520,7 @@ export const NOTES: Note[] = [
       "Methacholine challenge: ↓FEV1 ≥20% confirms asthma when reversibility test equivocal",
       "Severe asthma exacerbation + rising PCO₂ in hypoxic patient = ominous, anticipate respiratory failure",
     ],
+    figures: [{ kind: "figure", variant: "lung-volumes" }],
   },
 
   {
@@ -1579,6 +1583,7 @@ export const NOTES: Note[] = [
         ],
       },
     ],
+    figures: [{ kind: "figure", variant: "o2-dissociation" }],
     relatedCaseIds: ["asthma-dx", "severe-asthma-exac", "aerd", "aat-deficiency", "asthma-exac"],
   },
 
@@ -9399,6 +9404,7 @@ export const NOTES: Note[] = [
       "Wellens' syndrome: biphasic or deep symmetric T inversion V2–V3 → critical LAD stenosis, even if asymptomatic",
     ],
     figures: [
+      { kind: "figure", variant: "coronary-territory" },
       { kind: "ekg", variant: "normal-sinus" },
       { kind: "ekg", variant: "stemi-inferior" },
     ],

@@ -24,6 +24,7 @@ import HighlightToolbar, {
 } from "@/components/highlights/HighlightToolbar";
 import QuickQuiz from "@/components/notes/QuickQuiz";
 import EkgStrip, { type EkgKind } from "@/components/EkgStrip";
+import Figure, { type FigureVariant } from "@/components/figures/Figure";
 import PaywallGate from "@/components/paywall/PaywallGate";
 import BackLink from "@/components/BackLink";
 
@@ -445,18 +446,30 @@ export default function NoteDetail({ note }: { note: Note }) {
               </motion.div>
             )}
 
-            {/* Figures — currently rhythm strips for EKG notes */}
+            {/* Figures — EKG strips + medical diagrams */}
             {note.figures && note.figures.length > 0 && (
               <div className="space-y-3">
-                {note.figures.map((fig, fi) =>
-                  fig.kind === "ekg" ? (
-                    <EkgStrip
-                      key={fi}
-                      kind={fig.variant as EkgKind}
-                      caption={fig.caption}
-                    />
-                  ) : null,
-                )}
+                {note.figures.map((fig, fi) => {
+                  if (fig.kind === "ekg") {
+                    return (
+                      <EkgStrip
+                        key={fi}
+                        kind={fig.variant as EkgKind}
+                        caption={fig.caption}
+                      />
+                    );
+                  }
+                  if (fig.kind === "figure") {
+                    return (
+                      <Figure
+                        key={fi}
+                        variant={fig.variant as FigureVariant}
+                        caption={fig.caption}
+                      />
+                    );
+                  }
+                  return null;
+                })}
               </div>
             )}
 
