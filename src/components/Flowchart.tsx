@@ -1,15 +1,20 @@
 "use client";
 
-import { useMemo, useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown, ChevronUp, ZoomIn, ZoomOut, Maximize2 } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  X,
+  ZoomIn,
+  ZoomOut,
+  Maximize2,
+  Sparkles,
+} from "lucide-react";
 import type { Algorithm, AlgoNode, DecisionNode } from "@/data/algorithms";
-import { CATEGORY_META } from "@/data/algorithms";
 
-const NODE_W = 280;
-const NODE_MIN_H = 110;
-const H_GAP = 32;
-const V_GAP = 100;
+const NODE_W = 296;
+const NODE_MIN_H = 96;
+const H_GAP = 36;
+const V_GAP = 96;
 
 type Layout = {
   id: string;
@@ -24,38 +29,37 @@ type EdgeInfo = {
   fromId: string;
   toId: string;
   label: string;
-  isHighlight: boolean;
 };
+
+// --------------------------------------------------------------------------
+// Layout — left-aligned vertical tree, breadth-balanced by subtree size.
+// --------------------------------------------------------------------------
 
 function estimateHeight(node: AlgoNode): number {
   if (node.kind === "outcome") {
-    const titleLen = node.title.length;
-    const detailLen = node.detail?.length ?? 0;
-    return 80 + Math.ceil(titleLen / 30) * 22 + Math.ceil(detailLen / 40) * 18;
+    const titleLines = Math.ceil(node.title.length / 28);
+    const detailLines = node.detail ? Math.ceil(node.detail.length / 36) : 0;
+    return 56 + titleLines * 22 + detailLines * 16;
   }
-  const promptLen = node.prompt.length;
-  const opts = node.options;
-  const optionsHeight = opts.reduce((sum, o) => sum + 28 + Math.ceil(o.label.length / 36) * 18, 0);
-  return 60 + Math.ceil(promptLen / 28) * 22 + optionsHeight;
+  const promptLines = Math.ceil(node.prompt.length / 28);
+  const optionsLines = node.options.reduce(
+    (sum, o) => sum + Math.max(1, Math.ceil(o.label.length / 30)) * 18,
+    0,
+  );
+  return 56 + promptLines * 20 + optionsLines + node.options.length * 6;
 }
 
-function computeLayout(algo: Algorithm): {
-  layouts: Map<string, Layout>;
-  edges: EdgeInfo[];
-  width: number;
-  height: number;
-} {
+function computeLayout(algo: Algorithm) {
   const layouts = new Map<string, Layout>();
   const edges: EdgeInfo[] = [];
   const visited = new Set<string>();
-  const heights = new Map<string, number>();
 
-  // Pre-compute heights for each node
+  const heights = new Map<string, number>();
   for (const id of Object.keys(algo.nodes)) {
     heights.set(id, Math.max(NODE_MIN_H, estimateHeight(algo.nodes[id])));
   }
 
-  // Compute subtree width recursively
+  // Width of each subtree (so siblings don't overlap).
   const widthCache = new Map<string, number>();
   function subtreeWidth(id: string, seen: Set<string> = new Set()): number {
     if (widthCache.has(id)) return widthCache.get(id)!;
@@ -66,56 +70,54 @@ function computeLayout(algo: Algorithm): {
       widthCache.set(id, NODE_W);
       return NODE_W;
     }
-    const correctChildren = node.options
+    const children = node.options
       .filter((o) => o.isCorrect && o.next)
       .map((o) => o.next!);
-    if (correctChildren.length === 0) {
+    if (children.length === 0) {
       widthCache.set(id, NODE_W);
       return NODE_W;
     }
     let total = 0;
-    for (const c of correctChildren) {
-      total += subtreeWidth(c, new Set(seen));
-    }
-    total += (correctChildren.length - 1) * H_GAP;
+    for (const c of children) total += subtreeWidth(c, new Set(seen));
+    total += (children.length - 1) * H_GAP;
     const w = Math.max(NODE_W, total);
     widthCache.set(id, w);
     return w;
   }
 
-  // Compute level (longest path from root) for vertical layout
+  // Vertical level = longest-path-from-root, so a node always sits below
+  // every ancestor (handles diamond joins gracefully).
   const levels = new Map<string, number>();
-  function computeLevel(id: string, level: number, seen: Set<string>): void {
+  function computeLevel(id: string, lv: number, seen: Set<string>): void {
     if (seen.has(id)) return;
-    const current = levels.get(id) ?? -1;
-    if (level <= current) return;
-    levels.set(id, level);
+    const cur = levels.get(id) ?? -1;
+    if (lv <= cur) return;
+    levels.set(id, lv);
     const node = algo.nodes[id];
     if (node.kind === "decision") {
       for (const o of node.options) {
         if (o.isCorrect && o.next) {
-          computeLevel(o.next, level + 1, new Set([...seen, id]));
+          computeLevel(o.next, lv + 1, new Set([...seen, id]));
         }
       }
     }
   }
   computeLevel(algo.start, 0, new Set());
 
-  // Compute Y for each level based on max height in that level
+  // Each level gets a Y coord based on the tallest node it contains.
   const levelHeights = new Map<number, number>();
   for (const [id, lv] of levels) {
     const h = heights.get(id) ?? NODE_MIN_H;
     levelHeights.set(lv, Math.max(levelHeights.get(lv) ?? 0, h));
   }
+  const maxLevel = Math.max(0, ...Array.from(levels.values()));
   const levelY = new Map<number, number>();
   let y = 0;
-  const maxLevel = Math.max(...levels.values());
   for (let lv = 0; lv <= maxLevel; lv++) {
     levelY.set(lv, y);
     y += (levelHeights.get(lv) ?? NODE_MIN_H) + V_GAP;
   }
 
-  // Position recursively
   function position(id: string, x: number): number {
     if (visited.has(id)) {
       const existing = layouts.get(id);
@@ -126,10 +128,10 @@ function computeLayout(algo: Algorithm): {
     const w = subtreeWidth(id);
     const h = heights.get(id) ?? NODE_MIN_H;
     const lv = levels.get(id) ?? 0;
-    const myY = levelY.get(lv) ?? 0;
-    const myX = x + (w - NODE_W) / 2;
+    const nodeY = levelY.get(lv) ?? 0;
+    const nodeX = x + (w - NODE_W) / 2;
 
-    layouts.set(id, { id, x: myX, y: myY, width: NODE_W, height: h, node });
+    layouts.set(id, { id, x: nodeX, y: nodeY, width: NODE_W, height: h, node });
 
     if (node.kind === "decision") {
       const correctOpts = node.options.filter((o) => o.isCorrect && o.next);
@@ -137,21 +139,13 @@ function computeLayout(algo: Algorithm): {
       for (const o of correctOpts) {
         const childId = o.next!;
         const childW = subtreeWidth(childId);
-        if (!visited.has(childId)) {
-          position(childId, childX);
-        }
-        edges.push({
-          fromId: id,
-          toId: childId,
-          label: o.label,
-          isHighlight: false,
-        });
+        if (!visited.has(childId)) position(childId, childX);
+        edges.push({ fromId: id, toId: childId, label: o.label });
         childX += childW + H_GAP;
       }
     }
     return x + w;
   }
-
   position(algo.start, 0);
 
   let maxX = 0;
@@ -160,83 +154,79 @@ function computeLayout(algo: Algorithm): {
     maxX = Math.max(maxX, l.x + l.width);
     maxY = Math.max(maxY, l.y + l.height);
   }
-
   return { layouts, edges, width: maxX, height: maxY };
 }
 
-export default function Flowchart({
-  algo,
-  highlightPath = [],
-}: {
-  algo: Algorithm;
-  highlightPath?: string[];
-}) {
-  const meta = CATEGORY_META[algo.category];
-  const { layouts, edges, width, height } = useMemo(() => computeLayout(algo), [algo]);
-  const highlightSet = useMemo(() => new Set(highlightPath), [highlightPath]);
+// --------------------------------------------------------------------------
+// Flowchart
+// --------------------------------------------------------------------------
+
+export default function Flowchart({ algo }: { algo: Algorithm }) {
+  const { layouts, edges, width, height } = useMemo(
+    () => computeLayout(algo),
+    [algo],
+  );
   const [zoom, setZoom] = useState(1);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-fit zoom on mount (small algorithms zoom in slightly)
+  // Smart fit: pick the larger of "fit-to-width" and "fit-to-height" so the
+  // root is always visible without scroll on first paint.
   useEffect(() => {
     if (!containerRef.current) return;
-    const cw = containerRef.current.clientWidth - 40;
-    const targetZoom = Math.min(1, cw / width);
-    setZoom(Math.max(0.5, targetZoom));
-  }, [width]);
+    const cw = containerRef.current.clientWidth - 48;
+    const ch = containerRef.current.clientHeight - 48;
+    const fitW = cw / (width + 40);
+    const fitH = ch / (height + 40);
+    const z = Math.max(0.45, Math.min(1, Math.min(fitW, fitH) * 0.95));
+    setZoom(z);
+  }, [width, height]);
 
-  const selectedNode = selectedId ? algo.nodes[selectedId] : null;
+  const selected = selectedId ? algo.nodes[selectedId] : null;
+
+  const refit = () => {
+    if (!containerRef.current) return;
+    const cw = containerRef.current.clientWidth - 48;
+    const ch = containerRef.current.clientHeight - 48;
+    const fitW = cw / (width + 40);
+    const fitH = ch / (height + 40);
+    const z = Math.max(0.45, Math.min(1, Math.min(fitW, fitH) * 0.95));
+    setZoom(z);
+    containerRef.current.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="relative h-full w-full">
-      {/* Zoom controls */}
+      {/* Controls */}
       <div className="absolute top-4 right-4 z-20 flex flex-col gap-1.5">
-        <button
-          onClick={() => setZoom((z) => Math.min(2, z + 0.1))}
-          className="glass-strong rounded-full p-2 hover:bg-white/10 transition"
-          title="Zoom in"
-        >
+        <IconButton onClick={() => setZoom((z) => Math.min(2, z + 0.15))} title="Zoom in">
           <ZoomIn className="h-4 w-4" />
-        </button>
-        <button
-          onClick={() => setZoom((z) => Math.max(0.3, z - 0.1))}
-          className="glass-strong rounded-full p-2 hover:bg-white/10 transition"
-          title="Zoom out"
-        >
+        </IconButton>
+        <IconButton onClick={() => setZoom((z) => Math.max(0.3, z - 0.15))} title="Zoom out">
           <ZoomOut className="h-4 w-4" />
-        </button>
-        <button
-          onClick={() => {
-            if (!containerRef.current) return;
-            const cw = containerRef.current.clientWidth - 40;
-            setZoom(Math.min(1, cw / width));
-          }}
-          className="glass-strong rounded-full p-2 hover:bg-white/10 transition"
-          title="Fit"
-        >
+        </IconButton>
+        <IconButton onClick={refit} title="Fit to screen">
           <Maximize2 className="h-4 w-4" />
-        </button>
+        </IconButton>
       </div>
 
-      {/* Legend */}
-      <div className="absolute top-4 left-4 z-20 glass-strong rounded-xl px-3 py-2 text-[10px] uppercase tracking-[0.18em] text-white/60 flex items-center gap-4">
-        <div className="flex items-center gap-1.5">
+      {/* Legend + zoom level */}
+      <div className="absolute top-4 left-4 z-20 glass-strong rounded-xl px-3 py-2 flex items-center gap-4 text-[10px] uppercase tracking-[0.18em] text-white/60">
+        <span className="inline-flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-sm border border-cyan-300/60 bg-cyan-400/10" />
           Decision
-        </div>
-        <div className="flex items-center gap-1.5">
+        </span>
+        <span className="inline-flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-emerald-400" />
           Outcome
-        </div>
-        {highlightPath.length > 0 && (
-          <div className="flex items-center gap-1.5">
-            <span className="h-0.5 w-3 bg-cyan-400" />
-            Your path
-          </div>
-        )}
+        </span>
+        <span className="text-white/35">·</span>
+        <span className="text-white/45 normal-case tracking-normal text-[11px] tabular-nums">
+          {Math.round(zoom * 100)}%
+        </span>
       </div>
 
+      {/* Scroll/pan container */}
       <div
         ref={containerRef}
         className="h-full w-full overflow-auto scrollbar-thin"
@@ -251,8 +241,16 @@ export default function Flowchart({
             transformOrigin: "20px 20px",
           }}
         >
-          <div style={{ paddingLeft: 20, paddingTop: 20, width, height, position: "relative" }}>
-            {/* SVG edges layer */}
+          <div
+            style={{
+              paddingLeft: 20,
+              paddingTop: 20,
+              width,
+              height,
+              position: "relative",
+            }}
+          >
+            {/* Edges */}
             <svg
               className="pointer-events-none absolute inset-0"
               width={width}
@@ -269,18 +267,7 @@ export default function Flowchart({
                   markerHeight="6"
                   orient="auto-start-reverse"
                 >
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,255,255,0.35)" />
-                </marker>
-                <marker
-                  id="arrow-active"
-                  viewBox="0 0 10 10"
-                  refX="9"
-                  refY="5"
-                  markerWidth="6"
-                  markerHeight="6"
-                  orient="auto-start-reverse"
-                >
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgb(103,232,249)" />
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,255,255,0.4)" />
                 </marker>
               </defs>
               {edges.map((edge, i) => {
@@ -292,167 +279,257 @@ export default function Flowchart({
                 const x2 = to.x + to.width / 2;
                 const y2 = to.y;
                 const midY = (y1 + y2) / 2;
-                const isActive = highlightSet.has(edge.fromId) && highlightSet.has(edge.toId);
-                const stroke = isActive ? "rgb(103,232,249)" : "rgba(255,255,255,0.25)";
-                const strokeWidth = isActive ? 2 : 1.4;
-                // S-curve path
                 const path = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
                 return (
-                  <g key={`${edge.fromId}-${edge.toId}-${i}`}>
-                    <path
-                      d={path}
-                      fill="none"
-                      stroke={stroke}
-                      strokeWidth={strokeWidth}
-                      markerEnd={`url(#${isActive ? "arrow-active" : "arrow"})`}
-                    />
-                  </g>
+                  <path
+                    key={`${edge.fromId}-${edge.toId}-${i}`}
+                    d={path}
+                    fill="none"
+                    stroke="rgba(255,255,255,0.28)"
+                    strokeWidth="1.6"
+                    markerEnd="url(#arrow)"
+                  />
                 );
               })}
             </svg>
 
             {/* Nodes */}
-            {Array.from(layouts.values()).map((l) => {
-              const isHighlight = highlightSet.has(l.id);
-              const isSelected = selectedId === l.id;
-              const node = l.node;
-              return (
-                <motion.button
-                  key={l.id}
-                  onClick={() => setSelectedId(isSelected ? null : l.id)}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: (l.y / height) * 0.4 }}
-                  className={`absolute text-left rounded-2xl backdrop-blur-md transition cursor-pointer ${
-                    node.kind === "outcome"
-                      ? isHighlight
-                        ? "border-2 border-emerald-300/60 bg-emerald-400/8 shadow-[0_0_30px_rgba(16,185,129,0.25)]"
-                        : "border border-emerald-400/30 bg-emerald-500/[0.06]"
-                      : isHighlight
-                      ? "border-2 border-cyan-300/60 bg-cyan-400/[0.06] shadow-[0_0_30px_rgba(0,230,195,0.25)]"
-                      : "border border-white/15 bg-white/[0.04]"
-                  } ${isSelected ? "ring-2 ring-white/40" : ""} hover:border-white/30`}
-                  style={{
-                    left: l.x,
-                    top: l.y,
-                    width: l.width,
-                    minHeight: l.height,
-                    padding: "12px 14px",
-                  }}
-                >
-                  {node.kind === "outcome" ? (
-                    <OutcomeCard node={node} />
-                  ) : (
-                    <DecisionCard node={node} />
-                  )}
-                </motion.button>
-              );
-            })}
+            {Array.from(layouts.values()).map((l) => (
+              <NodeCard
+                key={l.id}
+                layout={l}
+                selected={selectedId === l.id}
+                onClick={() =>
+                  setSelectedId((id) => (id === l.id ? null : l.id))
+                }
+              />
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Detail panel */}
-      {selectedNode && (
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 glass-strong rounded-2xl px-5 py-4 max-w-xl w-[calc(100%-2rem)]"
-        >
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex-1 min-w-0">
-              <div className="text-[10px] uppercase tracking-[0.22em] text-white/45 mb-1">
-                {selectedNode.kind === "outcome" ? "Outcome" : "Decision"}
+      {/* Detail panel — fixed bottom-center for both decision + outcome nodes */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ y: 24, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 24, opacity: 0 }}
+            transition={{ type: "spring", duration: 0.3 }}
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 glass-strong rounded-2xl px-5 py-4 max-w-2xl w-[calc(100%-2rem)]"
+          >
+            <div className="flex items-start gap-3">
+              <div className="flex-1 min-w-0">
+                <div className="text-[10px] uppercase tracking-[0.22em] mb-1.5 flex items-center gap-1.5">
+                  {selected.kind === "outcome" ? (
+                    <span className="text-emerald-300">Outcome</span>
+                  ) : (
+                    <span className="text-cyan-300">Decision</span>
+                  )}
+                </div>
+                <div className="text-sm md:text-base font-semibold leading-snug">
+                  {selected.kind === "outcome"
+                    ? selected.title
+                    : selected.prompt}
+                </div>
+                {selected.kind === "outcome" && selected.detail && (
+                  <p className="mt-2 text-xs md:text-sm text-white/70 leading-relaxed">
+                    {selected.detail}
+                  </p>
+                )}
+                {selected.kind === "outcome" &&
+                  selected.pearls &&
+                  selected.pearls.length > 0 && (
+                    <ul className="mt-3 space-y-1.5">
+                      {selected.pearls.map((p) => (
+                        <li
+                          key={p}
+                          className="text-xs md:text-sm text-white/75 flex gap-2 leading-relaxed"
+                        >
+                          <Sparkles className="h-3 w-3 text-cyan-300 shrink-0 mt-0.5" />
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                {selected.kind === "decision" && selected.context && (
+                  <p className="mt-2 text-xs md:text-sm text-white/65 leading-relaxed">
+                    {selected.context}
+                  </p>
+                )}
+                {selected.kind === "decision" && (
+                  <div className="mt-3 space-y-1.5 border-t border-white/5 pt-3">
+                    {selected.options.map((o) => (
+                      <div
+                        key={o.label}
+                        className={`text-xs leading-snug flex gap-2 ${
+                          o.isCorrect ? "text-white/85" : "text-white/45"
+                        }`}
+                      >
+                        <span
+                          className={`mt-0.5 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full text-[9px] font-bold ${
+                            o.isCorrect
+                              ? "bg-emerald-400/20 text-emerald-300"
+                              : "bg-rose-400/15 text-rose-300/70"
+                          }`}
+                        >
+                          {o.isCorrect ? "✓" : "✗"}
+                        </span>
+                        <span className="flex-1">
+                          <span className={o.isCorrect ? "font-medium" : "line-through"}>
+                            {o.label}
+                          </span>
+                          {o.rationale && (
+                            <span className="block mt-0.5 text-[11px] text-white/55 italic">
+                              {o.rationale}
+                            </span>
+                          )}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div className="text-sm font-semibold leading-snug">
-                {selectedNode.kind === "outcome" ? selectedNode.title : selectedNode.prompt}
-              </div>
-              {selectedNode.kind === "outcome" && selectedNode.detail && (
-                <p className="mt-2 text-xs text-white/65 leading-relaxed">{selectedNode.detail}</p>
-              )}
-              {selectedNode.kind === "outcome" && selectedNode.pearls && (
-                <ul className="mt-2 space-y-1">
-                  {selectedNode.pearls.map((p) => (
-                    <li key={p} className="text-xs text-white/65 flex gap-1.5">
-                      <span className="text-cyan-300 mt-0.5">◆</span>
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <button
+                onClick={() => setSelectedId(null)}
+                className="rounded-full p-1.5 hover:bg-white/10 transition shrink-0"
+                aria-label="Close"
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
-            <button
-              onClick={() => setSelectedId(null)}
-              className="rounded-full p-1.5 hover:bg-white/10 transition"
-            >
-              <ChevronDown className="h-4 w-4" />
-            </button>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Hint to scroll if large */}
-      {width > 1200 && !selectedId && (
-        <div className="absolute bottom-4 right-4 z-10 text-[10px] uppercase tracking-[0.18em] text-white/35 hidden md:block">
-          Drag to pan · scroll to navigate
+      {/* Pan hint for wide algorithms */}
+      {width > 1100 && !selectedId && (
+        <div className="absolute bottom-4 right-4 z-10 text-[10px] uppercase tracking-[0.18em] text-white/30 hidden md:block">
+          Scroll to pan · pinch to zoom
         </div>
       )}
-
-      <span className="sr-only">
-        <ChevronUp className="h-4 w-4" />
-      </span>
     </div>
+  );
+}
+
+// --------------------------------------------------------------------------
+// Node card
+// --------------------------------------------------------------------------
+
+function NodeCard({
+  layout,
+  selected,
+  onClick,
+}: {
+  layout: Layout;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  const { node } = layout;
+  const isOutcome = node.kind === "outcome";
+  return (
+    <motion.button
+      onClick={onClick}
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.25, delay: Math.min((layout.y / 1000) * 0.3, 0.4) }}
+      className={`absolute text-left rounded-2xl backdrop-blur-md transition cursor-pointer overflow-hidden ${
+        isOutcome
+          ? "border border-emerald-400/35 bg-emerald-500/[0.07] hover:border-emerald-300/60 hover:bg-emerald-400/[0.10]"
+          : "border border-white/15 bg-white/[0.04] hover:border-cyan-300/45 hover:bg-cyan-400/[0.04]"
+      } ${selected ? "ring-2 ring-cyan-300/55 shadow-[0_0_30px_rgba(103,232,249,0.18)]" : ""}`}
+      style={{
+        left: layout.x,
+        top: layout.y,
+        width: layout.width,
+        minHeight: layout.height,
+        padding: "14px 16px",
+      }}
+    >
+      {isOutcome ? <OutcomeCard node={node} /> : <DecisionCard node={node} />}
+    </motion.button>
   );
 }
 
 function DecisionCard({ node }: { node: DecisionNode }) {
   return (
     <>
-      <div className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/70 mb-1.5">
+      <div className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/85 mb-1.5 flex items-center gap-1.5">
+        <span className="h-1.5 w-1.5 rounded-sm bg-cyan-400" />
         Decision
       </div>
-      <div className="text-sm font-semibold leading-snug mb-2">{node.prompt}</div>
-      <div className="space-y-1 mt-2">
+      <div className="text-[13px] font-semibold leading-snug mb-2.5 text-white">
+        {node.prompt}
+      </div>
+      <ul className="space-y-1.5 mt-2">
         {node.options.map((opt) => (
-          <div
+          <li
             key={opt.label}
             className={`flex items-start gap-1.5 text-[11px] leading-snug ${
-              opt.isCorrect ? "text-white/85" : "text-rose-300/60"
+              opt.isCorrect ? "text-white/90" : "text-white/40"
             }`}
           >
             <span
               className={`mt-0.5 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full text-[9px] font-bold ${
                 opt.isCorrect
                   ? "bg-emerald-400/20 text-emerald-300"
-                  : "bg-rose-400/15 text-rose-300/70"
+                  : "bg-rose-400/15 text-rose-300/65"
               }`}
             >
               {opt.isCorrect ? "✓" : "✗"}
             </span>
             <span className={opt.isCorrect ? "" : "line-through"}>{opt.label}</span>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 }
 
-function OutcomeCard({
-  node,
-}: {
-  node: Exclude<AlgoNode, DecisionNode>;
-}) {
+function OutcomeCard({ node }: { node: Exclude<AlgoNode, DecisionNode> }) {
   return (
     <>
-      <div className="text-[10px] uppercase tracking-[0.18em] text-emerald-300/80 mb-1.5">
+      <div className="text-[10px] uppercase tracking-[0.18em] text-emerald-300/90 mb-1.5 flex items-center gap-1.5">
+        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
         Outcome
       </div>
-      <div className="text-sm font-semibold leading-snug">{node.title}</div>
+      <div className="text-[13px] font-semibold leading-snug text-white">{node.title}</div>
       {node.detail && (
-        <div className="mt-1.5 text-[11px] text-white/55 leading-snug line-clamp-3">
+        <p className="mt-1.5 text-[11px] text-white/65 leading-snug line-clamp-3">
           {node.detail}
+        </p>
+      )}
+      {node.pearls && node.pearls.length > 0 && (
+        <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-emerald-300/65 flex items-center gap-1.5">
+          <Sparkles className="h-2.5 w-2.5" />
+          {node.pearls.length} pearl{node.pearls.length === 1 ? "" : "s"}
         </div>
       )}
     </>
+  );
+}
+
+// --------------------------------------------------------------------------
+// Small util
+// --------------------------------------------------------------------------
+
+function IconButton({
+  children,
+  onClick,
+  title,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  title: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      title={title}
+      aria-label={title}
+      className="glass-strong rounded-full p-2 hover:bg-white/10 transition"
+    >
+      {children}
+    </button>
   );
 }

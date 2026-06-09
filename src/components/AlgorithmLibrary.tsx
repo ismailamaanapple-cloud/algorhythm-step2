@@ -46,7 +46,7 @@ export default function AlgorithmLibrary() {
               Pick your battle.
             </h2>
             <p className="mt-2 text-white/55 max-w-xl">
-              {ALGORITHMS.length} clinical decision trees, organized by specialty. Tap one to enter the active-recall game.
+              {ALGORITHMS.length} interactive clinical decision trees, organized by specialty. Tap one to read the full flowchart with pearls.
             </p>
           </div>
           <div className="relative w-full md:w-80">
@@ -150,7 +150,7 @@ export default function AlgorithmLibrary() {
                           {decisionCount} decision{decisionCount !== 1 ? "s" : ""}
                         </span>
                         <span className="flex items-center gap-1 text-xs font-semibold text-white/80 transition group-hover:text-cyan-300">
-                          Play
+                          Open
                           <ChevronRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
                         </span>
                       </div>
