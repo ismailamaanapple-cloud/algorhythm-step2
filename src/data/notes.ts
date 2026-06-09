@@ -14,6 +14,14 @@ export type NoteTable = {
   rows: string[][];
 };
 
+/** An EKG rhythm strip to embed in a note. See src/components/EkgStrip.tsx
+ *  for the variant catalog (afib, vt, torsades, complete-block, etc.). */
+export type NoteFigure = {
+  kind: "ekg";
+  variant: string;
+  caption?: string;
+};
+
 export type Note = {
   id: string;
   session: NoteSession;
@@ -23,6 +31,7 @@ export type Note = {
   sections?: NoteSection[];
   tables?: NoteTable[];
   pearls?: string[];
+  figures?: NoteFigure[];
   relatedCaseIds?: string[];
 };
 
@@ -9387,6 +9396,10 @@ export const NOTES: Note[] = [
       "Posterior STEMI hides as ST depression in V1–V3 with tall R waves — get posterior leads",
       "Wellens' syndrome: biphasic or deep symmetric T inversion V2–V3 → critical LAD stenosis, even if asymptomatic",
     ],
+    figures: [
+      { kind: "ekg", variant: "normal-sinus" },
+      { kind: "ekg", variant: "stemi-inferior" },
+    ],
     relatedCaseIds: [],
   },
 
@@ -9446,6 +9459,10 @@ export const NOTES: Note[] = [
       "AFib + WPW (wide bizarre irregular tach) → procainamide; AVOID AV nodal blockers (adenosine, β-blocker, CCB, digoxin)",
       "Holiday-heart AFib: ETOH-triggered, often self-terminates",
     ],
+    figures: [
+      { kind: "ekg", variant: "afib" },
+      { kind: "ekg", variant: "aflutter" },
+    ],
     relatedCaseIds: [],
   },
 
@@ -9501,6 +9518,11 @@ export const NOTES: Note[] = [
       "Magnesium first-line for torsades regardless of serum Mg level",
       "VFib + unwitnessed/unsuccessful resuscitation > 20 min → consider therapeutic hypothermia post-ROSC for neuro protection (32–36°C × 24 hr)",
     ],
+    figures: [
+      { kind: "ekg", variant: "vt" },
+      { kind: "ekg", variant: "torsades" },
+      { kind: "ekg", variant: "vfib" },
+    ],
     relatedCaseIds: [],
   },
 
@@ -9547,6 +9569,10 @@ export const NOTES: Note[] = [
       "Mobitz II = below the AV node = unpredictable → permanent pacemaker",
       "Cannon A waves on JVP = atrium contracting against closed tricuspid (complete block, VT)",
       "Lyme carditis is a classic reversible cause of high-grade AV block — treat with ceftriaxone before placing a permanent pacer",
+    ],
+    figures: [
+      { kind: "ekg", variant: "mobitz-1" },
+      { kind: "ekg", variant: "complete-block" },
     ],
     relatedCaseIds: [],
   },
@@ -9600,6 +9626,7 @@ export const NOTES: Note[] = [
       "Hypokalemia is resistant to correction without simultaneous magnesium repletion",
       "Digoxin toxicity mimics hyperkalemia EKG findings + 'scooped' ST depression",
     ],
+    figures: [{ kind: "ekg", variant: "hyperkalemia" }],
     relatedCaseIds: [],
   },
 
@@ -9660,6 +9687,7 @@ export const NOTES: Note[] = [
       "Brugada is autosomal dominant — screen first-degree relatives; ICD if syncope",
       "Wellens' (deep biphasic T waves V2–V3) in pain-free patient = critical LAD stenosis",
     ],
+    figures: [{ kind: "ekg", variant: "pericarditis" }],
     relatedCaseIds: [],
   },
 
@@ -9729,6 +9757,7 @@ export const NOTES: Note[] = [
       "Brugada often presents as nocturnal sudden death in young men (esp Southeast Asian); screen family",
       "HCM is the most common cause of sudden cardiac death in young athletes",
     ],
+    figures: [{ kind: "ekg", variant: "wpw" }],
     relatedCaseIds: [],
   },
 
@@ -10051,6 +10080,10 @@ export const NOTES: Note[] = [
       "First-line for refractory VFib after 3 shocks: amiodarone 300 mg IV bolus",
       "End-tidal CO₂ < 10 mmHg during CPR after 20 minutes = poor prognosis (consider stopping)",
       "Eyewitnessed arrest of young athlete on field → suspect HCM, commotio cordis (blunt chest trauma during T-wave), congenital LQT",
+    ],
+    figures: [
+      { kind: "ekg", variant: "vfib" },
+      { kind: "ekg", variant: "asystole" },
     ],
     relatedCaseIds: ["cardiac-arrest"],
   },

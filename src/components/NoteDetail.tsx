@@ -25,6 +25,7 @@ import HighlightToolbar, {
 import QuickQuiz from "@/components/notes/QuickQuiz";
 import PaywallGate from "@/components/paywall/PaywallGate";
 import BackLink from "@/components/BackLink";
+import EkgStrip, { type EkgKind } from "@/components/EkgStrip";
 
 const SESSION_COLORS: Record<1 | 2 | 3, string> = {
   1: "from-violet-500 to-purple-700",
@@ -442,6 +443,21 @@ export default function NoteDetail({ note }: { note: Note }) {
                   ))}
                 </ul>
               </motion.div>
+            )}
+
+            {/* EKG rhythm strips for EKG notes */}
+            {note.figures && note.figures.length > 0 && (
+              <div className="space-y-3">
+                {note.figures.map((fig, fi) =>
+                  fig.kind === "ekg" ? (
+                    <EkgStrip
+                      key={fi}
+                      kind={fig.variant as EkgKind}
+                      caption={fig.caption}
+                    />
+                  ) : null,
+                )}
+              </div>
             )}
 
             {/* Quick quiz on this note's material */}
