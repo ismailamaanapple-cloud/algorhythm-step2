@@ -23,8 +23,6 @@ import HighlightToolbar, {
   type PendingSelection,
 } from "@/components/highlights/HighlightToolbar";
 import QuickQuiz from "@/components/notes/QuickQuiz";
-import EkgStrip, { type EkgKind } from "@/components/EkgStrip";
-import Figure, { type FigureVariant } from "@/components/figures/Figure";
 import PaywallGate from "@/components/paywall/PaywallGate";
 import BackLink from "@/components/BackLink";
 
@@ -444,33 +442,6 @@ export default function NoteDetail({ note }: { note: Note }) {
                   ))}
                 </ul>
               </motion.div>
-            )}
-
-            {/* Figures — EKG strips + medical diagrams */}
-            {note.figures && note.figures.length > 0 && (
-              <div className="space-y-3">
-                {note.figures.map((fig, fi) => {
-                  if (fig.kind === "ekg") {
-                    return (
-                      <EkgStrip
-                        key={fi}
-                        kind={fig.variant as EkgKind}
-                        caption={fig.caption}
-                      />
-                    );
-                  }
-                  if (fig.kind === "figure") {
-                    return (
-                      <Figure
-                        key={fi}
-                        variant={fig.variant as FigureVariant}
-                        caption={fig.caption}
-                      />
-                    );
-                  }
-                  return null;
-                })}
-              </div>
             )}
 
             {/* Quick quiz on this note's material */}
