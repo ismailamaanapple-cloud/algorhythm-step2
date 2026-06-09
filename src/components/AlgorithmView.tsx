@@ -5,7 +5,7 @@ import { ArrowLeft, ListTree, Layers } from "lucide-react";
 import BackLink from "@/components/BackLink";
 import type { Algorithm } from "@/data/algorithms";
 import { CATEGORY_META } from "@/data/algorithms";
-import AlgorithmOutline from "@/components/AlgorithmOutline";
+import AlgorithmWalkthrough from "@/components/AlgorithmWalkthrough";
 
 export default function AlgorithmView({ algo }: { algo: Algorithm }) {
   const meta = CATEGORY_META[algo.category];
@@ -64,9 +64,9 @@ export default function AlgorithmView({ algo }: { algo: Algorithm }) {
         )}
       </motion.div>
 
-      {/* Linear outline — page scrolls naturally, no zoom / sub-scroll */}
-      <div className="mx-auto max-w-3xl w-full px-4 sm:px-6 pb-16">
-        <AlgorithmOutline algo={algo} />
+      {/* Guided walkthrough — one decision at a time, animated transitions */}
+      <div className="mx-auto max-w-2xl w-full px-4 sm:px-6 pb-16">
+        <AlgorithmWalkthrough algo={algo} />
       </div>
     </div>
   );
