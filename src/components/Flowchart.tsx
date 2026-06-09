@@ -359,34 +359,17 @@ export default function Flowchart({ algo }: { algo: Algorithm }) {
                 )}
                 {selected.kind === "decision" && (
                   <div className="mt-3 space-y-1.5 border-t border-white/5 pt-3">
-                    {selected.options.map((o) => (
-                      <div
-                        key={o.label}
-                        className={`text-xs leading-snug flex gap-2 ${
-                          o.isCorrect ? "text-white/85" : "text-white/45"
-                        }`}
-                      >
-                        <span
-                          className={`mt-0.5 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full text-[9px] font-bold ${
-                            o.isCorrect
-                              ? "bg-emerald-400/20 text-emerald-300"
-                              : "bg-rose-400/15 text-rose-300/70"
-                          }`}
+                    {selected.options
+                      .filter((o) => o.isCorrect)
+                      .map((o) => (
+                        <div
+                          key={o.label}
+                          className="text-xs leading-snug flex gap-2 text-white/85"
                         >
-                          {o.isCorrect ? "✓" : "✗"}
-                        </span>
-                        <span className="flex-1">
-                          <span className={o.isCorrect ? "font-medium" : "line-through"}>
-                            {o.label}
-                          </span>
-                          {o.rationale && (
-                            <span className="block mt-0.5 text-[11px] text-white/55 italic">
-                              {o.rationale}
-                            </span>
-                          )}
-                        </span>
-                      </div>
-                    ))}
+                          <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                          <span className="flex-1 font-medium">{o.label}</span>
+                        </div>
+                      ))}
                   </div>
                 )}
               </div>
@@ -452,6 +435,10 @@ function NodeCard({
 }
 
 function DecisionCard({ node }: { node: DecisionNode }) {
+  // Only show the correct paths — wrong distractor options were a relic of
+  // the old game-mode UI and just made the cards look like multiple-choice
+  // questions instead of a clinical algorithm.
+  const correctOptions = node.options.filter((o) => o.isCorrect);
   return (
     <>
       <div className="text-[10px] uppercase tracking-[0.18em] text-cyan-300/85 mb-1.5 flex items-center gap-1.5">
@@ -462,23 +449,13 @@ function DecisionCard({ node }: { node: DecisionNode }) {
         {node.prompt}
       </div>
       <ul className="space-y-1.5 mt-2">
-        {node.options.map((opt) => (
+        {correctOptions.map((opt) => (
           <li
             key={opt.label}
-            className={`flex items-start gap-1.5 text-[11px] leading-snug ${
-              opt.isCorrect ? "text-white/90" : "text-white/40"
-            }`}
+            className="flex items-start gap-1.5 text-[11px] leading-snug text-white/85"
           >
-            <span
-              className={`mt-0.5 inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full text-[9px] font-bold ${
-                opt.isCorrect
-                  ? "bg-emerald-400/20 text-emerald-300"
-                  : "bg-rose-400/15 text-rose-300/65"
-              }`}
-            >
-              {opt.isCorrect ? "✓" : "✗"}
-            </span>
-            <span className={opt.isCorrect ? "" : "line-through"}>{opt.label}</span>
+            <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/80" />
+            <span>{opt.label}</span>
           </li>
         ))}
       </ul>

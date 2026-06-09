@@ -21,6 +21,15 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Smooth in-page anchor scrolling (e.g. /#library link in nav). Respects
+   prefers-reduced-motion automatically via the `auto` keyword fallback. */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 /* Aurora background */
 .aurora {
   position: fixed;
