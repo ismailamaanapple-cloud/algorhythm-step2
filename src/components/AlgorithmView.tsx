@@ -5,7 +5,7 @@ import { ArrowLeft, ListTree, Layers } from "lucide-react";
 import BackLink from "@/components/BackLink";
 import type { Algorithm } from "@/data/algorithms";
 import { CATEGORY_META } from "@/data/algorithms";
-import Flowchart from "@/components/Flowchart";
+import AlgorithmOutline from "@/components/AlgorithmOutline";
 
 export default function AlgorithmView({ algo }: { algo: Algorithm }) {
   const meta = CATEGORY_META[algo.category];
@@ -19,7 +19,7 @@ export default function AlgorithmView({ algo }: { algo: Algorithm }) {
     <div className="min-h-[100dvh] flex flex-col">
       {/* Sticky compact header */}
       <div className="sticky top-0 z-30 backdrop-blur-md bg-black/55 border-b border-white/5">
-        <div className="mx-auto max-w-7xl px-6 py-3.5 flex items-center gap-4">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 py-3.5 flex items-center gap-4">
           <BackLink
             fallbackHref="/"
             className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition shrink-0"
@@ -54,21 +54,19 @@ export default function AlgorithmView({ algo }: { algo: Algorithm }) {
         initial={{ opacity: 0, y: 4 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="mx-auto max-w-7xl w-full px-6 pt-4 pb-2"
+        className="mx-auto max-w-3xl w-full px-4 sm:px-6 pt-5 pb-3"
       >
-        <p className="text-sm text-white/60 max-w-3xl leading-relaxed">{algo.blurb}</p>
+        <p className="text-sm text-white/65 leading-relaxed">{algo.blurb}</p>
         {algo.source && (
-          <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-white/35">
+          <p className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-white/35">
             Source · {algo.source}
           </p>
         )}
       </motion.div>
 
-      {/* Flowchart fills the rest */}
-      <div className="flex-1 mx-auto max-w-7xl w-full px-6 pb-6 min-h-0">
-        <div className="h-[calc(100dvh-160px)] glass rounded-2xl relative overflow-hidden">
-          <Flowchart algo={algo} />
-        </div>
+      {/* Linear outline — page scrolls naturally, no zoom / sub-scroll */}
+      <div className="mx-auto max-w-3xl w-full px-4 sm:px-6 pb-16">
+        <AlgorithmOutline algo={algo} />
       </div>
     </div>
   );
