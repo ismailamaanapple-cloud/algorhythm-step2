@@ -1,11 +1,28 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowLeft, ListTree, Layers } from "lucide-react";
 import BackLink from "@/components/BackLink";
 import type { Algorithm } from "@/data/algorithms";
 import { CATEGORY_META } from "@/data/algorithms";
-import AlgorithmDiagram from "@/components/AlgorithmDiagram";
+
+// Lazy-load the diagram so the algorithm route's initial JS stays light;
+// it pulls in framer-motion + the layout engine which we don't need until
+// after the header has painted.
+const AlgorithmDiagram = dynamic(
+  () => import("@/components/AlgorithmDiagram"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[60vh] flex items-center justify-center">
+        <div className="h-2 w-32 rounded-full bg-white/5 overflow-hidden">
+          <div className="h-full w-1/3 bg-cyan-400/50 animate-pulse" />
+        </div>
+      </div>
+    ),
+  },
+);
 
 export default function AlgorithmView({ algo }: { algo: Algorithm }) {
   const meta = CATEGORY_META[algo.category];
@@ -65,7 +82,7 @@ export default function AlgorithmView({ algo }: { algo: Algorithm }) {
       </motion.div>
 
       {/* Full diagram — fits width, page scrolls naturally if tall */}
-      <div className="mx-auto max-w-6xl w-full px-3 sm:px-6 pb-16">
+      <div className="mx-auto max-w-6xl w-full px-2 sm:px-4 md:px-6 pb-16">
         <AlgorithmDiagram algo={algo} />
       </div>
     </div>

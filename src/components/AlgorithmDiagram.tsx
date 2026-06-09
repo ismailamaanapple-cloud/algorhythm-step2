@@ -33,11 +33,14 @@ import type {
 
 const NODE_W = 280;
 const NODE_MIN_H = 92;
-const H_GAP = 56;
-const V_GAP = 180;       // bigger so the label slot has breathing room
+const H_GAP = 64;
+const V_GAP = 190;       // bigger so the label slot has breathing room
 const JUNCTION_OFFSET = 36; // distance from parent bottom to the junction bar
 const ARROW_INSET = 14;     // distance from arrowhead to the child's top edge
-const MIN_SCALE = 0.55;
+const MIN_SCALE = 0.7;   // floor so text stays readable on phones; wider
+                         // diagrams overflow horizontally instead.
+const LABEL_W = 188;     // width of edge-label cards
+const LABEL_MIN_H = 28;  // approx height for collision math
 
 // Edge accent palette — first option in a decision uses palette[0], etc.
 // All values are Tailwind-compatible color stops + hex for the SVG strokes.
@@ -235,6 +238,16 @@ export default function AlgorithmDiagram({ algo }: { algo: Algorithm }) {
     return { activeNodes: ns, activeEdges: es };
   }, [pathHead, parentOf]);
 
+  // Compute label placements once per layout — riders on horizontal segments
+  // when they exist, otherwise on the vertical drop. Then collide-test in a
+  // simple grid so diamond-join labels (two arrows into the same child) and
+  // long horizontal segments stagger vertically instead of stacking on top
+  // of each other.
+  const labelPlacements = useMemo(
+    () => computeLabelPlacements(edges, layouts),
+    [edges, layouts],
+  );
+
   // Fit-to-width
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -378,19 +391,12 @@ export default function AlgorithmDiagram({ algo }: { algo: Algorithm }) {
               })}
             </svg>
 
-            {/* Edge labels — sit in the dedicated slot between junction and child */}
-            {edges.map((edge, i) => {
+            {/* Edge labels — placed smartly per edge, with collision stagger.
+                See computeLabelPlacements for the full strategy. */}
+            {labelPlacements.map((placement, i) => {
+              const { edge, x, y, staggerLevel } = placement;
               const from = layouts.get(edge.fromId);
-              const to = layouts.get(edge.toId);
-              if (!from || !to) return null;
-              const parentBY = from.y + from.height + 16;
-              const childTY = to.y + 16;
-              const childCX = to.x + to.width / 2 + 16;
-              const junctionY = parentBY + JUNCTION_OFFSET;
-
-              // Vertical center of the drop segment between junction and arrowhead.
-              const slotCenterY =
-                junctionY + (childTY - ARROW_INSET - junctionY) / 2;
+              if (!from) return null;
 
               const palette =
                 BRANCH_PALETTE[edge.branchIndex % BRANCH_PALETTE.length];
@@ -406,19 +412,22 @@ export default function AlgorithmDiagram({ algo }: { algo: Algorithm }) {
                     duration: 0.3,
                     delay: 0.3 + (from.y / 1200) * 0.25,
                   }}
-                  className="absolute glass-strong rounded-lg px-2.5 py-1.5 text-[12px] leading-tight font-medium text-center pointer-events-none"
+                  className="absolute rounded-lg px-2.5 py-1.5 text-[12px] leading-tight font-medium text-center pointer-events-none"
                   style={{
-                    left: childCX,
-                    top: slotCenterY,
+                    left: x,
+                    top: y,
                     transform: "translate(-50%, -50%)",
-                    width: NODE_W - 60,
-                    maxWidth: NODE_W - 40,
+                    width: LABEL_W,
+                    maxWidth: LABEL_W,
+                    zIndex: 5 + staggerLevel,
                     borderTop: `1px solid ${palette.soft}`,
                     borderBottom: `1px solid ${palette.soft}`,
                     borderLeft: `2px solid ${palette.stroke}`,
                     borderRight: `1px solid ${palette.soft}`,
-                    color: "rgba(255,255,255,0.92)",
-                    background: "rgba(11,11,24,0.88)",
+                    color: "rgba(255,255,255,0.94)",
+                    background: "rgba(11,11,24,0.92)",
+                    backdropFilter: "blur(4px)",
+                    WebkitBackdropFilter: "blur(4px)",
                     boxShadow: isActive
                       ? `0 0 24px -4px ${palette.stroke}aa`
                       : `0 8px 24px -12px rgba(0,0,0,0.6)`,
@@ -577,6 +586,104 @@ function OutcomeBody({ node }: { node: OutcomeNode }) {
       )}
     </>
   );
+}
+
+// --------------------------------------------------------------------------
+// Label placement
+// --------------------------------------------------------------------------
+
+type LabelPlacement = {
+  edge: EdgeInfo;
+  x: number;
+  y: number;
+  /** Vertical bump in label-heights to avoid collisions. 0 = no bump. */
+  staggerLevel: number;
+};
+
+/**
+ * Decide where each edge's option-label sits. Strategy:
+ *   - If the edge has a horizontal segment (parent X ≠ child X), label rides
+ *     the midpoint of that segment at junctionY. This naturally separates
+ *     sibling branches and diamond-join labels.
+ *   - Otherwise (parent directly above child), label sits centered on the
+ *     vertical drop between the junction bar and the arrowhead.
+ *   - After initial placement, sweep through and stagger any labels whose
+ *     bounding boxes overlap, pushing the later one downward by a label-
+ *     height step. This rescues the rare case where two labels naturally
+ *     land near the same point.
+ */
+function computeLabelPlacements(
+  edges: EdgeInfo[],
+  layouts: Map<string, Layout>,
+): LabelPlacement[] {
+  const placements: LabelPlacement[] = [];
+
+  for (const edge of edges) {
+    const from = layouts.get(edge.fromId);
+    const to = layouts.get(edge.toId);
+    if (!from || !to) continue;
+
+    const parentCX = from.x + from.width / 2 + 16;
+    const parentBY = from.y + from.height + 16;
+    const childCX = to.x + to.width / 2 + 16;
+    const childTY = to.y + 16;
+    const junctionY = parentBY + JUNCTION_OFFSET;
+
+    const horizontalDist = Math.abs(parentCX - childCX);
+
+    let x: number;
+    let y: number;
+    if (horizontalDist > 8) {
+      // Ride the horizontal segment at the junction bar.
+      x = (parentCX + childCX) / 2;
+      y = junctionY;
+    } else {
+      // No horizontal segment — center on the vertical drop.
+      x = childCX;
+      y = junctionY + (childTY - ARROW_INSET - junctionY) / 2;
+    }
+
+    placements.push({ edge, x, y, staggerLevel: 0 });
+  }
+
+  // Collision resolution — O(n²) but n is tiny per algorithm (< ~50 edges).
+  const halfW = LABEL_W / 2;
+  const halfH = LABEL_MIN_H / 2 + 4; // small fudge for breathing room
+
+  function overlaps(a: LabelPlacement, b: LabelPlacement): boolean {
+    const ax = a.x;
+    const ay = a.y + a.staggerLevel * (LABEL_MIN_H + 6);
+    const bx = b.x;
+    const by = b.y + b.staggerLevel * (LABEL_MIN_H + 6);
+    return (
+      Math.abs(ax - bx) < halfW * 2 - 12 && Math.abs(ay - by) < halfH * 2
+    );
+  }
+
+  // Walk forward; for each label, bump it down until it no longer collides
+  // with any earlier-placed label.
+  for (let i = 1; i < placements.length; i++) {
+    let bumped = true;
+    let guard = 0;
+    while (bumped && guard < 6) {
+      bumped = false;
+      guard++;
+      for (let j = 0; j < i; j++) {
+        if (overlaps(placements[i], placements[j])) {
+          placements[i].staggerLevel += 1;
+          bumped = true;
+          break;
+        }
+      }
+    }
+  }
+
+  // Apply the stagger offset to the final Y.
+  for (const p of placements) {
+    p.y = p.y + p.staggerLevel * (LABEL_MIN_H + 6);
+  }
+
+  return placements;
 }
 
 // Compile-time fence.
