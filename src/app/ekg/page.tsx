@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import EkgLibrary from "@/components/EkgLibrary";
 
 export const metadata: Metadata = {
-  title: "EKG — Step 2 CK pattern recognition | 250+",
+  title: "EKG — Step 2 CK pattern recognition",
   description:
     "High-yield EKG patterns for Step 2 CK: STEMI localization, arrhythmias, blocks, electrolytes, channelopathies, and ACLS.",
 };

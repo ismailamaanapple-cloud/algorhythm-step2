@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Dashboard from "@/components/dashboard/Dashboard";
 
 export const metadata: Metadata = {
-  title: "Dashboard — 250+",
+  title: "Dashboard",
   description: "Your weak topics, strong topics, and what to study next.",
 };
 

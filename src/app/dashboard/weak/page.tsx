@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import WeakReview from "@/components/dashboard/WeakReview";
 
 export const metadata: Metadata = {
-  title: "Weak cards review — 250+",
+  title: "Weak cards review",
   description: "Drill the flashcards you've been getting wrong.",
 };
 

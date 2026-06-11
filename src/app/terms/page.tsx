@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — 250+",
+  title: "Terms of Use",
   description: "The rules for using 250+.",
 };
 

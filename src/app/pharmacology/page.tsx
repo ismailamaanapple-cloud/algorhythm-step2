@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import PharmacologyLibrary from "@/components/PharmacologyLibrary";
 
 export const metadata: Metadata = {
-  title: "Pharmacology — Step 2 CK drug classes | 250+",
+  title: "Pharmacology — Step 2 CK drug classes",
   description:
     "High-yield drug classes for Step 2 CK: anticoagulants, diabetes meds, antibiotics, β-blockers, ACE-I/ARBs, diuretics, statins, psych meds, AEDs, inhalers, OB drugs, chemo toxicities.",
 };
